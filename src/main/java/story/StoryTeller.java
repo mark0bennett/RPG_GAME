@@ -29,7 +29,6 @@ public class StoryTeller {
 		System.out.println("He has some questions first though...");
 		System.out.println("--------------------------");
 		Thread.sleep(500);
-//		combat.start(null, null, null);
 	}
 
 	public static void firstFight() throws InterruptedException {
@@ -41,9 +40,9 @@ public class StoryTeller {
 
 	public static void churchGraveyardOrForest(Player player, Scanner scanner) throws InterruptedException {
 		System.out.println("You walk alone for many miles before seeing the path split into three...");
+		Thread.sleep(500);
 		String choice = "";
-		// TODO: Church must return a boolean only when you have won the fight and then
-		// change the boolean here to true
+		
 		while (true) {
 
 			if (churchCompleted == true && graveyardCompleted == true && forestCompleted == true) {
@@ -96,6 +95,7 @@ public class StoryTeller {
 	}
 
 	public static void goToVendor() {
+		//should we add money to the player to buy shit?
 
 	}
 
