@@ -1,12 +1,15 @@
 package characters.player;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
 import weapons.BareHands;
 import weapons.BareMagicHands;
 import weapons.Weapon;
+import weapons.WeaponObject;
 import weapons.WeaponType;
 
 public class Player {
@@ -44,7 +47,8 @@ public class Player {
 		Random random = new Random();
 		int[] attackDamage = new int[2];
 
-		// note the crit amount when it happens, can be 0 too, can we return an int[] with both numbers?
+		// note the crit amount when it happens, can be 0 too, can we return an int[]
+		// with both numbers?
 
 		// if agi weapon, crit is random between 0 and your int
 		// if int weapon crit is random between 0 and your agi
@@ -91,7 +95,7 @@ public class Player {
 
 	}
 
-	//TODO: Sort the backpack with Dmg when printed out, highest to lowest
+	// TODO: Sort the backpack with Dmg when printed out, highest to lowest
 	public List<Weapon> getBackPack() {
 		return backPack;
 	}

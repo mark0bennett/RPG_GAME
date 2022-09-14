@@ -39,7 +39,8 @@ public class WeaponObject implements Weapon {
 		return this.weaponType;
 	}
 
-	// TODO: this equals method not working? had to do it manually in Combat Class, when adding to backpack
+	// TODO: this equals method not working? had to do it manually in Combat Class,
+	// when adding to backpack
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -54,5 +55,7 @@ public class WeaponObject implements Weapon {
 	public String toString() {
 		return this.name;
 	}
+	
+	
 
 }
