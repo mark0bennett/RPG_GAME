@@ -106,8 +106,5 @@ public class RpgGameApp {
 	
 	public static void nextLine(Scanner scanner) {
 		String input = scanner.nextLine();
-		if(input.isBlank()) {
-			
-		}
 	}
 }
