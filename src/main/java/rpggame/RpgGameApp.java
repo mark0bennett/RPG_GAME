@@ -19,6 +19,7 @@ public class RpgGameApp {
 		// tests
 		// add sound?
 		// add some ascii art
+		//find weapons randomly 
 		// package into a jar/exe file for execution on any computer
 
 		Scanner scanner = new Scanner(System.in);

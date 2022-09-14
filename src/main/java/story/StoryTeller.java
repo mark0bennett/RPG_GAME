@@ -20,23 +20,29 @@ public class StoryTeller {
 	private static boolean forestCompleted;
 
 	public static void introScene() throws InterruptedException {
-		System.out.println("You are walking minding your own business, when...");
+		System.out.println("You are walking minding your own business, as you do, when...");
 		Thread.sleep(ONE_SECOND);
 		System.out.println("Something appears from the darkness!");
 		Thread.sleep(ONE_SECOND);
-		System.out.println("A strange thing offers you great power...");
+		System.out.println("A strange ball of energy with what looks like an old man inside...");
 		Thread.sleep(ONE_SECOND);
-		System.out.println("...and of course you take it!");
+		System.out.println("He quickly explains that there is NO TIME to explain - he forces part of the strange energy at you");
 		Thread.sleep(ONE_SECOND);
-		System.out.println("He has some questions first though...");
+		System.out.println("...and it engulfs your whole body");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("Before the old man leaves he has a few important questions...");
 		System.out.println("--------------------------");
 		Thread.sleep(ONE_SECOND);
 	}
 
 	public static void firstFight() throws InterruptedException {
-		System.out.println("Let's see how you go in a battle then aye.....");
+		System.out.println("The old man leaves with a *ZAP* while screamng 'Don't forget, you can trust Pr..ssor... .arn..orth!!!'");
 		Thread.sleep(ONE_SECOND);
-		System.out.println("A Monster appears out of nowhere!");
+		System.out.println("Damn...what did he say?...");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("Before you can think you realise why he got the hell outta there");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("Something is storming towards you....aaah shit, here we go again.");
 		Thread.sleep(ONE_SECOND);
 	}
 
