@@ -42,7 +42,7 @@ public class RpgGameApp {
 		
 		StoryTeller.meetFry(player);
 		
-		//TODO: perhaps now into a while loop to, go to vendor, contiue journey, save?
+		//TODO: perhaps now into a while loop? to, go to vendor, contiue journey, save?
 
 		System.out.println("now back in main method");
 		printPlayer(player);
@@ -78,7 +78,7 @@ public class RpgGameApp {
 				continue;
 			}
 
-			if (strength + agility + intelligence > 100) {
+			if (strength + agility + intelligence > 10) {
 				System.out.println("10 points max please...");
 				continue;
 			} else {
