@@ -32,9 +32,11 @@ public class RpgGameApp {
 		Player player = createPlayer(scanner);
 
 		printPlayer(player);
+		
+		Combat.oneEnemy(player, EnemyFactory.createEnemyCustomLevel(player, 5), scanner, true);
 
 		StoryTeller.firstFight();
-		Combat.oneEnemyNoCrits(player, EnemyFactory.createWeakEnemy(player), scanner);
+		Combat.oneEnemy(player, EnemyFactory.createWeakEnemy(player), scanner, false);
 
 		StoryTeller.churchGraveyardOrForest(player, scanner);
 
@@ -72,7 +74,7 @@ public class RpgGameApp {
 				continue;
 			}
 
-			if (strength + agility + intelligence > 50) {
+			if (strength + agility + intelligence > 10) {
 				System.out.println("10 points max please...");
 				continue;
 			} else {

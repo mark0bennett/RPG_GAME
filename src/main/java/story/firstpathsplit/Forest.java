@@ -23,7 +23,7 @@ public static boolean startForest(Player player, Scanner scanner) throws Interru
 	Thread.sleep(MS_1000);
 	System.out.println("That Cannon in your chest doesn't frighten me!");
 	
-		boolean forestCompleted = Combat.oneEnemyNoCrits(player, EnemyFactory.createEnemyCustomLevel(player, 0), scanner);
+		boolean forestCompleted = Combat.oneEnemy(player, EnemyFactory.createEnemyCustomLevel(player, 0), scanner, false);
 		
 		return forestCompleted;
 	}

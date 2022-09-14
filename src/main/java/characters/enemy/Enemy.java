@@ -1,5 +1,7 @@
 package characters.enemy;
 
+import java.util.Random;
+
 import weapons.Weapon;
 import weapons.WeaponType;
 
@@ -24,6 +26,24 @@ public class Enemy {
 			attackDamage = this.agility + this.weapon.getDamage();
 		} else if (this.weapon.getWeaponType() == WeaponType.INTELLIGENCE) {
 			attackDamage = this.intelligence + this.weapon.getDamage();
+		}
+		return attackDamage;
+	}
+	
+	public int[] attackCrit() {
+		Random random = new Random();
+		int[] attackDamage = {0,0};
+
+		// note the crit amount when it happens, can be 0 too, can we return an int[] with both numbers?
+
+		// if agi weapon, crit is random between 0 and your int
+		// if int weapon crit is random between 0 and your agi
+		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
+			attackDamage[0] = this.agility + this.weapon.getDamage();
+			attackDamage[1] = random.nextInt(this.intelligence);
+		} else if (this.weapon.getWeaponType() == WeaponType.INTELLIGENCE) {
+			attackDamage[0] = this.intelligence + this.weapon.getDamage();
+			attackDamage[1] = random.nextInt(this.agility);
 		}
 		return attackDamage;
 	}

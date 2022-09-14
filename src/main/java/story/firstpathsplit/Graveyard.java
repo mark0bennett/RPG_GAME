@@ -31,7 +31,7 @@ public class Graveyard {
 		System.out.println("*uuuuuuuh*");
 		System.out.println("Man I hate Zombies, here we go!");
 		
-		boolean graveyardCompleted = Combat.oneEnemyNoCrits(player, EnemyFactory.createEnemyCustomLevel(player, 0), scanner);
+		boolean graveyardCompleted = Combat.oneEnemy(player, EnemyFactory.createEnemyCustomLevel(player, 0), scanner, false);
 		
 		//TODO: fight 2 enemies one after the other in seperate battles, how to return correct boolean once both are won?
 
