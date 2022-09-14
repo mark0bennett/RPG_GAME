@@ -71,12 +71,14 @@ public class Combat {
 			System.out.println("--------------------------");
 			Thread.sleep(MS_500);
 			System.out.println("...and you continue on your journey");
+			System.out.println("--------------------------");
 		}
 		if (!wonBattle) {
 			Thread.sleep(ONE_SECOND);
 			System.out.println("--------------------------");
 			Thread.sleep(MS_500);
 			System.out.println("You learn from this loss and continue...");
+			System.out.println("--------------------------");
 		}
 		return wonBattle;
 	}
@@ -168,11 +170,15 @@ public class Combat {
 		boolean wonBattle = false;
 		while (true) {
 			Thread.sleep(ONE_SECOND);
+			//for clarity
+			int[] playerAttackNumbers = player.attackCrit();
+			int playerAttack = playerAttackNumbers[0];
+			int playerCrit = playerAttackNumbers[1];
 			// you attack
 			System.out.println(
-					"You attack for " + player.attackCrit()[0] + " damage plus " + player.attackCrit()[1] + " Crit!");
+					"You attack for " + playerAttack + " damage plus " + playerCrit + " Crit!");
 			// enemy strength changed from attack
-			enemy.setStrength(enemy.getStrength() - (player.attackCrit()[0] + player.attackCrit()[1]));
+			enemy.setStrength(enemy.getStrength() - (playerAttack + playerCrit));
 			Thread.sleep(ONE_SECOND);
 			// check if enemy is dead
 			if (enemy.getStrength() < 1) {
@@ -181,10 +187,14 @@ public class Combat {
 				break;
 			}
 			// enemy attacks
+			//for clarity
+			int[] enemyAttackNumbers = enemy.attackCrit();
+			int enemyAttack = enemyAttackNumbers[0];
+			int enemyCrit = enemyAttackNumbers[1];
 			System.out.println(
-					"Enemy attacks for " + enemy.attackCrit()[0] + " damage plus " + enemy.attackCrit()[1] + " Crit!");
+					"Enemy attacks for " + enemyAttack + " damage plus " + enemyCrit + " Crit!");
 			// enemy strength changed from attack
-			player.setStrength(player.getStrength() - (enemy.attackCrit()[0] + enemy.attackCrit()[1]));
+			player.setStrength(player.getStrength() - (enemyAttack + enemyCrit));
 			Thread.sleep(ONE_SECOND);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {

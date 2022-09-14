@@ -54,8 +54,6 @@ public class StoryTeller {
 		while (true) {
 
 			if (churchCompleted == true && graveyardCompleted == true && forestCompleted == true) {
-				System.out.println("Well Done, You cleared church graveyard and forest!");
-				System.out.println("--------------------------");
 				afterChurchGraveyardOrForest();
 				break;
 			}
@@ -97,9 +95,28 @@ public class StoryTeller {
 
 	}
 
-	public static void afterChurchGraveyardOrForest() {
-		// more stuff happens - meet an npc? and learn how to crit
-		System.out.println("YOU ARE NOW IN THE METHOD AFTER CHURCH GRAVEYARD FOREST YAY");
+	public static void afterChurchGraveyardOrForest() throws InterruptedException {
+		System.out.println("You walk away victorious, and continue down a sodden old trail into the misty unknown");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("The old man in the glowing orb confronts you again");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("You need some more tricks if you are going to get through here");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("Let me show you a trick");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("You can Crit if you use your stats to the fullest");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("If you have an Agility weapon equipped you can crit depending on how high your Intelligence is!");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("If you have an Intelligence weapon equipped you can crit depending on how high your Agility is!");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("Further down the road I have seen a very powerful enemy indeed");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("This enemy will be 2 levels higher than you, so be careful!");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("...and good luck, who knows what you'll find further along the *ZAP* - he's gone");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("--------------------------");
 	}
 
 	public static void goToVendor() {

@@ -42,7 +42,7 @@ public class Player {
 
 	public int[] attackCrit() {
 		Random random = new Random();
-		int[] attackDamage = {0,0};
+		int[] attackDamage = new int[2];
 
 		// note the crit amount when it happens, can be 0 too, can we return an int[] with both numbers?
 
