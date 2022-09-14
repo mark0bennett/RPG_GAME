@@ -29,19 +29,21 @@ public class RpgGameApp {
 
 		Scanner scanner = new Scanner(System.in);
 
+		System.out.println("WELCOME TO - RPG_GAME -");
+		System.out.println("Press 'Enter' to advance text");
 		StoryTeller.introScene(scanner);
 		Player player = createPlayer(scanner);
 		
 		printPlayer(player);
 		
-		StoryTeller.firstFight();
+		StoryTeller.firstFight(scanner);
 		Combat.oneEnemy(player, EnemyFactory.createWeakEnemy(player), scanner, false);
 
 		StoryTeller.churchGraveyardOrForest(player, scanner);
 		
 		Combat.oneEnemy(player, EnemyFactory.createEnemyCustomLevel(player, 2), scanner, true);
 		
-		StoryTeller.meetFry(player);
+		StoryTeller.meetFry(player, scanner);
 		
 		//TODO: perhaps now into a while loop? to, go to vendor, contiue journey, save?
 		StoryTeller.mainPaths(player, scanner);

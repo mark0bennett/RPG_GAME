@@ -11,6 +11,8 @@ public class Combat {
 
 	private static final int ONE_SECOND = 1000;
 	private static final int MS_500 = 500;
+	
+	//TODO: with the scanner, lines are duplicated, scanner has leftover text during combat, when you pick weapon
 
 	public static boolean oneEnemy(Player player, Enemy enemy, Scanner scanner, boolean withCrits)
 			throws InterruptedException {
@@ -384,6 +386,7 @@ public class Combat {
 	}
 
 	private static void increaseStats(Player player, Scanner scanner) throws InterruptedException {
+		RpgGameApp.printPlayer(player);
 		while (true) {
 			Thread.sleep(ONE_SECOND);
 			System.out.println("Type: 's' - to increase Strength");

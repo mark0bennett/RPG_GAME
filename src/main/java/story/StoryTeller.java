@@ -19,8 +19,6 @@ public class StoryTeller {
 	// Combat, Scanner, etc?
 //	private static Combat combat;
 
-	private static final int ONE_SECOND = 1000;
-
 	private static boolean churchCompleted;
 	private static boolean graveyardCompleted;
 	private static boolean forestCompleted;
@@ -29,7 +27,7 @@ public class StoryTeller {
 	private static boolean appliedChryogenicsCompleted;
 	private static boolean robotArmsCompleted;
 
-	public static void introScene(Scanner scanner) throws InterruptedException {
+	public static void introScene(Scanner scanner) {
 		System.out.println("You are walking minding your own business, as you do, when...");
 		RpgGameApp.nextLine(scanner);
 		System.out.println("Something appears from the darkness!");
@@ -40,33 +38,33 @@ public class StoryTeller {
 				"He quickly explains that there is NO TIME to explain - he forces part of the strange energy at you");
 		RpgGameApp.nextLine(scanner);
 		System.out.println("...and it engulfs your whole body");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("Before the old man leaves he has a few important questions...");
 		System.out.println("--------------------------");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 	}
 
-	public static void firstFight() throws InterruptedException {
+	public static void firstFight(Scanner scanner) {
 		System.out.println(
 				"The old man leaves with a *ZAP* while screamng 'Don't forget, you can trust Pr..ssor... .arn..orth!!!'");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("Damn...what did he say?...");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("Before you can think you realise why he got the hell outta there");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("Something is storming towards you....aaah shit, here we go again.");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 	}
 
 	public static void churchGraveyardOrForest(Player player, Scanner scanner) throws InterruptedException {
 		System.out.println("You walk alone for many miles before seeing the path split into three...");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		String choice = "";
 
 		while (true) {
 
 			if (churchCompleted == true && graveyardCompleted == true && forestCompleted == true) {
-				afterChurchGraveyardOrForest();
+				afterChurchGraveyardOrForest(scanner);
 				break;
 			}
 
@@ -107,61 +105,61 @@ public class StoryTeller {
 
 	}
 
-	private static void afterChurchGraveyardOrForest() throws InterruptedException {
+	private static void afterChurchGraveyardOrForest(Scanner scanner) {
 		System.out.println("You walk away victorious, and continue down a sodden old trail into the misty unknown");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("The old man in the glowing orb confronts you again");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("You need some more tricks if you are going to get through here");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("Let me show you a trick");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("You can Crit if you use your stats to the fullest");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println(
 				"If you have an Agility weapon equipped you can crit depending on how high your Intelligence is!");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println(
 				"If you have an Intelligence weapon equipped you can crit depending on how high your Agility is!");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("Further down the road I have seen a very powerful enemy indeed");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("This enemy will be 2 levels higher than you, so be careful!");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("...and good luck, who knows what you'll find further along the *ZAP* - he's gone");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("--------------------------");
 	}
 
-	public static void meetFry(Player player) throws InterruptedException {
+	public static void meetFry(Player player, Scanner scanner) {
 		System.out.println("Hey There! - says a voice in the distance");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("The voice approaches and it is a young gentleman with pointy Red Hair");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("I rode away on my Scooty Puf Jr. when I saw that thing you were fighting?");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("Did you kill it???");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("Well in any case, the Professy told me to come here");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("He wants me to give you some of my intellijeans");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("My jeans aren't intelli?!");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("oooh maybe this will work");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("There we go - PLUS ONE TO YOUR INTELLIGENCE, YAY!");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("Goodbye friendly weirdo - I'm sure I'll see you again soon");
 		player.setIntelligence(player.getIntelligence() + 1);
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		RpgGameApp.printPlayer(player);
 
 	}
 
 	public static void mainPaths(Player player, Scanner scanner) throws InterruptedException {
 		System.out.println("As you continue, the landscape opens up providing you with many different options...");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		String choice = "";
 
 		while (true) {

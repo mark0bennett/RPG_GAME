@@ -5,31 +5,29 @@ import java.util.Scanner;
 import characters.player.Player;
 import characters.utils.EnemyFactory;
 import combat.Combat;
+import rpggame.RpgGameApp;
 
 public class Graveyard {
 	
-	private static final int MS_1000 = 1000;
-	private static final int MS_1500 = 1500;
-
 	public static boolean startGraveyard(Player player, Scanner scanner) throws InterruptedException {
 
-		Thread.sleep(MS_1000);
 		System.out.println("YOU ENTER THE GRAVEYARD...cautiously...");
-		Thread.sleep(MS_1000);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("What's that!");
-		Thread.sleep(MS_1500);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("...nothing");
-		Thread.sleep(MS_1000);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("You wipe some dust from a gravestone to read the inscription...");
-		Thread.sleep(MS_1000);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("Here Lies...");
-		Thread.sleep(MS_1000);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("...");
-		Thread.sleep(MS_1000);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("Here Lies Dr. Zoidberg - Many said that he was...");
-		Thread.sleep(MS_1000);
-		System.out.println("*uuuuuuuh*");
-		System.out.println("Man I hate Zombies, here we go!");
+		RpgGameApp.nextLine(scanner);
+		System.out.println(" Noises - *uuuuuuuh*");
+		RpgGameApp.nextLine(scanner);
+		System.out.println("Man I hate Zombies, have it you!");
 		
 		boolean graveyardCompleted = Combat.oneEnemy(player, EnemyFactory.createEnemyCustomLevel(player, 0), scanner, false);
 		
