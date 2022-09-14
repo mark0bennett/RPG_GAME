@@ -29,16 +29,16 @@ public class StoryTeller {
 	private static boolean appliedChryogenicsCompleted;
 	private static boolean robotArmsCompleted;
 
-	public static void introScene() throws InterruptedException {
+	public static void introScene(Scanner scanner) throws InterruptedException {
 		System.out.println("You are walking minding your own business, as you do, when...");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("Something appears from the darkness!");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("A strange ball of energy with what looks like an old man inside...");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println(
 				"He quickly explains that there is NO TIME to explain - he forces part of the strange energy at you");
-		Thread.sleep(ONE_SECOND);
+		RpgGameApp.nextLine(scanner);
 		System.out.println("...and it engulfs your whole body");
 		Thread.sleep(ONE_SECOND);
 		System.out.println("Before the old man leaves he has a few important questions...");

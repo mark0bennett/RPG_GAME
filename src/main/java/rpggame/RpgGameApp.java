@@ -29,7 +29,7 @@ public class RpgGameApp {
 
 		Scanner scanner = new Scanner(System.in);
 
-		StoryTeller.introScene();
+		StoryTeller.introScene(scanner);
 		Player player = createPlayer(scanner);
 		
 		printPlayer(player);
@@ -69,6 +69,7 @@ public class RpgGameApp {
 		}
 
 		while (true) {
+			try {
 			System.out.println("Choose stats for your character, 10 max to start");
 			System.out.println("Strength (which is your hp):");
 			strength = Integer.valueOf(scanner.nextLine());
@@ -76,7 +77,11 @@ public class RpgGameApp {
 			agility = Integer.valueOf(scanner.nextLine());
 			System.out.println("Intelligence (adds to damage and to equip intelligence weapons):");
 			intelligence = Integer.valueOf(scanner.nextLine());
+			} catch (Exception e) {
+				System.out.println("Input numbers only");
+			}
 
+			//TODO: this gets printed when you type stupid shit into the stats
 			if (strength < 1 || agility < 1 || intelligence < 1) {
 				System.out.println("Come on, give yourself a chance...");
 				continue;
@@ -96,5 +101,12 @@ public class RpgGameApp {
 		System.out.println("--------------------------");
 		System.out.println(player);
 		System.out.println("--------------------------");
+	}
+	
+	public static void nextLine(Scanner scanner) {
+		String input = scanner.nextLine();
+		if(input.isBlank()) {
+			
+		}
 	}
 }
