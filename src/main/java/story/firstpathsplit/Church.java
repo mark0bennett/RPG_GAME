@@ -23,7 +23,7 @@ public class Church {
 		System.out.println("Something huge has just smashed through the wall and is coming RIGHT AT YOU!");
 		Thread.sleep(MS_1000);
 		
-		boolean churchCompleted = Combat.oneEnemy(player, EnemyFactory.createEqualEnemy(player), scanner);
+		boolean churchCompleted = Combat.oneEnemyNoCrits(player, EnemyFactory.createEnemyCustomLevel(player, 0), scanner);
 		
 		return churchCompleted;
 	}

@@ -19,8 +19,12 @@ public class RpgGameApp {
 		// tests
 		// add sound?
 		// add some ascii art
-		//find weapons randomly 
+		// find weapons randomly
 		// package into a jar/exe file for execution on any computer
+		
+		//zoidberg isnt dead, you meet him later and he sells agi weapons
+		//prof sells magic weapons
+		//Fry, Leela, Amy, Bender when you meet them they increase stats
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -30,7 +34,7 @@ public class RpgGameApp {
 		printPlayer(player);
 
 		StoryTeller.firstFight();
-		Combat.oneEnemy(player, EnemyFactory.createEnemy(player), scanner);
+		Combat.oneEnemyNoCrits(player, EnemyFactory.createWeakEnemy(player), scanner);
 
 		StoryTeller.churchGraveyardOrForest(player, scanner);
 
@@ -40,7 +44,6 @@ public class RpgGameApp {
 	}
 
 	private static Player createPlayer(Scanner scanner) {
-
 		String name = "";
 		int strength = 0;
 		int agility = 0;
@@ -69,7 +72,7 @@ public class RpgGameApp {
 				continue;
 			}
 
-			if (strength + agility + intelligence > 10) {
+			if (strength + agility + intelligence > 50) {
 				System.out.println("10 points max please...");
 				continue;
 			} else {

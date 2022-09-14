@@ -13,7 +13,7 @@ public class Combat {
 	private static final int ONE_SECOND = 1000;
 	private static final int HALF_SECOND = 500;
 
-	public static boolean oneEnemy(Player player, Enemy enemy, Scanner scanner) throws InterruptedException {
+	public static boolean oneEnemyNoCrits(Player player, Enemy enemy, Scanner scanner) throws InterruptedException {
 		Integer choice = 0;
 		boolean wonBattle = false;
 

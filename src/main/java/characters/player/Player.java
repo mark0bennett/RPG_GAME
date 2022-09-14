@@ -2,6 +2,7 @@ package characters.player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import weapons.BareHands;
 import weapons.Knife;
@@ -29,16 +30,28 @@ public class Player {
 		this.backPack.add(new Knife());
 	}
 
-	//at a point in the story an npc will teach you to crit
-	// when attack have a crit, roll a random number between 0 and ? high strength
-	// should mean a low crit, and same for enemy
-	// note when you have done a crit somehow too?
 	public int attack() {
 		int attackDamage = 0;
 		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
 			attackDamage = this.agility + this.weapon.getDamage();
 		} else if (this.weapon.getWeaponType() == WeaponType.INTELLIGENCE) {
 			attackDamage = this.intelligence + this.weapon.getDamage();
+		}
+		return attackDamage;
+	}
+
+	public int attackCrit() {
+		Random random = new Random();
+		int attackDamage = 0;
+
+		// note the crit amount when it happens, can be 0 too, can we return an int[] with both numbers?
+
+		// if agi weapon, crit is random between 0 and your int
+		// if int weapon crit is random between 0 and your agi
+		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
+			attackDamage = this.agility + this.weapon.getDamage() + random.nextInt(this.intelligence);
+		} else if (this.weapon.getWeaponType() == WeaponType.INTELLIGENCE) {
+			attackDamage = this.intelligence + this.weapon.getDamage() + random.nextInt(this.agility);
 		}
 		return attackDamage;
 	}
