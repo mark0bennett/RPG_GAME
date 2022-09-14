@@ -79,6 +79,7 @@ public class RpgGameApp {
 			intelligence = Integer.valueOf(scanner.nextLine());
 			} catch (Exception e) {
 				System.out.println("Input numbers only");
+				continue;
 			}
 
 			//TODO: this gets printed when you type stupid shit into the stats
