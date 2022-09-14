@@ -23,12 +23,14 @@ public class RpgGameApp {
 		
 		//zoidberg isnt dead, you meet him later and he sells agi weapons
 		//prof sells magic weapons
-		//Fry, Leela, Amy, Bender when you meet them they increase stats
+		//Leela, Amy, Bender when you meet them they increase stats
 
 		Scanner scanner = new Scanner(System.in);
 
 		StoryTeller.introScene();
 		Player player = createPlayer(scanner);
+		
+		Combat.twoEnemies(player, EnemyFactory.createEnemyCustomLevel(player, 1), EnemyFactory.createEnemyCustomLevel(player, 2), scanner, true);
 
 		printPlayer(player);
 		
@@ -42,8 +44,11 @@ public class RpgGameApp {
 		StoryTeller.meetFry(player);
 		
 		//TODO: perhaps now into a while loop? to, go to vendor, contiue journey, save?
+		StoryTeller.mainPaths(player, scanner);
 
 		System.out.println("now back in main method");
+		
+		//TODO: Boss fight with over-levelled boss...or 2
 		printPlayer(player);
 
 	}

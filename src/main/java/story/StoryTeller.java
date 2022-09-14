@@ -7,6 +7,11 @@ import rpggame.RpgGameApp;
 import story.firstpathsplit.Church;
 import story.firstpathsplit.Forest;
 import story.firstpathsplit.Graveyard;
+import story.mainpaths.AppliedChryogenics;
+import story.mainpaths.Dumpster;
+import story.mainpaths.Laboratory;
+import story.mainpaths.River;
+import story.mainpaths.RobotArms;
 
 public class StoryTeller {
 
@@ -15,10 +20,14 @@ public class StoryTeller {
 //	private static Combat combat;
 
 	private static final int ONE_SECOND = 1000;
-	
+
 	private static boolean churchCompleted;
 	private static boolean graveyardCompleted;
 	private static boolean forestCompleted;
+
+	private static boolean riverCompleted;
+	private static boolean appliedChryogenicsCompleted;
+	private static boolean robotArmsCompleted;
 
 	public static void introScene() throws InterruptedException {
 		System.out.println("You are walking minding your own business, as you do, when...");
@@ -27,7 +36,8 @@ public class StoryTeller {
 		Thread.sleep(ONE_SECOND);
 		System.out.println("A strange ball of energy with what looks like an old man inside...");
 		Thread.sleep(ONE_SECOND);
-		System.out.println("He quickly explains that there is NO TIME to explain - he forces part of the strange energy at you");
+		System.out.println(
+				"He quickly explains that there is NO TIME to explain - he forces part of the strange energy at you");
 		Thread.sleep(ONE_SECOND);
 		System.out.println("...and it engulfs your whole body");
 		Thread.sleep(ONE_SECOND);
@@ -37,7 +47,8 @@ public class StoryTeller {
 	}
 
 	public static void firstFight() throws InterruptedException {
-		System.out.println("The old man leaves with a *ZAP* while screamng 'Don't forget, you can trust Pr..ssor... .arn..orth!!!'");
+		System.out.println(
+				"The old man leaves with a *ZAP* while screamng 'Don't forget, you can trust Pr..ssor... .arn..orth!!!'");
 		Thread.sleep(ONE_SECOND);
 		System.out.println("Damn...what did he say?...");
 		Thread.sleep(ONE_SECOND);
@@ -51,7 +62,7 @@ public class StoryTeller {
 		System.out.println("You walk alone for many miles before seeing the path split into three...");
 		Thread.sleep(ONE_SECOND);
 		String choice = "";
-		
+
 		while (true) {
 
 			if (churchCompleted == true && graveyardCompleted == true && forestCompleted == true) {
@@ -96,7 +107,7 @@ public class StoryTeller {
 
 	}
 
-	public static void afterChurchGraveyardOrForest() throws InterruptedException {
+	private static void afterChurchGraveyardOrForest() throws InterruptedException {
 		System.out.println("You walk away victorious, and continue down a sodden old trail into the misty unknown");
 		Thread.sleep(ONE_SECOND);
 		System.out.println("The old man in the glowing orb confronts you again");
@@ -107,9 +118,11 @@ public class StoryTeller {
 		Thread.sleep(ONE_SECOND);
 		System.out.println("You can Crit if you use your stats to the fullest");
 		Thread.sleep(ONE_SECOND);
-		System.out.println("If you have an Agility weapon equipped you can crit depending on how high your Intelligence is!");
+		System.out.println(
+				"If you have an Agility weapon equipped you can crit depending on how high your Intelligence is!");
 		Thread.sleep(ONE_SECOND);
-		System.out.println("If you have an Intelligence weapon equipped you can crit depending on how high your Agility is!");
+		System.out.println(
+				"If you have an Intelligence weapon equipped you can crit depending on how high your Agility is!");
 		Thread.sleep(ONE_SECOND);
 		System.out.println("Further down the road I have seen a very powerful enemy indeed");
 		Thread.sleep(ONE_SECOND);
@@ -119,7 +132,7 @@ public class StoryTeller {
 		Thread.sleep(ONE_SECOND);
 		System.out.println("--------------------------");
 	}
-	
+
 	public static void meetFry(Player player) throws InterruptedException {
 		System.out.println("Hey There! - says a voice in the distance");
 		Thread.sleep(ONE_SECOND);
@@ -143,12 +156,70 @@ public class StoryTeller {
 		player.setIntelligence(player.getIntelligence() + 1);
 		Thread.sleep(ONE_SECOND);
 		RpgGameApp.printPlayer(player);
-		
+
 	}
 
-	public static void goToVendor() {
-		//should we add money to the player to buy shit?
+	public static void mainPaths(Player player, Scanner scanner) throws InterruptedException {
+		System.out.println("As you continue, the landscape opens up providing you with many different options...");
+		Thread.sleep(ONE_SECOND);
+		String choice = "";
 
+		while (true) {
+
+			if (riverCompleted == true && appliedChryogenicsCompleted == true && robotArmsCompleted == true) {
+				afterMainPaths();
+				break;
+			}
+
+			System.out.println("Where do you wish to venture too?");
+			System.out.println("1: River");
+			System.out.println("2: Applied Chryogenics");
+			System.out.println("3: Robot Arms Apts.");
+			System.out.println("4: Laboratory (Vendor)");
+			System.out.println("5: Dumpster (Vendor)");
+			choice = scanner.nextLine();
+			if (choice.isBlank()) {
+				continue;
+			}
+
+			else if (choice.equals("1") && riverCompleted == false) {
+				riverCompleted = River.startRiver(player, scanner);
+			} else if (choice.equals("1") && riverCompleted == true) {
+				System.out.println("You've already cleared the River");
+				System.out.println("--------------------------");
+				continue;
+			}
+
+			else if (choice.equals("2") && appliedChryogenicsCompleted == false) {
+				appliedChryogenicsCompleted = AppliedChryogenics.startAppliedChryogenics(player, scanner);
+			} else if (choice.equals("2") && appliedChryogenicsCompleted == true) {
+				System.out.println("You've already cleared Applied Chryogenics");
+				System.out.println("--------------------------");
+				continue;
+			}
+
+			else if (choice.equals("3") && robotArmsCompleted == false) {
+				robotArmsCompleted = RobotArms.startRobotArms(player, scanner);
+			} else if (choice.equals("3") && robotArmsCompleted == true) {
+				System.out.println("You've already cleared Robot Arms Apartments");
+				System.out.println("--------------------------");
+				continue;
+			}
+
+			else if (choice.equals("4")) {
+				Laboratory.start(player, scanner);
+			} else if (choice.equals("5")) {
+				Dumpster.start(player, scanner);
+			} else {
+				continue;
+			}
+
+		}
+
+	}
+
+	private static void afterMainPaths() {
+		System.out.println("THIS IS AFTER MAIN PATHS");
 	}
 
 }

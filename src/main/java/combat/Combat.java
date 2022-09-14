@@ -9,7 +9,6 @@ import weapons.Weapon;
 
 public class Combat {
 
-	// TODO: fight 2 enemies at once, different method?
 	private static final int ONE_SECOND = 1000;
 	private static final int MS_500 = 500;
 
@@ -17,26 +16,10 @@ public class Combat {
 			throws InterruptedException {
 		boolean wonBattle = false;
 
-		System.out.println("--------------------------");
-		Thread.sleep(ONE_SECOND);
-		System.out.println("COMBAT HAS BEGUN!!!");
-		Thread.sleep(ONE_SECOND);
-		System.out.println("--------------------------");
-		Thread.sleep(ONE_SECOND);
-
+		printCombatHasBegun();
 		player.printBackpack();
-
 		pickWeapon(player, scanner);
-
-		// show stats of you and your enemy
-		System.out.println("--------------------------");
-		System.out.println(player);
-		Thread.sleep(ONE_SECOND);
-		System.out.println("vs");
-		Thread.sleep(ONE_SECOND);
-		System.out.println(enemy);
-		System.out.println("--------------------------");
-		Thread.sleep(ONE_SECOND);
+		printVersusText(player, enemy);
 
 		// then into a while loop to attack and count hp(strength) during combat
 		int playerStrengthBeforeCombat = player.getStrength();
@@ -58,29 +41,96 @@ public class Combat {
 
 		if (wonBattle) {
 			showAndAddDroppedWeapon(player, enemy);
-
-			Thread.sleep(ONE_SECOND);
 			Thread.sleep(ONE_SECOND);
 			System.out.println("You can now increase one of your stats by 1");
-
 			increaseStats(player, scanner);
-
-			Thread.sleep(ONE_SECOND);
-			RpgGameApp.printPlayer(player);
-			Thread.sleep(ONE_SECOND);
-			System.out.println("--------------------------");
-			Thread.sleep(MS_500);
-			System.out.println("...and you continue on your journey");
-			System.out.println("--------------------------");
+			printWinText(player);
 		}
+
 		if (!wonBattle) {
-			Thread.sleep(ONE_SECOND);
-			System.out.println("--------------------------");
-			Thread.sleep(MS_500);
-			System.out.println("You learn from this loss and continue...");
-			System.out.println("--------------------------");
+			printLossText();
 		}
 		return wonBattle;
+	}
+
+	public static boolean twoEnemies(Player player, Enemy enemy, Enemy enemy2, Scanner scanner, boolean withCrits)
+			throws InterruptedException {
+		boolean wonBattle = false;
+
+		printCombatHasBegun();
+		player.printBackpack();
+		pickWeapon(player, scanner);
+		printVersusTextTwoEnemies(player, enemy, enemy2);
+
+		int playerStrengthBeforeCombat = player.getStrength();
+		System.out.println("Combat is automated for now...");
+
+		// TODO: Need to create attackWithNoCritsTwoEnemies
+		if (!withCrits) {
+			wonBattle = attacksWithNoCrits(player, enemy);
+		}
+
+		if (withCrits) {
+			wonBattle = attacksWithCritsTwoEnemies(player, enemy, enemy2);
+		}
+
+		// reset player strength to what it was before combat
+		if (player.getStrength() < playerStrengthBeforeCombat) {
+			System.out.println("Your strength has been restored");
+			player.setStrength(playerStrengthBeforeCombat);
+		}
+
+		if (wonBattle) {
+			showAndAddDroppedWeapon(player, enemy);
+			// TODO: this is lazy, reusing same method for 2nd enemy
+			showAndAddDroppedWeapon(player, enemy2);
+			Thread.sleep(ONE_SECOND);
+			System.out.println("You can now increase one of your stats by 1");
+			increaseStats(player, scanner);
+			printWinText(player);
+		}
+
+		if (!wonBattle) {
+			printLossText();
+		}
+		return wonBattle;
+	}
+
+	private static void printCombatHasBegun() throws InterruptedException {
+		System.out.println("--------------------------");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("COMBAT HAS BEGUN!!!");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("--------------------------");
+		Thread.sleep(ONE_SECOND);
+	}
+
+	private static void printVersusText(Player player, Enemy enemy) throws InterruptedException {
+		// show stats of you and your enemy
+		System.out.println("--------------------------");
+		System.out.println(player);
+		Thread.sleep(ONE_SECOND);
+		System.out.println("vs");
+		Thread.sleep(ONE_SECOND);
+		System.out.println(enemy);
+		System.out.println("--------------------------");
+		Thread.sleep(ONE_SECOND);
+	}
+
+	private static void printVersusTextTwoEnemies(Player player, Enemy enemy, Enemy enemy2)
+			throws InterruptedException {
+		// show stats of you and your enemy
+		System.out.println("--------------------------");
+		System.out.println(player);
+		Thread.sleep(ONE_SECOND);
+		System.out.println("vs");
+		Thread.sleep(ONE_SECOND);
+		System.out.println(enemy);
+		Thread.sleep(ONE_SECOND);
+		System.out.println("and");
+		System.out.println(enemy2);
+		System.out.println("--------------------------");
+		Thread.sleep(ONE_SECOND);
 	}
 
 	private static void pickWeapon(Player player, Scanner scanner) throws InterruptedException {
@@ -161,13 +211,12 @@ public class Combat {
 		boolean wonBattle = false;
 		while (true) {
 			Thread.sleep(ONE_SECOND);
-			//for clarity
+			// for clarity
 			int[] playerAttackNumbers = player.attackCrit();
 			int playerAttack = playerAttackNumbers[0];
 			int playerCrit = playerAttackNumbers[1];
 			// you attack
-			System.out.println(
-					"You attack for " + playerAttack + " damage plus " + playerCrit + " Crit!");
+			System.out.println("You attack for " + playerAttack + " damage plus " + playerCrit + " Crit!");
 			// enemy strength changed from attack
 			enemy.setStrength(enemy.getStrength() - (playerAttack + playerCrit));
 			Thread.sleep(ONE_SECOND);
@@ -178,12 +227,11 @@ public class Combat {
 				break;
 			}
 			// enemy attacks
-			//for clarity
+			// for clarity
 			int[] enemyAttackNumbers = enemy.attackCrit();
 			int enemyAttack = enemyAttackNumbers[0];
 			int enemyCrit = enemyAttackNumbers[1];
-			System.out.println(
-					"Enemy attacks for " + enemyAttack + " damage plus " + enemyCrit + " Crit!");
+			System.out.println("Enemy attacks for " + enemyAttack + " damage plus " + enemyCrit + " Crit!");
 			// enemy strength changed from attack
 			player.setStrength(player.getStrength() - (enemyAttack + enemyCrit));
 			Thread.sleep(ONE_SECOND);
@@ -203,6 +251,108 @@ public class Combat {
 			Thread.sleep(ONE_SECOND);
 			System.out.println("--------------------------");
 			Thread.sleep(ONE_SECOND);
+		}
+		return wonBattle;
+	}
+
+	private static boolean attacksWithCritsTwoEnemies(Player player, Enemy enemy, Enemy enemy2)
+			throws InterruptedException {
+		boolean wonBattle = false;
+		boolean firstEnemyDead = false;
+		while (true) {
+			// TODO: just attacks the first enemy then the second for now, maybe add a
+			// choice later
+			Thread.sleep(ONE_SECOND);
+			// for clarity
+			int[] playerAttackNumbers = player.attackCrit();
+			int playerAttack = playerAttackNumbers[0];
+			int playerCrit = playerAttackNumbers[1];
+			// you attack
+			System.out.println("You attack for " + playerAttack + " damage plus " + playerCrit + " Crit!");
+			// enemy strength changed from attack
+			enemy.setStrength(enemy.getStrength() - (playerAttack + playerCrit));
+			Thread.sleep(ONE_SECOND);
+			// check if first enemy is dead
+			if (enemy.getStrength() < 1) {
+				System.out.println("You Killed the first Enemy!");
+				firstEnemyDead = true;
+				break;
+			}
+			// enemy attacks
+			// for clarity
+			int[] enemyAttackNumbers = enemy.attackCrit();
+			int enemyAttack = enemyAttackNumbers[0];
+			int enemyCrit = enemyAttackNumbers[1];
+			System.out.println("Enemy attacks for " + enemyAttack + " damage plus " + enemyCrit + " Crit!");
+			// enemy strength changed from attack
+			player.setStrength(player.getStrength() - (enemyAttack + enemyCrit));
+			Thread.sleep(ONE_SECOND);
+			// check if enemy is dead
+			if (player.getStrength() < 1) {
+				Thread.sleep(ONE_SECOND);
+				System.out.println("You Lost!");
+				wonBattle = false;
+				break;
+			}
+			Thread.sleep(ONE_SECOND);
+			System.out.println("--------------------------");
+			Thread.sleep(ONE_SECOND);
+			System.out.println(player);
+			Thread.sleep(ONE_SECOND);
+			System.out.println(enemy);
+			Thread.sleep(ONE_SECOND);
+			System.out.println(enemy2);
+			Thread.sleep(ONE_SECOND);
+			System.out.println("--------------------------");
+			Thread.sleep(ONE_SECOND);
+		}
+
+		if (firstEnemyDead) {
+			while (true) {
+				Thread.sleep(ONE_SECOND);
+				// for clarity
+				int[] playerAttackNumbers = player.attackCrit();
+				int playerAttack = playerAttackNumbers[0];
+				int playerCrit = playerAttackNumbers[1];
+				// you attack
+				System.out.println(
+						"You attack the second enemy for " + playerAttack + " damage plus " + playerCrit + " Crit!");
+				// enemy strength changed from attack
+				enemy2.setStrength(enemy2.getStrength() - (playerAttack + playerCrit));
+				Thread.sleep(ONE_SECOND);
+				// check if second enemy is dead
+				if (enemy2.getStrength() < 1) {
+					System.out.println("You Killed the second Enemy and Won!");
+					wonBattle = true;
+					break;
+				}
+				// enemy attacks
+				// for clarity
+				int[] enemy2AttackNumbers = enemy2.attackCrit();
+				int enemy2Attack = enemy2AttackNumbers[0];
+				int enemy2Crit = enemy2AttackNumbers[1];
+				System.out
+						.println("Second Enemy attacks for " + enemy2Attack + " damage plus " + enemy2Crit + " Crit!");
+				// enemy strength changed from attack
+				player.setStrength(player.getStrength() - (enemy2Attack + enemy2Crit));
+				Thread.sleep(ONE_SECOND);
+				// check if enemy is dead
+				if (player.getStrength() < 1) {
+					Thread.sleep(ONE_SECOND);
+					System.out.println("You Lost!");
+					wonBattle = false;
+					break;
+				}
+				Thread.sleep(ONE_SECOND);
+				System.out.println("--------------------------");
+				Thread.sleep(ONE_SECOND);
+				System.out.println(player);
+				Thread.sleep(ONE_SECOND);
+				System.out.println(enemy2);
+				Thread.sleep(ONE_SECOND);
+				System.out.println("--------------------------");
+				Thread.sleep(ONE_SECOND);
+			}
 		}
 		return wonBattle;
 	}
@@ -255,6 +405,24 @@ public class Combat {
 			}
 		}
 
+	}
+
+	private static void printWinText(Player player) throws InterruptedException {
+		Thread.sleep(ONE_SECOND);
+		RpgGameApp.printPlayer(player);
+		Thread.sleep(ONE_SECOND);
+		System.out.println("--------------------------");
+		Thread.sleep(MS_500);
+		System.out.println("...and you continue on your journey");
+		System.out.println("--------------------------");
+	}
+
+	private static void printLossText() throws InterruptedException {
+		Thread.sleep(ONE_SECOND);
+		System.out.println("--------------------------");
+		Thread.sleep(MS_500);
+		System.out.println("You learn from this loss and continue...");
+		System.out.println("--------------------------");
 	}
 
 }
