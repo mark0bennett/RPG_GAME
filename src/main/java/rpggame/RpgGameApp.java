@@ -24,14 +24,14 @@ public class RpgGameApp {
 		//zoidberg isnt dead, you meet him later and he sells agi weapons
 		//prof sells magic weapons
 		//Leela, Amy, Bender when you meet them they increase stats
+		
+		//TODO: INSTEAD OF Thread.sleep() - use user input, like spacebar to progress the text?
 
 		Scanner scanner = new Scanner(System.in);
 
 		StoryTeller.introScene();
 		Player player = createPlayer(scanner);
 		
-		Combat.twoEnemies(player, EnemyFactory.createEnemyCustomLevel(player, 1), EnemyFactory.createEnemyCustomLevel(player, 2), scanner, true);
-
 		printPlayer(player);
 		
 		StoryTeller.firstFight();
