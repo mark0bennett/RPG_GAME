@@ -91,6 +91,7 @@ public class Player {
 
 	}
 
+	//TODO: Sort the backpack with Dmg when printed out, highest to lowest
 	public List<Weapon> getBackPack() {
 		return backPack;
 	}
