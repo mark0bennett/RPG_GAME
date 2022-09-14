@@ -10,26 +10,28 @@ import weapons.Weapon;
 public class Combat {
 
 	// TODO: fight 2 enemies at once, different method?
+	private static final int ONE_SECOND = 1000;
+	private static final int HALF_SECOND = 500;
 
 	public static boolean oneEnemy(Player player, Enemy enemy, Scanner scanner) throws InterruptedException {
 		Integer choice = 0;
 		boolean wonBattle = false;
 
 		System.out.println("--------------------------");
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 		System.out.println("COMBAT HAS BEGUN!!!");
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 		System.out.println("--------------------------");
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 
 		// show weapons in backpack
 		System.out.println("Backpack Contents");
 		for (int i = 0; i < player.getBackPack().size(); i++) {
-			Thread.sleep(250);
+			Thread.sleep(HALF_SECOND);
 			System.out.println((i + 1) + ": " + player.getBackPack().get(i));
 		}
 		while (true) {
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			System.out.println("Which weapon would you like to use (type a number)");
 
 			// pick a number
@@ -64,25 +66,24 @@ public class Combat {
 		// show stats of you and your enemy
 		System.out.println("--------------------------");
 		System.out.println(player);
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 		System.out.println("vs");
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 		System.out.println(enemy);
 		System.out.println("--------------------------");
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 		// then into a while loop to attack and count hp(strength) during combat
 		int playerStrengthBeforeCombat = player.getStrength();
 		System.out.println("Combat is automated for now...");
 		while (true) {
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			// you attack
 			System.out.println("You attack for " + player.attack() + " damage!");
 			// enemy strength changed from attack
 			enemy.setStrength(enemy.getStrength() - player.attack());
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			// check if enemy is dead
 			if (enemy.getStrength() < 1) {
-				Thread.sleep(500);
 				System.out.println("You Won!");
 				wonBattle = true;
 				break;
@@ -91,22 +92,22 @@ public class Combat {
 			System.out.println("Enemy attacks for " + enemy.attack() + " damage!");
 			// enemy strength changed from attack
 			player.setStrength(player.getStrength() - enemy.attack());
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
-				Thread.sleep(500);
+				Thread.sleep(ONE_SECOND);
 				System.out.println("You Lost!");
 				break;
 			}
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			System.out.println("--------------------------");
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			System.out.println(player);
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			System.out.println(enemy);
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			System.out.println("--------------------------");
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 		}
 		// reset player strength to what it was before combat
 		if (player.getStrength() < playerStrengthBeforeCombat) {
@@ -116,22 +117,22 @@ public class Combat {
 
 		if (wonBattle) {
 			// enemy drops weapon and auto added to your backpack
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			System.out.println("--------------------------");
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			System.out.println("The Enemy dropped its weapon...");
 			Weapon droppedWeapon = enemy.dropWeapon();
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			System.out.println(droppedWeapon);
-			Thread.sleep(500);
+			Thread.sleep(HALF_SECOND);
 			System.out.println("Agility Required: " + droppedWeapon.getAgilityRequired());
-			Thread.sleep(500);
+			Thread.sleep(HALF_SECOND);
 			System.out.println("Intelligence Required: " + droppedWeapon.getIntelligenceRequired());
-			Thread.sleep(500);
+			Thread.sleep(HALF_SECOND);
 			System.out.println("Weapon Type: " + droppedWeapon.getWeaponType());
-			Thread.sleep(500);
+			Thread.sleep(HALF_SECOND);
 			System.out.println("--------------------------");
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			// TODO: STILL DOUBLE ADDING WEAPONS WHEN THEY ARE ALREADY IN BACKPACK - doing
 			// it manually for now
 			player.addWeaponToBackpack(droppedWeapon);
@@ -139,12 +140,12 @@ public class Combat {
 			System.out.println("Your Backpack: " + player.getBackPack());
 
 			// increase a stat by 1 after winning a battle
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			System.out.println("--------------------------");
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			System.out.println("You can now increase one of your stats by 1");
 			while (true) {
-				Thread.sleep(500);
+				Thread.sleep(ONE_SECOND);
 				System.out.println("Type: 's' - to increase Strength");
 				System.out.println("Type: 'a' - to increase Aglity");
 				System.out.println("Type: 'i' - to increase Intelligence");
@@ -163,13 +164,13 @@ public class Combat {
 					continue;
 				}
 			}
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			RpgGameApp.printPlayer(player);
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			System.out.println("...and you continue on your journey");
 		}
 		if (!wonBattle) {
-			Thread.sleep(500);
+			Thread.sleep(ONE_SECOND);
 			System.out.println("You learn from this loss and continue...");
 		}
 		return wonBattle;

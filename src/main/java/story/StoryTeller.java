@@ -13,34 +13,36 @@ public class StoryTeller {
 	// Combat, Scanner, etc?
 //	private static Combat combat;
 
+	private static final int ONE_SECOND = 1000;
+	
 	private static boolean churchCompleted;
 	private static boolean graveyardCompleted;
 	private static boolean forestCompleted;
 
 	public static void introScene() throws InterruptedException {
 		System.out.println("You are walking minding your own business, when...");
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 		System.out.println("Something appears from the darkness!");
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 		System.out.println("A strange thing offers you great power...");
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 		System.out.println("...and of course you take it!");
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 		System.out.println("He has some questions first though...");
 		System.out.println("--------------------------");
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 	}
 
 	public static void firstFight() throws InterruptedException {
 		System.out.println("Let's see how you go in a battle then aye.....");
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 		System.out.println("A Monster appears out of nowhere!");
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 	}
 
 	public static void churchGraveyardOrForest(Player player, Scanner scanner) throws InterruptedException {
 		System.out.println("You walk alone for many miles before seeing the path split into three...");
-		Thread.sleep(500);
+		Thread.sleep(ONE_SECOND);
 		String choice = "";
 		
 		while (true) {
