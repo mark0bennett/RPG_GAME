@@ -33,14 +33,16 @@ public class RpgGameApp {
 
 		printPlayer(player);
 		
-		Combat.oneEnemy(player, EnemyFactory.createEnemyCustomLevel(player, 0), scanner, true);
-		
 		StoryTeller.firstFight();
 		Combat.oneEnemy(player, EnemyFactory.createWeakEnemy(player), scanner, false);
 
 		StoryTeller.churchGraveyardOrForest(player, scanner);
 		
 		Combat.oneEnemy(player, EnemyFactory.createEnemyCustomLevel(player, 2), scanner, true);
+		
+		StoryTeller.meetFry(player);
+		
+		//TODO: perhaps now into a while loop to, go to vendor, contiue journey, save?
 
 		System.out.println("now back in main method");
 		printPlayer(player);

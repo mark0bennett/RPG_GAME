@@ -3,6 +3,7 @@ package story;
 import java.util.Scanner;
 
 import characters.player.Player;
+import rpggame.RpgGameApp;
 import story.firstpathsplit.Church;
 import story.firstpathsplit.Forest;
 import story.firstpathsplit.Graveyard;
@@ -117,6 +118,29 @@ public class StoryTeller {
 		System.out.println("...and good luck, who knows what you'll find further along the *ZAP* - he's gone");
 		Thread.sleep(ONE_SECOND);
 		System.out.println("--------------------------");
+	}
+	
+	public static void meetFry(Player player) throws InterruptedException {
+		System.out.println("Hey There! - says a voice in the distance");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("The voice approaches and it a young gentleman with pointy Red Hair");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("I rode away on my Scooty Puf Jr. when I saw that thing you were fighting?");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("Did you kill it???");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("Well in any case, the Professy told me to come here");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("He wants me to give you some of my intellijeans");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("My jeans aren't intelli?!");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("oooh maybe this will work");
+		Thread.sleep(ONE_SECOND);
+		System.out.println("There we go - PLUS ONE TO YOUR INTELLIGENCE, YAY!");
+		player.setIntelligence(player.getIntelligence() + 1);
+		RpgGameApp.printPlayer(player);
+		System.out.println("Goodbye friendly weirdo - I'm sure I'll see you again soon");
 	}
 
 	public static void goToVendor() {
