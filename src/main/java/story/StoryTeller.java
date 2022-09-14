@@ -123,7 +123,7 @@ public class StoryTeller {
 	public static void meetFry(Player player) throws InterruptedException {
 		System.out.println("Hey There! - says a voice in the distance");
 		Thread.sleep(ONE_SECOND);
-		System.out.println("The voice approaches and it a young gentleman with pointy Red Hair");
+		System.out.println("The voice approaches and it is a young gentleman with pointy Red Hair");
 		Thread.sleep(ONE_SECOND);
 		System.out.println("I rode away on my Scooty Puf Jr. when I saw that thing you were fighting?");
 		Thread.sleep(ONE_SECOND);
@@ -138,9 +138,12 @@ public class StoryTeller {
 		System.out.println("oooh maybe this will work");
 		Thread.sleep(ONE_SECOND);
 		System.out.println("There we go - PLUS ONE TO YOUR INTELLIGENCE, YAY!");
-		player.setIntelligence(player.getIntelligence() + 1);
-		RpgGameApp.printPlayer(player);
+		Thread.sleep(ONE_SECOND);
 		System.out.println("Goodbye friendly weirdo - I'm sure I'll see you again soon");
+		player.setIntelligence(player.getIntelligence() + 1);
+		Thread.sleep(ONE_SECOND);
+		RpgGameApp.printPlayer(player);
+		
 	}
 
 	public static void goToVendor() {

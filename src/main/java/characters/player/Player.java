@@ -63,12 +63,13 @@ public class Player {
 	}
 
 	// TODO: delete weapon from backpack
-	// TODO: sell weapon in backpack for stat points?
+	// TODO: sell weapon in backpack
 
 	// this is where we could return something so the text is shown from another
 	// class
 	// TODO: STILL DOUBLE ADDING WEAPONS WHEN THEY ARE ALREADY IN BACKPACK - doing
 	// it manually for now
+	//TODO: when we add a weapon add it so its in order of damage
 	public void addWeaponToBackpack(Weapon weapon) {
 		boolean alreadyInBackpack = false;
 
@@ -93,6 +94,16 @@ public class Player {
 //			System.out.println("You already have this weapon");
 //		}
 
+	}
+	
+	public void printBackpack() throws InterruptedException {
+		final int MS_500 = 500;
+		// show weapons in backpack
+		System.out.println("Backpack Contents");
+		for (int i = 0; i < this.backPack.size(); i++) {
+			Thread.sleep(MS_500);
+			System.out.println((i + 1) + ": " + this.backPack.get(i));
+		}
 	}
 
 	// TODO: Sort the backpack with Dmg when printed out, highest to lowest

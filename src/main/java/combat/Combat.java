@@ -24,7 +24,7 @@ public class Combat {
 		System.out.println("--------------------------");
 		Thread.sleep(ONE_SECOND);
 
-		printBackpack(player);
+		player.printBackpack();
 
 		pickWeapon(player, scanner);
 
@@ -81,15 +81,6 @@ public class Combat {
 			System.out.println("--------------------------");
 		}
 		return wonBattle;
-	}
-
-	private static void printBackpack(Player player) throws InterruptedException {
-		// show weapons in backpack
-		System.out.println("Backpack Contents");
-		for (int i = 0; i < player.getBackPack().size(); i++) {
-			Thread.sleep(MS_500);
-			System.out.println((i + 1) + ": " + player.getBackPack().get(i));
-		}
 	}
 
 	private static void pickWeapon(Player player, Scanner scanner) throws InterruptedException {
@@ -238,7 +229,7 @@ public class Combat {
 		// it manually for now
 		player.addWeaponToBackpack(droppedWeapon);
 		System.out.println("--------------------------");
-		System.out.println("Your Backpack: " + player.getBackPack());
+		player.printBackpack();
 		System.out.println("--------------------------");
 	}
 

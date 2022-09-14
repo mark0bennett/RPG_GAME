@@ -19,7 +19,7 @@ public static boolean startForest(Player player, Scanner scanner) throws Interru
 	Thread.sleep(MS_1000);
 	System.out.println("Some horrid looking animal falls from the trees above");
 	Thread.sleep(MS_1000);
-	System.out.println("An Atomic Mutant Man, who would be well suited to play Basketball jumps from a tree");
+	System.out.println("An Atomic Mutant Man, who would be well suited to play Basketball...");
 	Thread.sleep(MS_1000);
 	System.out.println("That Cannon in your chest doesn't frighten me!");
 	
