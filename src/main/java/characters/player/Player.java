@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import weapons.BareHands;
-import weapons.Knife;
+import weapons.BareMagicHands;
 import weapons.Weapon;
 import weapons.WeaponType;
 
@@ -27,7 +27,7 @@ public class Player {
 		this.backPack = new ArrayList<Weapon>();
 
 		this.backPack.add(this.weapon);
-		this.backPack.add(new Knife());
+		this.backPack.add(new BareMagicHands());
 	}
 
 	public int attack() {
