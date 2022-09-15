@@ -10,10 +10,10 @@ public interface Story {
 
 	public void startFirstFight(Player player);
 
-	public void churchGraveyardOrForest(Player player);
+	public void firstPathsSplit(Player player);
 
-	public void meetFry(Player player);
+	public void meetFirstNPC(Player player);
 
-	public void mainPaths(Player player);
+	public void mainPathsSplit(Player player);
 
 }

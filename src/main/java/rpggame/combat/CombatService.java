@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import rpggame.enemy.Enemy;
 import rpggame.player.Player;
-import rpggame.story.StoryTellerService;
+import rpggame.story.StoryTeller;
 import rpggame.utils.EnemyFactory;
 import rpggame.weapon.Weapon;
 
@@ -90,7 +90,7 @@ public class CombatService {
 			showAndAddDroppedWeapon(player, enemy);
 			// TODO: this is lazy, reusing same method for 2nd enemy
 			showAndAddDroppedWeapon(player, enemy2);
-			StoryTellerService.nextLine(scanner);
+			StoryTeller.nextLine(scanner);
 			System.out.println("You can now increase one of your stats by 1");
 			increaseStats(player);
 			printWinText(player);
@@ -147,7 +147,7 @@ public class CombatService {
 		System.out.println("vs");
 		System.out.println(enemy);
 		System.out.println("--------------------------");
-		StoryTellerService.nextLine(scanner);
+		StoryTeller.nextLine(scanner);
 	}
 
 	private void printVersusTextTwoEnemies(Player player, Enemy enemy, Enemy enemy2) {
@@ -158,13 +158,13 @@ public class CombatService {
 		System.out.println("and");
 		System.out.println(enemy2);
 		System.out.println("--------------------------");
-		StoryTellerService.nextLine(scanner);
+		StoryTeller.nextLine(scanner);
 	}
 
 	private void showAndAddDroppedWeapon(Player player, Enemy enemy) {
 		// enemy drops weapon and auto added to your backpack
 		System.out.println("--------------------------");
-		StoryTellerService.nextLine(scanner);
+		StoryTeller.nextLine(scanner);
 		System.out.println(enemy.getName() + " dropped their weapon...");
 		Weapon droppedWeapon = enemy.dropWeapon();
 		System.out.println(droppedWeapon);
@@ -172,17 +172,17 @@ public class CombatService {
 		System.out.println("Intelligence Required: " + droppedWeapon.getIntelligenceRequired());
 		System.out.println("Weapon Type: " + droppedWeapon.getWeaponType());
 		System.out.println("--------------------------");
-		StoryTellerService.nextLine(scanner);
+		StoryTeller.nextLine(scanner);
 		// TODO: STILL DOUBLE ADDING WEAPONS WHEN THEY ARE ALREADY IN BACKPACK - doing
 		// it manually for now
 		boolean alreadyInBackpack = player.checkForWeaponInBackpack(droppedWeapon);
 		if (!alreadyInBackpack) {
 			player.addWeaponToBackpack(droppedWeapon);
 			System.out.println("Weapon added to backpack");
-			StoryTellerService.nextLine(scanner);
+			StoryTeller.nextLine(scanner);
 		} else {
 			System.out.println("You already have this weapon");
-			StoryTellerService.nextLine(scanner);
+			StoryTeller.nextLine(scanner);
 		}
 		System.out.println("--------------------------");
 		player.printBackpack();
@@ -191,7 +191,7 @@ public class CombatService {
 
 	private void increaseStats(Player player) {
 		while (true) {
-			StoryTellerService.printPlayer(player);
+			StoryTeller.printPlayer(player);
 			System.out.println("Type: 's' - to increase Strength");
 			System.out.println("Type: 'a' - to increase Aglity");
 			System.out.println("Type: 'i' - to increase Intelligence");
@@ -219,7 +219,7 @@ public class CombatService {
 			System.out.println("You attack " + enemy.getName() + " for " + player.attack() + " damage!");
 			// enemy strength changed from attack
 			enemy.setStrength(enemy.getStrength() - player.attack());
-			StoryTellerService.nextLine(scanner);
+			StoryTeller.nextLine(scanner);
 			// check if enemy is dead
 			if (enemy.getStrength() < 1) {
 				System.out.println("You Won!");
@@ -230,10 +230,10 @@ public class CombatService {
 			System.out.println(enemy.getName() + " attacks for " + enemy.attack() + " damage!");
 			// enemy strength changed from attack
 			player.setStrength(player.getStrength() - enemy.attack());
-			StoryTellerService.nextLine(scanner);
+			StoryTeller.nextLine(scanner);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
-				StoryTellerService.nextLine(scanner);
+				StoryTeller.nextLine(scanner);
 				System.out.println("You Lost!");
 				wonBattle = false;
 				break;
@@ -255,7 +255,7 @@ public class CombatService {
 					"You attack " + enemy.getName() + " for " + playerAttack + " damage plus " + playerCrit + " Crit!");
 			// enemy strength changed from attack
 			enemy.setStrength(enemy.getStrength() - (playerAttack + playerCrit));
-			StoryTellerService.nextLine(scanner);
+			StoryTeller.nextLine(scanner);
 			// check if enemy is dead
 			if (enemy.getStrength() < 1) {
 				System.out.println("You Won!");
@@ -271,10 +271,10 @@ public class CombatService {
 					.println(enemy.getName() + " attacks for " + enemyAttack + " damage plus " + enemyCrit + " Crit!");
 			// enemy strength changed from attack
 			player.setStrength(player.getStrength() - (enemyAttack + enemyCrit));
-			StoryTellerService.nextLine(scanner);
+			StoryTeller.nextLine(scanner);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
-				StoryTellerService.nextLine(scanner);
+				StoryTeller.nextLine(scanner);
 				System.out.println("You Lost!");
 				wonBattle = false;
 				break;
@@ -290,7 +290,7 @@ public class CombatService {
 		while (true) {
 			// TODO: just attacks the first enemy then the second for now, maybe add a
 			// choice later
-			StoryTellerService.nextLine(scanner);
+			StoryTeller.nextLine(scanner);
 			// for clarity
 			int[] playerAttackNumbers = player.attackCrit();
 			int playerAttack = playerAttackNumbers[0];
@@ -300,7 +300,7 @@ public class CombatService {
 					"You attack " + enemy.getName() + " for " + playerAttack + " damage plus " + playerCrit + " Crit!");
 			// enemy strength changed from attack
 			enemy.setStrength(enemy.getStrength() - (playerAttack + playerCrit));
-			StoryTellerService.nextLine(scanner);
+			StoryTeller.nextLine(scanner);
 			// check if first enemy is dead
 			if (enemy.getStrength() < 1) {
 				System.out.println("You Killed " + enemy.getName());
@@ -316,10 +316,10 @@ public class CombatService {
 					.println(enemy.getName() + " attacks for " + enemyAttack + " damage plus " + enemyCrit + " Crit!");
 			// enemy strength changed from attack
 			player.setStrength(player.getStrength() - (enemyAttack + enemyCrit));
-			StoryTellerService.nextLine(scanner);
+			StoryTeller.nextLine(scanner);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
-				StoryTellerService.nextLine(scanner);
+				StoryTeller.nextLine(scanner);
 				System.out.println("You Lost!");
 				wonBattle = false;
 				break;
@@ -338,7 +338,7 @@ public class CombatService {
 						+ playerCrit + " Crit!");
 				// enemy strength changed from attack
 				enemy2.setStrength(enemy2.getStrength() - (playerAttack + playerCrit));
-				StoryTellerService.nextLine(scanner);
+				StoryTeller.nextLine(scanner);
 				// check if second enemy is dead
 				if (enemy2.getStrength() < 1) {
 					System.out.println("You Killed " + enemy2.getName() + " and Won!");
@@ -354,10 +354,10 @@ public class CombatService {
 						enemy2.getName() + " attacks for " + enemy2Attack + " damage plus " + enemy2Crit + " Crit!");
 				// enemy strength changed from attack
 				player.setStrength(player.getStrength() - (enemy2Attack + enemy2Crit));
-				StoryTellerService.nextLine(scanner);
+				StoryTeller.nextLine(scanner);
 				// check if enemy is dead
 				if (player.getStrength() < 1) {
-					StoryTellerService.nextLine(scanner);
+					StoryTeller.nextLine(scanner);
 					System.out.println("You Lost!");
 					wonBattle = false;
 					break;
@@ -374,13 +374,13 @@ public class CombatService {
 		while (true) {
 			// TODO: just attacks the first enemy then the second for now, maybe add a
 			// choice later
-			StoryTellerService.nextLine(scanner);
+			StoryTeller.nextLine(scanner);
 			int playerAttack = player.attack();
 			// you attack
 			System.out.println("You attack " + enemy.getName() + " for " + playerAttack + " damage!");
 			// enemy strength changed from attack
 			enemy.setStrength(enemy.getStrength() - playerAttack);
-			StoryTellerService.nextLine(scanner);
+			StoryTeller.nextLine(scanner);
 			// check if first enemy is dead
 			if (enemy.getStrength() < 1) {
 				System.out.println("You Killed " + enemy.getName());
@@ -392,10 +392,10 @@ public class CombatService {
 			System.out.println(enemy.getName() + " attacks for " + enemyAttack + " damage!");
 			// enemy strength changed from attack
 			player.setStrength(player.getStrength() - enemyAttack);
-			StoryTellerService.nextLine(scanner);
+			StoryTeller.nextLine(scanner);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
-				StoryTellerService.nextLine(scanner);
+				StoryTeller.nextLine(scanner);
 				System.out.println("You Lost!");
 				wonBattle = false;
 				break;
@@ -410,7 +410,7 @@ public class CombatService {
 				System.out.println("You attack " + enemy2.getName() + " for " + playerAttack + " damage!!");
 				// enemy strength changed from attack
 				enemy2.setStrength(enemy2.getStrength() - playerAttack);
-				StoryTellerService.nextLine(scanner);
+				StoryTeller.nextLine(scanner);
 				// check if second enemy is dead
 				if (enemy2.getStrength() < 1) {
 					System.out.println("You Killed " + enemy2.getName() + " and Won!");
@@ -422,10 +422,10 @@ public class CombatService {
 				System.out.println(enemy2.getName() + " attacks for " + enemy2Attack + " damage!");
 				// enemy strength changed from attack
 				player.setStrength(player.getStrength() - enemy2Attack);
-				StoryTellerService.nextLine(scanner);
+				StoryTeller.nextLine(scanner);
 				// check if enemy is dead
 				if (player.getStrength() < 1) {
-					StoryTellerService.nextLine(scanner);
+					StoryTeller.nextLine(scanner);
 					System.out.println("You Lost!");
 					wonBattle = false;
 					break;
@@ -441,7 +441,7 @@ public class CombatService {
 		System.out.println(player);
 		System.out.println(enemy);
 		System.out.println("--------------------------");
-		StoryTellerService.nextLine(scanner);
+		StoryTeller.nextLine(scanner);
 	}
 	
 	private void printPlayerAndTwoEnemies(Player player, Enemy enemy, Enemy enemy2) {
@@ -450,21 +450,21 @@ public class CombatService {
 		System.out.println(enemy);
 		System.out.println(enemy2);
 		System.out.println("--------------------------");
-		StoryTellerService.nextLine(scanner);
+		StoryTeller.nextLine(scanner);
 	}
 
 	private void printWinText(Player player) {
-		StoryTellerService.printPlayer(player);
+		StoryTeller.printPlayer(player);
 		System.out.println("...and you continue on your journey");
 		System.out.println("--------------------------");
-		StoryTellerService.nextLine(scanner);
+		StoryTeller.nextLine(scanner);
 	}
 
 	private void printLossText() {
 		System.out.println("--------------------------");
 		System.out.println("You learn from this loss and continue...");
 		System.out.println("--------------------------");
-		StoryTellerService.nextLine(scanner);
+		StoryTeller.nextLine(scanner);
 	}
 
 }

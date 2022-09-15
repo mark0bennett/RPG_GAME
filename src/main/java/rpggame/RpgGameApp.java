@@ -2,7 +2,6 @@ package rpggame;
 
 import rpggame.player.Player;
 import rpggame.story.StoryTeller;
-import rpggame.story.StoryTellerService;
 
 public class RpgGameApp {
 
@@ -23,19 +22,18 @@ public class RpgGameApp {
 		//TODO: Story Interface and remove StoryTellerService?
 		//TODO: Combat Interface and remove CombatService?
 
-		StoryTellerService storyTellerService = new StoryTellerService();
-		StoryTeller storyTeller = new StoryTeller(storyTellerService);
+		StoryTeller storyTeller = new StoryTeller();
 
 		storyTeller.intro();
 		Player player = storyTeller.createPlayer();
-		StoryTellerService.printPlayer(player);
+		StoryTeller.printPlayer(player);
 		storyTeller.startFirstFight(player);
 
-		storyTeller.churchGraveyardOrForest(player);
+		storyTeller.firstPathsSplit(player);
 
-		storyTeller.meetFry(player);
+		storyTeller.meetFirstNPC(player);
 
-		storyTeller.mainPaths(player);
+		storyTeller.mainPathsSplit(player);
 
 		System.out.println("now back in main method");
 
