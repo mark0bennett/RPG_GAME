@@ -1,12 +1,8 @@
 package rpggame;
 
-import java.util.Scanner;
-
-import rpggame.combat.Combat;
 import rpggame.player.Player;
 import rpggame.story.StoryTeller;
 import rpggame.story.StoryTellerService;
-import rpggame.utils.EnemyFactory;
 
 public class RpgGameApp {
 
@@ -35,24 +31,20 @@ public class RpgGameApp {
 
 		storyTeller.intro();
 		Player player = storyTeller.createPlayer();
-		storyTeller.printPlayer(player);
+		StoryTellerService.printPlayer(player);
 		storyTeller.startFirstFight(player);
-		
-		//here
 
 		storyTeller.churchGraveyardOrForest(player);
 
-		Combat.oneEnemy(player, EnemyFactory.createEnemyCustomLevel(player, 2), true);
-
-		StoryTeller.meetFry(player);
+		storyTeller.meetFry(player);
 
 		// TODO: perhaps now into a while loop? to, go to vendor, contiue journey, save?
-		StoryTeller.mainPaths(player);
+		storyTeller.mainPaths(player);
 
 		System.out.println("now back in main method");
 
 		// TODO: Boss fight with over-levelled boss...or 2
-		printPlayer(player);
+		StoryTellerService.printPlayer(player);
 
 	}
 

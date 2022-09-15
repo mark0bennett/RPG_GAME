@@ -47,7 +47,7 @@ public class EnemyFactory {
 			}
 		}
 	}
-	
+
 	private int[] pickEnemyStatsWeak(int currentStatPoints) {
 		int strength;
 		int agility;
@@ -64,9 +64,9 @@ public class EnemyFactory {
 				break;
 			}
 		}
-		return new int[] {strength, agility, intelligence};
+		return new int[] { strength, agility, intelligence };
 	}
-	
+
 	private int[] pickEnemyStatsCustomExactLevel(int currentStatPoints) {
 		int strength;
 		int agility;
@@ -83,7 +83,7 @@ public class EnemyFactory {
 				break;
 			}
 		}
-		return new int[] {strength, agility, intelligence};
+		return new int[] { strength, agility, intelligence };
 	}
 
 }

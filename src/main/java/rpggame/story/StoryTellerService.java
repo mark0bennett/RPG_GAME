@@ -14,6 +14,10 @@ public class StoryTellerService {
 	private boolean graveyardCompleted;
 	private boolean forestCompleted;
 
+	private static boolean riverCompleted;
+	private static boolean appliedChryogenicsCompleted;
+	private static boolean robotArmsCompleted;
+
 	public StoryTellerService() {
 		this.scanner = new Scanner(System.in);
 		this.combat = new Combat();
@@ -98,10 +102,10 @@ public class StoryTellerService {
 
 		// START COMBAT HERE?
 		// Combat class will have its own EnemyFactory and maybe its own scanner too?
-		combat.oneEnemy(player, false);
+		combat.oneEnemy(player, 0, false);
 	}
 
-	public void churchGraveyardOrForest(Player player) {
+	public void churchGraveyardOrForest(Player player) throws InterruptedException {
 		System.out.println("You walk alone for many miles before seeing the path split into three...");
 		nextLine(scanner);
 		String choice = "";
@@ -109,7 +113,7 @@ public class StoryTellerService {
 		while (true) {
 
 			if (churchCompleted == true && graveyardCompleted == true && forestCompleted == true) {
-				afterChurchGraveyardOrForest();
+				afterChurchGraveyardOrForest(player);
 				break;
 			}
 
@@ -145,9 +149,7 @@ public class StoryTellerService {
 				System.out.println("--------------------------");
 				continue;
 			}
-
 		}
-
 	}
 
 	private boolean startChurch(Player player) throws InterruptedException {
@@ -160,11 +162,49 @@ public class StoryTellerService {
 		nextLine(scanner);
 		System.out.println("Something huge has just smashed through the wall and is coming RIGHT AT YOU!");
 
-		boolean churchCompleted = combat.oneEnemy(player, false);
+		boolean churchCompleted = combat.oneEnemy(player, 0, false);
 		return churchCompleted;
 	}
 
-	private void afterChurchGraveyardOrForest() {
+	private boolean startGraveyard(Player player) throws InterruptedException {
+		System.out.println("YOU ENTER THE GRAVEYARD...cautiously...");
+		nextLine(scanner);
+		System.out.println("What's that!");
+		nextLine(scanner);
+		System.out.println("...nothing");
+		nextLine(scanner);
+		System.out.println("You wipe some dust from a gravestone to read the inscription...");
+		nextLine(scanner);
+		System.out.println("Here Lies...");
+		nextLine(scanner);
+		System.out.println("...");
+		nextLine(scanner);
+		System.out.println("Here Lies Dr. Zoidberg - Many said that he was...");
+		nextLine(scanner);
+		System.out.println(" Noises - *uuuuuuuh*");
+		nextLine(scanner);
+		System.out.println("Man I hate Zombies, have it you!");
+
+		boolean graveyardCompleted = combat.oneEnemy(player, 0, false);
+		return graveyardCompleted;
+	}
+
+	private boolean startForest(Player player) throws InterruptedException {
+		System.out.println("YOU ENTER THE FOREST...cautiously optimistic...");
+		nextLine(scanner);
+		System.out.println("A sign reads - TURN AROUND NOW - Prof. Farnsw......");
+		nextLine(scanner);
+		System.out.println("Some horrid looking animal falls from the trees above");
+		nextLine(scanner);
+		System.out.println("An Atomic Mutant Man, who would be well suited to play Basketball...");
+		nextLine(scanner);
+		System.out.println("That Cannon in your chest doesn't frighten me!");
+
+		boolean forestCompleted = combat.oneEnemy(player, 0, false);
+		return forestCompleted;
+	}
+
+	private void afterChurchGraveyardOrForest(Player player) throws InterruptedException {
 		System.out.println("You walk away victorious, and continue down a sodden old trail into the misty unknown");
 		nextLine(scanner);
 		System.out.println("The old man in the glowing orb confronts you again");
@@ -188,6 +228,123 @@ public class StoryTellerService {
 		System.out.println("...and good luck, who knows what you'll find further along the *ZAP* - he's gone");
 		nextLine(scanner);
 		System.out.println("--------------------------");
+		combat.oneEnemy(player, 2, true);
+	}
+
+	public void meetFry(Player player) {
+		System.out.println("Unknown: 'Hey There!' - says a voice in the distance");
+		nextLine(scanner);
+		System.out.println("The voice approaches and it is a young gentleman with pointy Red Hair");
+		nextLine(scanner);
+		System.out.println("Fry: 'I rode away on my Scooty Puf Jr. when I saw that thing you were fighting'");
+		nextLine(scanner);
+		System.out.println("Fry: 'Did you kill it???'");
+		nextLine(scanner);
+		System.out.println("Fry: 'Well in any case, the Professy told me to come here'");
+		nextLine(scanner);
+		System.out.println("He wants me to give you some of my intellijeans");
+		nextLine(scanner);
+		System.out.println("My jeans aren't intelli?!");
+		nextLine(scanner);
+		System.out.println("oooh maybe this will work");
+		nextLine(scanner);
+		System.out.println("There we go - PLUS ONE TO YOUR INTELLIGENCE, YAY!");
+		nextLine(scanner);
+		System.out.println("Goodbye friendly weirdo - I'm sure I'll see you again soon");
+		player.setIntelligence(player.getIntelligence() + 1);
+		StoryTellerService.printPlayer(player);
+	}
+
+	public void mainPaths(Player player) throws InterruptedException {
+		System.out.println("As you continue, the landscape opens up providing you with many different options...");
+		nextLine(scanner);
+		String choice = "";
+
+		while (true) {
+
+			if (riverCompleted == true && appliedChryogenicsCompleted == true && robotArmsCompleted == true) {
+				afterMainPaths();
+				break;
+			}
+
+			System.out.println("Where do you wish to venture too?");
+			System.out.println("1: River");
+			System.out.println("2: Applied Chryogenics");
+			System.out.println("3: Robot Arms Apts.");
+			System.out.println("4: Laboratory (Vendor)");
+			System.out.println("5: Dumpster (Vendor)");
+			choice = scanner.nextLine();
+			if (choice.isBlank()) {
+				continue;
+			}
+
+			else if (choice.equals("1") && riverCompleted == false) {
+				riverCompleted = startRiver(player);
+			} else if (choice.equals("1") && riverCompleted == true) {
+				System.out.println("You've already cleared the River");
+				System.out.println("--------------------------");
+				continue;
+			}
+
+			else if (choice.equals("2") && appliedChryogenicsCompleted == false) {
+				appliedChryogenicsCompleted = startAppliedChryogenics(player);
+			} else if (choice.equals("2") && appliedChryogenicsCompleted == true) {
+				System.out.println("You've already cleared Applied Chryogenics");
+				System.out.println("--------------------------");
+				continue;
+			}
+
+			else if (choice.equals("3") && robotArmsCompleted == false) {
+				robotArmsCompleted = startRobotArms(player);
+			} else if (choice.equals("3") && robotArmsCompleted == true) {
+				System.out.println("You've already cleared Robot Arms Apartments");
+				System.out.println("--------------------------");
+				continue;
+			}
+
+			else if (choice.equals("4")) {
+				startLaboratory(player);
+			} else if (choice.equals("5")) {
+				startDumpster(player);
+			} else {
+				continue;
+			}
+		}
+	}
+
+	private boolean startRiver(Player player) throws InterruptedException {
+		System.out.println("YOU ENTER THE RIVER");
+		nextLine(scanner);
+		boolean riverCompleted = combat.twoEnemies(player, 1, 1, true);
+		return riverCompleted;
+	}
+
+	private boolean startAppliedChryogenics(Player player) throws InterruptedException {
+		System.out.println("YOU ENTER APPLIED CHRYOGENICS");
+		nextLine(scanner);
+		boolean appliedChryogenicsCompleted = combat.twoEnemies(player, 2, 2, true);
+		return appliedChryogenicsCompleted;
+	}
+
+	private boolean startRobotArms(Player player) throws InterruptedException {
+		System.out.println("YOU ENTER ROBOT ARMS APARTMENTS");
+		nextLine(scanner);
+		boolean robotArmsCompleted = combat.twoEnemies(player, 3, 3, true);
+		return robotArmsCompleted;
+	}
+
+	private void startLaboratory(Player player) {
+		System.out.println("YOU ENTER THE LABORATORY - A BIG SIGN 'PLANET EXPRESS'");
+		System.out.println("the professor does something, sells magic items?");
+	}
+
+	private void startDumpster(Player player) {
+		System.out.println("YOU WALK UP TO THE DUMPSTER'");
+		System.out.println("zoidberg does something, sells agi items?");
+	}
+
+	private void afterMainPaths() {
+		System.out.println("THIS IS AFTER MAIN PATHS");
 	}
 
 	public static void nextLine(Scanner scanner) {

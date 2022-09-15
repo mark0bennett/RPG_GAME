@@ -1,15 +1,12 @@
 package rpggame.player;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
 import rpggame.weapon.BareHands;
 import rpggame.weapon.BareMagicHands;
 import rpggame.weapon.Weapon;
-import rpggame.weapon.WeaponObject;
 import rpggame.weapon.WeaponType;
 
 public class Player {
@@ -69,7 +66,7 @@ public class Player {
 	// class
 	// TODO: STILL DOUBLE ADDING WEAPONS WHEN THEY ARE ALREADY IN BACKPACK - doing
 	// it manually for now
-	//TODO: when we add a weapon add it so its in order of damage
+	// TODO: when we add a weapon add it so its in order of damage
 	public void addWeaponToBackpack(Weapon weapon) {
 		boolean alreadyInBackpack = false;
 
@@ -95,7 +92,7 @@ public class Player {
 //		}
 
 	}
-	
+
 	public void printBackpack() throws InterruptedException {
 		final int MS_500 = 500;
 		// show weapons in backpack
