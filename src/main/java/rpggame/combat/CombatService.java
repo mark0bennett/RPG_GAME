@@ -18,7 +18,7 @@ public class CombatService {
 		this.enemyFactory = new EnemyFactory();
 	}
 
-	public boolean oneEnemy(Player player, String name, int level, boolean withCrits) throws InterruptedException {
+	public boolean oneEnemy(Player player, String name, int level, boolean withCrits) {
 		boolean wonBattle = false;
 
 		printCombatHasBegun();
@@ -58,8 +58,7 @@ public class CombatService {
 		return wonBattle;
 	}
 
-	public boolean twoEnemies(Player player, String name1, int level, String name2, int level2, boolean withCrits)
-			throws InterruptedException {
+	public boolean twoEnemies(Player player, String name1, int level, String name2, int level2, boolean withCrits) {
 		boolean wonBattle = false;
 
 		printCombatHasBegun();
@@ -151,7 +150,7 @@ public class CombatService {
 		StoryTellerService.nextLine(scanner);
 	}
 
-	private void printVersusTextTwoEnemies(Player player, Enemy enemy, Enemy enemy2) throws InterruptedException {
+	private void printVersusTextTwoEnemies(Player player, Enemy enemy, Enemy enemy2) {
 		System.out.println("--------------------------");
 		System.out.println(player);
 		System.out.println("vs");
@@ -162,7 +161,7 @@ public class CombatService {
 		StoryTellerService.nextLine(scanner);
 	}
 
-	private void showAndAddDroppedWeapon(Player player, Enemy enemy) throws InterruptedException {
+	private void showAndAddDroppedWeapon(Player player, Enemy enemy) {
 		// enemy drops weapon and auto added to your backpack
 		System.out.println("--------------------------");
 		StoryTellerService.nextLine(scanner);
@@ -285,7 +284,7 @@ public class CombatService {
 		return wonBattle;
 	}
 
-	private boolean attacksWithCritsTwoEnemies(Player player, Enemy enemy, Enemy enemy2) throws InterruptedException {
+	private boolean attacksWithCritsTwoEnemies(Player player, Enemy enemy, Enemy enemy2) {
 		boolean wonBattle = false;
 		boolean firstEnemyDead = false;
 		while (true) {
@@ -369,7 +368,7 @@ public class CombatService {
 		return wonBattle;
 	}
 
-	private boolean attacksWithNoCritsTwoEnemies(Player player, Enemy enemy, Enemy enemy2) throws InterruptedException {
+	private boolean attacksWithNoCritsTwoEnemies(Player player, Enemy enemy, Enemy enemy2) {
 		boolean wonBattle = false;
 		boolean firstEnemyDead = false;
 		while (true) {

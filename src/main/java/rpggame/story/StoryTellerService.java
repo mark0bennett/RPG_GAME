@@ -5,7 +5,7 @@ import java.util.Scanner;
 import rpggame.combat.Combat;
 import rpggame.player.Player;
 
-public class StoryTellerService {
+public class StoryTellerService implements Story {
 
 	private final Scanner scanner;
 	private final Combat combat;
@@ -44,7 +44,7 @@ public class StoryTellerService {
 		nextLine(scanner);
 	}
 
-	Player createPlayer() {
+	public Player createPlayer() {
 		String name = "";
 		int strength = 0;
 		int agility = 0;
@@ -89,7 +89,7 @@ public class StoryTellerService {
 		return new Player(name, strength, agility, intelligence);
 	}
 
-	public void startFirstFight(Player player) throws InterruptedException {
+	public void startFirstFight(Player player) {
 		System.out.println(
 				"The old man leaves with a *ZAP* while screamng 'Don't forget, you can trust Pr..ssor... .arn..orth!!!'");
 		nextLine(scanner);
@@ -105,7 +105,7 @@ public class StoryTellerService {
 		combat.oneEnemy(player, "Zapp Brannigan", 0, false);
 	}
 
-	public void churchGraveyardOrForest(Player player) throws InterruptedException {
+	public void churchGraveyardOrForest(Player player) {
 		System.out.println("You walk alone for many miles before seeing the path split into three...");
 		nextLine(scanner);
 		String choice = "";
@@ -152,7 +152,7 @@ public class StoryTellerService {
 		}
 	}
 
-	private boolean startChurch(Player player) throws InterruptedException {
+	private boolean startChurch(Player player) {
 		System.out.println("YOU ENTER THE CHURCH...");
 		nextLine(scanner);
 		System.out.println("It's quiet, a little too quiet...");
@@ -166,7 +166,7 @@ public class StoryTellerService {
 		return churchCompleted;
 	}
 
-	private boolean startGraveyard(Player player) throws InterruptedException {
+	private boolean startGraveyard(Player player) {
 		System.out.println("YOU ENTER THE GRAVEYARD...cautiously...");
 		nextLine(scanner);
 		System.out.println("What's that!");
@@ -189,7 +189,7 @@ public class StoryTellerService {
 		return graveyardCompleted;
 	}
 
-	private boolean startForest(Player player) throws InterruptedException {
+	private boolean startForest(Player player) {
 		System.out.println("YOU ENTER THE FOREST...cautiously optimistic...");
 		nextLine(scanner);
 		System.out.println("A sign reads - TURN AROUND NOW - Prof. Farnsw......");
@@ -198,13 +198,14 @@ public class StoryTellerService {
 		nextLine(scanner);
 		System.out.println("Ranger Park: 'Oh, I thought you were Bigfoot, you know he roams these forests'");
 		nextLine(scanner);
-		System.out.println("Ranger Park: 'But what nice feet you have, if I chop of your feet they could almost be mistaken for Bigfoot's'");
+		System.out.println(
+				"Ranger Park: 'But what nice feet you have, if I chop of your feet they could almost be mistaken for Bigfoot's'");
 
 		boolean forestCompleted = combat.oneEnemy(player, "Ranger Park the Park Ranger", 0, false);
 		return forestCompleted;
 	}
 
-	private void afterChurchGraveyardOrForest(Player player) throws InterruptedException {
+	private void afterChurchGraveyardOrForest(Player player) {
 		System.out.println("You walk away victorious, and continue down a sodden old trail into the wild green yonder");
 		nextLine(scanner);
 		System.out.println("The old man in the glowing orb confronts you again");
@@ -255,7 +256,7 @@ public class StoryTellerService {
 		StoryTellerService.printPlayer(player);
 	}
 
-	public void mainPaths(Player player) throws InterruptedException {
+	public void mainPaths(Player player) {
 		System.out.println("As you continue, the landscape opens up providing you with many different options...");
 		nextLine(scanner);
 		String choice = "";
@@ -318,7 +319,7 @@ public class StoryTellerService {
 		}
 	}
 
-	private boolean startRiver(Player player) throws InterruptedException {
+	private boolean startRiver(Player player) {
 		System.out.println("YOU ENTER THE RIVER");
 		nextLine(scanner);
 		System.out.println("Is that, Joan Rivers?");
@@ -332,7 +333,7 @@ public class StoryTellerService {
 		return riverCompleted;
 	}
 
-	private boolean startAppliedChryogenics(Player player) throws InterruptedException {
+	private boolean startAppliedChryogenics(Player player) {
 		System.out.println("YOU ENTER APPLIED CHRYOGENICS");
 		nextLine(scanner);
 		System.out.println("Terry: 'Welcome to the world of tomorrow!'");
@@ -348,7 +349,7 @@ public class StoryTellerService {
 		return appliedChryogenicsCompleted;
 	}
 
-	private boolean startRobotArms(Player player) throws InterruptedException {
+	private boolean startRobotArms(Player player) {
 		System.out.println("YOU ENTER ROBOT ARMS APARTMENTS");
 		nextLine(scanner);
 		System.out.println("*Music is playing*");

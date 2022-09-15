@@ -6,7 +6,7 @@ import rpggame.story.StoryTellerService;
 
 public class RpgGameApp {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 
 		// SAVE GAME TO A TXT FILE WITH STATS, and LOAD IN A GAME with story progression
 		// can we bring up a menu at any time between things happening, to delete

@@ -19,11 +19,11 @@ public class StoryTeller {
 		return player;
 	}
 
-	public void startFirstFight(Player player) throws InterruptedException {
+	public void startFirstFight(Player player) {
 		storyTellerService.startFirstFight(player);
 	}
 
-	public void churchGraveyardOrForest(Player player) throws InterruptedException {
+	public void churchGraveyardOrForest(Player player) {
 		storyTellerService.churchGraveyardOrForest(player);
 	}
 
@@ -31,7 +31,7 @@ public class StoryTeller {
 		storyTellerService.meetFry(player);
 	}
 
-	public void mainPaths(Player player) throws InterruptedException {
+	public void mainPaths(Player player) {
 		storyTellerService.mainPaths(player);
 	}
 
