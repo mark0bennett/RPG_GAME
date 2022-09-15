@@ -17,8 +17,9 @@ public class EnemyFactory {
 	// TODO: maybe another class that extends Enemy? so it can toString
 	// something different etc
 
-	public Enemy createEnemyCustomLevel(Player player, int level) {
+	public Enemy createEnemyCustomLevel(Player player, String name, int level) {
 		int currentStatPoints = player.getCurrentTotalStatPoints() + level;
+		String enenmyName = name;
 		int strength = 0;
 		int agility = 0;
 		int intelligence = 0;
@@ -31,7 +32,7 @@ public class EnemyFactory {
 
 		weapon = pickEnemyWeapon(agility, intelligence);
 
-		return new Enemy(strength, agility, intelligence, weapon);
+		return new Enemy(enenmyName, strength, agility, intelligence, weapon);
 	}
 
 	private Weapon pickEnemyWeapon(int agility, int intelligence) {

@@ -8,12 +8,14 @@ import rpggame.weapon.WeaponType;
 public class Enemy {
 
 	// TODO: will we create an Enemy Interface?
+	private String name;
 	private int strength;
 	private int intelligence;
 	private int agility;
 	private Weapon weapon;
 
-	public Enemy(int strength, int agility, int intelligence, Weapon weapon) {
+	public Enemy(String name, int strength, int agility, int intelligence, Weapon weapon) {
+		this.name = name;
 		this.strength = strength;
 		this.agility = agility;
 		this.intelligence = intelligence;

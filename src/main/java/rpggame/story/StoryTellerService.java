@@ -102,7 +102,7 @@ public class StoryTellerService {
 
 		// START COMBAT HERE?
 		// Combat class will have its own EnemyFactory and maybe its own scanner too?
-		combat.oneEnemy(player, 0, false);
+		combat.oneEnemy(player, "Zapp Brannigan", 0, false);
 	}
 
 	public void churchGraveyardOrForest(Player player) throws InterruptedException {
@@ -162,7 +162,7 @@ public class StoryTellerService {
 		nextLine(scanner);
 		System.out.println("Something huge has just smashed through the wall and is coming RIGHT AT YOU!");
 
-		boolean churchCompleted = combat.oneEnemy(player, 0, false);
+		boolean churchCompleted = combat.oneEnemy(player, "Preacherbot", 0, false);
 		return churchCompleted;
 	}
 
@@ -185,7 +185,7 @@ public class StoryTellerService {
 		nextLine(scanner);
 		System.out.println("Man I hate Zombies, have it you!");
 
-		boolean graveyardCompleted = combat.oneEnemy(player, 0, false);
+		boolean graveyardCompleted = combat.oneEnemy(player, "Zombie Jesus", 0, false);
 		return graveyardCompleted;
 	}
 
@@ -200,7 +200,7 @@ public class StoryTellerService {
 		nextLine(scanner);
 		System.out.println("That Cannon in your chest doesn't frighten me!");
 
-		boolean forestCompleted = combat.oneEnemy(player, 0, false);
+		boolean forestCompleted = combat.oneEnemy(player, "Ranger Park the Park Ranger", 0, false);
 		return forestCompleted;
 	}
 
@@ -228,7 +228,7 @@ public class StoryTellerService {
 		System.out.println("...and good luck, who knows what you'll find further along the *ZAP* - he's gone");
 		nextLine(scanner);
 		System.out.println("--------------------------");
-		combat.oneEnemy(player, 2, true);
+		combat.oneEnemy(player, "LRRR Ruler of the Planet Omicron Persei 8", 2, true);
 	}
 
 	public void meetFry(Player player) {
@@ -321,21 +321,21 @@ public class StoryTellerService {
 	private boolean startRiver(Player player) throws InterruptedException {
 		System.out.println("YOU ENTER THE RIVER");
 		nextLine(scanner);
-		boolean riverCompleted = combat.twoEnemies(player, 1, 1, true);
+		boolean riverCompleted = combat.twoEnemies(player, "Joan River's Head", 1, "Horrible Gelatinous Blob", 1, true);
 		return riverCompleted;
 	}
 
 	private boolean startAppliedChryogenics(Player player) throws InterruptedException {
 		System.out.println("YOU ENTER APPLIED CHRYOGENICS");
 		nextLine(scanner);
-		boolean appliedChryogenicsCompleted = combat.twoEnemies(player, 2, 2, true);
+		boolean appliedChryogenicsCompleted = combat.twoEnemies(player, "Michelle", 2, "Ipji", 2, true);
 		return appliedChryogenicsCompleted;
 	}
 
 	private boolean startRobotArms(Player player) throws InterruptedException {
 		System.out.println("YOU ENTER ROBOT ARMS APARTMENTS");
 		nextLine(scanner);
-		boolean robotArmsCompleted = combat.twoEnemies(player, 3, 3, true);
+		boolean robotArmsCompleted = combat.twoEnemies(player, "Robot Devil", 3, "Roberto", 3, true);
 		return robotArmsCompleted;
 	}
 

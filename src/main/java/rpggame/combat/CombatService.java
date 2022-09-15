@@ -18,14 +18,14 @@ public class CombatService {
 		this.enemyFactory = new EnemyFactory();
 	}
 
-	public boolean oneEnemy(Player player, int level, boolean withCrits) throws InterruptedException {
+	public boolean oneEnemy(Player player, String name, int level, boolean withCrits) throws InterruptedException {
 		boolean wonBattle = false;
 
 		printCombatHasBegun();
 		System.out.println(player);
 		player.printBackpack();
 		pickWeapon(player);
-		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, level);
+		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, name, level);
 		printVersusText(player, enemy);
 
 		int playerStrengthBeforeCombat = player.getStrength();
@@ -58,14 +58,14 @@ public class CombatService {
 		return wonBattle;
 	}
 
-	public boolean twoEnemies(Player player, int level, int level2, boolean withCrits) throws InterruptedException {
+	public boolean twoEnemies(Player player, String name1, int level, String name2, int level2, boolean withCrits) throws InterruptedException {
 		boolean wonBattle = false;
 
 		printCombatHasBegun();
 		player.printBackpack();
 		pickWeapon(player);
-		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, level);
-		Enemy enemy2 = enemyFactory.createEnemyCustomLevel(player, level2);
+		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, name1, level);
+		Enemy enemy2 = enemyFactory.createEnemyCustomLevel(player, name2, level2);
 		printVersusTextTwoEnemies(player, enemy, enemy2);
 
 		int playerStrengthBeforeCombat = player.getStrength();
