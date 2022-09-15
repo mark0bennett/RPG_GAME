@@ -97,7 +97,7 @@ public class StoryTellerService {
 		nextLine(scanner);
 		System.out.println("Before you can think you realise why he got the hell outta there");
 		nextLine(scanner);
-		System.out.println("Something is storming towards you....aaah shit, here we go again.");
+		System.out.println("Something quite strange is heading towards you....wearing a sleek yet intimidating outfit");
 		nextLine(scanner);
 
 		// START COMBAT HERE?
@@ -160,7 +160,7 @@ public class StoryTellerService {
 		System.out.println("...");
 		System.out.println("*CRASH!!!!!!!!*");
 		nextLine(scanner);
-		System.out.println("Something huge has just smashed through the wall and is coming RIGHT AT YOU!");
+		System.out.println("Preacherbot: 'Sinner, feel the cold metal love of Robotology!'");
 
 		boolean churchCompleted = combat.oneEnemy(player, "Preacherbot", 0, false);
 		return churchCompleted;
@@ -181,7 +181,7 @@ public class StoryTellerService {
 		nextLine(scanner);
 		System.out.println("Here Lies Dr. Zoidberg - Many said that he was...");
 		nextLine(scanner);
-		System.out.println(" Noises - *uuuuuuuh*");
+		System.out.println("Zombie Jesus: 'They nailed me to the cross, this time it's personal'");
 		nextLine(scanner);
 		System.out.println("Man I hate Zombies, have it you!");
 
@@ -194,38 +194,38 @@ public class StoryTellerService {
 		nextLine(scanner);
 		System.out.println("A sign reads - TURN AROUND NOW - Prof. Farnsw......");
 		nextLine(scanner);
-		System.out.println("Some horrid looking animal falls from the trees above");
+		System.out.println("A flash from the bushes...");
 		nextLine(scanner);
-		System.out.println("An Atomic Mutant Man, who would be well suited to play Basketball...");
+		System.out.println("Ranger Park: 'Oh, I thought you were Bigfoot, you know he roams these forests'");
 		nextLine(scanner);
-		System.out.println("That Cannon in your chest doesn't frighten me!");
+		System.out.println("Ranger Park: 'But what nice feet you have, if I chop of your feet they could almost be mistaken for Bigfoot's'");
 
 		boolean forestCompleted = combat.oneEnemy(player, "Ranger Park the Park Ranger", 0, false);
 		return forestCompleted;
 	}
 
 	private void afterChurchGraveyardOrForest(Player player) throws InterruptedException {
-		System.out.println("You walk away victorious, and continue down a sodden old trail into the misty unknown");
+		System.out.println("You walk away victorious, and continue down a sodden old trail into the wild green yonder");
 		nextLine(scanner);
 		System.out.println("The old man in the glowing orb confronts you again");
 		nextLine(scanner);
-		System.out.println("You need some more tricks if you are going to get through here");
+		System.out.println("Old Man: 'I have Good News for you'");
 		nextLine(scanner);
-		System.out.println("Let me show you a trick");
+		System.out.println("Old Man: 'Let me show you a trick'");
 		nextLine(scanner);
-		System.out.println("You can Crit if you use your stats to the fullest");
-		nextLine(scanner);
-		System.out.println(
-				"If you have an Agility weapon equipped you can crit depending on how high your Intelligence is!");
+		System.out.println("Old Man: 'You can Crit if you use your stats to the fullest'");
 		nextLine(scanner);
 		System.out.println(
-				"If you have an Intelligence weapon equipped you can crit depending on how high your Agility is!");
+				"Old Man: 'If you have an Agility weapon equipped you can crit depending on how high your Intelligence is!'");
 		nextLine(scanner);
-		System.out.println("Further down the road I have seen a very powerful enemy indeed");
+		System.out.println(
+				"Old Man: 'If you have an Intelligence weapon equipped you can crit depending on how high your Agility is!'");
 		nextLine(scanner);
-		System.out.println("This enemy will be 2 levels higher than you, so be careful!");
+		System.out.println("Old Man: 'Further down the road I have seen a very powerful enemy indeed'");
 		nextLine(scanner);
-		System.out.println("...and good luck, who knows what you'll find further along the *ZAP* - he's gone");
+		System.out.println("Old Man: 'This enemy will be 2 levels higher than you, so be careful!'");
+		nextLine(scanner);
+		System.out.println("*ZAP* - he's gone");
 		nextLine(scanner);
 		System.out.println("--------------------------");
 		combat.oneEnemy(player, "LRRR Ruler of the Planet Omicron Persei 8", 2, true);
@@ -236,21 +236,21 @@ public class StoryTellerService {
 		nextLine(scanner);
 		System.out.println("The voice approaches and it is a young gentleman with pointy Red Hair");
 		nextLine(scanner);
-		System.out.println("Fry: 'I rode away on my Scooty Puf Jr. when I saw that thing you were fighting'");
+		System.out.println("Fry: 'I rode away on my Scooty Puff Jr. when I saw that thing you were fighting'");
 		nextLine(scanner);
 		System.out.println("Fry: 'Did you kill it???'");
 		nextLine(scanner);
 		System.out.println("Fry: 'Well in any case, the Professy told me to come here'");
 		nextLine(scanner);
-		System.out.println("He wants me to give you some of my intellijeans");
+		System.out.println("Fry: 'He wants me to give you some of my intelli-jeans'");
 		nextLine(scanner);
-		System.out.println("My jeans aren't intelli?!");
+		System.out.println("Fry: 'My jeans aren't intelli?!'");
 		nextLine(scanner);
-		System.out.println("oooh maybe this will work");
+		System.out.println("Fry: 'oooh maybe this will work'");
 		nextLine(scanner);
-		System.out.println("There we go - PLUS ONE TO YOUR INTELLIGENCE, YAY!");
+		System.out.println("Fry: 'There we go - PLUS ONE TO YOUR INTELLIGENCE, I've got plenty to spare'");
 		nextLine(scanner);
-		System.out.println("Goodbye friendly weirdo - I'm sure I'll see you again soon");
+		System.out.println("Fry: 'Goodbye friendly weirdo - I'm sure I'll see you again soon'");
 		player.setIntelligence(player.getIntelligence() + 1);
 		StoryTellerService.printPlayer(player);
 	}
@@ -321,6 +321,13 @@ public class StoryTellerService {
 	private boolean startRiver(Player player) throws InterruptedException {
 		System.out.println("YOU ENTER THE RIVER");
 		nextLine(scanner);
+		System.out.println("Is that, Joan Rivers?");
+		nextLine(scanner);
+		System.out.println("No it's just a big blob of green muck");
+		nextLine(scanner);
+		System.out.println("Joan Rivers: 'I'm angry that I'll never be as good looking as my friend here HGB!'");
+		nextLine(scanner);
+		System.out.println("Joan Rivers & HGB: 'Let's get him!'");
 		boolean riverCompleted = combat.twoEnemies(player, "Joan River's Head", 1, "Horrible Gelatinous Blob", 1, true);
 		return riverCompleted;
 	}
@@ -328,6 +335,15 @@ public class StoryTellerService {
 	private boolean startAppliedChryogenics(Player player) throws InterruptedException {
 		System.out.println("YOU ENTER APPLIED CHRYOGENICS");
 		nextLine(scanner);
+		System.out.println("Terry: 'Welcome to the world of tomorrow!'");
+		nextLine(scanner);
+		System.out.println("Ipji: 'Do your jobs, all of you, while I eat this curry'");
+		nextLine(scanner);
+		System.out.println("...?");
+		nextLine(scanner);
+		System.out.println("Ipji: 'Ooooh no career chip in you I see'");
+		nextLine(scanner);
+		System.out.println("Ipji: 'Michelle, help me hold him down while I implant him with a Janitor chip'");
 		boolean appliedChryogenicsCompleted = combat.twoEnemies(player, "Michelle", 2, "Ipji", 2, true);
 		return appliedChryogenicsCompleted;
 	}
@@ -335,6 +351,13 @@ public class StoryTellerService {
 	private boolean startRobotArms(Player player) throws InterruptedException {
 		System.out.println("YOU ENTER ROBOT ARMS APARTMENTS");
 		nextLine(scanner);
+		System.out.println("*Music is playing*");
+		nextLine(scanner);
+		System.out.println("Robot Devil: 'Cigars are evil, you won't miss them, we'll find ways to...'");
+		nextLine(scanner);
+		System.out.println("Robot Devil: 'How rude! To interrupt my ironic song!'");
+		nextLine(scanner);
+		System.out.println("Roboto: 'I wanna stab him with my stabbing knife!'");
 		boolean robotArmsCompleted = combat.twoEnemies(player, "Robot Devil", 3, "Roberto", 3, true);
 		return robotArmsCompleted;
 	}
@@ -343,12 +366,14 @@ public class StoryTellerService {
 		System.out.println("YOU ENTER THE LABORATORY - A BIG SIGN 'PLANET EXPRESS'");
 		// can sell items from another csv
 		System.out.println("the professor does something, sells special magic items?");
+		System.out.println("finally we can meet in safety");
 	}
 
 	private void startDumpster(Player player) {
 		System.out.println("YOU WALK UP TO THE DUMPSTER'");
 		// can sell items from another csv
 		System.out.println("zoidberg does something, sells special agi items?");
+		System.out.println("I know you saw my gravestone, but look im not dead");
 	}
 
 	private void afterMainPaths() {
