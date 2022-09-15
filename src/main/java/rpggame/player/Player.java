@@ -57,12 +57,10 @@ public class Player {
 	// TODO: delete weapon from backpack
 	// TODO: sell weapon in backpack
 
-	// TODO:this is where we could return something so the text is shown from
-	// another class
 	// TODO: STILL DOUBLE ADDING WEAPONS WHEN THEY ARE ALREADY IN BACKPACK - doing
-	// it manually for now
+	// it manually for now - need Comparator or Comparable for Weapons
 	// TODO: when we add a weapon add it so its in order of damage
-	public void addWeaponToBackpack(Weapon weapon) {
+	public boolean checkForWeaponInBackpack(Weapon weapon) {
 		boolean alreadyInBackpack = false;
 
 		for (Weapon weaponInList : this.backPack) {
@@ -70,22 +68,11 @@ public class Player {
 				alreadyInBackpack = true;
 			}
 		}
+		return alreadyInBackpack;
+	}
 
-		if (!alreadyInBackpack) {
-			this.backPack.add(weapon);
-			System.out.println("Weapon added to backpack");
-		} else {
-			System.out.println("You already have this weapon");
-		}
-
-		// TODO: yeah equals for WeaponObject not working?
-//		if(!this.backPack.contains(weapon)) {
-//			this.backPack.add(weapon);
-//			System.out.println("Weapon added to your backpack");
-//		} else {
-//			System.out.println("You already have this weapon");
-//		}
-
+	public void addWeaponToBackpack(Weapon weapon) {
+		this.backPack.add(weapon);
 	}
 
 	public void printBackpack() {

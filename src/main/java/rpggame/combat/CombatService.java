@@ -58,7 +58,8 @@ public class CombatService {
 		return wonBattle;
 	}
 
-	public boolean twoEnemies(Player player, String name1, int level, String name2, int level2, boolean withCrits) throws InterruptedException {
+	public boolean twoEnemies(Player player, String name1, int level, String name2, int level2, boolean withCrits)
+			throws InterruptedException {
 		boolean wonBattle = false;
 
 		printCombatHasBegun();
@@ -103,17 +104,14 @@ public class CombatService {
 	}
 
 	private void printVersusTextTwoEnemies(Player player, Enemy enemy, Enemy enemy2) throws InterruptedException {
-		// show stats of you and your enemy
 		System.out.println("--------------------------");
 		System.out.println(player);
-		StoryTellerService.nextLine(scanner);
 		System.out.println("vs");
-		StoryTellerService.nextLine(scanner);
 		System.out.println(enemy);
-		StoryTellerService.nextLine(scanner);
 		System.out.println("and");
 		System.out.println(enemy2);
 		System.out.println("--------------------------");
+		StoryTellerService.nextLine(scanner);
 	}
 
 	private void printCombatHasBegun() {
@@ -155,13 +153,10 @@ public class CombatService {
 		}
 	}
 
-	private void printVersusText(Player player, Enemy enemy) throws InterruptedException {
-		// show stats of you and your enemy
+	private void printVersusText(Player player, Enemy enemy) {
 		System.out.println("--------------------------");
 		System.out.println(player);
-		Thread.sleep(700);
 		System.out.println("vs");
-		Thread.sleep(700);
 		System.out.println(enemy);
 		System.out.println("--------------------------");
 		StoryTellerService.nextLine(scanner);
@@ -193,13 +188,9 @@ public class CombatService {
 				wonBattle = false;
 				break;
 			}
-			StoryTellerService.nextLine(scanner);
 			System.out.println("--------------------------");
-			StoryTellerService.nextLine(scanner);
 			System.out.println(player);
-			StoryTellerService.nextLine(scanner);
 			System.out.println(enemy);
-			StoryTellerService.nextLine(scanner);
 			System.out.println("--------------------------");
 			StoryTellerService.nextLine(scanner);
 		}
@@ -214,7 +205,8 @@ public class CombatService {
 			int playerAttack = playerAttackNumbers[0];
 			int playerCrit = playerAttackNumbers[1];
 			// you attack
-			System.out.println("You attack " + enemy.getName() + " for " + playerAttack + " damage plus " + playerCrit + " Crit!");
+			System.out.println(
+					"You attack " + enemy.getName() + " for " + playerAttack + " damage plus " + playerCrit + " Crit!");
 			// enemy strength changed from attack
 			enemy.setStrength(enemy.getStrength() - (playerAttack + playerCrit));
 			StoryTellerService.nextLine(scanner);
@@ -229,7 +221,8 @@ public class CombatService {
 			int[] enemyAttackNumbers = enemy.attackCrit();
 			int enemyAttack = enemyAttackNumbers[0];
 			int enemyCrit = enemyAttackNumbers[1];
-			System.out.println(enemy.getName() + " attacks for " + enemyAttack + " damage plus " + enemyCrit + " Crit!");
+			System.out
+					.println(enemy.getName() + " attacks for " + enemyAttack + " damage plus " + enemyCrit + " Crit!");
 			// enemy strength changed from attack
 			player.setStrength(player.getStrength() - (enemyAttack + enemyCrit));
 			StoryTellerService.nextLine(scanner);
@@ -240,13 +233,9 @@ public class CombatService {
 				wonBattle = false;
 				break;
 			}
-			StoryTellerService.nextLine(scanner);
 			System.out.println("--------------------------");
-			StoryTellerService.nextLine(scanner);
 			System.out.println(player);
-			StoryTellerService.nextLine(scanner);
 			System.out.println(enemy);
-			StoryTellerService.nextLine(scanner);
 			System.out.println("--------------------------");
 			StoryTellerService.nextLine(scanner);
 		}
@@ -255,25 +244,27 @@ public class CombatService {
 
 	private void showAndAddDroppedWeapon(Player player, Enemy enemy) throws InterruptedException {
 		// enemy drops weapon and auto added to your backpack
-		StoryTellerService.nextLine(scanner);
 		System.out.println("--------------------------");
 		StoryTellerService.nextLine(scanner);
 		System.out.println(enemy.getName() + " dropped their weapon...");
 		Weapon droppedWeapon = enemy.dropWeapon();
-		StoryTellerService.nextLine(scanner);
 		System.out.println(droppedWeapon);
-		StoryTellerService.nextLine(scanner);
 		System.out.println("Agility Required: " + droppedWeapon.getAgilityRequired());
-		StoryTellerService.nextLine(scanner);
 		System.out.println("Intelligence Required: " + droppedWeapon.getIntelligenceRequired());
-		StoryTellerService.nextLine(scanner);
 		System.out.println("Weapon Type: " + droppedWeapon.getWeaponType());
-		StoryTellerService.nextLine(scanner);
 		System.out.println("--------------------------");
 		StoryTellerService.nextLine(scanner);
 		// TODO: STILL DOUBLE ADDING WEAPONS WHEN THEY ARE ALREADY IN BACKPACK - doing
 		// it manually for now
-		player.addWeaponToBackpack(droppedWeapon);
+		boolean alreadyInBackpack = player.checkForWeaponInBackpack(droppedWeapon);
+		if (!alreadyInBackpack) {
+			player.addWeaponToBackpack(droppedWeapon);
+			System.out.println("Weapon added to backpack");
+			StoryTellerService.nextLine(scanner);
+		} else {
+			System.out.println("You already have this weapon");
+			StoryTellerService.nextLine(scanner);
+		}
 		System.out.println("--------------------------");
 		player.printBackpack();
 		System.out.println("--------------------------");
@@ -304,16 +295,16 @@ public class CombatService {
 
 	private void printWinText(Player player) {
 		StoryTellerService.printPlayer(player);
-		StoryTellerService.nextLine(scanner);
 		System.out.println("...and you continue on your journey");
 		System.out.println("--------------------------");
+		StoryTellerService.nextLine(scanner);
 	}
 
 	private void printLossText() {
 		System.out.println("--------------------------");
-		StoryTellerService.nextLine(scanner);
 		System.out.println("You learn from this loss and continue...");
 		System.out.println("--------------------------");
+		StoryTellerService.nextLine(scanner);
 	}
 
 	private boolean attacksWithCritsTwoEnemies(Player player, Enemy enemy, Enemy enemy2) throws InterruptedException {
@@ -328,7 +319,8 @@ public class CombatService {
 			int playerAttack = playerAttackNumbers[0];
 			int playerCrit = playerAttackNumbers[1];
 			// you attack
-			System.out.println("You attack " + enemy.getName() + " for " + playerAttack + " damage plus " + playerCrit + " Crit!");
+			System.out.println(
+					"You attack " + enemy.getName() + " for " + playerAttack + " damage plus " + playerCrit + " Crit!");
 			// enemy strength changed from attack
 			enemy.setStrength(enemy.getStrength() - (playerAttack + playerCrit));
 			StoryTellerService.nextLine(scanner);
@@ -343,7 +335,8 @@ public class CombatService {
 			int[] enemyAttackNumbers = enemy.attackCrit();
 			int enemyAttack = enemyAttackNumbers[0];
 			int enemyCrit = enemyAttackNumbers[1];
-			System.out.println(enemy.getName() + " attacks for " + enemyAttack + " damage plus " + enemyCrit + " Crit!");
+			System.out
+					.println(enemy.getName() + " attacks for " + enemyAttack + " damage plus " + enemyCrit + " Crit!");
 			// enemy strength changed from attack
 			player.setStrength(player.getStrength() - (enemyAttack + enemyCrit));
 			StoryTellerService.nextLine(scanner);
@@ -354,15 +347,10 @@ public class CombatService {
 				wonBattle = false;
 				break;
 			}
-			StoryTellerService.nextLine(scanner);
 			System.out.println("--------------------------");
-			StoryTellerService.nextLine(scanner);
 			System.out.println(player);
-			StoryTellerService.nextLine(scanner);
 			System.out.println(enemy);
-			StoryTellerService.nextLine(scanner);
 			System.out.println(enemy2);
-			StoryTellerService.nextLine(scanner);
 			System.out.println("--------------------------");
 			StoryTellerService.nextLine(scanner);
 		}
@@ -374,8 +362,8 @@ public class CombatService {
 				int playerAttack = playerAttackNumbers[0];
 				int playerCrit = playerAttackNumbers[1];
 				// you attack
-				System.out.println(
-						"You attack " + enemy2.getName() + " for " + playerAttack + " damage plus " + playerCrit + " Crit!");
+				System.out.println("You attack " + enemy2.getName() + " for " + playerAttack + " damage plus "
+						+ playerCrit + " Crit!");
 				// enemy strength changed from attack
 				enemy2.setStrength(enemy2.getStrength() - (playerAttack + playerCrit));
 				StoryTellerService.nextLine(scanner);
@@ -390,8 +378,8 @@ public class CombatService {
 				int[] enemy2AttackNumbers = enemy2.attackCrit();
 				int enemy2Attack = enemy2AttackNumbers[0];
 				int enemy2Crit = enemy2AttackNumbers[1];
-				System.out
-						.println(enemy2.getName() + " attacks for " + enemy2Attack + " damage plus " + enemy2Crit + " Crit!");
+				System.out.println(
+						enemy2.getName() + " attacks for " + enemy2Attack + " damage plus " + enemy2Crit + " Crit!");
 				// enemy strength changed from attack
 				player.setStrength(player.getStrength() - (enemy2Attack + enemy2Crit));
 				StoryTellerService.nextLine(scanner);
@@ -402,13 +390,9 @@ public class CombatService {
 					wonBattle = false;
 					break;
 				}
-				StoryTellerService.nextLine(scanner);
 				System.out.println("--------------------------");
-				StoryTellerService.nextLine(scanner);
 				System.out.println(player);
-				StoryTellerService.nextLine(scanner);
 				System.out.println(enemy2);
-				StoryTellerService.nextLine(scanner);
 				System.out.println("--------------------------");
 				StoryTellerService.nextLine(scanner);
 			}
@@ -448,15 +432,10 @@ public class CombatService {
 				wonBattle = false;
 				break;
 			}
-			StoryTellerService.nextLine(scanner);
 			System.out.println("--------------------------");
-			StoryTellerService.nextLine(scanner);
 			System.out.println(player);
-			StoryTellerService.nextLine(scanner);
 			System.out.println(enemy);
-			StoryTellerService.nextLine(scanner);
 			System.out.println(enemy2);
-			StoryTellerService.nextLine(scanner);
 			System.out.println("--------------------------");
 			StoryTellerService.nextLine(scanner);
 		}
@@ -488,13 +467,9 @@ public class CombatService {
 					wonBattle = false;
 					break;
 				}
-				StoryTellerService.nextLine(scanner);
 				System.out.println("--------------------------");
-				StoryTellerService.nextLine(scanner);
 				System.out.println(player);
-				StoryTellerService.nextLine(scanner);
 				System.out.println(enemy2);
-				StoryTellerService.nextLine(scanner);
 				System.out.println("--------------------------");
 				StoryTellerService.nextLine(scanner);
 			}

@@ -20,6 +20,7 @@ public class RpgGameApp {
 		// zoidberg isnt dead, you meet him later and he sells agi weapons
 		// prof sells magic weapons, Weapons will need a price too
 		// Leela, Amy, Bender when you meet them they increase stats
+		//change story to make sense with characters you are fighting
 
 		StoryTellerService storyTellerService = new StoryTellerService();
 		StoryTeller storyTeller = new StoryTeller(storyTellerService);
