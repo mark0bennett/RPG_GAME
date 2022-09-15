@@ -22,6 +22,7 @@ public class CombatService {
 		boolean wonBattle = false;
 
 		printCombatHasBegun();
+		System.out.println(player);
 		player.printBackpack();
 		pickWeapon(player);
 		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, level);
@@ -154,13 +155,13 @@ public class CombatService {
 		}
 	}
 
-	private void printVersusText(Player player, Enemy enemy) {
+	private void printVersusText(Player player, Enemy enemy) throws InterruptedException {
 		// show stats of you and your enemy
 		System.out.println("--------------------------");
 		System.out.println(player);
-		StoryTellerService.nextLine(scanner);
+		Thread.sleep(700);
 		System.out.println("vs");
-		StoryTellerService.nextLine(scanner);
+		Thread.sleep(700);
 		System.out.println(enemy);
 		System.out.println("--------------------------");
 		StoryTellerService.nextLine(scanner);
@@ -279,9 +280,8 @@ public class CombatService {
 	}
 
 	private void increaseStats(Player player) {
-		StoryTellerService.printPlayer(player);
 		while (true) {
-			StoryTellerService.nextLine(scanner);
+			StoryTellerService.printPlayer(player);
 			System.out.println("Type: 's' - to increase Strength");
 			System.out.println("Type: 'a' - to increase Aglity");
 			System.out.println("Type: 'i' - to increase Intelligence");

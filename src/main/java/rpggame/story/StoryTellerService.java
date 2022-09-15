@@ -26,7 +26,7 @@ public class StoryTellerService {
 	public void intro() {
 		System.out.println("--------------------------");
 		System.out.println("WELCOME TO - RPG_GAME -");
-		System.out.println("Press 'Enter' to advance text");
+		System.out.println("Press 'Enter' to advance the text");
 		System.out.println("--------------------------");
 		System.out.println("You are walking minding your own business, as you do, when...");
 		nextLine(scanner);
@@ -262,10 +262,10 @@ public class StoryTellerService {
 
 		while (true) {
 
-			if (riverCompleted == true && appliedChryogenicsCompleted == true && robotArmsCompleted == true) {
-				afterMainPaths();
-				break;
-			}
+//			if (riverCompleted == true && appliedChryogenicsCompleted == true && robotArmsCompleted == true) {
+//				afterMainPaths();
+//				break;
+//			}
 
 			System.out.println("Where do you wish to venture too?");
 			System.out.println("1: River");
@@ -273,6 +273,7 @@ public class StoryTellerService {
 			System.out.println("3: Robot Arms Apts.");
 			System.out.println("4: Laboratory (Vendor)");
 			System.out.println("5: Dumpster (Vendor)");
+			System.out.println("6: Continue the journey...");
 			choice = scanner.nextLine();
 			if (choice.isBlank()) {
 				continue;
@@ -306,7 +307,12 @@ public class StoryTellerService {
 				startLaboratory(player);
 			} else if (choice.equals("5")) {
 				startDumpster(player);
+			} else if (choice.equals("6") && riverCompleted == true && appliedChryogenicsCompleted == true
+					&& robotArmsCompleted == true) {
+				afterMainPaths();
+				break;
 			} else {
+				System.out.println("You should probably check out these places first, and clear them out!");
 				continue;
 			}
 		}
@@ -335,12 +341,14 @@ public class StoryTellerService {
 
 	private void startLaboratory(Player player) {
 		System.out.println("YOU ENTER THE LABORATORY - A BIG SIGN 'PLANET EXPRESS'");
-		System.out.println("the professor does something, sells magic items?");
+		// can sell items from another csv
+		System.out.println("the professor does something, sells special magic items?");
 	}
 
 	private void startDumpster(Player player) {
 		System.out.println("YOU WALK UP TO THE DUMPSTER'");
-		System.out.println("zoidberg does something, sells agi items?");
+		// can sell items from another csv
+		System.out.println("zoidberg does something, sells special agi items?");
 	}
 
 	private void afterMainPaths() {
