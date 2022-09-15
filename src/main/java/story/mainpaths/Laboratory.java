@@ -2,9 +2,9 @@ package story.mainpaths;
 
 import java.util.Scanner;
 
-import characters.player.Player;
-import characters.utils.EnemyFactory;
-import combat.Combat;
+import rpggame.combat.Combat;
+import rpggame.player.Player;
+import rpggame.utils.EnemyFactory;
 
 public class Laboratory {
 	

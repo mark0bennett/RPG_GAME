@@ -2,10 +2,10 @@ package rpggame;
 
 import java.util.Scanner;
 
-import characters.player.Player;
-import characters.utils.EnemyFactory;
-import combat.Combat;
-import story.StoryTeller;
+import rpggame.combat.Combat;
+import rpggame.player.Player;
+import rpggame.story.StoryTeller;
+import rpggame.utils.EnemyFactory;
 
 public class RpgGameApp {
 
