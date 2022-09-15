@@ -14,7 +14,7 @@ public class BareMagicHands implements Weapon {
 	public int getAgilityRequired() {
 		return agilityRequired;
 	}
-	
+
 	public int getIntelligenceRequired() {
 		return this.intelligenceRequired;
 	}

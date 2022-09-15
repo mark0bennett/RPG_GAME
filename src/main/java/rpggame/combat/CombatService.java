@@ -18,18 +18,15 @@ public class CombatService {
 		this.enemyFactory = new EnemyFactory();
 	}
 
-	// TODO: CREATE NEW ENEMIES IN HERE SOEMWHERE
 	public boolean oneEnemy(Player player, int level, boolean withCrits) throws InterruptedException {
 		boolean wonBattle = false;
 
 		printCombatHasBegun();
 		player.printBackpack();
 		pickWeapon(player);
-		// TODO: ENEMY CREATED HERE - CombatService needs its own EnemyFactory
 		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, level);
 		printVersusText(player, enemy);
 
-		// then into a while loop to attack and count hp(strength) during combat
 		int playerStrengthBeforeCombat = player.getStrength();
 		System.out.println("Combat is automated for now...");
 
@@ -75,7 +72,7 @@ public class CombatService {
 
 		// TODO: Need to create attackWithNoCritsTwoEnemies
 		if (!withCrits) {
-			wonBattle = attacksWithNoCrits(player, enemy);
+			wonBattle = attacksWithNoCritsTwoEnemies(player, enemy, enemy2);
 		}
 
 		if (withCrits) {
@@ -397,6 +394,92 @@ public class CombatService {
 						.println("Second Enemy attacks for " + enemy2Attack + " damage plus " + enemy2Crit + " Crit!");
 				// enemy strength changed from attack
 				player.setStrength(player.getStrength() - (enemy2Attack + enemy2Crit));
+				StoryTellerService.nextLine(scanner);
+				// check if enemy is dead
+				if (player.getStrength() < 1) {
+					StoryTellerService.nextLine(scanner);
+					System.out.println("You Lost!");
+					wonBattle = false;
+					break;
+				}
+				StoryTellerService.nextLine(scanner);
+				System.out.println("--------------------------");
+				StoryTellerService.nextLine(scanner);
+				System.out.println(player);
+				StoryTellerService.nextLine(scanner);
+				System.out.println(enemy2);
+				StoryTellerService.nextLine(scanner);
+				System.out.println("--------------------------");
+				StoryTellerService.nextLine(scanner);
+			}
+		}
+		return wonBattle;
+	}
+
+	private boolean attacksWithNoCritsTwoEnemies(Player player, Enemy enemy, Enemy enemy2) throws InterruptedException {
+		boolean wonBattle = false;
+		boolean firstEnemyDead = false;
+		while (true) {
+			// TODO: just attacks the first enemy then the second for now, maybe add a
+			// choice later
+			StoryTellerService.nextLine(scanner);
+			int playerAttack = player.attack();
+			// you attack
+			System.out.println("You attack for " + playerAttack + " damage!");
+			// enemy strength changed from attack
+			enemy.setStrength(enemy.getStrength() - playerAttack);
+			StoryTellerService.nextLine(scanner);
+			// check if first enemy is dead
+			if (enemy.getStrength() < 1) {
+				System.out.println("You Killed the first Enemy!");
+				firstEnemyDead = true;
+				break;
+			}
+			// enemy attacks
+			int enemyAttack = enemy.attack();
+			System.out.println("Enemy attacks for " + enemyAttack + " damage!");
+			// enemy strength changed from attack
+			player.setStrength(player.getStrength() - enemyAttack);
+			StoryTellerService.nextLine(scanner);
+			// check if enemy is dead
+			if (player.getStrength() < 1) {
+				StoryTellerService.nextLine(scanner);
+				System.out.println("You Lost!");
+				wonBattle = false;
+				break;
+			}
+			StoryTellerService.nextLine(scanner);
+			System.out.println("--------------------------");
+			StoryTellerService.nextLine(scanner);
+			System.out.println(player);
+			StoryTellerService.nextLine(scanner);
+			System.out.println(enemy);
+			StoryTellerService.nextLine(scanner);
+			System.out.println(enemy2);
+			StoryTellerService.nextLine(scanner);
+			System.out.println("--------------------------");
+			StoryTellerService.nextLine(scanner);
+		}
+
+		if (firstEnemyDead) {
+			while (true) {
+				int playerAttack = player.attack();
+				// you attack
+				System.out.println("You attack the second enemy for " + playerAttack + " damage!!");
+				// enemy strength changed from attack
+				enemy2.setStrength(enemy2.getStrength() - playerAttack);
+				StoryTellerService.nextLine(scanner);
+				// check if second enemy is dead
+				if (enemy2.getStrength() < 1) {
+					System.out.println("You Killed the second Enemy and Won!");
+					wonBattle = true;
+					break;
+				}
+				// enemy attacks
+				int enemy2Attack = enemy2.attack();
+				System.out.println("Second Enemy attacks for " + enemy2Attack + " damage!");
+				// enemy strength changed from attack
+				player.setStrength(player.getStrength() - enemy2Attack);
 				StoryTellerService.nextLine(scanner);
 				// check if enemy is dead
 				if (player.getStrength() < 1) {

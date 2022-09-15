@@ -7,7 +7,7 @@ import rpggame.weapon.WeaponType;
 
 public class Enemy {
 
-	// will we create an Enemy Interface?
+	// TODO: will we create an Enemy Interface?
 	private int strength;
 	private int intelligence;
 	private int agility;
@@ -29,15 +29,11 @@ public class Enemy {
 		}
 		return attackDamage;
 	}
-	
+
 	public int[] attackCrit() {
 		Random random = new Random();
-		int[] attackDamage = {0,0};
+		int[] attackDamage = { 0, 0 };
 
-		// note the crit amount when it happens, can be 0 too, can we return an int[] with both numbers?
-
-		// if agi weapon, crit is random between 0 and your int
-		// if int weapon crit is random between 0 and your agi
 		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
 			attackDamage[0] = this.agility + this.weapon.getDamage();
 			attackDamage[1] = random.nextInt(this.intelligence);

@@ -10,11 +10,11 @@ import rpggame.weapon.Weapon;
 
 public class EnemyFactory {
 
-	// all weapons in a List
+	// all weapons into a List from csv file
 	private List<Weapon> weaponList = AllWeaponsListCreator.createListAllWeaponsFromCsvFile();
 	private Random random = new Random();
 
-	// TODO: maybe another class EqualEnemy that extends Enemy? so it can toString
+	// TODO: maybe another class that extends Enemy? so it can toString
 	// something different etc
 
 	public Enemy createEnemyCustomLevel(Player player, int level) {

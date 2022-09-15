@@ -44,11 +44,6 @@ public class Player {
 		Random random = new Random();
 		int[] attackDamage = new int[2];
 
-		// note the crit amount when it happens, can be 0 too, can we return an int[]
-		// with both numbers?
-
-		// if agi weapon, crit is random between 0 and your int
-		// if int weapon crit is random between 0 and your agi
 		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
 			attackDamage[0] = this.agility + this.weapon.getDamage();
 			attackDamage[1] = random.nextInt(this.intelligence);
@@ -62,8 +57,8 @@ public class Player {
 	// TODO: delete weapon from backpack
 	// TODO: sell weapon in backpack
 
-	// this is where we could return something so the text is shown from another
-	// class
+	// TODO:this is where we could return something so the text is shown from
+	// another class
 	// TODO: STILL DOUBLE ADDING WEAPONS WHEN THEY ARE ALREADY IN BACKPACK - doing
 	// it manually for now
 	// TODO: when we add a weapon add it so its in order of damage
@@ -93,12 +88,10 @@ public class Player {
 
 	}
 
-	public void printBackpack() throws InterruptedException {
-		final int MS_500 = 500;
+	public void printBackpack() {
 		// show weapons in backpack
 		System.out.println("Backpack Contents");
 		for (int i = 0; i < this.backPack.size(); i++) {
-			Thread.sleep(MS_500);
 			System.out.println((i + 1) + ": " + this.backPack.get(i));
 		}
 	}

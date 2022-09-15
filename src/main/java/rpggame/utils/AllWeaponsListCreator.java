@@ -25,7 +25,6 @@ public class AllWeaponsListCreator {
 			{
 				String[] weapon = line.split(splitBy);
 				// use comma as separator
-
 				WeaponType weaponType = WeaponType.INTELLIGENCE;
 				if (weapon[4].equals("agility")) {
 					weaponType = WeaponType.AGILITY;

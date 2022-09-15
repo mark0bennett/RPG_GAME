@@ -55,7 +55,5 @@ public class WeaponObject implements Weapon {
 	public String toString() {
 		return this.name;
 	}
-	
-	
 
 }

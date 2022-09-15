@@ -17,16 +17,11 @@ public class RpgGameApp {
 		// add some ascii art
 		// find weapons randomly
 		// package into a jar/exe file for execution on any computer
-
 		// zoidberg isnt dead, you meet him later and he sells agi weapons
 		// prof sells magic weapons
 		// Leela, Amy, Bender when you meet them they increase stats
 
-		// TODO: INSTEAD OF Thread.sleep() - use user input, like spacebar to progress
-		// the text?
-
 		StoryTellerService storyTellerService = new StoryTellerService();
-
 		StoryTeller storyTeller = new StoryTeller(storyTellerService);
 
 		storyTeller.intro();
@@ -38,14 +33,11 @@ public class RpgGameApp {
 
 		storyTeller.meetFry(player);
 
-		// TODO: perhaps now into a while loop? to, go to vendor, contiue journey, save?
 		storyTeller.mainPaths(player);
 
 		System.out.println("now back in main method");
 
 		// TODO: Boss fight with over-levelled boss...or 2
-		StoryTellerService.printPlayer(player);
-
 	}
 
 }
