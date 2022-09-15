@@ -11,7 +11,7 @@ import rpggame.weapon.Weapon;
 public class EnemyFactory {
 
 	// all weapons into a List from csv file
-	private List<Weapon> weaponList = AllWeaponsListCreator.createListAllWeaponsFromCsvFile();
+	private List<Weapon> weaponList = WeaponsListCreator.createListWeaponsFromCsvFile("AllWeapons.csv");
 	private Random random = new Random();
 
 	// TODO: maybe another class that extends Enemy? so it can toString

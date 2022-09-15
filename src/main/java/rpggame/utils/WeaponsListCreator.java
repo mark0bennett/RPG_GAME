@@ -9,9 +9,9 @@ import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponObject;
 import rpggame.weapon.WeaponType;
 
-public class AllWeaponsListCreator {
+public class WeaponsListCreator {
 
-	public static List<Weapon> createListAllWeaponsFromCsvFile() {
+	public static List<Weapon> createListWeaponsFromCsvFile(String fileName) {
 		String line = "";
 		String splitBy = ",";
 		List<Weapon> readWeaponsList = new ArrayList<>();
@@ -19,7 +19,7 @@ public class AllWeaponsListCreator {
 			// parsing a CSV file into BufferedReader class constructor
 			BufferedReader bufferedReader = new BufferedReader(
 					new FileReader(
-							"D:\\Java\\Spring Tools Suite\\Projects\\RPG_GAME\\src\\main\\java\\rpggame\\weapon\\AllWeapons.csv"));
+							"D:\\Java\\Spring Tools Suite\\Projects\\RPG_GAME\\src\\main\\java\\rpggame\\weapon\\" + fileName));
 			while ((line = bufferedReader.readLine()) != null)
 			// returns a Boolean value
 			{
@@ -39,7 +39,6 @@ public class AllWeaponsListCreator {
 
 				readWeaponsList.add(newWeapon);
 			}
-
 			bufferedReader.close();
 
 		} catch (Exception e) {

@@ -49,6 +49,10 @@ public class Enemy {
 	public Weapon dropWeapon() {
 		return this.weapon;
 	}
+	
+	public String getName() {
+		return this.name;
+	}
 
 	public int getStrength() {
 		return strength;
@@ -76,7 +80,7 @@ public class Enemy {
 
 	@Override
 	public String toString() {
-		return this.name + ": " + "Strength: " + strength + " Agility: " + agility + " Intelligence: " + intelligence
+		return this.name + " - " + "Strength: " + strength + " Agility: " + agility + " Intelligence: " + intelligence
 				+ ", Weapon: " + weapon;
 	}
 

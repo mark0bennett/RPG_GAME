@@ -18,7 +18,7 @@ public class RpgGameApp {
 		// find weapons randomly
 		// package into a jar/exe file for execution on any computer
 		// zoidberg isnt dead, you meet him later and he sells agi weapons
-		// prof sells magic weapons
+		// prof sells magic weapons, Weapons will need a price too
 		// Leela, Amy, Bender when you meet them they increase stats
 
 		StoryTellerService storyTellerService = new StoryTellerService();
