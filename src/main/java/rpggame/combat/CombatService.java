@@ -172,9 +172,6 @@ public class CombatService {
 			System.out.println("You already have this weapon");
 			StoryTeller.nextLine(scanner);
 		}
-		System.out.println("--------------------------");
-		player.printBackpack();
-		System.out.println("--------------------------");
 	}
 
 	private void increaseStats(Player player) {
@@ -260,7 +257,6 @@ public class CombatService {
 		while (true) {
 			// TODO: just attacks the first enemy then the second for now, maybe add a
 			// choice later
-			StoryTeller.nextLine(scanner);
 			// you attack
 			playerAttackSequenceNoCrits(player, enemy);
 			StoryTeller.nextLine(scanner);
@@ -316,7 +312,6 @@ public class CombatService {
 		while (true) {
 			// TODO: just attacks the first enemy then the second for now, maybe add a
 			// choice later
-			StoryTeller.nextLine(scanner);
 			// you attack
 			playerAttackSequenceWithCrits(player, enemy);
 			StoryTeller.nextLine(scanner);
