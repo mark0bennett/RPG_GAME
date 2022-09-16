@@ -17,6 +17,7 @@ public class Player {
 	private String name;
 	private Weapon weapon;
 	private List<Weapon> backPack;
+	private int nixonBucks;
 
 	public Player(String name, int strength, int agility, int intelligence) {
 		this.name = name;
@@ -28,6 +29,7 @@ public class Player {
 
 		this.backPack.add(this.weapon);
 		this.backPack.add(new BareMagicHands());
+		this.nixonBucks = 0;
 	}
 
 	public int getAttackDamage() {
@@ -93,6 +95,14 @@ public class Player {
 		return currentStatPoints;
 	}
 
+	public int getNixonBucks() {
+		return nixonBucks;
+	}
+
+	public void setNixonBucks(int nixonBucks) {
+		this.nixonBucks = nixonBucks;
+	}
+
 	public int getStrength() {
 		return strength;
 	}
@@ -136,7 +146,7 @@ public class Player {
 	@Override
 	public String toString() {
 		return name + " - Strength: " + strength + ", Agility: " + agility + ", Intelligence: " + intelligence
-				+ ", Weapon: " + weapon;
+				+ ", Weapon: " + weapon + ", NixonBucks: " + this.nixonBucks;
 	}
 
 }

@@ -1,5 +1,6 @@
 package rpggame.combat;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import rpggame.enemy.Enemy;
@@ -46,7 +47,7 @@ public class CombatService {
 		}
 
 		if (wonBattle) {
-			showAndAddDroppedWeapon(player, enemy);
+			showAndAddDroppedWeaponAndMoney(player, enemy);
 			System.out.println("You can now increase one of your stats by 1");
 			increaseStats(player);
 			printWinText(player);
@@ -69,9 +70,7 @@ public class CombatService {
 		printVersusTextTwoEnemies(player, enemy, enemy2);
 
 		int playerStrengthBeforeCombat = player.getStrength();
-		System.out.println("Combat is automated for now...");
 
-		// TODO: Need to create attackWithNoCritsTwoEnemies
 		if (!withCrits) {
 			wonBattle = attacksWithNoCritsTwoEnemies(player, enemy, enemy2);
 		}
@@ -87,9 +86,9 @@ public class CombatService {
 		}
 
 		if (wonBattle) {
-			showAndAddDroppedWeapon(player, enemy);
+			showAndAddDroppedWeaponAndMoney(player, enemy);
 			// TODO: this is lazy, reusing same method for 2nd enemy
-			showAndAddDroppedWeapon(player, enemy2);
+			showAndAddDroppedWeaponAndMoney(player, enemy2);
 			StoryTeller.nextLine(scanner);
 			System.out.println("You can now increase one of your stats by 1");
 			increaseStats(player);
@@ -141,9 +140,14 @@ public class CombatService {
 		}
 	}
 
-	private void showAndAddDroppedWeapon(Player player, Enemy enemy) {
+	private void showAndAddDroppedWeaponAndMoney(Player player, Enemy enemy) {
 		// enemy drops weapon and auto added to your backpack
 		System.out.println("--------------------------");
+		// enemy drops randomised money between 0 and strength
+		Random random = new Random();
+		int moneyDropped = random.nextInt(enemy.getStrength());
+		player.setNixonBucks(player.getNixonBucks() + moneyDropped);
+		System.out.println("NixonBucks collected");
 		StoryTeller.nextLine(scanner);
 		System.out.println(enemy.getName() + " dropped their weapon...");
 		Weapon droppedWeapon = enemy.dropWeapon();

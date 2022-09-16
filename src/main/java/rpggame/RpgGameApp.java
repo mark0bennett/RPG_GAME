@@ -21,6 +21,7 @@ public class RpgGameApp {
 		// prof sells magic weapons, Weapons will need a price too
 		// Leela, Amy, Bender when you meet them they increase stats
 		//TODO: Combat Interface and remove CombatService?
+		//TODO: enemies drop Nixonbucks - add Player instance variable money
 
 		Story storyTeller = new StoryTeller();
 
