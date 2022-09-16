@@ -30,7 +30,8 @@ public class CombatService {
 		printVersusText(player, enemy);
 
 		int playerStrengthBeforeCombat = player.getStrength();
-		System.out.println("Combat is automated for now...");
+		// for dropping money
+		int enemyStrengthBeforeCombat = enemy.getStrength();
 
 		if (!withCrits) {
 			wonBattle = attacksWithNoCritsOneEnemy(player, enemy);
@@ -47,7 +48,7 @@ public class CombatService {
 		}
 
 		if (wonBattle) {
-			showAndAddDroppedWeaponAndMoney(player, enemy);
+			showAndAddDroppedWeaponAndMoney(player, enemy, enemyStrengthBeforeCombat);
 			System.out.println("You can now increase one of your stats by 1");
 			increaseStats(player);
 			printWinText(player);
@@ -69,7 +70,10 @@ public class CombatService {
 		Enemy enemy2 = enemyFactory.createEnemyCustomLevel(player, name2, level2);
 		printVersusTextTwoEnemies(player, enemy, enemy2);
 
+		// for restoring health
 		int playerStrengthBeforeCombat = player.getStrength();
+		// for dropping money
+		int enemyStrengthBeforeCombat = enemy.getStrength();
 
 		if (!withCrits) {
 			wonBattle = attacksWithNoCritsTwoEnemies(player, enemy, enemy2);
@@ -86,9 +90,9 @@ public class CombatService {
 		}
 
 		if (wonBattle) {
-			showAndAddDroppedWeaponAndMoney(player, enemy);
+			showAndAddDroppedWeaponAndMoney(player, enemy, enemyStrengthBeforeCombat);
 			// TODO: this is lazy, reusing same method for 2nd enemy
-			showAndAddDroppedWeaponAndMoney(player, enemy2);
+			showAndAddDroppedWeaponAndMoney(player, enemy2, enemyStrengthBeforeCombat);
 			StoryTeller.nextLine(scanner);
 			System.out.println("You can now increase one of your stats by 1");
 			increaseStats(player);
@@ -140,14 +144,14 @@ public class CombatService {
 		}
 	}
 
-	private void showAndAddDroppedWeaponAndMoney(Player player, Enemy enemy) {
+	private void showAndAddDroppedWeaponAndMoney(Player player, Enemy enemy, int enemyStrengthBeforeCombat) {
 		// enemy drops weapon and auto added to your backpack
 		System.out.println("--------------------------");
 		// enemy drops randomised money between 0 and strength
 		Random random = new Random();
-		int moneyDropped = random.nextInt(enemy.getStrength());
+		int moneyDropped = random.nextInt(enemyStrengthBeforeCombat);
 		player.setNixonBucks(player.getNixonBucks() + moneyDropped);
-		System.out.println("NixonBucks collected");
+		System.out.println(moneyDropped + " NixonBucks collected");
 		StoryTeller.nextLine(scanner);
 		System.out.println(enemy.getName() + " dropped their weapon...");
 		Weapon droppedWeapon = enemy.dropWeapon();

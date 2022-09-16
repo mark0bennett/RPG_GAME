@@ -382,6 +382,7 @@ nextLine(scanner);
 
 	public static void nextLine(Scanner scanner) {
 		String input = scanner.nextLine();
+		input.strip();
 	}
 
 	public static void printPlayer(Player player) {
