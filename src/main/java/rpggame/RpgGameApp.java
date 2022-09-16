@@ -30,8 +30,6 @@ public class RpgGameApp {
 		Player player = storyTeller.createPlayer();
 		StoryTeller.printPlayer(player);
 
-		storyTeller.mainPathsSplit(player);
-
 		storyTeller.startFirstFight(player);
 
 		storyTeller.firstPathsSplit(player);

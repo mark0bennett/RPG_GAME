@@ -10,13 +10,16 @@ public class WeaponObject implements Weapon {
 	private int agilityRequired;
 	private int intelligenceRequired;
 	private WeaponType weaponType;
+	private int price;
 
-	public WeaponObject(String name, int damage, int agilityRequired, int intelligenceRequired, WeaponType weaponType) {
+	public WeaponObject(String name, int damage, int agilityRequired, int intelligenceRequired, WeaponType weaponType,
+			int price) {
 		this.name = name;
 		this.damage = damage;
 		this.agilityRequired = agilityRequired;
 		this.intelligenceRequired = intelligenceRequired;
 		this.weaponType = weaponType;
+		this.price = price;
 	}
 
 	@Override
@@ -39,6 +42,11 @@ public class WeaponObject implements Weapon {
 		return this.weaponType;
 	}
 
+	@Override
+	public int getPrice() {
+		return this.price;
+	}
+
 	// TODO: this equals method not working? had to do it manually in Combat Class,
 	// when adding to backpack
 	@Override
@@ -54,11 +62,6 @@ public class WeaponObject implements Weapon {
 	@Override
 	public String toString() {
 		return this.name;
-	}
-
-	@Override
-	public int getPrice() {
-		return 0;
 	}
 
 }

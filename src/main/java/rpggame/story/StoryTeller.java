@@ -365,8 +365,7 @@ public class StoryTeller implements Story {
 		return robotArmsCompleted;
 	}
 
-	private List<Weapon> farnsworthWeapons = WeaponsListCreator
-			.createListWeaponsFromCsvFile("WeaponsFarnsworth.csv");
+	private List<Weapon> farnsworthWeapons = WeaponsListCreator.createListWeaponsFromCsvFile("WeaponsFarnsworth.csv");
 
 	private void startLaboratory(Player player) {
 		System.out.println("YOU ENTER THE LABORATORY - A big sign reads - 'PLANET EXPRESS'");
@@ -376,7 +375,8 @@ public class StoryTeller implements Story {
 			System.out.println("Your NixonBucks: " + player.getNixonBucks());
 			System.out.println("1: EXIT");
 			for (int i = 0; i < farnsworthWeapons.size(); i++) {
-				System.out.println((i + 2) + ": " + farnsworthWeapons.get(i) + " Price: " + farnsworthWeapons.get(i).getPrice());
+				System.out.println(
+						(i + 2) + ": " + farnsworthWeapons.get(i) + " - Price: " + farnsworthWeapons.get(i).getPrice());
 			}
 
 			try {
@@ -414,11 +414,54 @@ public class StoryTeller implements Story {
 		}
 	}
 
+	private List<Weapon> zoidbergWeapons = WeaponsListCreator.createListWeaponsFromCsvFile("WeaponsFarnsworth.csv");
+
 	private void startDumpster(Player player) {
 		System.out.println("YOU WALK UP TO THE DUMPSTER'");
-		// can sell items from another csv
-		System.out.println("zoidberg does something, sells special agi items?");
 		System.out.println("I know you saw my gravestone, but look im not dead");
+
+		int choice = 0;
+		while (true) {
+			System.out.println("Your NixonBucks: " + player.getNixonBucks());
+			System.out.println("1: EXIT");
+			for (int i = 0; i < zoidbergWeapons.size(); i++) {
+				System.out.println(
+						(i + 2) + ": " + zoidbergWeapons.get(i) + " - Price: " + zoidbergWeapons.get(i).getPrice());
+			}
+
+			try {
+				choice = Integer.valueOf(scanner.nextLine());
+				// throw exception if number not typed in
+			} catch (Exception e) {
+				System.out.println("Type a number that exists in your backpack");
+				continue;
+			}
+			if (choice == Integer.parseInt("1")) {
+				break;
+			}
+			// if number doesnt exist in backpack, continue
+			else if (choice > zoidbergWeapons.size() + 1 || choice <= 0) {
+				System.out.println("No weapon exists there");
+				continue;
+			}
+
+			else if (player.getNixonBucks() < zoidbergWeapons.get(choice - 2).getPrice()) {
+				System.out.println("You don't have enough NixonBucks for this weapon");
+				continue;
+			} else {
+				// else add weapon to backpack weapon
+				boolean alreadyInBackpack = player.checkForWeaponInBackpack(zoidbergWeapons.get(choice - 2));
+				if (alreadyInBackpack == true) {
+					System.out.println("You already have this weapon");
+					continue;
+				} else {
+					player.addWeaponToBackpack(zoidbergWeapons.get(choice - 2));
+					System.out.println("Weapon Bought and Added to BackPack");
+					player.setNixonBucks(player.getNixonBucks() - zoidbergWeapons.get(choice - 2).getPrice());
+					continue;
+				}
+			}
+		}
 	}
 
 	private void afterMainPaths() {
