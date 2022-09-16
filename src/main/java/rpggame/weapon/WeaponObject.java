@@ -56,4 +56,9 @@ public class WeaponObject implements Weapon {
 		return this.name;
 	}
 
+	@Override
+	public int getPrice() {
+		return 0;
+	}
+
 }

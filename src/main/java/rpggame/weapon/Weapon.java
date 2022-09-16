@@ -10,6 +10,8 @@ public interface Weapon {
 	int getAgilityRequired();
 
 	int getIntelligenceRequired();
+	
+	int getPrice();
 
 	WeaponType getWeaponType();
 

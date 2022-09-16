@@ -1,9 +1,12 @@
 package rpggame.story;
 
+import java.util.List;
 import java.util.Scanner;
 
 import rpggame.combat.Combat;
 import rpggame.player.Player;
+import rpggame.utils.WeaponsListCreator;
+import rpggame.weapon.Weapon;
 
 public class StoryTeller implements Story {
 
@@ -161,7 +164,7 @@ public class StoryTeller implements Story {
 		System.out.println("*CRASH!!!!!!!!*");
 		nextLine(scanner);
 		System.out.println("Preacherbot: 'Sinner, feel the cold metal love of Robotology!'");
-nextLine(scanner);
+		nextLine(scanner);
 		boolean churchCompleted = combat.oneEnemy(player, "Preacherbot", 0, false);
 		return churchCompleted;
 	}
@@ -184,7 +187,7 @@ nextLine(scanner);
 		System.out.println("Zombie Jesus: 'They nailed me to the cross, this time it's personal'");
 		nextLine(scanner);
 		System.out.println("Man I hate Zombies, have it you!");
-nextLine(scanner);
+		nextLine(scanner);
 		boolean graveyardCompleted = combat.oneEnemy(player, "Zombie Jesus", 0, false);
 		return graveyardCompleted;
 	}
@@ -200,7 +203,7 @@ nextLine(scanner);
 		nextLine(scanner);
 		System.out.println(
 				"Ranger Park: 'But what nice feet you have, if I chop of your feet they could almost be mistaken for Bigfoot's'");
-nextLine(scanner);
+		nextLine(scanner);
 		boolean forestCompleted = combat.oneEnemy(player, "Ranger Park the Park Ranger", 0, false);
 		return forestCompleted;
 	}
@@ -362,11 +365,53 @@ nextLine(scanner);
 		return robotArmsCompleted;
 	}
 
+	private List<Weapon> farnsworthWeapons = WeaponsListCreator
+			.createListWeaponsFromCsvFile("WeaponsFarnsworth.csv");
+
 	private void startLaboratory(Player player) {
-		System.out.println("YOU ENTER THE LABORATORY - A BIG SIGN 'PLANET EXPRESS'");
-		// can sell items from another csv
-		System.out.println("the professor does something, sells special magic items?");
-		System.out.println("finally we can meet in safety");
+		System.out.println("YOU ENTER THE LABORATORY - A big sign reads - 'PLANET EXPRESS'");
+		// professor formal introduction and talk
+		int choice = 0;
+		while (true) {
+			System.out.println("Your NixonBucks: " + player.getNixonBucks());
+			System.out.println("1: EXIT");
+			for (int i = 0; i < farnsworthWeapons.size(); i++) {
+				System.out.println((i + 2) + ": " + farnsworthWeapons.get(i) + " Price: " + farnsworthWeapons.get(i).getPrice());
+			}
+
+			try {
+				choice = Integer.valueOf(scanner.nextLine());
+				// throw exception if number not typed in
+			} catch (Exception e) {
+				System.out.println("Type a number that exists in your backpack");
+				continue;
+			}
+			if (choice == Integer.parseInt("1")) {
+				break;
+			}
+			// if number doesnt exist in backpack, continue
+			else if (choice > farnsworthWeapons.size() + 1 || choice <= 0) {
+				System.out.println("No weapon exists there");
+				continue;
+			}
+
+			else if (player.getNixonBucks() < farnsworthWeapons.get(choice - 2).getPrice()) {
+				System.out.println("You don't have enough NixonBucks for this weapon");
+				continue;
+			} else {
+				// else add weapon to backpack weapon
+				boolean alreadyInBackpack = player.checkForWeaponInBackpack(farnsworthWeapons.get(choice - 2));
+				if (alreadyInBackpack == true) {
+					System.out.println("You already have this weapon");
+					continue;
+				} else {
+					player.addWeaponToBackpack(farnsworthWeapons.get(choice - 2));
+					System.out.println("Weapon Bought and Added to BackPack");
+					player.setNixonBucks(player.getNixonBucks() - farnsworthWeapons.get(choice - 2).getPrice());
+					continue;
+				}
+			}
+		}
 	}
 
 	private void startDumpster(Player player) {

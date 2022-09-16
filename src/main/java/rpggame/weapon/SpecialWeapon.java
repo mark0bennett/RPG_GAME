@@ -35,6 +35,7 @@ public class SpecialWeapon implements Weapon {
 		return this.intelligenceRequired;
 	}
 
+	@Override
 	public int getPrice() {
 		return this.price;
 	}

@@ -20,14 +20,18 @@ public class RpgGameApp {
 		// zoidberg isnt dead, you meet him later and he sells agi weapons
 		// prof sells magic weapons, Weapons will need a price too
 		// Leela, Amy, Bender when you meet them they increase stats
-		//TODO: Combat Interface and remove CombatService?
-		//TODO: enemies drop Nixonbucks - add Player instance variable money
+		// TODO: Combat Interface and remove CombatService?
+		// TODO: merge WeaponObject and SpecialWeapon (have to add a price of 0 to
+		// WeaponObjects in csv and pojo and change ListCreator)
 
 		Story storyTeller = new StoryTeller();
 
 		storyTeller.intro();
 		Player player = storyTeller.createPlayer();
 		StoryTeller.printPlayer(player);
+
+		storyTeller.mainPathsSplit(player);
+
 		storyTeller.startFirstFight(player);
 
 		storyTeller.firstPathsSplit(player);

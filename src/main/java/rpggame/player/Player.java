@@ -72,7 +72,7 @@ public class Player {
 		}
 		return alreadyInBackpack;
 	}
-
+	
 	public void addWeaponToBackpack(Weapon weapon) {
 		this.backPack.add(weapon);
 	}

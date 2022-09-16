@@ -28,4 +28,9 @@ public class BareMagicHands implements Weapon {
 		return "Bare Magic Hands Dmg 1";
 	}
 
+	@Override
+	public int getPrice() {
+		return 0;
+	}
+
 }
