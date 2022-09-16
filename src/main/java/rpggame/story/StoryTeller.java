@@ -17,9 +17,13 @@ public class StoryTeller implements Story {
 	private boolean graveyardCompleted;
 	private boolean forestCompleted;
 
-	private static boolean riverCompleted;
-	private static boolean appliedChryogenicsCompleted;
-	private static boolean robotArmsCompleted;
+	private boolean riverCompleted;
+	private boolean appliedChryogenicsCompleted;
+	private boolean robotArmsCompleted;
+
+	private boolean momCorpCompleted;
+	private boolean slurmFactoryCompleted;
+	private boolean fishyJoesCompleted;
 
 	public StoryTeller() {
 		this.scanner = new Scanner(System.in);
@@ -374,7 +378,11 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("Professor: 'You see I messed up an experiment and everyone has gone mad'");
 		nextLine(scanner);
-		System.out.println("Professor: 'I've got some items you might be interested in'");
+		System.out.println("Professor: 'Anyone who wasn't inside here of course'");
+		nextLine(scanner);
+		System.out.println("Professor: 'That's why I had to protect you with my hot glowing orb'");
+		nextLine(scanner);
+		System.out.println("Professor: ' Speaking of hot, I've got some items you might be interested in'");
 		startProfessorVendor(player);
 	}
 
@@ -424,12 +432,25 @@ public class StoryTeller implements Story {
 		}
 	}
 
-	private List<Weapon> zoidbergWeapons = WeaponsListCreator.createListWeaponsFromCsvFile("WeaponsZoidberg.csv");
-
 	private void startDumpster(Player player) {
 		System.out.println("YOU WALK UP TO THE DUMPSTER'");
-		System.out.println("I know you saw my gravestone, but look im not dead");
+		nextLine(scanner);
+		System.out.println("Zoidberg: 'I know you saw my gravestone, but look im not dead'");
+		nextLine(scanner);
+		System.out.println("Zoidberg: 'They all assumed I died but this trusty dumpster protected me'");
+		nextLine(scanner);
+		System.out.println("Zoidberg: 'I should go and let everyone know I'm okay'");
+		nextLine(scanner);
+		System.out.println("Zoidberg: 'Hermes must be worried sick'");
+		nextLine(scanner);
+		System.out.println(
+				"Zoidberg: 'Since your here, I've got some nice items in this dumpster you could take a look at why not?'");
+		startZoidbergVendor(player);
+	}
 
+	private List<Weapon> zoidbergWeapons = WeaponsListCreator.createListWeaponsFromCsvFile("WeaponsZoidberg.csv");
+
+	private void startZoidbergVendor(Player player) {
 		int choice = 0;
 		while (true) {
 			System.out.println("Your NixonBucks: " + player.getNixonBucks());
@@ -475,7 +496,113 @@ public class StoryTeller implements Story {
 	}
 
 	private void afterMainPaths() {
-		System.out.println("THIS IS AFTER MAIN PATHS");
+		System.out.println("Okay then, what to do now?");
+		nextLine(scanner);
+		System.out.println("Professor: 'Stop standing around and go and do something!'");
+		nextLine(scanner);
+	}
+
+	public void lastPathsSplit(Player player) {
+		String choice = "";
+		while (true) {
+			System.out.println("Where do you wish to venture too?");
+			System.out.println("1: MomCorp");
+			System.out.println("2: Slurm factory");
+			System.out.println("3: Place3");
+			System.out.println("4: Professor (Vendor)");
+			System.out.println("5: Zoidberg (Vendor)");
+			System.out.println("6: Hermes (NixonBucks)");
+			System.out.println("7: Leela (Agility)");
+			System.out.println("8: Bender (Strenth)");
+			System.out.println("9: Continue the journey...to the final Boss!");
+
+			choice = scanner.nextLine();
+			if (choice.isBlank()) {
+				continue;
+			}
+
+			else if (choice.equals("1") && momCorpCompleted == false) {
+				momCorpCompleted = startMomCorp(player);
+			} else if (choice.equals("1") && momCorpCompleted == true) {
+				System.out.println("You've already cleared MomCorp");
+				System.out.println("--------------------------");
+				continue;
+			}
+
+			else if (choice.equals("2") && slurmFactoryCompleted == false) {
+				slurmFactoryCompleted = startSlurmFactory(player);
+			} else if (choice.equals("2") && slurmFactoryCompleted == true) {
+				System.out.println("You've already cleared the Slurm Factory");
+				System.out.println("--------------------------");
+				continue;
+			}
+
+			else if (choice.equals("3") && fishyJoesCompleted == false) {
+				fishyJoesCompleted = startFishyJoes(player);
+			} else if (choice.equals("3") && fishyJoesCompleted == true) {
+				System.out.println("You've already cleared Fishy Joe's");
+				System.out.println("--------------------------");
+				continue;
+			}
+
+			else if (choice.equalsIgnoreCase("4")) {
+				startProfessorVendor(player);
+				continue;
+			} else if (choice.equalsIgnoreCase("5")) {
+				startZoidbergVendor(player);
+				continue;
+			}
+
+			else if (choice.equalsIgnoreCase("6")) {
+				startHermes(player);
+				continue;
+			} else if (choice.equalsIgnoreCase("7")) {
+				startLeela(player);
+				continue;
+			} else if (choice.equalsIgnoreCase("8")) {
+				startBender(player);
+				continue;
+			}
+
+			else if (choice.equals("9") && momCorpCompleted == true && slurmFactoryCompleted == true
+					&& fishyJoesCompleted == true) {
+				break;
+			} else {
+				System.out.println("You should probably check out these places first, and clear them out!");
+				continue;
+			}
+
+		}
+	}
+
+	private boolean startMomCorp(Player player) {
+		System.out.println("momcorp - stuff happens");
+		boolean momCorpCompleted = combat.twoEnemies(player, "ENEMY?", 5, "ENEMY?", 5, true);
+		return momCorpCompleted;
+	}
+
+	private boolean startSlurmFactory(Player player) {
+		System.out.println("slurm factory - stuff happens");
+		boolean slurmFactoryCompleted = combat.twoEnemies(player, "ENEMY?", 5, "ENEMY?", 5, true);
+		return slurmFactoryCompleted;
+	}
+
+	private boolean startFishyJoes(Player player) {
+		System.out.println("fishy joes - stuff happens");
+		boolean fishyJoesCompleted = combat.twoEnemies(player, "ENEMY?", 5, "ENEMY?", 5, true);
+		return fishyJoesCompleted;
+	}
+
+	private void startHermes(Player player) {
+		System.out.println("guessing game to win/lose money");
+	}
+
+	private void startLeela(Player player) {
+		System.out.println("plus 1 to agility");
+	}
+
+	private void startBender(Player player) {
+		System.out.println("plus 1 to strength");
 	}
 
 	public static void nextLine(Scanner scanner) {

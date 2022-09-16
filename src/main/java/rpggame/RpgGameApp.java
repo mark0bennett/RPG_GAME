@@ -17,12 +17,8 @@ public class RpgGameApp {
 		// add some ascii art
 		// find weapons randomly
 		// package into a jar/exe file for execution on any computer
-		// zoidberg isnt dead, you meet him later and he sells agi weapons
-		// prof sells magic weapons, Weapons will need a price too
 		// Leela, Amy, Bender when you meet them they increase stats
 		// TODO: Combat Interface and remove CombatService?
-		// TODO: merge WeaponObject and SpecialWeapon (have to add a price of 0 to
-		// WeaponObjects in csv and pojo and change ListCreator)
 
 		Story storyTeller = new StoryTeller();
 
@@ -37,10 +33,12 @@ public class RpgGameApp {
 		storyTeller.meetFirstNPC(player);
 
 		storyTeller.mainPathsSplit(player);
+		
+		storyTeller.lastPathsSplit(player);
 
 		System.out.println("now back in main method");
 
-		// TODO: Boss fight with over-levelled boss...or 2
+		// TODO: Boss fight with over-levelled boss...or 2 - Robot Santa?
 	}
 
 }

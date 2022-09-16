@@ -15,5 +15,7 @@ public interface Story {
 	public void meetFirstNPC(Player player);
 
 	public void mainPathsSplit(Player player);
+	
+	public void lastPathsSplit(Player player);
 
 }
