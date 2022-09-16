@@ -1,6 +1,7 @@
 package rpggame;
 
 import rpggame.player.Player;
+import rpggame.story.Story;
 import rpggame.story.StoryTeller;
 
 public class RpgGameApp {
@@ -19,10 +20,9 @@ public class RpgGameApp {
 		// zoidberg isnt dead, you meet him later and he sells agi weapons
 		// prof sells magic weapons, Weapons will need a price too
 		// Leela, Amy, Bender when you meet them they increase stats
-		//TODO: Story Interface and remove StoryTellerService?
 		//TODO: Combat Interface and remove CombatService?
 
-		StoryTeller storyTeller = new StoryTeller();
+		Story storyTeller = new StoryTeller();
 
 		storyTeller.intro();
 		Player player = storyTeller.createPlayer();

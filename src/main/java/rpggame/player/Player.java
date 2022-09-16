@@ -30,7 +30,7 @@ public class Player {
 		this.backPack.add(new BareMagicHands());
 	}
 
-	public int attack() {
+	public int getAttackDamage() {
 		int attackDamage = 0;
 		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
 			attackDamage = this.agility + this.weapon.getDamage();
@@ -40,7 +40,7 @@ public class Player {
 		return attackDamage;
 	}
 
-	public int[] attackCrit() {
+	public int[] getAttackCritDamage() {
 		Random random = new Random();
 		int[] attackDamage = new int[2];
 
