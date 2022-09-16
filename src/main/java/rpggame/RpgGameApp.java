@@ -18,7 +18,7 @@ public class RpgGameApp {
 		// find weapons randomly
 		// package into a jar/exe file for execution on any computer
 		// Leela, Amy, Bender when you meet them they increase stats
-		// TODO: Combat Interface and remove CombatService?
+		// TODO: Combat Interface and have CombatCrits and CombatNoCrits, have a CombatService for all the doubled methods
 
 		Story storyTeller = new StoryTeller();
 
@@ -38,7 +38,7 @@ public class RpgGameApp {
 
 		System.out.println("now back in main method");
 
-		// TODO: Boss fight with over-levelled boss...or 2 - Robot Santa?
+		// TODO: Boss fight with over-levelled boss...or 2 - Robot Santa? Hypnotoad?
 	}
 
 }
