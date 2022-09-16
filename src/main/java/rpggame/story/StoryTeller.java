@@ -582,27 +582,58 @@ public class StoryTeller implements Story {
 	}
 
 	private boolean startSlurmFactory(Player player) {
-		System.out.println("slurm factory - stuff happens");
-		boolean slurmFactoryCompleted = combat.twoEnemies(player, "ENEMY?", 5, "ENEMY?", 5, true);
+		System.out.println("slurm factory - stuff happens, lose ability to crit");
+		boolean slurmFactoryCompleted = combat.twoEnemies(player, "ENEMY?", 5, "ENEMY?", 5, false);
 		return slurmFactoryCompleted;
 	}
 
 	private boolean startFishyJoes(Player player) {
-		System.out.println("fishy joes - stuff happens");
-		boolean fishyJoesCompleted = combat.twoEnemies(player, "ENEMY?", 5, "ENEMY?", 5, true);
-		return fishyJoesCompleted;
+		int initialPlayerStrength = player.getStrength();
+		boolean fishyJoesCompletedLocal = false;
+		// check that you can actually minus 2 from player strength
+		if (player.getStrength() >= 3) {
+			System.out.println("fishy joes - stuff happens, minus Strength");
+			player.setStrength(initialPlayerStrength - 2);
+			fishyJoesCompletedLocal = combat.twoEnemies(player, "ENEMY?", 5, "ENEMY?", 5, true);
+		} else {
+			fishyJoesCompletedLocal = combat.twoEnemies(player, "ENEMY?", 5, "ENEMY?", 5, true);
+		}
+		player.setStrength(initialPlayerStrength);
+		return fishyJoesCompletedLocal;
 	}
 
 	private void startHermes(Player player) {
-		System.out.println("guessing game to win/lose money");
+		System.out.println("Hermes: 'My Manwich!'");
+		nextLine(scanner);
+		System.out.println("Hermes: 'Seeing that filthy crab back here, I've lost my appetite'");
+		nextLine(scanner);
+		System.out.println("Hermes: 'But not my appetite for some fun with numbers!'");
+		nextLine(scanner);
+		System.out.println("Insert Guessing Game Here :)");
 	}
 
 	private void startLeela(Player player) {
-		System.out.println("plus 1 to agility");
+		System.out.println("Leela: 'Well this is the moment we should have trained for'");
+		nextLine(scanner);
+		System.out.println("Leela: 'But I have got something for you'");
+		nextLine(scanner);
+		System.out.println("Leela: 'Heeeeee-YA'");
+		nextLine(scanner);
+		System.out.println("Your Agility is increased by 1");
+		player.setIntelligence(player.getAgility() + 1);
+		StoryTeller.printPlayer(player);
 	}
 
 	private void startBender(Player player) {
-		System.out.println("plus 1 to strength");
+		System.out.println("Bender: 'Bite my shiny metal ASS'");
+		nextLine(scanner);
+		System.out.println("Bender: 'Worthless Meat Sack..'");
+		nextLine(scanner);
+		System.out.println("Bender: 'You could do with a bit of Bender-ising baby'");
+		nextLine(scanner);
+		System.out.println("Your Strength is increased by 1");
+		player.setIntelligence(player.getStrength() + 1);
+		StoryTeller.printPlayer(player);
 	}
 
 	public static void nextLine(Scanner scanner) {
