@@ -365,11 +365,22 @@ public class StoryTeller implements Story {
 		return robotArmsCompleted;
 	}
 
-	private List<Weapon> farnsworthWeapons = WeaponsListCreator.createListWeaponsFromCsvFile("WeaponsFarnsworth.csv");
-
 	private void startLaboratory(Player player) {
 		System.out.println("YOU ENTER THE LABORATORY - A big sign reads - 'PLANET EXPRESS'");
-		// professor formal introduction and talk
+		nextLine(scanner);
+		System.out.println("Old Man: 'Hello my dear friend, come in, come in'");
+		nextLine(scanner);
+		System.out.println("Old Man: 'I'm Professor Farnsworth and you've got to help me!'");
+		nextLine(scanner);
+		System.out.println("Professor: 'You see I messed up an experiment and everyone has gone mad'");
+		nextLine(scanner);
+		System.out.println("Professor: 'I've got some items you might be interested in'");
+		startProfessorVendor(player);
+	}
+
+	private List<Weapon> farnsworthWeapons = WeaponsListCreator.createListWeaponsFromCsvFile("WeaponsFarnsworth.csv");
+
+	private void startProfessorVendor(Player player) {
 		int choice = 0;
 		while (true) {
 			System.out.println("Your NixonBucks: " + player.getNixonBucks());
@@ -378,7 +389,6 @@ public class StoryTeller implements Story {
 				System.out.println(
 						(i + 2) + ": " + farnsworthWeapons.get(i) + " - Price: " + farnsworthWeapons.get(i).getPrice());
 			}
-
 			try {
 				choice = Integer.valueOf(scanner.nextLine());
 				// throw exception if number not typed in
@@ -414,7 +424,7 @@ public class StoryTeller implements Story {
 		}
 	}
 
-	private List<Weapon> zoidbergWeapons = WeaponsListCreator.createListWeaponsFromCsvFile("WeaponsFarnsworth.csv");
+	private List<Weapon> zoidbergWeapons = WeaponsListCreator.createListWeaponsFromCsvFile("WeaponsZoidberg.csv");
 
 	private void startDumpster(Player player) {
 		System.out.println("YOU WALK UP TO THE DUMPSTER'");
