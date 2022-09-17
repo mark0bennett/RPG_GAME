@@ -19,7 +19,7 @@ public class RpgGameApp {
 		// TODO: Combat Interface and have CombatCrits and CombatNoCrits, have a CombatService for all the doubled methods?
 		//TODO: split up story teller into Act I Act II and Act III???
 		
-		//TODO: 2 enemies you already have this weapon - need to hit enter twice to progress?
+		//TODO: Delete weapon option at pickWeapon();
 
 		Story storyTeller = new StoryTeller();
 
