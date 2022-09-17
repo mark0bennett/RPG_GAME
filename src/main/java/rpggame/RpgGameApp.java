@@ -18,6 +18,8 @@ public class RpgGameApp {
 		// package into a jar/exe file for execution on any computer
 		// TODO: Combat Interface and have CombatCrits and CombatNoCrits, have a CombatService for all the doubled methods?
 		//TODO: split up story teller into Act I Act II and Act III???
+		
+		//TODO: 2 enemies you already have this weapon - need to hit enter twice to progress?
 
 		Story storyTeller = new StoryTeller();
 

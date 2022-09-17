@@ -1,11 +1,21 @@
 package rpggame.weapon;
 
-public class BareMagicHands implements Weapon {
+public class BareMagicHands extends Weapon {
 
-	private int damage = 1;
-	private int agilityRequired = 1;
-	private int intelligenceRequired = 1;
-	private WeaponType weaponType = WeaponType.INTELLIGENCE;
+	private String name;
+	private int damage;
+	private int agilityRequired;
+	private int intelligenceRequired;
+	private WeaponType weaponType;
+	private int price;
+
+	public BareMagicHands() {
+		super("Bare Magic Hands (Dmg 1)", 1, 1, 1, WeaponType.INTELLIGENCE, 0);
+	}
+
+	public String getName() {
+		return name;
+	}
 
 	public int getDamage() {
 		return damage;
@@ -16,21 +26,15 @@ public class BareMagicHands implements Weapon {
 	}
 
 	public int getIntelligenceRequired() {
-		return this.intelligenceRequired;
+		return intelligenceRequired;
 	}
 
 	public WeaponType getWeaponType() {
-		return this.weaponType;
+		return weaponType;
 	}
 
-	@Override
-	public String toString() {
-		return "Bare Magic Hands Dmg 1";
-	}
-
-	@Override
 	public int getPrice() {
-		return 0;
+		return price;
 	}
 
 }

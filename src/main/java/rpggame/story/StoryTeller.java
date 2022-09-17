@@ -34,10 +34,11 @@ public class StoryTeller implements Story {
 	}
 
 	public void intro() {
-		System.out.println("--------------------------");
+		printLineBreak();
 		System.out.println("WELCOME TO - RPG_GAME -");
+		printLineBreak();
 		System.out.println("Press 'Enter' to advance the text");
-		System.out.println("--------------------------");
+		printLineBreak();
 		System.out.println("You are walking minding your own business, as you do, when...");
 		nextLine(scanner);
 		System.out.println("Something appears from the darkness!");
@@ -50,7 +51,7 @@ public class StoryTeller implements Story {
 		System.out.println("...and it engulfs your whole body");
 		nextLine(scanner);
 		System.out.println("Before the old man leaves he has a few important questions...");
-		System.out.println("--------------------------");
+		printLineBreak();
 		nextLine(scanner);
 	}
 
@@ -140,7 +141,7 @@ public class StoryTeller implements Story {
 				churchCompleted = startChurch(player);
 			} else if (choice.equals("1") && churchCompleted) {
 				System.out.println("You've already cleared the Church");
-				System.out.println("--------------------------");
+				printLineBreak();
 				continue;
 			}
 
@@ -148,7 +149,7 @@ public class StoryTeller implements Story {
 				graveyardCompleted = startGraveyard(player);
 			} else if (choice.equals("2") && graveyardCompleted) {
 				System.out.println("You've already cleared the Graveyard");
-				System.out.println("--------------------------");
+				printLineBreak();
 				continue;
 			}
 
@@ -156,7 +157,7 @@ public class StoryTeller implements Story {
 				forestCompleted = startForest(player);
 			} else if (choice.equals("3") && forestCompleted) {
 				System.out.println("You've already cleared the Graveyard");
-				System.out.println("--------------------------");
+				printLineBreak();
 				continue;
 			}
 		}
@@ -238,7 +239,7 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("*ZAP* - he's gone");
 		nextLine(scanner);
-		System.out.println("--------------------------");
+		printLineBreak();
 		combat.oneEnemy(player, "LRRR Ruler of the Planet Omicron Persei 8", 2, true);
 	}
 
@@ -290,7 +291,7 @@ public class StoryTeller implements Story {
 				riverCompleted = startRiver(player);
 			} else if (choice.equals("1") && riverCompleted) {
 				System.out.println("You've already cleared the River");
-				System.out.println("--------------------------");
+				printLineBreak();
 				continue;
 			}
 
@@ -298,7 +299,7 @@ public class StoryTeller implements Story {
 				appliedChryogenicsCompleted = startAppliedChryogenics(player);
 			} else if (choice.equals("2") && appliedChryogenicsCompleted) {
 				System.out.println("You've already cleared Applied Chryogenics");
-				System.out.println("--------------------------");
+				printLineBreak();
 				continue;
 			}
 
@@ -306,7 +307,7 @@ public class StoryTeller implements Story {
 				robotArmsCompleted = startRobotArms(player);
 			} else if (choice.equals("3") && robotArmsCompleted) {
 				System.out.println("You've already cleared Robot Arms Apartments");
-				System.out.println("--------------------------");
+				printLineBreak();
 				continue;
 			}
 
@@ -544,7 +545,7 @@ public class StoryTeller implements Story {
 				momCorpCompleted = startMomCorp(player);
 			} else if (choice.equals("1") && momCorpCompleted) {
 				System.out.println("You've already cleared MomCorp");
-				System.out.println("--------------------------");
+				printLineBreak();
 				continue;
 			}
 
@@ -552,7 +553,7 @@ public class StoryTeller implements Story {
 				slurmFactoryCompleted = startSlurmFactory(player);
 			} else if (choice.equals("2") && slurmFactoryCompleted) {
 				System.out.println("You've already cleared the Slurm Factory");
-				System.out.println("--------------------------");
+				printLineBreak();
 				continue;
 			}
 
@@ -560,7 +561,7 @@ public class StoryTeller implements Story {
 				fishyJoesCompleted = startFishyJoes(player);
 			} else if (choice.equals("3") && fishyJoesCompleted) {
 				System.out.println("You've already cleared Fishy Joe's");
-				System.out.println("--------------------------");
+				printLineBreak();
 				continue;
 			}
 
@@ -783,9 +784,14 @@ public class StoryTeller implements Story {
 	}
 
 	public static void printPlayer(Player player) {
-		System.out.println("--------------------------");
+		printLineBreak();
 		System.out.println(player);
-		System.out.println("--------------------------");
+		printLineBreak();
+	}
+
+	public static void printLineBreak() {
+		System.out.println(
+				"----------------------------------------------------------------------------------------------------");
 	}
 
 }

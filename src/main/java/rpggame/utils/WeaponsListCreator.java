@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rpggame.weapon.Weapon;
-import rpggame.weapon.WeaponObject;
+import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
 
 public class WeaponsListCreator {
@@ -31,7 +31,7 @@ public class WeaponsListCreator {
 					weaponType = WeaponType.AGILITY;
 				}
 
-				Weapon newWeapon = new WeaponObject(
+				Weapon newWeapon = new Weapon(
 						weapon[0],
 						Integer.parseInt(weapon[1]),
 						Integer.parseInt(weapon[2]),
