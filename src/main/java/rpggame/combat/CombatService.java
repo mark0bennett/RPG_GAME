@@ -152,7 +152,11 @@ public class CombatService {
 		// enemy drops randomised money between 0 and strength
 		int moneyDropped = random.nextInt(enemyStrengthBeforeCombat);
 		player.setNixonBucks(player.getNixonBucks() + moneyDropped);
+		if(moneyDropped == 1) {
+			System.out.println(moneyDropped + " NixonBuck collected");
+		} else {
 		System.out.println(moneyDropped + " NixonBucks collected");
+		}
 		StoryTeller.nextLine(scanner);
 		System.out.println(enemy.getName() + " dropped their weapon...");
 		Weapon droppedWeapon = enemy.dropWeapon();
@@ -168,10 +172,8 @@ public class CombatService {
 		if (!alreadyInBackpack) {
 			player.addWeaponToBackpack(droppedWeapon);
 			System.out.println("Weapon added to backpack");
-			StoryTeller.nextLine(scanner);
 		} else {
 			System.out.println("You already have this weapon");
-			StoryTeller.nextLine(scanner);
 		}
 	}
 
@@ -262,6 +264,7 @@ public class CombatService {
 			// check if first enemy is dead
 			if (enemy.getStrength() < 1) {
 				System.out.println("You Killed " + enemy.getName());
+				StoryTeller.nextLine(scanner);
 				firstEnemyDead = true;
 				break;
 			}
@@ -315,6 +318,7 @@ public class CombatService {
 			// check if first enemy is dead
 			if (enemy.getStrength() < 1) {
 				System.out.println("You Killed " + enemy.getName());
+				StoryTeller.nextLine(scanner);
 				firstEnemyDead = true;
 				break;
 			}

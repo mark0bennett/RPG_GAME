@@ -319,6 +319,7 @@ public class StoryTeller implements Story {
 				break;
 			} else {
 				System.out.println("You should probably check out these places first, and clear them out!");
+				nextLine(scanner);
 				continue;
 			}
 		}
@@ -371,20 +372,28 @@ public class StoryTeller implements Story {
 		return robotArmsCompleted;
 	}
 
+	private boolean doneLaboratoryOnceAlready = false;
+
 	private void startLaboratory(Player player) {
-		System.out.println("YOU ENTER THE LABORATORY - A big sign reads - 'PLANET EXPRESS'");
-		nextLine(scanner);
-		System.out.println("Old Man: 'Hello my dear friend, come in, come in'");
-		nextLine(scanner);
-		System.out.println("Old Man: 'I'm Professor Farnsworth and you've got to help me!'");
-		nextLine(scanner);
-		System.out.println("Professor: 'You see I messed up an experiment and everyone has gone mad'");
-		nextLine(scanner);
-		System.out.println("Professor: 'Anyone who wasn't inside here of course'");
-		nextLine(scanner);
-		System.out.println("Professor: 'That's why I had to protect you with my hot glowing orb'");
-		nextLine(scanner);
-		System.out.println("Professor: ' Speaking of hot, I've got some items you might be interested in'");
+		if (!doneLaboratoryOnceAlready) {
+			doneLaboratoryOnceAlready = true;
+			System.out.println("YOU ENTER THE LABORATORY - A big sign reads - 'PLANET EXPRESS'");
+			nextLine(scanner);
+			System.out.println("Old Man: 'Hello my dear friend, come in, come in'");
+			nextLine(scanner);
+			System.out.println("Old Man: 'I'm Professor Farnsworth and you've got to help me!'");
+			nextLine(scanner);
+			System.out.println("Professor: 'You see I messed up an experiment and everyone has gone mad'");
+			nextLine(scanner);
+			System.out.println("Professor: 'Anyone who wasn't inside here of course'");
+			nextLine(scanner);
+			System.out.println("Professor: 'That's why I had to protect you with my hot glowing orb'");
+			nextLine(scanner);
+			System.out.println("Professor: ' Speaking of hot, I've got some items you might be interested in'");
+		} else {
+			System.out.println("Professor: 'Look at my items'");
+			nextLine(scanner);
+		}
 		startProfessorVendor(player);
 	}
 
@@ -434,19 +443,27 @@ public class StoryTeller implements Story {
 		}
 	}
 
+	private boolean doneDumpsterOnceAlready = false;
+
 	private void startDumpster(Player player) {
-		System.out.println("YOU WALK UP TO THE DUMPSTER'");
-		nextLine(scanner);
-		System.out.println("Zoidberg: 'I know you saw my gravestone, but look im not dead'");
-		nextLine(scanner);
-		System.out.println("Zoidberg: 'They all assumed I died but this trusty dumpster protected me'");
-		nextLine(scanner);
-		System.out.println("Zoidberg: 'I should go and let everyone know I'm okay'");
-		nextLine(scanner);
-		System.out.println("Zoidberg: 'Hermes must be worried sick'");
-		nextLine(scanner);
-		System.out.println(
-				"Zoidberg: 'Since your here, I've got some nice items in this dumpster you could take a look at why not?'");
+		if (!doneDumpsterOnceAlready) {
+			doneDumpsterOnceAlready = true;
+			System.out.println("YOU WALK UP TO THE DUMPSTER'");
+			nextLine(scanner);
+			System.out.println("Zoidberg: 'I know you saw my gravestone, but look im not dead'");
+			nextLine(scanner);
+			System.out.println("Zoidberg: 'They all assumed I died but this trusty dumpster protected me'");
+			nextLine(scanner);
+			System.out.println("Zoidberg: 'I should go and let everyone know I'm okay'");
+			nextLine(scanner);
+			System.out.println("Zoidberg: 'Hermes must be worried sick'");
+			nextLine(scanner);
+			System.out.println(
+					"Zoidberg: 'Since your here, I've got some nice items in this dumpster you could take a look at why not?'");
+		} else {
+			System.out.println("Zoidberg: 'Look at my items why not'");
+			nextLine(scanner);
+		}
 		startZoidbergVendor(player);
 	}
 
@@ -548,10 +565,10 @@ public class StoryTeller implements Story {
 			}
 
 			else if (choice.equalsIgnoreCase("4")) {
-				startProfessorVendor(player);
+				startLaboratory(player);
 				continue;
 			} else if (choice.equalsIgnoreCase("5")) {
-				startZoidbergVendor(player);
+				startDumpster(player);
 				continue;
 			}
 
