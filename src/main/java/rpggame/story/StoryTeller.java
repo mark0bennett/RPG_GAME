@@ -172,7 +172,7 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("Preacherbot: 'Sinner, feel the cold metal love of Robotology!'");
 		nextLine(scanner);
-		boolean churchCompleted = combat.oneEnemy(player, "Preacherbot", 0, false);
+		boolean churchCompleted = combat.oneEnemy(player, "Preacherbot", 1, false);
 		return churchCompleted;
 	}
 
@@ -195,7 +195,7 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("Man I hate Zombies, have it you!");
 		nextLine(scanner);
-		boolean graveyardCompleted = combat.oneEnemy(player, "Zombie Jesus", 0, false);
+		boolean graveyardCompleted = combat.oneEnemy(player, "Zombie Jesus", 2, false);
 		return graveyardCompleted;
 	}
 
@@ -211,7 +211,7 @@ public class StoryTeller implements Story {
 		System.out.println(
 				"Ranger Park: 'But what nice feet you have, if I chop of your feet they could almost be mistaken for Bigfoot's'");
 		nextLine(scanner);
-		boolean forestCompleted = combat.oneEnemy(player, "Ranger Park the Park Ranger", 0, false);
+		boolean forestCompleted = combat.oneEnemy(player, "Ranger Park the Park Ranger", 2, false);
 		return forestCompleted;
 	}
 
@@ -234,12 +234,12 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("Old Man: 'Further down the road I have seen a very powerful enemy indeed'");
 		nextLine(scanner);
-		System.out.println("Old Man: 'This enemy will be 2 levels higher than you, so be careful!'");
+		System.out.println("Old Man: 'This enemy will be 4 levels higher than you, so be careful!'");
 		nextLine(scanner);
 		System.out.println("*ZAP* - he's gone");
 		nextLine(scanner);
 		printLineBreak();
-		combat.oneEnemy(player, "LRRR Ruler of the Planet Omicron Persei 8", 2, true);
+		combat.oneEnemy(player, "LRRR Ruler of the Planet Omicron Persei 8", 4, true);
 	}
 
 	public void meetFirstNPC(Player player) {
@@ -336,7 +336,7 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("Joan Rivers & HGB: 'Let's get him!'");
 		nextLine(scanner);
-		boolean riverCompleted = combat.twoEnemies(player, "Joan River's Head", 1, "Horrible Gelatinous Blob", 1, true);
+		boolean riverCompleted = combat.twoEnemies(player, "Joan River's Head", 2, "Horrible Gelatinous Blob", 3, true);
 		return riverCompleted;
 	}
 
@@ -353,7 +353,7 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("Ipji: 'Michelle, help me hold him down while I implant him with a Janitor chip'");
 		nextLine(scanner);
-		boolean appliedChryogenicsCompleted = combat.twoEnemies(player, "Michelle", 2, "Ipji", 2, true);
+		boolean appliedChryogenicsCompleted = combat.twoEnemies(player, "Michelle", 2, "Ipji", 3, true);
 		return appliedChryogenicsCompleted;
 	}
 
@@ -601,12 +601,12 @@ public class StoryTeller implements Story {
 		boolean secondFight = false;
 		System.out.println("MOM: 'Igner, Larry, get this crap sack off my property!'");
 		nextLine(scanner);
-		firstFight = combat.twoEnemies(player, "Igner", 1, "Larry", 2, true);
+		firstFight = combat.twoEnemies(player, "Igner", 3, "Larry", 3, true);
 		System.out.println("MOM: 'Those two idiots couldn't beat you but I WILL!'");
 		nextLine(scanner);
 		System.out.println("MOM: 'Walt, get over here an show these other two how it's done!'");
 		nextLine(scanner);
-		secondFight = combat.twoEnemies(player, "Walt", 3, "Mom", 5, true);
+		secondFight = combat.twoEnemies(player, "Walt", 4, "Mom", 5, true);
 		if (firstFight && secondFight) {
 			momCorpCompleted = true;
 		}
@@ -628,7 +628,7 @@ public class StoryTeller implements Story {
 		System.out.println("So much so that you can't remember how to crit!");
 		nextLine(scanner);
 		System.out.println("and so the great Slurm Battle begins...");
-		boolean slurmFactoryCompleted = combat.twoEnemies(player, "Grunka Lunka", 5, "Slurm Queen", 5, false);
+		boolean slurmFactoryCompleted = combat.twoEnemies(player, "Grunka Lunka", 5, "Slurm Queen", 6, false);
 		return slurmFactoryCompleted;
 	}
 

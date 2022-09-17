@@ -61,13 +61,10 @@ public class Player {
 	// TODO: delete weapon from backpack
 	// TODO: sell weapon in backpack
 
-	// TODO: STILL DOUBLE ADDING WEAPONS WHEN THEY ARE ALREADY IN BACKPACK - doing
-	// it manually for now - need Comparator or Comparable for Weapons
 	public boolean checkForWeaponInBackpack(Weapon weapon) {
 		boolean alreadyInBackpack = false;
-
 		for (Weapon weaponInList : this.backPack) {
-			if (weaponInList.toString().equals(weapon.toString())) {
+			if (weaponInList.equals(weapon)) {
 				alreadyInBackpack = true;
 			}
 		}
@@ -75,8 +72,8 @@ public class Player {
 	}
 
 	public void addWeaponToBackpack(Weapon weapon) {
-			this.backPack.add(weapon);
-			Collections.sort(this.backPack, new DamageComparator());
+		this.backPack.add(weapon);
+		Collections.sort(this.backPack, new DamageComparator());
 	}
 
 	public void printBackpack() {
