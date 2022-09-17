@@ -598,9 +598,13 @@ public class StoryTeller implements Story {
 		boolean momCorpCompleted = false;
 		boolean firstFight = false;
 		boolean secondFight = false;
-		System.out.println("momcorp - stuff happens");
+		System.out.println("MOM: 'Igner, Larry, get this crap sack off my property!'");
+		nextLine(scanner);
 		firstFight = combat.twoEnemies(player, "Igner", 1, "Larry", 2, true);
-		System.out.println("another battle now with MOM");
+		System.out.println("MOM: 'Those two idiots couldn't beat you but I WILL!'");
+		nextLine(scanner);
+		System.out.println("MOM: 'Walt, get over here an show these other two how it's done!'");
+		nextLine(scanner);
 		secondFight = combat.twoEnemies(player, "Walt", 3, "Mom", 5, true);
 		if (firstFight && secondFight) {
 			momCorpCompleted = true;
@@ -630,13 +634,29 @@ public class StoryTeller implements Story {
 	private boolean startFishyJoes(Player player) {
 		int initialPlayerStrength = player.getStrength();
 		boolean fishyJoesCompletedLocal = false;
+		System.out.println("Fishy Joe: 'Hey friend, have a Poppler'");
+		nextLine(scanner);
+		System.out.println("Dirty Hippy: 'Hey man eating animals is wrong'");
+		nextLine(scanner);
+		System.out.println("You spit out the Poppler");
+		System.out.println("Not for moral reasons, it just tastes old and mouldy!");
+		nextLine(scanner);
 		// check that you can actually minus 2 from player strength
 		if (player.getStrength() >= 3) {
-			System.out.println("fishy joes - stuff happens, minus Strength");
 			player.setStrength(initialPlayerStrength - 2);
-			fishyJoesCompletedLocal = combat.twoEnemies(player, "ENEMY?", 5, "ENEMY?", 5, true);
+			System.out.println("Fishy Joe: 'Haha, that Poppler was SO old it'll take years off your life!'");
+			nextLine(scanner);
+			System.out.println("Your Strength is now TWO less");
+			nextLine(scanner);
+			System.out.println("Dirty Hippy: 'I don't eat animals, but I'm about to kill one now!'");
+			nextLine(scanner);
+			fishyJoesCompletedLocal = combat.twoEnemies(player, "Dirty Protesting Hippy", 5, "Fishy Joe", 5, true);
 		} else {
-			fishyJoesCompletedLocal = combat.twoEnemies(player, "ENEMY?", 5, "ENEMY?", 5, true);
+			System.out.println("Fishy Joe: 'Haha, that Poppler was SO old it'll take years off your life!'");
+			nextLine(scanner);
+			System.out.println("Dirty Hippy: 'I don't eat animals, but I'm about to kill one now!'");
+			nextLine(scanner);
+			fishyJoesCompletedLocal = combat.twoEnemies(player, "Dirty Protesting Hippy", 5, "Fishy Joe", 5, true);
 		}
 		player.setStrength(initialPlayerStrength);
 		return fishyJoesCompletedLocal;
