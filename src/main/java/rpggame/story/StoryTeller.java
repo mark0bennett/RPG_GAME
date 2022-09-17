@@ -592,8 +592,21 @@ public class StoryTeller implements Story {
 	}
 
 	private boolean startSlurmFactory(Player player) {
-		System.out.println("slurm factory - stuff happens, lose ability to crit");
-		boolean slurmFactoryCompleted = combat.twoEnemies(player, "ENEMY?", 5, "ENEMY?", 5, false);
+		System.out.println("YOU ENTER THE SLURM FACTORY");
+		nextLine(scanner);
+		System.out.println("You take a can of nice refreshing Slurm, aaah it's highly addictive");
+		nextLine(scanner);
+		System.out.println("Just as you are finishing off the can, a shadow is cast over you...");
+		nextLine(scanner);
+		System.out.println("The Slurm Queen has spotted you taking free Slurm");
+		System.out.println("She has slung a huge dollop of Super Slurm all over you!");
+		nextLine(scanner);
+		System.out.println("mmmm it tastes amazing, but now all you can think about is MORE SLURM");
+		nextLine(scanner);
+		System.out.println("So much so that you can't remember how to crit!");
+		nextLine(scanner);
+		System.out.println("and so the great Slurm Battle begins...");
+		boolean slurmFactoryCompleted = combat.twoEnemies(player, "Grunka Lunka", 5, "Slurm Queen", 5, false);
 		return slurmFactoryCompleted;
 	}
 
