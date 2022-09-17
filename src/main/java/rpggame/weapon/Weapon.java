@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Weapon {
 
-	// for reading in using a csv file
 	private String name;
 	private int damage;
 	private int agilityRequired;
@@ -20,6 +19,10 @@ public class Weapon {
 		this.intelligenceRequired = intelligenceRequired;
 		this.weaponType = weaponType;
 		this.price = price;
+	}
+
+	public String getName() {
+		return this.name;
 	}
 
 	public int getDamage() {
@@ -56,7 +59,8 @@ public class Weapon {
 
 	@Override
 	public String toString() {
-		return this.name + "-> " + weaponType.toString().toUpperCase();
+		return this.name + "-> " + weaponType.toString().toUpperCase() + " agi.Req-" + this.agilityRequired
+				+ " int.Req-" + this.intelligenceRequired;
 	}
 
 }

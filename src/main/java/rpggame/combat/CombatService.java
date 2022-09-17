@@ -26,6 +26,7 @@ public class CombatService {
 
 		printCombatHasBegun();
 		System.out.println(player);
+		StoryTeller.printLineBreak();
 		player.printBackpack();
 		pickWeapon(player);
 		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, name, level);
@@ -67,6 +68,7 @@ public class CombatService {
 
 		printCombatHasBegun();
 		System.out.println(player);
+		StoryTeller.printLineBreak();
 		player.printBackpack();
 		pickWeapon(player);
 		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, name1, level);
@@ -117,6 +119,9 @@ public class CombatService {
 		int choice = 0;
 		while (true) {
 			System.out.println("Which weapon would you like to use (type a number)");
+			//TODO: or give option to delete weapon here
+			System.out.println("or type d + weapon number to delete a weapon e.g. d2");
+			//player.deleteWeapon();
 			// pick a number
 			try {
 				choice = Integer.valueOf(scanner.nextLine());
@@ -160,7 +165,7 @@ public class CombatService {
 		StoryTeller.nextLine(scanner);
 		System.out.println("-- " + enemy.getName() + " dropped their weapon --");
 		Weapon droppedWeapon = enemy.dropWeapon();
-		System.out.println(droppedWeapon);
+		System.out.println(droppedWeapon.getName());
 		System.out.println("Agility Required: " + droppedWeapon.getAgilityRequired());
 		System.out.println("Intelligence Required: " + droppedWeapon.getIntelligenceRequired());
 		System.out.println("Weapon Type: " + droppedWeapon.getWeaponType());

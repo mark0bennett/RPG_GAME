@@ -81,7 +81,7 @@ public class Enemy {
 	@Override
 	public String toString() {
 		return this.name + " - " + "Strength: " + strength + " Agility: " + agility + " Intelligence: " + intelligence
-				+ ", Weapon: " + weapon;
+				+ ", Weapon: " + this.weapon.getName();
 	}
 
 }

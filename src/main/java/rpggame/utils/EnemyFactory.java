@@ -5,25 +5,21 @@ import java.util.Random;
 
 import rpggame.enemy.Enemy;
 import rpggame.player.Player;
-import rpggame.weapon.BareHands;
 import rpggame.weapon.Weapon;
 
 public class EnemyFactory {
 
 	// all weapons into a List from csv file
-	private List<Weapon> weaponList = WeaponsListCreator.createListWeaponsFromCsvFile("AllWeapons.csv");
+	public static List<Weapon> weaponList = WeaponsListCreator.createListWeaponsFromCsvFile("AllWeapons.csv");
 	private Random random = new Random();
-
-	// TODO: maybe another class that extends Enemy? so it can toString
-	// something different etc
-
+	
 	public Enemy createEnemyCustomLevel(Player player, String name, int level) {
 		int currentStatPoints = player.getCurrentTotalStatPoints() + level;
 		String enenmyName = name;
 		int strength = 0;
 		int agility = 0;
 		int intelligence = 0;
-		Weapon weapon = new BareHands();
+		Weapon weapon = weaponList.get(0);
 
 		int[] enemyStats = pickEnemyStatsCustomExactLevel(currentStatPoints);
 		strength = enemyStats[0];

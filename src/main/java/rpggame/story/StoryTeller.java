@@ -403,7 +403,7 @@ public class StoryTeller implements Story {
 	private void startProfessorVendor(Player player) {
 		int choice = 0;
 		while (true) {
-			System.out.println("Your NixonBucks: " + player.getNixonBucks());
+			printPlayer(player);
 			System.out.println("1: EXIT");
 			for (int i = 0; i < farnsworthWeapons.size(); i++) {
 				System.out.println(
@@ -473,7 +473,7 @@ public class StoryTeller implements Story {
 	private void startZoidbergVendor(Player player) {
 		int choice = 0;
 		while (true) {
-			System.out.println("Your NixonBucks: " + player.getNixonBucks());
+			printPlayer(player);
 			System.out.println("1: EXIT");
 			for (int i = 0; i < zoidbergWeapons.size(); i++) {
 				System.out.println(

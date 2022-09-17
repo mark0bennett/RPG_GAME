@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import rpggame.weapon.BareHands;
-import rpggame.weapon.BareMagicHands;
+import rpggame.utils.EnemyFactory;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
 
@@ -24,11 +23,11 @@ public class Player {
 		this.strength = strength;
 		this.agility = agility;
 		this.intelligence = intelligence;
-		this.weapon = new BareHands();
+		//made the list public and static in EnemyFactory
+		this.weapon = EnemyFactory.weaponList.get(0);
 		this.backPack = new ArrayList<Weapon>();
-
 		this.backPack.add(this.weapon);
-		this.backPack.add(new BareMagicHands());
+		this.backPack.add(EnemyFactory.weaponList.get(1));
 		this.nixonBucks = 0;
 	}
 
@@ -72,7 +71,7 @@ public class Player {
 		}
 		return alreadyInBackpack;
 	}
-	
+
 	public void addWeaponToBackpack(Weapon weapon) {
 		this.backPack.add(weapon);
 	}
@@ -146,7 +145,7 @@ public class Player {
 	@Override
 	public String toString() {
 		return name + " - Strength: " + strength + ", Agility: " + agility + ", Intelligence: " + intelligence
-				+ ", Weapon: " + weapon + ", NixonBucks: " + this.nixonBucks;
+				+ ", Weapon: " + this.weapon.getName() + ", NixonBucks: " + this.nixonBucks;
 	}
 
 }
