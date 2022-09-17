@@ -7,7 +7,6 @@ import rpggame.weapon.WeaponType;
 
 public class Enemy {
 
-	// TODO: will we create an Enemy Interface?
 	private String name;
 	private int strength;
 	private int intelligence;
@@ -49,7 +48,7 @@ public class Enemy {
 	public Weapon dropWeapon() {
 		return this.weapon;
 	}
-	
+
 	public String getName() {
 		return this.name;
 	}

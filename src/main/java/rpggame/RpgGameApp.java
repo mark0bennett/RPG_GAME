@@ -16,18 +16,18 @@ public class RpgGameApp {
 		// add some ascii art
 		// find weapons randomly
 		// package into a jar/exe file for execution on any computer
-		// TODO: Combat Interface and have CombatCrits and CombatNoCrits, have a CombatService for all the doubled methods?
-		//TODO: split up story teller into Act I Act II and Act III???
-		
-		//TODO: Delete weapon option at pickWeapon();
-		//TODO: look at TODOs on side bar and add XXX next to methods!
+		// TODO: Combat Interface and have CombatCrits and CombatNoCrits, have a
+		// CombatService for all the doubled methods?
+		// TODO: split up story teller into Act I Act II and Act III???
+
+		// TODO: Delete weapon option at pickWeapon();
 
 		Story storyTeller = new StoryTeller();
 
 		storyTeller.intro();
 		Player player = storyTeller.createPlayer();
 		StoryTeller.printPlayer(player);
-		
+
 		storyTeller.startFirstFight(player);
 
 		storyTeller.firstPathsSplit(player);
@@ -35,7 +35,7 @@ public class RpgGameApp {
 		storyTeller.meetFirstNPC(player);
 
 		storyTeller.mainPathsSplit(player);
-		
+
 		storyTeller.lastPathsSplit(player);
 
 		System.out.println("now back in main method");

@@ -84,7 +84,6 @@ public class StoryTeller implements Story {
 				continue;
 			}
 
-			// TODO: this gets printed when you type stupid shit into the stats
 			if (strength < 1 || agility < 1 || intelligence < 1) {
 				System.out.println("Come on, give yourself a chance...");
 				continue;
@@ -782,7 +781,7 @@ public class StoryTeller implements Story {
 			nextLine(scanner);
 		}
 	}
-	
+
 	private boolean alreadyDoneBender = false;
 
 	private void startBender(Player player) {

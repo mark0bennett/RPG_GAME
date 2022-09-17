@@ -1,10 +1,13 @@
 package rpggame.player;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import rpggame.story.StoryTeller;
 import rpggame.utils.EnemyFactory;
+import rpggame.weapon.DamageComparator;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
 
@@ -23,7 +26,7 @@ public class Player {
 		this.strength = strength;
 		this.agility = agility;
 		this.intelligence = intelligence;
-		//made the list public and static in EnemyFactory
+		// made the list public and static in EnemyFactory
 		this.weapon = EnemyFactory.weaponList.get(0);
 		this.backPack = new ArrayList<Weapon>();
 		this.backPack.add(this.weapon);
@@ -60,7 +63,6 @@ public class Player {
 
 	// TODO: STILL DOUBLE ADDING WEAPONS WHEN THEY ARE ALREADY IN BACKPACK - doing
 	// it manually for now - need Comparator or Comparable for Weapons
-	// TODO: when we add a weapon add it so its in order of damage
 	public boolean checkForWeaponInBackpack(Weapon weapon) {
 		boolean alreadyInBackpack = false;
 
@@ -73,7 +75,8 @@ public class Player {
 	}
 
 	public void addWeaponToBackpack(Weapon weapon) {
-		this.backPack.add(weapon);
+			this.backPack.add(weapon);
+			Collections.sort(this.backPack, new DamageComparator());
 	}
 
 	public void printBackpack() {
@@ -82,9 +85,9 @@ public class Player {
 		for (int i = 0; i < this.backPack.size(); i++) {
 			System.out.println((i + 1) + ": " + this.backPack.get(i));
 		}
+		StoryTeller.printLineBreak();
 	}
 
-	// TODO: Sort the backpack with Dmg when printed out, highest to lowest
 	public List<Weapon> getBackPack() {
 		return backPack;
 	}

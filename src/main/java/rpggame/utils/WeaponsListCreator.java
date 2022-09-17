@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rpggame.weapon.Weapon;
-import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
 
 public class WeaponsListCreator {

@@ -12,7 +12,7 @@ public class EnemyFactory {
 	// all weapons into a List from csv file
 	public static List<Weapon> weaponList = WeaponsListCreator.createListWeaponsFromCsvFile("AllWeapons.csv");
 	private Random random = new Random();
-	
+
 	public Enemy createEnemyCustomLevel(Player player, String name, int level) {
 		int currentStatPoints = player.getCurrentTotalStatPoints() + level;
 		String enenmyName = name;
@@ -43,25 +43,6 @@ public class EnemyFactory {
 				return weaponList.get(weaponIndex);
 			}
 		}
-	}
-
-	private int[] pickEnemyStatsWeak(int currentStatPoints) {
-		int strength;
-		int agility;
-		int intelligence;
-
-		while (true) {
-			// plus 1 so a stat cannot be 0
-			strength = random.nextInt(currentStatPoints) + 1;
-			agility = random.nextInt(currentStatPoints) + 1;
-			intelligence = random.nextInt(currentStatPoints) + 1;
-			if (strength + agility + intelligence > currentStatPoints) {
-				continue;
-			} else {
-				break;
-			}
-		}
-		return new int[] { strength, agility, intelligence };
 	}
 
 	private int[] pickEnemyStatsCustomExactLevel(int currentStatPoints) {

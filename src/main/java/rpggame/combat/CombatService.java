@@ -21,7 +21,6 @@ public class CombatService {
 		this.random = new Random();
 	}
 
-	// XXX: oneEnemy
 	public boolean oneEnemy(Player player, String name, int level, boolean withCrits) {
 		boolean wonBattle = false;
 
@@ -120,7 +119,7 @@ public class CombatService {
 		while (true) {
 			System.out.println("Which weapon would you like to use (type a number)");
 			// TODO: or give option to delete weapon here
-			System.out.println("or type d + weapon number to delete a weapon e.g. d2");
+			System.out.println("or type (d + weapon number) to delete a weapon - e.g. d2");
 			// player.deleteWeapon();
 			// pick a number
 			try {
