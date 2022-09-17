@@ -1,6 +1,7 @@
 package rpggame.story;
 
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 import rpggame.combat.Combat;
@@ -12,6 +13,7 @@ public class StoryTeller implements Story {
 
 	private final Scanner scanner;
 	private final Combat combat;
+	private final Random random;
 
 	private boolean churchCompleted;
 	private boolean graveyardCompleted;
@@ -28,6 +30,7 @@ public class StoryTeller implements Story {
 	public StoryTeller() {
 		this.scanner = new Scanner(System.in);
 		this.combat = new Combat();
+		this.random = new Random();
 	}
 
 	public void intro() {
@@ -520,25 +523,25 @@ public class StoryTeller implements Story {
 				continue;
 			}
 
-			else if (choice.equals("1") && momCorpCompleted == false) {
+			else if (choice.equals("1") && !momCorpCompleted) {
 				momCorpCompleted = startMomCorp(player);
-			} else if (choice.equals("1") && momCorpCompleted == true) {
+			} else if (choice.equals("1") && momCorpCompleted) {
 				System.out.println("You've already cleared MomCorp");
 				System.out.println("--------------------------");
 				continue;
 			}
 
-			else if (choice.equals("2") && slurmFactoryCompleted == false) {
+			else if (choice.equals("2") && !slurmFactoryCompleted) {
 				slurmFactoryCompleted = startSlurmFactory(player);
-			} else if (choice.equals("2") && slurmFactoryCompleted == true) {
+			} else if (choice.equals("2") && slurmFactoryCompleted) {
 				System.out.println("You've already cleared the Slurm Factory");
 				System.out.println("--------------------------");
 				continue;
 			}
 
-			else if (choice.equals("3") && fishyJoesCompleted == false) {
+			else if (choice.equals("3") && !fishyJoesCompleted) {
 				fishyJoesCompleted = startFishyJoes(player);
-			} else if (choice.equals("3") && fishyJoesCompleted == true) {
+			} else if (choice.equals("3") && fishyJoesCompleted) {
 				System.out.println("You've already cleared Fishy Joe's");
 				System.out.println("--------------------------");
 				continue;
@@ -614,9 +617,90 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("Hermes: 'Seeing that filthy crab back here, I've lost my appetite'");
 		nextLine(scanner);
-		System.out.println("Hermes: 'But not my appetite for some fun with numbers!'");
+		System.out.println("Hermes: 'But not my appetite for Limbo!'");
 		nextLine(scanner);
-		System.out.println("INSERT GUESSING MONEY GAME HERE");
+		System.out.println("Hermes: 'I'm going to set this Limbo at between 1 and 10 centimeters'");
+		nextLine(scanner);
+		System.out.println("Hermes: 'Guess how high I have set it and I'll give you that amount of NixonBucks'");
+		nextLine(scanner);
+		System.out.println(
+				"Hermes: 'But I'm no fool, 3 guesses and if you get it wrong I take half of that amount of your money!'");
+		nextLine(scanner);
+
+		while (true) {
+			System.out.println("Your NixonBucks: " + player.getNixonBucks());
+			int limboHeight = random.nextInt(10) + 1;
+			int guess = 0;
+			int counter = 0;
+
+			while (true) {
+				if (counter == 3) {
+					if (player.getNixonBucks() <= 0) {
+						player.setNixonBucks(0);
+						System.out.println(
+								"Hermes: 'Nope, it was " + limboHeight + ", but I can't take money from a poor man!'");
+						break;
+					} else if (player.getNixonBucks() >= (limboHeight / 2)) {
+						System.out.println(
+								"Hermes: 'That's three guesses, it was " + limboHeight + ", ...money for me!'");
+						player.setNixonBucks(player.getNixonBucks() - (limboHeight / 2));
+						break;
+					} else if (player.getNixonBucks() > 0 && player.getNixonBucks() < (limboHeight / 2)) {
+						player.setNixonBucks(0);
+						System.out.println("Hermes: 'It was " + limboHeight + ". I'm taking you for all you got now!'");
+						break;
+					}
+				}
+				System.out.println("Hermes: 'Take a guess:'");
+				try {
+					guess = Integer.parseInt(scanner.nextLine());
+				} catch (Exception e) {
+					System.out.println("Hermes: 'C'mon mun, take a proper guess'");
+					continue;
+				}
+				if (guess <= 0 || guess > 10) {
+					System.out.println("Hermes: 'Between 1 and 10, you would not even make Bureaucrat Level 99'");
+					continue;
+				} else if (guess == limboHeight) {
+					System.out.println("Hermes: 'You got it, here is " + limboHeight + " NixonBucks");
+					player.setNixonBucks(player.getNixonBucks() + limboHeight);
+					break;
+				} else if (guess < limboHeight) {
+					if (counter == 2) {
+						counter++;
+						continue;
+					} else {
+						System.out.println("Hermes: 'Higher...'");
+						counter++;
+						continue;
+					}
+				} else if (guess > limboHeight) {
+					if (counter == 2) {
+						counter++;
+						continue;
+					} else {
+						System.out.println("Hermes: 'Lower...'");
+						counter++;
+						continue;
+					}
+				}
+			}
+			String choice = "";
+			while (!choice.equalsIgnoreCase("y") || !choice.equalsIgnoreCase("q")) {
+				System.out.println("Hermes: 'Play again - press y'");
+				System.out.println("Hermes: 'Quit - press q'");
+				choice = scanner.nextLine();
+				if (choice.equalsIgnoreCase("q") || choice.equalsIgnoreCase("y")) {
+					break;
+				}
+			}
+			if (choice.equalsIgnoreCase("q")) {
+				System.out.println("Your NixonBucks: " + player.getNixonBucks());
+				break;
+			} else if (choice.equalsIgnoreCase("y")) {
+				continue;
+			}
+		}
 	}
 
 	private void startLeela(Player player) {

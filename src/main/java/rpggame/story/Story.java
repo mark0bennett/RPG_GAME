@@ -4,18 +4,18 @@ import rpggame.player.Player;
 
 public interface Story {
 
-	public void intro();
+	void intro();
 
-	public Player createPlayer();
+	Player createPlayer();
 
-	public void startFirstFight(Player player);
+	void startFirstFight(Player player);
 
-	public void firstPathsSplit(Player player);
+	void firstPathsSplit(Player player);
 
-	public void meetFirstNPC(Player player);
+	void meetFirstNPC(Player player);
 
-	public void mainPathsSplit(Player player);
-	
-	public void lastPathsSplit(Player player);
+	void mainPathsSplit(Player player);
+
+	void lastPathsSplit(Player player);
 
 }

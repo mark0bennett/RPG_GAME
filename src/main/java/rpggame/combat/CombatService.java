@@ -13,10 +13,12 @@ public class CombatService {
 
 	private final Scanner scanner;
 	private final EnemyFactory enemyFactory;
+	private final Random random;
 
 	public CombatService() {
 		this.scanner = new Scanner(System.in);
 		this.enemyFactory = new EnemyFactory();
+		this.random = new Random();
 	}
 
 	public boolean oneEnemy(Player player, String name, int level, boolean withCrits) {
@@ -148,7 +150,6 @@ public class CombatService {
 		// enemy drops weapon and auto added to your backpack
 		System.out.println("--------------------------");
 		// enemy drops randomised money between 0 and strength
-		Random random = new Random();
 		int moneyDropped = random.nextInt(enemyStrengthBeforeCombat);
 		player.setNixonBucks(player.getNixonBucks() + moneyDropped);
 		System.out.println(moneyDropped + " NixonBucks collected");
