@@ -17,6 +17,7 @@ public class RpgGameApp {
 		// find weapons randomly
 		// package into a jar/exe file for execution on any computer
 		// TODO: Combat Interface and have CombatCrits and CombatNoCrits, have a CombatService for all the doubled methods?
+		//TODO: split up story teller into Act I Act II and Act III???
 
 		Story storyTeller = new StoryTeller();
 

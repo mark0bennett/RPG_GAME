@@ -61,7 +61,7 @@ public class WeaponObject implements Weapon {
 
 	@Override
 	public String toString() {
-		return this.name;
+		return this.name + " : " + weaponType.toString().toUpperCase();
 	}
 
 }
