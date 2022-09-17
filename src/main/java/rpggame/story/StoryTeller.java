@@ -319,8 +319,8 @@ public class StoryTeller implements Story {
 				afterMainPaths();
 				break;
 			} else {
-				System.out.println("You should probably check out these places first, and clear them out!");
-				nextLine(scanner);
+				System.out.println("You should probably check out these places, and clear them out!");
+				printLineBreak();
 				continue;
 			}
 		}
@@ -528,7 +528,7 @@ public class StoryTeller implements Story {
 			System.out.println("Where do you wish to venture too?");
 			System.out.println("1: MomCorp");
 			System.out.println("2: Slurm factory");
-			System.out.println("3: Place3");
+			System.out.println("3: Fishy Joe's");
 			System.out.println("4: Professor (Vendor)");
 			System.out.println("5: Zoidberg (Vendor)");
 			System.out.println("6: Hermes (NixonBucks)");
@@ -588,7 +588,8 @@ public class StoryTeller implements Story {
 					&& fishyJoesCompleted == true) {
 				break;
 			} else {
-				System.out.println("You should probably check out these places first, and clear them out!");
+				System.out.println("You should probably check out these places, and clear them out!");
+				printLineBreak();
 				continue;
 			}
 
@@ -663,20 +664,27 @@ public class StoryTeller implements Story {
 		return fishyJoesCompletedLocal;
 	}
 
+	private boolean doneHermesOnceAlready = false;
+
 	private void startHermes(Player player) {
-		System.out.println("Hermes: 'My Manwich!'");
-		nextLine(scanner);
-		System.out.println("Hermes: 'Seeing that filthy crab back here, I've lost my appetite'");
-		nextLine(scanner);
-		System.out.println("Hermes: 'But not my appetite for Limbo!'");
-		nextLine(scanner);
-		System.out.println("Hermes: 'I'm going to set this Limbo at between 1 and 10 centimeters'");
-		nextLine(scanner);
-		System.out.println("Hermes: 'Guess how high I have set it and I'll give you that amount of NixonBucks'");
-		nextLine(scanner);
-		System.out.println(
-				"Hermes: 'But I'm no fool, 3 guesses and if you get it wrong I take half of that amount of your money!'");
-		nextLine(scanner);
+		if (!doneHermesOnceAlready) {
+			doneHermesOnceAlready = true;
+			System.out.println("Hermes: 'My Manwich!'");
+			nextLine(scanner);
+			System.out.println("Hermes: 'Seeing that filthy crab back here, I've lost my appetite'");
+			nextLine(scanner);
+			System.out.println("Hermes: 'But not my appetite for Limbo!'");
+			nextLine(scanner);
+			System.out.println("Hermes: 'I'm going to set this Limbo at between 1 and 10 centimeters'");
+			nextLine(scanner);
+			System.out.println("Hermes: 'Guess how high I have set it and I'll give you that amount of NixonBucks'");
+			nextLine(scanner);
+			System.out.println(
+					"Hermes: 'But I'm no fool, 3 guesses and if you get it wrong I take half of that amount of your money!'");
+			nextLine(scanner);
+		} else {
+			System.out.println("Hermes: 'Come to play again aye'");
+		}
 
 		while (true) {
 			System.out.println("Your NixonBucks: " + player.getNixonBucks());
@@ -754,28 +762,46 @@ public class StoryTeller implements Story {
 		}
 	}
 
+	private boolean alreadyDoneLeela = false;
+
 	private void startLeela(Player player) {
-		System.out.println("Leela: 'Well this is the moment we should have trained for'");
-		nextLine(scanner);
-		System.out.println("Leela: 'But I have got something for you'");
-		nextLine(scanner);
-		System.out.println("Leela: 'Heeeeee-YA'");
-		nextLine(scanner);
-		System.out.println("Your Agility is increased by 1");
-		player.setIntelligence(player.getAgility() + 1);
-		StoryTeller.printPlayer(player);
+		if (!alreadyDoneLeela) {
+			alreadyDoneLeela = true;
+			System.out.println("Leela: 'Well this is the moment we should have trained for'");
+			nextLine(scanner);
+			System.out.println("Leela: 'But I have got something for you'");
+			nextLine(scanner);
+			System.out.println("Leela: 'Heeeeee-YA'");
+			nextLine(scanner);
+			System.out.println("Your Agility is increased by 1");
+			nextLine(scanner);
+			player.setAgility(player.getAgility() + 1);
+			StoryTeller.printPlayer(player);
+		} else {
+			System.out.println("Leela: 'I'll plus my boot up your ass if you think I'm that easy'");
+			nextLine(scanner);
+		}
 	}
+	
+	private boolean alreadyDoneBender = false;
 
 	private void startBender(Player player) {
-		System.out.println("Bender: 'Bite my shiny metal ASS'");
-		nextLine(scanner);
-		System.out.println("Bender: 'Worthless Meat Sack..'");
-		nextLine(scanner);
-		System.out.println("Bender: 'You could do with a bit of Bender-ising baby'");
-		nextLine(scanner);
-		System.out.println("Your Strength is increased by 1");
-		player.setIntelligence(player.getStrength() + 1);
-		StoryTeller.printPlayer(player);
+		if (!alreadyDoneBender) {
+			alreadyDoneBender = true;
+			System.out.println("Bender: 'Well hot diggity daffodil!'");
+			nextLine(scanner);
+			System.out.println("Bender: 'You look like a worthless Meat Bag..'");
+			nextLine(scanner);
+			System.out.println("Bender: 'You could do with a bit of Bender-ising baby'");
+			nextLine(scanner);
+			System.out.println("Your Strength is increased by 1");
+			nextLine(scanner);
+			player.setStrength(player.getStrength() + 1);
+			StoryTeller.printPlayer(player);
+		} else {
+			System.out.println("Bender: 'Bite my shiny metal ASS'");
+			nextLine(scanner);
+		}
 	}
 
 	public static void nextLine(Scanner scanner) {

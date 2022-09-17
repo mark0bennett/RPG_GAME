@@ -66,6 +66,7 @@ public class CombatService {
 		boolean wonBattle = false;
 
 		printCombatHasBegun();
+		System.out.println(player);
 		player.printBackpack();
 		pickWeapon(player);
 		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, name1, level);

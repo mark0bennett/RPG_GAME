@@ -1,18 +1,18 @@
-Bare Hands Dmg 1,1,1,1,agility,0
-Bare Magic Hands Dmg 1,1,1,1,intelligence,0
-Basic Magic Staff Dmg 2,2,1,2,intelligence,0
-Knife Dmg 2,2,2,1,agility,0
-Crude Magic Staff Dmg 3,3,1,3,intelligence,0
-Crude Sword Dmg 3,3,3,1,agility,0
-Magic Staff Dmg 4,4,1,4,intelligence,0
-Sword Dmg 4,4,4,1,agility,0
-Crude Magic Sword Dmg 5,5,3,3,intelligence,0
-Mace Dmg 5,5,5,2,agility,0
-Light Magic Staff Dmg 5,5,2,5,intelligence,0
-Magic Sword Dmg 6,6,4,4,intelligence,0
-Magic Mace Dmg 7,7,4,5,intelligence,0
-Axe Dmg 7 ,7,7,2,agility,0
-Dark Magic Staff Dmg 7,7,2,7,intelligence,0
-Dark Magic Sword Dmg 8,8,5,5,intelligence,0
-War Axe Dmg 8,8,8,3,agility,0
-Magic War Staff Dmg 8,8,3,8,intelligence,0
+Bare Hands (Dmg 1),1,1,1,agility,0
+Bare Magic Hands (Dmg 1),1,1,1,intelligence,0
+Basic Magic Staff (Dmg 2),2,1,2,intelligence,0
+Knife (Dmg 2),2,2,1,agility,0
+Crude Magic Staff (Dmg 3),3,1,3,intelligence,0
+Crude Sword (Dmg 3),3,3,1,agility,0
+Magic Staff (Dmg 4),4,1,4,intelligence,0
+Sword (Dmg 4),4,4,1,agility,0
+Crude Magic Sword (Dmg 5),5,3,3,intelligence,0
+Mace (Dmg 5),5,5,2,agility,0
+Light Magic Staff (Dmg 5),5,2,5,intelligence,0
+Magic Sword (Dmg 6),6,4,4,intelligence,0
+Magic Mace (Dmg 7),7,4,5,intelligence,0
+Axe (Dmg 7 ),7,7,2,agility,0
+Dark Magic Staff (Dmg 7),7,2,7,intelligence,0
+Dark Magic Sword (Dmg 8),8,5,5,intelligence,0
+War Axe (Dmg 8),8,8,3,agility,0
+Magic War Staff (Dmg 8),8,3,8,intelligence,0
