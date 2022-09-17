@@ -20,6 +20,7 @@ public class RpgGameApp {
 		//TODO: split up story teller into Act I Act II and Act III???
 		
 		//TODO: Delete weapon option at pickWeapon();
+		//TODO: look at TODOs on side bar and add XXX next to methods!
 
 		Story storyTeller = new StoryTeller();
 

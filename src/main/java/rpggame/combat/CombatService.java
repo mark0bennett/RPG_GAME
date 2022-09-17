@@ -21,6 +21,7 @@ public class CombatService {
 		this.random = new Random();
 	}
 
+	// XXX: oneEnemy
 	public boolean oneEnemy(Player player, String name, int level, boolean withCrits) {
 		boolean wonBattle = false;
 
@@ -96,7 +97,6 @@ public class CombatService {
 
 		if (wonBattle) {
 			showAndAddDroppedWeaponAndMoney(player, enemy, enemyStrengthBeforeCombat);
-			// TODO: this is lazy, reusing same method for 2nd enemy
 			showAndAddDroppedWeaponAndMoney(player, enemy2, enemyStrengthBeforeCombat);
 			System.out.println("You can now increase one of your stats by 1");
 			increaseStats(player);
@@ -119,9 +119,9 @@ public class CombatService {
 		int choice = 0;
 		while (true) {
 			System.out.println("Which weapon would you like to use (type a number)");
-			//TODO: or give option to delete weapon here
+			// TODO: or give option to delete weapon here
 			System.out.println("or type d + weapon number to delete a weapon e.g. d2");
-			//player.deleteWeapon();
+			// player.deleteWeapon();
 			// pick a number
 			try {
 				choice = Integer.valueOf(scanner.nextLine());
