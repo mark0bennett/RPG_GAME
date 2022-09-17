@@ -214,7 +214,6 @@ public class CombatService {
 			StoryTeller.nextLine(scanner);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
-				StoryTeller.nextLine(scanner);
 				System.out.println("You Lost!");
 				wonBattle = false;
 				break;
@@ -241,7 +240,6 @@ public class CombatService {
 			StoryTeller.nextLine(scanner);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
-				StoryTeller.nextLine(scanner);
 				System.out.println("You Lost!");
 				wonBattle = false;
 				break;
@@ -271,7 +269,6 @@ public class CombatService {
 			StoryTeller.nextLine(scanner);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
-				StoryTeller.nextLine(scanner);
 				System.out.println("You Lost!");
 				wonBattle = false;
 				break;
@@ -295,7 +292,6 @@ public class CombatService {
 				StoryTeller.nextLine(scanner);
 				// check if enemy is dead
 				if (player.getStrength() < 1) {
-					StoryTeller.nextLine(scanner);
 					System.out.println("You Lost!");
 					wonBattle = false;
 					break;
@@ -326,7 +322,6 @@ public class CombatService {
 			StoryTeller.nextLine(scanner);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
-				StoryTeller.nextLine(scanner);
 				System.out.println("You Lost!");
 				wonBattle = false;
 				break;
@@ -350,7 +345,6 @@ public class CombatService {
 				StoryTeller.nextLine(scanner);
 				// check if enemy is dead
 				if (player.getStrength() < 1) {
-					StoryTeller.nextLine(scanner);
 					System.out.println("You Lost!");
 					wonBattle = false;
 					break;

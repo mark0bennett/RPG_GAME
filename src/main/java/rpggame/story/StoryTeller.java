@@ -119,7 +119,7 @@ public class StoryTeller implements Story {
 
 		while (true) {
 
-			if (churchCompleted == true && graveyardCompleted == true && forestCompleted == true) {
+			if (churchCompleted && graveyardCompleted && forestCompleted) {
 				afterFirstPathsSplit(player);
 				break;
 			}
@@ -133,25 +133,25 @@ public class StoryTeller implements Story {
 				continue;
 			}
 
-			else if (choice.equals("1") && churchCompleted == false) {
+			else if (choice.equals("1") && !churchCompleted) {
 				churchCompleted = startChurch(player);
-			} else if (choice.equals("1") && churchCompleted == true) {
+			} else if (choice.equals("1") && churchCompleted) {
 				System.out.println("You've already cleared the Church");
 				System.out.println("--------------------------");
 				continue;
 			}
 
-			else if (choice.equals("2") && graveyardCompleted == false) {
+			else if (choice.equals("2") && !graveyardCompleted) {
 				graveyardCompleted = startGraveyard(player);
-			} else if (choice.equals("2") && graveyardCompleted == true) {
+			} else if (choice.equals("2") && graveyardCompleted) {
 				System.out.println("You've already cleared the Graveyard");
 				System.out.println("--------------------------");
 				continue;
 			}
 
-			else if (choice.equals("3") && forestCompleted == false) {
+			else if (choice.equals("3") && !forestCompleted) {
 				forestCompleted = startForest(player);
-			} else if (choice.equals("3") && forestCompleted == true) {
+			} else if (choice.equals("3") && forestCompleted) {
 				System.out.println("You've already cleared the Graveyard");
 				System.out.println("--------------------------");
 				continue;
@@ -186,7 +186,7 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("...");
 		nextLine(scanner);
-		System.out.println("Here Lies Dr. Zoidberg - Many said that he was...");
+		System.out.println("Here Lies Dr. Zoidberg - Beloved Crab and Doctor...");
 		nextLine(scanner);
 		System.out.println("Zombie Jesus: 'They nailed me to the cross, this time it's personal'");
 		nextLine(scanner);
@@ -283,25 +283,25 @@ public class StoryTeller implements Story {
 				continue;
 			}
 
-			else if (choice.equals("1") && riverCompleted == false) {
+			else if (choice.equals("1") && !riverCompleted) {
 				riverCompleted = startRiver(player);
-			} else if (choice.equals("1") && riverCompleted == true) {
+			} else if (choice.equals("1") && riverCompleted) {
 				System.out.println("You've already cleared the River");
 				System.out.println("--------------------------");
 				continue;
 			}
 
-			else if (choice.equals("2") && appliedChryogenicsCompleted == false) {
+			else if (choice.equals("2") && !appliedChryogenicsCompleted) {
 				appliedChryogenicsCompleted = startAppliedChryogenics(player);
-			} else if (choice.equals("2") && appliedChryogenicsCompleted == true) {
+			} else if (choice.equals("2") && appliedChryogenicsCompleted) {
 				System.out.println("You've already cleared Applied Chryogenics");
 				System.out.println("--------------------------");
 				continue;
 			}
 
-			else if (choice.equals("3") && robotArmsCompleted == false) {
+			else if (choice.equals("3") && !robotArmsCompleted) {
 				robotArmsCompleted = startRobotArms(player);
-			} else if (choice.equals("3") && robotArmsCompleted == true) {
+			} else if (choice.equals("3") && robotArmsCompleted) {
 				System.out.println("You've already cleared Robot Arms Apartments");
 				System.out.println("--------------------------");
 				continue;
@@ -311,8 +311,7 @@ public class StoryTeller implements Story {
 				startLaboratory(player);
 			} else if (choice.equals("5")) {
 				startDumpster(player);
-			} else if (choice.equals("6") && riverCompleted == true && appliedChryogenicsCompleted == true
-					&& robotArmsCompleted == true) {
+			} else if (choice.equals("6") && riverCompleted && appliedChryogenicsCompleted && robotArmsCompleted) {
 				afterMainPaths();
 				break;
 			} else {
@@ -412,14 +411,14 @@ public class StoryTeller implements Story {
 				System.out.println("No weapon exists there");
 				continue;
 			}
-
+			// check you have enough NixonBucks
 			else if (player.getNixonBucks() < farnsworthWeapons.get(choice - 2).getPrice()) {
 				System.out.println("You don't have enough NixonBucks for this weapon");
 				continue;
 			} else {
 				// else add weapon to backpack weapon
 				boolean alreadyInBackpack = player.checkForWeaponInBackpack(farnsworthWeapons.get(choice - 2));
-				if (alreadyInBackpack == true) {
+				if (alreadyInBackpack) {
 					System.out.println("You already have this weapon");
 					continue;
 				} else {
@@ -475,14 +474,14 @@ public class StoryTeller implements Story {
 				System.out.println("No weapon exists there");
 				continue;
 			}
-
+			// check you have enough NixonBucks
 			else if (player.getNixonBucks() < zoidbergWeapons.get(choice - 2).getPrice()) {
 				System.out.println("You don't have enough NixonBucks for this weapon");
 				continue;
 			} else {
 				// else add weapon to backpack weapon
 				boolean alreadyInBackpack = player.checkForWeaponInBackpack(zoidbergWeapons.get(choice - 2));
-				if (alreadyInBackpack == true) {
+				if (alreadyInBackpack) {
 					System.out.println("You already have this weapon");
 					continue;
 				} else {
@@ -576,8 +575,16 @@ public class StoryTeller implements Story {
 	}
 
 	private boolean startMomCorp(Player player) {
+		boolean momCorpCompleted = false;
+		boolean firstFight = false;
+		boolean secondFight = false;
 		System.out.println("momcorp - stuff happens");
-		boolean momCorpCompleted = combat.twoEnemies(player, "ENEMY?", 5, "ENEMY?", 5, true);
+		firstFight = combat.twoEnemies(player, "Igner", 1, "Larry", 2, true);
+		System.out.println("another battle now with MOM");
+		secondFight = combat.twoEnemies(player, "Walt", 3, "Mom", 5, true);
+		if (firstFight && secondFight) {
+			momCorpCompleted = true;
+		}
 		return momCorpCompleted;
 	}
 
@@ -609,7 +616,7 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("Hermes: 'But not my appetite for some fun with numbers!'");
 		nextLine(scanner);
-		System.out.println("Insert Guessing Game Here :)");
+		System.out.println("INSERT GUESSING MONEY GAME HERE");
 	}
 
 	private void startLeela(Player player) {

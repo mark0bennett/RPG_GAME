@@ -11,14 +11,12 @@ public class RpgGameApp {
 		// SAVE GAME TO A TXT FILE WITH STATS, and LOAD IN A GAME with story progression
 		// can we bring up a menu at any time between things happening, to delete
 		// weapon, view stats, visit a vender etc
-		// story progression, have a boolean when a 'section' is completed?
 		// tests
 		// add sound?
 		// add some ascii art
 		// find weapons randomly
 		// package into a jar/exe file for execution on any computer
-		// Leela, Amy, Bender when you meet them they increase stats
-		// TODO: Combat Interface and have CombatCrits and CombatNoCrits, have a CombatService for all the doubled methods
+		// TODO: Combat Interface and have CombatCrits and CombatNoCrits, have a CombatService for all the doubled methods?
 
 		Story storyTeller = new StoryTeller();
 
