@@ -19,7 +19,10 @@ public class RpgGameApp {
 		// TODO: split up story teller into Act I Act II and Act III???
 		// TODO: can the story be read in from txt files using AsciiArtReader??
 		// TODO: Weapon toString cleaner with aligned tabs
-		// TODO: attack 2 enemies, pick which enemy to attack?
+		// TODO: attack 2 enemies, pick which enemy to attack
+		// TODO: COMBAT CLASS - MAKE IT BETTER - maybe Player and Enemy have to extend a
+		// Character Class so attacking can be done with one method
+		// and put in a boolean for crits or no crits
 
 		Story storyTeller = new StoryTeller();
 
