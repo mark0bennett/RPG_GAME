@@ -57,7 +57,7 @@ public class Weapon {
 
 	@Override
 	public String toString() {
-		return this.name + "-> " + weaponType.toString().toUpperCase() + " agi.Req-" + this.agilityRequired
+		return this.name + "-> " + weaponType.toString().toUpperCase() + "     agi.Req-" + this.agilityRequired
 				+ " int.Req-" + this.intelligenceRequired;
 	}
 
