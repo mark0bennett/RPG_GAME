@@ -455,8 +455,6 @@ public class StoryTeller implements Story {
 			}
 			if (choice == Integer.parseInt("2")) {
 				sellItemsMenu(farnsworthWeapons, player);
-//				break;
-				// TODO: without break do we just come back to here when finished with selling?
 			}
 			// if number doesnt exist in backpack, continue
 			else if (choice > farnsworthWeapons.size() + 2 || choice <= 0) {
@@ -514,9 +512,10 @@ public class StoryTeller implements Story {
 		while (true) {
 			printPlayer(player);
 			System.out.println("1: EXIT");
+			System.out.println("2: SELL ONE OF YOUR ITEMS");
 			for (int i = 0; i < zoidbergWeapons.size(); i++) {
 				System.out.println(
-						(i + 2) + ": " + zoidbergWeapons.get(i) + " - Price: " + zoidbergWeapons.get(i).getPrice());
+						(i + 3) + ": " + zoidbergWeapons.get(i) + " - Price: " + zoidbergWeapons.get(i).getPrice());
 			}
 
 			try {
@@ -529,25 +528,28 @@ public class StoryTeller implements Story {
 			if (choice == Integer.parseInt("1")) {
 				break;
 			}
+			if (choice == Integer.parseInt("2")) {
+				sellItemsMenu(zoidbergWeapons, player);
+			}
 			// if number doesnt exist in backpack, continue
-			else if (choice > zoidbergWeapons.size() + 1 || choice <= 0) {
+			else if (choice > zoidbergWeapons.size() + 2 || choice <= 0) {
 				System.out.println("No weapon exists there");
 				continue;
 			}
 			// check you have enough NixonBucks
-			else if (player.getNixonBucks() < zoidbergWeapons.get(choice - 2).getPrice()) {
+			else if (player.getNixonBucks() < zoidbergWeapons.get(choice - 3).getPrice()) {
 				System.out.println("You don't have enough NixonBucks for this weapon");
 				continue;
 			} else {
 				// else add weapon to backpack weapon
-				boolean alreadyInBackpack = player.checkForWeaponInBackpack(zoidbergWeapons.get(choice - 2));
+				boolean alreadyInBackpack = player.checkForWeaponInBackpack(zoidbergWeapons.get(choice - 3));
 				if (alreadyInBackpack) {
 					System.out.println("You already have this weapon");
 					continue;
 				} else {
-					player.addWeaponToBackpack(zoidbergWeapons.get(choice - 2));
+					player.addWeaponToBackpack(zoidbergWeapons.get(choice - 3));
 					System.out.println("Weapon Bought and Added to BackPack");
-					player.setNixonBucks(player.getNixonBucks() - zoidbergWeapons.get(choice - 2).getPrice());
+					player.setNixonBucks(player.getNixonBucks() - zoidbergWeapons.get(choice - 3).getPrice());
 					continue;
 				}
 			}
