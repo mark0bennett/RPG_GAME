@@ -980,7 +980,7 @@ public class StoryTeller implements Story {
 		System.out.println("ALL GLORY TO THE HYPNOTOAD");
 		System.out.println("ALL GLORY TO THE HYPNOTOAD");
 		System.out.println("ALL GLORY TO THE HYPNOTOAD");
-		//game ends
+		// game ends
 	}
 
 	public static void nextLine(Scanner scanner) {

@@ -256,9 +256,6 @@ public class Combat {
 		boolean wonBattle = false;
 		boolean firstEnemyDead = false;
 		while (true) {
-			// TODO: just attacks the first enemy then the second for now, maybe add a
-			// choice later
-			// you attack
 			playerAttackSequenceNoCrits(player, enemy);
 			StoryTeller.nextLine(scanner);
 			// check if first enemy is dead
@@ -310,9 +307,6 @@ public class Combat {
 		boolean wonBattle = false;
 		boolean firstEnemyDead = false;
 		while (true) {
-			// TODO: just attacks the first enemy then the second for now, maybe add a
-			// choice later
-			// you attack
 			playerAttackSequenceWithCrits(player, enemy);
 			StoryTeller.nextLine(scanner);
 			// check if first enemy is dead
