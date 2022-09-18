@@ -397,6 +397,40 @@ public class StoryTeller implements Story {
 		startProfessorVendor(player);
 	}
 
+	private void sellItemsMenu(List<Weapon> vendorList, Player player) {
+		System.out.println("Pick an Item to Sell - Get NixonBucks equal to the damage of weapon");
+		player.printBackpack();
+		System.out.println((player.getBackPack().size() + 1) + ": BACK TO VENDOR");
+		int choice = 0;
+		while (true) {
+			try {
+				choice = Integer.valueOf(scanner.nextLine());
+			} catch (Exception e) {
+				System.out.println("Type a number that exists here");
+				continue;
+			}
+			// cant sell your last weapon
+			if (player.getBackPack().size() == 1) {
+				System.out.println("You Only Have One Weapon, You Can't Sell It, Stupid!");
+				break;
+			}
+			// BACK TO VENDOR OPTION
+			if (choice == (player.getBackPack().size() + 1)) {
+				break;
+			}
+
+			if (choice > player.getBackPack().size() + 1 || choice < 0) {
+				System.out.println("Type a number that exists here");
+				continue;
+			} else if (choice >= 1 && choice <= player.getBackPack().size()) {
+				vendorList.add(player.getBackPack().get(choice - 1));
+				player.sellWeapon(choice - 1);
+				System.out.println("Weapon Sold");
+				break;
+			}
+		}
+	}
+
 	private List<Weapon> farnsworthWeapons = WeaponsListCreator.createListWeaponsFromCsvFile("WeaponsFarnsworth.csv");
 
 	private void startProfessorVendor(Player player) {
@@ -404,10 +438,10 @@ public class StoryTeller implements Story {
 		while (true) {
 			printPlayer(player);
 			System.out.println("1: EXIT");
-			
+			System.out.println("2: SELL ONE OF YOUR ITEMS");
 			for (int i = 0; i < farnsworthWeapons.size(); i++) {
 				System.out.println(
-						(i + 2) + ": " + farnsworthWeapons.get(i) + " - Price: " + farnsworthWeapons.get(i).getPrice());
+						(i + 3) + ": " + farnsworthWeapons.get(i) + " - Price: " + farnsworthWeapons.get(i).getPrice());
 			}
 			try {
 				choice = Integer.valueOf(scanner.nextLine());
@@ -419,25 +453,30 @@ public class StoryTeller implements Story {
 			if (choice == Integer.parseInt("1")) {
 				break;
 			}
+			if (choice == Integer.parseInt("2")) {
+				sellItemsMenu(farnsworthWeapons, player);
+//				break;
+				// TODO: without break do we just come back to here when finished with selling?
+			}
 			// if number doesnt exist in backpack, continue
-			else if (choice > farnsworthWeapons.size() + 1 || choice <= 0) {
+			else if (choice > farnsworthWeapons.size() + 2 || choice <= 0) {
 				System.out.println("No weapon exists there");
 				continue;
 			}
 			// check you have enough NixonBucks
-			else if (player.getNixonBucks() < farnsworthWeapons.get(choice - 2).getPrice()) {
+			else if (player.getNixonBucks() < farnsworthWeapons.get(choice - 3).getPrice()) {
 				System.out.println("You don't have enough NixonBucks for this weapon");
 				continue;
 			} else {
 				// else add weapon to backpack weapon
-				boolean alreadyInBackpack = player.checkForWeaponInBackpack(farnsworthWeapons.get(choice - 2));
+				boolean alreadyInBackpack = player.checkForWeaponInBackpack(farnsworthWeapons.get(choice - 3));
 				if (alreadyInBackpack) {
 					System.out.println("You already have this weapon");
 					continue;
 				} else {
-					player.addWeaponToBackpack(farnsworthWeapons.get(choice - 2));
+					player.addWeaponToBackpack(farnsworthWeapons.get(choice - 3));
 					System.out.println("Weapon Bought and Added to BackPack");
-					player.setNixonBucks(player.getNixonBucks() - farnsworthWeapons.get(choice - 2).getPrice());
+					player.setNixonBucks(player.getNixonBucks() - farnsworthWeapons.get(choice - 3).getPrice());
 					continue;
 				}
 			}

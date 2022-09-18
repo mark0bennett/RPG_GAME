@@ -26,7 +26,6 @@ public class CombatService {
 
 		printCombatHasBegun();
 		System.out.println(player);
-		StoryTeller.printLineBreak();
 		player.printBackpack();
 		pickWeapon(player);
 		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, name, level);
@@ -68,7 +67,6 @@ public class CombatService {
 
 		printCombatHasBegun();
 		System.out.println(player);
-		StoryTeller.printLineBreak();
 		player.printBackpack();
 		pickWeapon(player);
 		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, name1, level);

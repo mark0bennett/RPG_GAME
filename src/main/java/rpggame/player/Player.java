@@ -58,13 +58,11 @@ public class Player {
 		return attackDamage;
 	}
 
-	// TODO: sell weapon in backpack - goes to vender List, receive weapon damage in
-	// gold and then for sale for twice damage
-	public void sellWeapon(int number) {
+	public void sellWeapon(int index) {
 		// adds the damage of the weapon to NixonBucks when sold
-		this.nixonBucks = this.nixonBucks + this.backPack.get(number - 1).getDamage();
+		this.nixonBucks = this.nixonBucks + this.backPack.get(index).getDamage();
 		// then removes weapon from backpack
-		this.backPack.remove(number - 1);
+		this.backPack.remove(index);
 	}
 
 	public boolean checkForWeaponInBackpack(Weapon weapon) {
@@ -84,6 +82,7 @@ public class Player {
 
 	public void printBackpack() {
 		// show weapons in backpack
+		StoryTeller.printLineBreak();
 		System.out.println("Backpack Contents");
 		for (int i = 0; i < this.backPack.size(); i++) {
 			System.out.println((i + 1) + ": " + this.backPack.get(i));

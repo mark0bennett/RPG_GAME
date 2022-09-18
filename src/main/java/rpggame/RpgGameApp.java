@@ -23,10 +23,14 @@ public class RpgGameApp {
 		// TODO: Delete weapon option at pickWeapon();
 
 		Story storyTeller = new StoryTeller();
-
+		
 		storyTeller.intro();
 		Player player = storyTeller.createPlayer();
 		StoryTeller.printPlayer(player);
+		
+		
+		storyTeller.mainPathsSplit(player);
+		
 
 		storyTeller.startFirstFight(player);
 
