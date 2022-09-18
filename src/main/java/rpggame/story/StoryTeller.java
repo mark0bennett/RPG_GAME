@@ -37,7 +37,7 @@ public class StoryTeller implements Story {
 		printLineBreak();
 		System.out.println("WELCOME TO - RPG_GAME -");
 		printLineBreak();
-		System.out.println("Press 'Enter' to advance the text");
+		System.out.println("Press 'Enter' to contiue and skip lines of text");
 		printLineBreak();
 		System.out.println("You are walking minding your own business, as you do, when...");
 		nextLine(scanner);

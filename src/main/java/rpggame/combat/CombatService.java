@@ -116,7 +116,6 @@ public class CombatService {
 		int choice = 0;
 		while (true) {
 			System.out.println("Which weapon would you like to use (type a number)");
-			System.out.println("or type 'd' to go to Delete Weapon Menu");
 			// pick a number
 			try {
 				choice = Integer.valueOf(scanner.nextLine());

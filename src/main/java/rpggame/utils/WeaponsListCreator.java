@@ -18,7 +18,7 @@ public class WeaponsListCreator {
 			// parsing a CSV file into BufferedReader class constructor
 			BufferedReader bufferedReader = new BufferedReader(
 					new FileReader(
-							"D:\\Java\\Spring Tools Suite\\Projects\\RPG_GAME\\src\\main\\java\\rpggame\\weapon\\"
+							"D:\\Java\\Spring Tools Suite\\Projects\\RPG_GAME\\src\\main\\resources\\weapon\\"
 									+ fileName));
 			while ((line = bufferedReader.readLine()) != null)
 			// returns a Boolean value
