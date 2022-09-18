@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import rpggame.combat.Combat;
 import rpggame.player.Player;
+import rpggame.utils.AsciiArtReader;
 import rpggame.utils.WeaponsListCreator;
 import rpggame.weapon.Weapon;
 
@@ -35,15 +36,21 @@ public class StoryTeller implements Story {
 
 	public void intro() {
 		printLineBreak();
-		System.out.println("WELCOME TO - RPG_GAME -");
+		System.out.println("		-- WELCOME TO --");
+		printLineBreak();
+		AsciiArtReader.readArt("Futurama.txt");
 		printLineBreak();
 		System.out.println("Press 'Enter' to contiue and skip lines of text");
 		printLineBreak();
+		nextLine(scanner);
 		System.out.println("You are walking minding your own business, as you do, when...");
 		nextLine(scanner);
 		System.out.println("Something appears from the darkness!");
 		nextLine(scanner);
 		System.out.println("A strange ball of energy with what looks like an old man inside...");
+		nextLine(scanner);
+		AsciiArtReader.readArt("Professor.txt");
+		printLineBreak();
 		nextLine(scanner);
 		System.out.println(
 				"He quickly explains that there is NO TIME to explain - he forces part of the strange energy at you");
@@ -246,6 +253,9 @@ public class StoryTeller implements Story {
 		System.out.println("Unknown: 'Hey There!' - says a voice in the distance");
 		nextLine(scanner);
 		System.out.println("The voice approaches and it is a young gentleman with pointy Red Hair");
+		nextLine(scanner);
+		AsciiArtReader.readArt("Fry.txt");
+		printLineBreak();
 		nextLine(scanner);
 		System.out.println("Fry: 'I rode away on my Scooty Puff Jr. when I saw that thing you were fighting'");
 		nextLine(scanner);
@@ -835,6 +845,7 @@ public class StoryTeller implements Story {
 			nextLine(scanner);
 			System.out.println("Bender: 'You could do with a bit of Bender-ising baby'");
 			nextLine(scanner);
+			AsciiArtReader.readArt("Bender.txt");
 			System.out.println("Your Strength is increased by 1");
 			nextLine(scanner);
 			player.setStrength(player.getStrength() + 1);
@@ -849,6 +860,7 @@ public class StoryTeller implements Story {
 		// TODO:robot santa or hypnotoad or both
 		// TODO:some weird shit happens?
 		System.out.println("FINAL BOSS");
+		AsciiArtReader.readArt("Hypnotoad.txt");
 	}
 
 	public static void nextLine(Scanner scanner) {
