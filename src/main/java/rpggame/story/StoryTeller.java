@@ -404,6 +404,7 @@ public class StoryTeller implements Story {
 		while (true) {
 			printPlayer(player);
 			System.out.println("1: EXIT");
+			
 			for (int i = 0; i < farnsworthWeapons.size(); i++) {
 				System.out.println(
 						(i + 2) + ": " + farnsworthWeapons.get(i) + " - Price: " + farnsworthWeapons.get(i).getPrice());

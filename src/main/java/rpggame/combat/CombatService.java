@@ -118,9 +118,7 @@ public class CombatService {
 		int choice = 0;
 		while (true) {
 			System.out.println("Which weapon would you like to use (type a number)");
-			// TODO: or give option to delete weapon here
-			System.out.println("or type (d + weapon number) to delete a weapon - e.g. d2");
-			// player.deleteWeapon();
+			System.out.println("or type 'd' to go to Delete Weapon Menu");
 			// pick a number
 			try {
 				choice = Integer.valueOf(scanner.nextLine());
@@ -170,8 +168,7 @@ public class CombatService {
 		System.out.println("Weapon Type: " + droppedWeapon.getWeaponType());
 		StoryTeller.printLineBreak();
 		StoryTeller.nextLine(scanner);
-		// TODO: STILL DOUBLE ADDING WEAPONS WHEN THEY ARE ALREADY IN BACKPACK - doing
-		// it manually for now
+
 		boolean alreadyInBackpack = player.checkForWeaponInBackpack(droppedWeapon);
 		if (!alreadyInBackpack) {
 			player.addWeaponToBackpack(droppedWeapon);

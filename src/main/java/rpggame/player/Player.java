@@ -58,8 +58,14 @@ public class Player {
 		return attackDamage;
 	}
 
-	// TODO: delete weapon from backpack
-	// TODO: sell weapon in backpack
+	// TODO: sell weapon in backpack - goes to vender List, receive weapon damage in
+	// gold and then for sale for twice damage
+	public void sellWeapon(int number) {
+		// adds the damage of the weapon to NixonBucks when sold
+		this.nixonBucks = this.nixonBucks + this.backPack.get(number - 1).getDamage();
+		// then removes weapon from backpack
+		this.backPack.remove(number - 1);
+	}
 
 	public boolean checkForWeaponInBackpack(Weapon weapon) {
 		boolean alreadyInBackpack = false;
