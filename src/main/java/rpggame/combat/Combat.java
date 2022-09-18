@@ -106,7 +106,7 @@ public class Combat {
 		return wonBattle;
 	}
 
-	private void printCombatHasBegun() {
+	public void printCombatHasBegun() {
 		StoryTeller.printLineBreak();
 		System.out.println("COMBAT HAS BEGUN!!!");
 		StoryTeller.printLineBreak();
@@ -400,7 +400,7 @@ public class Combat {
 		player.setStrength(player.getStrength() - (enemyAttackDamage + enemyCritDamage));
 	}
 
-	private void printVersusText(Player player, Enemy enemy) {
+	public void printVersusText(Player player, Enemy enemy) {
 		StoryTeller.printLineBreak();
 		System.out.println(player);
 		System.out.println("vs");

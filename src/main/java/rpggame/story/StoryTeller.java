@@ -941,16 +941,46 @@ public class StoryTeller implements Story {
 	}
 
 	public void finalBoss(Player player) {
-		System.out.println("FINAL BOSS");
+		System.out.println("You walk down a pretty lane with flowers and grass");
+		System.out.println("and get the feeling that all this will be over soon");
+		nextLine(scanner);
+		System.out.println("The sound of what can only be descibed as an Angry Machine gets louder and louder");
+		nextLine(scanner);
+		System.out.println("SUDDENLY...");
 		nextLine(scanner);
 		AsciiArtReader.readArt("Hypnotoad.txt");
 		printLineBreak();
+		nextLine(scanner);
 		Weapon angryMachine = new Weapon("Mind Control", 9001, 9001, 9001, WeaponType.INTELLIGENCE, 9001);
 		Enemy hypnoToad = new Enemy("THE HYPNOTOAD", 9001, 9001, 9001, angryMachine);
-		//print combat has begun
-		//print player and enemy stats
-		//you say ALL GLORY TO THE HYPNOTOAD
-		//game ends...
+		combat.printCombatHasBegun();
+		nextLine(scanner);
+		combat.printVersusText(player, hypnoToad);
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		nextLine(scanner);
+		System.out.println("...");
+		nextLine(scanner);
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		nextLine(scanner);
+		AsciiArtReader.readArt("Hypnotoad.txt");
+		nextLine(scanner);
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		//game ends
 	}
 
 	public static void nextLine(Scanner scanner) {

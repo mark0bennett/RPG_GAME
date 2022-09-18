@@ -3,7 +3,6 @@ package rpggame;
 import rpggame.player.Player;
 import rpggame.story.Story;
 import rpggame.story.StoryTeller;
-import rpggame.utils.AsciiArtReader;
 
 public class RpgGameApp {
 
