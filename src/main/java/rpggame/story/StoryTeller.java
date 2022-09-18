@@ -5,10 +5,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 import rpggame.combat.Combat;
+import rpggame.enemy.Enemy;
 import rpggame.player.Player;
 import rpggame.utils.AsciiArtReader;
 import rpggame.utils.WeaponsListCreator;
 import rpggame.weapon.Weapon;
+import rpggame.weapon.WeaponType;
 
 public class StoryTeller implements Story {
 
@@ -753,23 +755,23 @@ public class StoryTeller implements Story {
 		boolean slurmFactoryCompleted = combat.twoEnemies(player, "Grunka Lunka", 5, "Slurm Queen", 6, false);
 		return slurmFactoryCompleted;
 	}
-	
+
 	private boolean seenFishyAlready = false;
 
 	private boolean startFishyJoes(Player player) {
 		int initialPlayerStrength = player.getStrength();
 		boolean fishyJoesCompletedLocal = false;
-		if(!seenFishyAlready) {
+		if (!seenFishyAlready) {
 			seenFishyAlready = true;
-		System.out.println("YOU ENTER FISHY JOE'S");
-		nextLine(scanner);
-		System.out.println("Fishy Joe: 'Hey friend, have a Poppler'");
-		nextLine(scanner);
-		System.out.println("Dirty Hippy: 'Hey man eating animals is wrong'");
-		nextLine(scanner);
-		System.out.println("You spit out the Poppler");
-		System.out.println("Not for moral reasons, it just tastes old and mouldy!");
-		nextLine(scanner);
+			System.out.println("YOU ENTER FISHY JOE'S");
+			nextLine(scanner);
+			System.out.println("Fishy Joe: 'Hey friend, have a Poppler'");
+			nextLine(scanner);
+			System.out.println("Dirty Hippy: 'Hey man eating animals is wrong'");
+			nextLine(scanner);
+			System.out.println("You spit out the Poppler");
+			System.out.println("Not for moral reasons, it just tastes old and mouldy!");
+			nextLine(scanner);
 		} else {
 			System.out.println("YOU ENTER FISHY JOE'S...again");
 			nextLine(scanner);
@@ -939,10 +941,16 @@ public class StoryTeller implements Story {
 	}
 
 	public void finalBoss(Player player) {
-		// TODO:robot santa or hypnotoad or both
-		// TODO:some weird shit happens?
 		System.out.println("FINAL BOSS");
+		nextLine(scanner);
 		AsciiArtReader.readArt("Hypnotoad.txt");
+		printLineBreak();
+		Weapon angryMachine = new Weapon("Mind Control", 9001, 9001, 9001, WeaponType.INTELLIGENCE, 9001);
+		Enemy hypnoToad = new Enemy("THE HYPNOTOAD", 9001, 9001, 9001, angryMachine);
+		//print combat has begun
+		//print player and enemy stats
+		//you say ALL GLORY TO THE HYPNOTOAD
+		//game ends...
 	}
 
 	public static void nextLine(Scanner scanner) {
