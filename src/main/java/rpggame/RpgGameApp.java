@@ -34,9 +34,7 @@ public class RpgGameApp {
 
 		storyTeller.lastPathsSplit(player);
 
-		System.out.println("now back in main method");
-
-		// TODO: Boss fight with over-levelled boss...or 2 - Robot Santa? Hypnotoad?
+		storyTeller.finalBoss(player);
 	}
 
 }

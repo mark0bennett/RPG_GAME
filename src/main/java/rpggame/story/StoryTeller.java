@@ -845,6 +845,12 @@ public class StoryTeller implements Story {
 		}
 	}
 
+	public void finalBoss(Player player) {
+		// TODO:robot santa or hypnotoad or both
+		// TODO:some weird shit happens?
+		System.out.println("FINAL BOSS");
+	}
+
 	public static void nextLine(Scanner scanner) {
 		String input = scanner.nextLine();
 		input.strip();

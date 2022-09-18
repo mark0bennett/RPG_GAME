@@ -18,4 +18,6 @@ public interface Story {
 
 	void lastPathsSplit(Player player);
 
+	void finalBoss(Player player);
+
 }
