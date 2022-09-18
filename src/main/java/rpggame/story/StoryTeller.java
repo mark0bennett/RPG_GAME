@@ -116,9 +116,6 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("Something quite strange is heading towards you....wearing a sleek yet intimidating outfit");
 		nextLine(scanner);
-
-		// START COMBAT HERE?
-		// Combat class will have its own EnemyFactory and maybe its own scanner too?
 		combat.oneEnemy(player, "Zapp Brannigan", 0, false);
 	}
 
@@ -169,55 +166,79 @@ public class StoryTeller implements Story {
 		}
 	}
 
+	private boolean seenChurchAlready = false;
+
 	private boolean startChurch(Player player) {
-		System.out.println("YOU ENTER THE CHURCH...");
-		nextLine(scanner);
-		System.out.println("It's quiet, a little too quiet...");
-		nextLine(scanner);
-		System.out.println("...");
-		System.out.println("*CRASH!!!!!!!!*");
-		nextLine(scanner);
-		System.out.println("Preacherbot: 'Sinner, feel the cold metal love of Robotology!'");
-		nextLine(scanner);
+		if (!seenChurchAlready) {
+			seenChurchAlready = true;
+			System.out.println("YOU ENTER THE CHURCH...");
+			nextLine(scanner);
+			System.out.println("It's quiet, a little too quiet...");
+			nextLine(scanner);
+			System.out.println("...");
+			System.out.println("*CRASH!!!!!!!!*");
+			nextLine(scanner);
+			System.out.println("Preacherbot: 'Sinner, feel the cold metal love of Robotology!'");
+			nextLine(scanner);
+		} else {
+			System.out.println("YOU ENTER THE CHURCH...again");
+			nextLine(scanner);
+		}
 		boolean churchCompleted = combat.oneEnemy(player, "Preacherbot", 1, false);
 		return churchCompleted;
 	}
 
+	private boolean seenGraveyardAlready = false;
+
 	private boolean startGraveyard(Player player) {
-		System.out.println("YOU ENTER THE GRAVEYARD...cautiously...");
-		nextLine(scanner);
-		System.out.println("What's that!");
-		nextLine(scanner);
-		System.out.println("...nothing");
-		nextLine(scanner);
-		System.out.println("You wipe some dust from a gravestone to read the inscription...");
-		nextLine(scanner);
-		System.out.println("Here Lies...");
-		nextLine(scanner);
-		System.out.println("...");
-		nextLine(scanner);
-		System.out.println("Here Lies Dr. Zoidberg - Beloved Crab and Doctor...");
-		nextLine(scanner);
-		System.out.println("Zombie Jesus: 'They nailed me to the cross, this time it's personal'");
-		nextLine(scanner);
-		System.out.println("Man I hate Zombies, have it you!");
-		nextLine(scanner);
+		if (!seenGraveyardAlready) {
+			seenGraveyardAlready = true;
+			System.out.println("YOU ENTER THE GRAVEYARD...cautiously...");
+			nextLine(scanner);
+			System.out.println("What's that!");
+			nextLine(scanner);
+			System.out.println("...nothing");
+			nextLine(scanner);
+			System.out.println("You wipe some dust from a gravestone to read the inscription...");
+			nextLine(scanner);
+			System.out.println("Here Lies...");
+			nextLine(scanner);
+			System.out.println("...");
+			nextLine(scanner);
+			System.out.println("Here Lies Dr. Zoidberg - Beloved Crab and Doctor...");
+			nextLine(scanner);
+			System.out.println("Zombie Jesus: 'They nailed me to the cross, this time it's personal'");
+			nextLine(scanner);
+			System.out.println("Man I hate Zombies, have it you!");
+			nextLine(scanner);
+		} else {
+			System.out.println("YOU ENTER THE GRAVEYARD...again...");
+			nextLine(scanner);
+		}
 		boolean graveyardCompleted = combat.oneEnemy(player, "Zombie Jesus", 2, false);
 		return graveyardCompleted;
 	}
 
+	private boolean seenForestAlready = false;
+
 	private boolean startForest(Player player) {
-		System.out.println("YOU ENTER THE FOREST...cautiously optimistic...");
-		nextLine(scanner);
-		System.out.println("A sign reads - TURN AROUND NOW - Prof. Farnsw......");
-		nextLine(scanner);
-		System.out.println("A flash from the bushes...");
-		nextLine(scanner);
-		System.out.println("Ranger Park: 'Oh, I thought you were Bigfoot, you know he roams these forests'");
-		nextLine(scanner);
-		System.out.println(
-				"Ranger Park: 'But what nice feet you have, if I chop of your feet they could almost be mistaken for Bigfoot's'");
-		nextLine(scanner);
+		if (!seenForestAlready) {
+			seenForestAlready = true;
+			System.out.println("YOU ENTER THE FOREST...cautiously optimistic...");
+			nextLine(scanner);
+			System.out.println("A sign reads - TURN AROUND NOW - Prof. Farnsw......");
+			nextLine(scanner);
+			System.out.println("A flash from the bushes...");
+			nextLine(scanner);
+			System.out.println("Ranger Park: 'Oh, I thought you were Bigfoot, you know he roams these forests'");
+			nextLine(scanner);
+			System.out.println(
+					"Ranger Park: 'But what nice feet you have, if I chop of your feet they could almost be mistaken for Bigfoot's'");
+			nextLine(scanner);
+		} else {
+			System.out.println("YOU ENTER THE FOREST...again...");
+			nextLine(scanner);
+		}
 		boolean forestCompleted = combat.oneEnemy(player, "Ranger Park the Park Ranger", 2, false);
 		return forestCompleted;
 	}
@@ -335,49 +356,73 @@ public class StoryTeller implements Story {
 		}
 	}
 
+	private boolean seenRiverAlready = false;
+
 	private boolean startRiver(Player player) {
-		System.out.println("YOU ENTER THE RIVER");
-		nextLine(scanner);
-		System.out.println("Is that, Joan Rivers?");
-		nextLine(scanner);
-		System.out.println("No it's just a big blob of green muck");
-		nextLine(scanner);
-		System.out.println("Joan Rivers: 'I'm angry that I'll never be as good looking as my friend here HGB!'");
-		nextLine(scanner);
-		System.out.println("Joan Rivers & HGB: 'Let's get him!'");
-		nextLine(scanner);
+		if (!seenRiverAlready) {
+			seenRiverAlready = true;
+			System.out.println("YOU ENTER THE RIVER");
+			nextLine(scanner);
+			System.out.println("Is that, Joan Rivers?");
+			nextLine(scanner);
+			System.out.println("No it's just a big blob of green muck");
+			nextLine(scanner);
+			System.out.println("Joan Rivers: 'I'm angry that I'll never be as good looking as my friend here HGB!'");
+			nextLine(scanner);
+			System.out.println("Joan Rivers & HGB: 'Let's get him!'");
+			nextLine(scanner);
+		} else {
+			System.out.println("YOU ENTER THE RIVER...again");
+			nextLine(scanner);
+		}
 		boolean riverCompleted = combat.twoEnemies(player, "Joan River's Head", 2, "Horrible Gelatinous Blob", 3, true);
 		return riverCompleted;
 	}
 
+	private boolean seenAppliedAready = false;
+
 	private boolean startAppliedChryogenics(Player player) {
-		System.out.println("YOU ENTER APPLIED CHRYOGENICS");
-		nextLine(scanner);
-		System.out.println("Terry: 'Welcome to the world of tomorrow!'");
-		nextLine(scanner);
-		System.out.println("Ipji: 'Do your jobs, all of you, while I eat this curry'");
-		nextLine(scanner);
-		System.out.println("...?");
-		nextLine(scanner);
-		System.out.println("Ipji: 'Ooooh no career chip in you I see'");
-		nextLine(scanner);
-		System.out.println("Ipji: 'Michelle, help me hold him down while I implant him with a Janitor chip'");
-		nextLine(scanner);
+		if (!seenAppliedAready) {
+			seenAppliedAready = true;
+			System.out.println("YOU ENTER APPLIED CHRYOGENICS");
+			nextLine(scanner);
+			System.out.println("Terry: 'Welcome to the world of tomorrow!'");
+			nextLine(scanner);
+			System.out.println("Ipji: 'Do your jobs, all of you, while I eat this curry'");
+			nextLine(scanner);
+			System.out.println("...?");
+			nextLine(scanner);
+			System.out.println("Ipji: 'Ooooh no career chip in you I see'");
+			nextLine(scanner);
+			System.out.println("Ipji: 'Michelle, help me hold him down while I implant him with a Janitor chip'");
+			nextLine(scanner);
+		} else {
+			System.out.println("YOU ENTER APPLIED CHRYOGENICS...again");
+			nextLine(scanner);
+		}
 		boolean appliedChryogenicsCompleted = combat.twoEnemies(player, "Michelle", 2, "Ipji", 3, true);
 		return appliedChryogenicsCompleted;
 	}
 
+	private boolean seenRobotArmsAlready = false;
+
 	private boolean startRobotArms(Player player) {
-		System.out.println("YOU ENTER ROBOT ARMS APARTMENTS");
-		nextLine(scanner);
-		System.out.println("*Music is playing*");
-		nextLine(scanner);
-		System.out.println("Robot Devil: 'Cigars are evil, you won't miss them, we'll find ways to...'");
-		nextLine(scanner);
-		System.out.println("Robot Devil: 'How rude! To interrupt my ironic song!'");
-		nextLine(scanner);
-		System.out.println("Roboto: 'I wanna stab him with my stabbing knife!'");
-		nextLine(scanner);
+		if (!seenRobotArmsAlready) {
+			seenRobotArmsAlready = true;
+			System.out.println("YOU ENTER ROBOT ARMS APARTMENTS");
+			nextLine(scanner);
+			System.out.println("*Music is playing*");
+			nextLine(scanner);
+			System.out.println("Robot Devil: 'Cigars are evil, you won't miss them, we'll find ways to...'");
+			nextLine(scanner);
+			System.out.println("Robot Devil: 'How rude! To interrupt my ironic song!'");
+			nextLine(scanner);
+			System.out.println("Roboto: 'I wanna stab him with my stabbing knife!'");
+			nextLine(scanner);
+		} else {
+			System.out.println("YOU ENTER ROBOT ARMS APARTMENTS...again");
+			nextLine(scanner);
+		}
 		boolean robotArmsCompleted = combat.twoEnemies(player, "Robot Devil", 3, "Roberto", 3, true);
 		return robotArmsCompleted;
 	}
@@ -647,12 +692,24 @@ public class StoryTeller implements Story {
 		}
 	}
 
+	private boolean seenMomAlready = false;
+
 	private boolean startMomCorp(Player player) {
 		boolean momCorpCompleted = false;
 		boolean firstFight = false;
 		boolean secondFight = false;
-		System.out.println("MOM: 'Igner, Larry, get this crap sack off my property!'");
-		nextLine(scanner);
+		if (!seenMomAlready) {
+			seenMomAlready = true;
+			System.out.println("YOU ENTER MOMCORP");
+			nextLine(scanner);
+			System.out.println("MOM: 'Igner, Larry, get this crap sack off my property!'");
+			nextLine(scanner);
+		} else {
+			System.out.println("YOU ENTER MOMCORP...again");
+			nextLine(scanner);
+			System.out.println("Mom: 'Come back for more aye!'");
+			nextLine(scanner);
+		}
 		firstFight = combat.twoEnemies(player, "Igner", 3, "Larry", 3, true);
 		System.out.println("MOM: 'Those two idiots couldn't beat you but I WILL!'");
 		nextLine(scanner);
@@ -665,28 +722,47 @@ public class StoryTeller implements Story {
 		return momCorpCompleted;
 	}
 
+	private boolean seenSlurmAlready = false;
+
 	private boolean startSlurmFactory(Player player) {
-		System.out.println("YOU ENTER THE SLURM FACTORY");
-		nextLine(scanner);
-		System.out.println("You take a can of nice refreshing Slurm, aaah it's highly addictive");
-		nextLine(scanner);
-		System.out.println("Just as you are finishing off the can, a shadow is cast over you...");
-		nextLine(scanner);
-		System.out.println("The Slurm Queen has spotted you taking free Slurm");
-		System.out.println("She has slung a huge dollop of Super Slurm all over you!");
-		nextLine(scanner);
-		System.out.println("mmmm it tastes amazing, but now all you can think about is MORE SLURM");
-		nextLine(scanner);
-		System.out.println("So much so that you can't remember how to crit!");
-		nextLine(scanner);
-		System.out.println("and so the great Slurm Battle begins...");
+		if (!seenSlurmAlready) {
+			seenSlurmAlready = true;
+			System.out.println("YOU ENTER THE SLURM FACTORY");
+			nextLine(scanner);
+			System.out.println("You take a can of nice refreshing Slurm, aaah it's highly addictive");
+			nextLine(scanner);
+			System.out.println("Just as you are finishing off the can, a shadow is cast over you...");
+			nextLine(scanner);
+			System.out.println("The Slurm Queen has spotted you taking free Slurm");
+			System.out.println("She has slung a huge dollop of Super Slurm all over you!");
+			nextLine(scanner);
+			System.out.println("mmmm it tastes amazing, but now all you can think about is MORE SLURM");
+			nextLine(scanner);
+			System.out.println("So much so that you can't remember how to crit!");
+			nextLine(scanner);
+			System.out.println("and so the great Slurm Battle begins...");
+			nextLine(scanner);
+		} else {
+			System.out.println("YOU ENTER THE SLURM FACTORY...again");
+			nextLine(scanner);
+			System.out.println("Again - The Slurm Queen Covers you with Super Slurm");
+			nextLine(scanner);
+			System.out.println("You can't Crit!");
+			nextLine(scanner);
+		}
 		boolean slurmFactoryCompleted = combat.twoEnemies(player, "Grunka Lunka", 5, "Slurm Queen", 6, false);
 		return slurmFactoryCompleted;
 	}
+	
+	private boolean seenFishyAlready = false;
 
 	private boolean startFishyJoes(Player player) {
 		int initialPlayerStrength = player.getStrength();
 		boolean fishyJoesCompletedLocal = false;
+		if(!seenFishyAlready) {
+			seenFishyAlready = true;
+		System.out.println("YOU ENTER FISHY JOE'S");
+		nextLine(scanner);
 		System.out.println("Fishy Joe: 'Hey friend, have a Poppler'");
 		nextLine(scanner);
 		System.out.println("Dirty Hippy: 'Hey man eating animals is wrong'");
@@ -694,6 +770,12 @@ public class StoryTeller implements Story {
 		System.out.println("You spit out the Poppler");
 		System.out.println("Not for moral reasons, it just tastes old and mouldy!");
 		nextLine(scanner);
+		} else {
+			System.out.println("YOU ENTER FISHY JOE'S...again");
+			nextLine(scanner);
+			System.out.println("You pick a Poppler up off the ground and eat it...mmmmmm");
+			nextLine(scanner);
+		}
 		// check that you can actually minus 2 from player strength
 		if (player.getStrength() >= 3) {
 			player.setStrength(initialPlayerStrength - 2);
