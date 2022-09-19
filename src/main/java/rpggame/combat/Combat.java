@@ -23,40 +23,32 @@ public class Combat {
 
 	public boolean oneEnemy(Player player, String name, int level, boolean withCrits) {
 		boolean wonBattle = false;
-
+		// print combat text and create enemy
 		printCombatHasBegun();
-		System.out.println(player);
-		player.printBackpack();
 		pickWeapon(player);
 		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, name, level);
 		printVersusText(player, enemy);
-
+		// for restoring health after battle
 		int playerStrengthBeforeCombat = player.getStrength();
-		// for dropping money
+		// for dropping money based on enemy strength
 		int enemyStrengthBeforeCombat = enemy.getStrength();
-
-		if (!withCrits) {
-			wonBattle = attacksWithNoCritsOneEnemy(player, enemy);
-		}
-
+		// based on boolean passed in, battle with or without crits
 		if (withCrits) {
 			wonBattle = attacksWithCritsOneEnemy(player, enemy);
+		} else {
+			wonBattle = attacksWithNoCritsOneEnemy(player, enemy);
 		}
-
 		// reset player strength to what it was before combat
 		if (player.getStrength() < playerStrengthBeforeCombat) {
 			System.out.println("Your strength has been restored");
 			player.setStrength(playerStrengthBeforeCombat);
 		}
-
+		// if you won, drop weapons and money and increase stats
 		if (wonBattle) {
 			showAndAddDroppedWeaponAndMoney(player, enemy, enemyStrengthBeforeCombat);
-			System.out.println("You can now increase one of your stats by 1");
 			increaseStats(player);
 			printWinText(player);
-		}
-
-		if (!wonBattle) {
+		} else {
 			printLossText();
 		}
 		return wonBattle;
@@ -64,43 +56,35 @@ public class Combat {
 
 	public boolean twoEnemies(Player player, String name1, int level, String name2, int level2, boolean withCrits) {
 		boolean wonBattle = false;
-
+		// print combat text and create enemy
 		printCombatHasBegun();
-		System.out.println(player);
-		player.printBackpack();
 		pickWeapon(player);
 		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, name1, level);
 		Enemy enemy2 = enemyFactory.createEnemyCustomLevel(player, name2, level2);
 		printVersusTextTwoEnemies(player, enemy, enemy2);
 
-		// for restoring health
+		// for restoring health after battle
 		int playerStrengthBeforeCombat = player.getStrength();
-		// for dropping money
+		// for dropping money based on enemy strength
 		int enemyStrengthBeforeCombat = enemy.getStrength();
-
-		if (!withCrits) {
-			wonBattle = attacksWithNoCritsTwoEnemies(player, enemy, enemy2);
-		}
-
+		// based on boolean passed in, battle with or without crits
 		if (withCrits) {
 			wonBattle = attacksWithCritsTwoEnemies(player, enemy, enemy2);
+		} else {
+			wonBattle = attacksWithNoCritsTwoEnemies(player, enemy, enemy2);
 		}
-
 		// reset player strength to what it was before combat
 		if (player.getStrength() < playerStrengthBeforeCombat) {
 			System.out.println("Your strength has been restored");
 			player.setStrength(playerStrengthBeforeCombat);
 		}
-
+		// if you won, drop weapons and money and increase stats
 		if (wonBattle) {
 			showAndAddDroppedWeaponAndMoney(player, enemy, enemyStrengthBeforeCombat);
 			showAndAddDroppedWeaponAndMoney(player, enemy2, enemyStrengthBeforeCombat);
-			System.out.println("You can now increase one of your stats by 1");
 			increaseStats(player);
 			printWinText(player);
-		}
-
-		if (!wonBattle) {
+		} else {
 			printLossText();
 		}
 		return wonBattle;
@@ -115,6 +99,8 @@ public class Combat {
 	private void pickWeapon(Player player) {
 		int choice = 0;
 		while (true) {
+			System.out.println(player);
+			player.printBackpack();
 			System.out.println("Which weapon would you like to use (type a number)");
 			// pick a number
 			try {
@@ -178,6 +164,7 @@ public class Combat {
 	}
 
 	private void increaseStats(Player player) {
+		System.out.println("You can now increase one of your stats by 1");
 		while (true) {
 			StoryTeller.printPlayer(player);
 			System.out.println("Type: 's' - to increase Strength");
@@ -198,6 +185,40 @@ public class Combat {
 				continue;
 			}
 		}
+	}
+
+	private boolean battleOneEnemy(Player player, Enemy enemy, boolean withCrits) {
+		boolean wonBattle = false;
+		while (true) {
+			// you attack
+			if (!withCrits) {
+				playerAttackSequenceNoCrits(player, enemy);
+			} else {
+				playerAttackSequenceWithCrits(player, enemy);
+			}
+			StoryTeller.nextLine(scanner);
+			// check if enemy is dead
+			if (enemy.getStrength() < 1) {
+				System.out.println("You Won!");
+				wonBattle = true;
+				break;
+			}
+			// enemy attacks
+			if (!withCrits) {
+				enemyAttackSequenceNoCrits(enemy, player);
+			} else {
+				enemyAttackSequenceWithCrits(enemy, player);
+			}
+			StoryTeller.nextLine(scanner);
+			// check if enemy is dead
+			if (player.getStrength() < 1) {
+				System.out.println("You Lost!");
+				wonBattle = false;
+				break;
+			}
+			printPlayerAndOneEnemy(player, enemy);
+		}
+		return wonBattle;
 	}
 
 	private boolean attacksWithNoCritsOneEnemy(Player player, Enemy enemy) {
