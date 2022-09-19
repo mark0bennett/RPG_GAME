@@ -5,18 +5,19 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import rpggame.person.Person;
 import rpggame.story.StoryTeller;
 import rpggame.utils.EnemyFactory;
 import rpggame.weapon.DamageComparator;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
 
-public class Player {
+public class Player extends Person {
 
+	private String name;
 	private int strength;
 	private int intelligence;
 	private int agility;
-	private String name;
 	private Weapon weapon;
 	private List<Weapon> backPack;
 	private int nixonBucks;
@@ -34,6 +35,7 @@ public class Player {
 		this.nixonBucks = 0;
 	}
 
+	@Override
 	public int getAttackDamage() {
 		int attackDamage = 0;
 		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
@@ -107,8 +109,9 @@ public class Player {
 		this.nixonBucks = nixonBucks;
 	}
 
+	@Override
 	public int getStrength() {
-		return strength;
+		return this.strength;
 	}
 
 	public void setStrength(int strength) {

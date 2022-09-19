@@ -2,10 +2,11 @@ package rpggame.enemy;
 
 import java.util.Random;
 
+import rpggame.person.Person;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
 
-public class Enemy {
+public class Enemy extends Person {
 
 	private String name;
 	private int strength;
@@ -21,6 +22,7 @@ public class Enemy {
 		this.weapon = weapon;
 	}
 
+	@Override
 	public int getAttackDamage() {
 		int attackDamage = 0;
 		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
