@@ -92,7 +92,7 @@ public class Combat {
 
 	private void pickWeapon(Player player) {
 		int choice = 0;
-		//before each battle set weapon to 'no weapon'
+		// before each battle set weapon to 'no weapon'
 		Weapon noWeapon = new Weapon("No Weapon Selected", 0, 0, 0, WeaponType.INTELLIGENCE, 0);
 		player.setWeapon(noWeapon);
 		while (true) {
@@ -229,71 +229,9 @@ public class Combat {
 	private boolean battleTwoEnemies(Player player, Enemy enemy, Enemy enemy2, boolean withCrits) {
 		boolean wonBattle = false;
 		boolean firstEnemyDead = false;
-		while (true) {
-			// you attack depending on withCrits
-			// attacker is first variable passed in
-			if (withCrits) {
-				attackSequenceWithCrits(player, enemy);
-			} else {
-				attackSequenceNoCrits(player, enemy);
-			}
-			StoryTeller.nextLine(scanner);
-			// check if first enemy is dead
-			if (enemy.getStrength() < 1) {
-				System.out.println("You Killed " + enemy.getName());
-				StoryTeller.nextLine(scanner);
-				firstEnemyDead = true;
-				break;
-			}
-			// enemy attacks depending on withCrits
-			// attacker is first variable passed in
-			if (withCrits) {
-				attackSequenceWithCrits(enemy, player);
-			} else {
-				attackSequenceNoCrits(enemy, player);
-			}
-			StoryTeller.nextLine(scanner);
-			// check if enemy is dead
-			if (player.getStrength() < 1) {
-				System.out.println("You Lost!");
-				wonBattle = false;
-				break;
-			}
-			printPlayerAndTwoEnemies(player, enemy, enemy2);
-		}
-
+		firstEnemyDead = battleOneEnemy(player, enemy, withCrits);
 		if (firstEnemyDead) {
-			while (true) {
-				// you attack depending on withCrits
-				// attacker is first variable passed in
-				if (withCrits) {
-					attackSequenceWithCrits(player, enemy2);
-				} else {
-					attackSequenceNoCrits(player, enemy2);
-				}
-				StoryTeller.nextLine(scanner);
-				// check if second enemy is dead
-				if (enemy2.getStrength() < 1) {
-					System.out.println("You Killed " + enemy2.getName() + " and Won!");
-					wonBattle = true;
-					break;
-				}
-				// enemy attacks depending on withCrits
-				// attacker is first variable passed in
-				if (withCrits) {
-					attackSequenceWithCrits(enemy2, player);
-				} else {
-					attackSequenceNoCrits(enemy2, player);
-				}
-				StoryTeller.nextLine(scanner);
-				// check if enemy is dead
-				if (player.getStrength() < 1) {
-					System.out.println("You Lost!");
-					wonBattle = false;
-					break;
-				}
-				printPlayerAndOneEnemy(player, enemy2);
-			}
+			wonBattle = battleOneEnemy(player, enemy2, withCrits);
 		}
 		return wonBattle;
 	}
@@ -339,15 +277,6 @@ public class Combat {
 		StoryTeller.printLineBreak();
 		System.out.println(player);
 		System.out.println(enemy);
-		StoryTeller.printLineBreak();
-		StoryTeller.nextLine(scanner);
-	}
-
-	private void printPlayerAndTwoEnemies(Player player, Enemy enemy, Enemy enemy2) {
-		StoryTeller.printLineBreak();
-		System.out.println(player);
-		System.out.println(enemy);
-		System.out.println(enemy2);
 		StoryTeller.printLineBreak();
 		StoryTeller.nextLine(scanner);
 	}
