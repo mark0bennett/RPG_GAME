@@ -17,7 +17,6 @@ public class RpgGameApp {
 		// CombatService for all the doubled methods?
 		// TODO: split up story teller into Act I Act II and Act III???
 		// TODO: can the story be read in from txt files using AsciiArtReader??
-		// TODO: Weapon toString cleaner with aligned tabs
 		// TODO: attack 2 enemies, pick which enemy to attack
 
 		Story storyTeller = new StoryTeller();

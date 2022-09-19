@@ -508,7 +508,7 @@ public class StoryTeller implements Story {
 
 	private List<Weapon> farnsworthWeapons = WeaponsListCreator.createListWeaponsFromCsvFile("WeaponsFarnsworth.csv");
 
-	private void startProfessorVendor(Player player) {
+	public void startProfessorVendor(Player player) {
 		int choice = 0;
 		while (true) {
 			printPlayer(player);
@@ -582,15 +582,17 @@ public class StoryTeller implements Story {
 
 	private List<Weapon> zoidbergWeapons = WeaponsListCreator.createListWeaponsFromCsvFile("WeaponsZoidberg.csv");
 
-	private void startZoidbergVendor(Player player) {
+	public void startZoidbergVendor(Player player) {
 		int choice = 0;
 		while (true) {
 			printPlayer(player);
 			System.out.println("1: EXIT");
 			System.out.println("2: SELL ONE OF YOUR ITEMS");
 			for (int i = 0; i < zoidbergWeapons.size(); i++) {
-				System.out.println(
-						(i + 3) + ": " + zoidbergWeapons.get(i) + " - Price: " + zoidbergWeapons.get(i).getPrice());
+				System.out.println(String.format("%s: %s - Price %s",
+						(i + 3),
+						zoidbergWeapons.get(i),
+						zoidbergWeapons.get(i).getPrice()));
 			}
 
 			try {
