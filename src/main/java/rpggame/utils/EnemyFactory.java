@@ -3,8 +3,8 @@ package rpggame.utils;
 import java.util.List;
 import java.util.Random;
 
-import rpggame.enemy.Enemy;
-import rpggame.player.Player;
+import rpggame.person.enemy.Enemy;
+import rpggame.person.player.Player;
 import rpggame.weapon.Weapon;
 
 public class EnemyFactory {

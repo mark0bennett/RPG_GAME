@@ -3,9 +3,9 @@ package rpggame.combat;
 import java.util.Random;
 import java.util.Scanner;
 
-import rpggame.enemy.Enemy;
 import rpggame.person.Person;
-import rpggame.player.Player;
+import rpggame.person.enemy.Enemy;
+import rpggame.person.player.Player;
 import rpggame.story.StoryTeller;
 import rpggame.utils.EnemyFactory;
 import rpggame.weapon.Weapon;

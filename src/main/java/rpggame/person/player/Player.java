@@ -1,4 +1,4 @@
-package rpggame.player;
+package rpggame.person.player;
 
 import java.util.ArrayList;
 import java.util.Collections;

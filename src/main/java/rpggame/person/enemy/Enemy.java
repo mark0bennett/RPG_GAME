@@ -1,4 +1,4 @@
-package rpggame.enemy;
+package rpggame.person.enemy;
 
 import java.util.Random;
 
