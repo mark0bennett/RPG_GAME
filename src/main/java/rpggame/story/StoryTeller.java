@@ -931,6 +931,7 @@ public class StoryTeller implements Story {
 			nextLine(scanner);
 			System.out.println("Leela: 'But I have got something for you'");
 			nextLine(scanner);
+			AsciiArtReader.readArt("Leela.txt");
 			System.out.println("Leela: 'Heeeeee-YA'");
 			nextLine(scanner);
 			System.out.println("Your Agility is increased by 1");

@@ -57,11 +57,11 @@ public class Weapon {
 
 	@Override
 	public String toString() {
-//		return this.name + "-> " + weaponType.toString().toUpperCase() + "   agi.Req-" + this.agilityRequired
-//				+ " int.Req-" + this.intelligenceRequired;
-		return String.format("%-40s -> %-13s agi.Req %s int.Req %s", this.name, this.weaponType.toString().toUpperCase(), this.agilityRequired, this.intelligenceRequired);
-		
-//		String.format("Color = %-10s Length = %5d", color1, length1));
+		return String.format("%-40s -> %-13s agi.Req %s int.Req %s",
+				this.name,
+				this.weaponType.toString().toUpperCase(),
+				this.agilityRequired,
+				this.intelligenceRequired);
 	}
 
 }
