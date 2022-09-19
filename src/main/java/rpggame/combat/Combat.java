@@ -33,11 +33,7 @@ public class Combat {
 		// for dropping money based on enemy strength
 		int enemyStrengthBeforeCombat = enemy.getStrength();
 		// based on boolean passed in, battle with or without crits
-		if (withCrits) {
-			wonBattle = attacksWithCritsOneEnemy(player, enemy);
-		} else {
-			wonBattle = attacksWithNoCritsOneEnemy(player, enemy);
-		}
+		wonBattle = battleOneEnemy(player, enemy, withCrits);
 		// reset player strength to what it was before combat
 		if (player.getStrength() < playerStrengthBeforeCombat) {
 			System.out.println("Your strength has been restored");
@@ -68,11 +64,7 @@ public class Combat {
 		// for dropping money based on enemy strength
 		int enemyStrengthBeforeCombat = enemy.getStrength();
 		// based on boolean passed in, battle with or without crits
-		if (withCrits) {
-			wonBattle = attacksWithCritsTwoEnemies(player, enemy, enemy2);
-		} else {
-			wonBattle = attacksWithNoCritsTwoEnemies(player, enemy, enemy2);
-		}
+		wonBattle = battleTwoEnemies(player, enemy, enemy2, withCrits);
 		// reset player strength to what it was before combat
 		if (player.getStrength() < playerStrengthBeforeCombat) {
 			System.out.println("Your strength has been restored");
@@ -190,24 +182,24 @@ public class Combat {
 	private boolean battleOneEnemy(Player player, Enemy enemy, boolean withCrits) {
 		boolean wonBattle = false;
 		while (true) {
-			// you attack
-			if (!withCrits) {
-				playerAttackSequenceNoCrits(player, enemy);
-			} else {
+			// you attack depending on withCrits
+			if (withCrits) {
 				playerAttackSequenceWithCrits(player, enemy);
-			}
-			StoryTeller.nextLine(scanner);
-			// check if enemy is dead
-			if (enemy.getStrength() < 1) {
-				System.out.println("You Won!");
-				wonBattle = true;
-				break;
-			}
-			// enemy attacks
-			if (!withCrits) {
-				enemyAttackSequenceNoCrits(enemy, player);
 			} else {
+				playerAttackSequenceNoCrits(player, enemy);
+			}
+			StoryTeller.nextLine(scanner);
+			// check if enemy is dead
+			if (enemy.getStrength() < 1) {
+				System.out.println("You Won!");
+				wonBattle = true;
+				break;
+			}
+			// enemy attacks depending on withCrits
+			if (withCrits) {
 				enemyAttackSequenceWithCrits(enemy, player);
+			} else {
+				enemyAttackSequenceNoCrits(enemy, player);
 			}
 			StoryTeller.nextLine(scanner);
 			// check if enemy is dead
@@ -221,63 +213,16 @@ public class Combat {
 		return wonBattle;
 	}
 
-	private boolean attacksWithNoCritsOneEnemy(Player player, Enemy enemy) {
-		boolean wonBattle = false;
-		while (true) {
-			// you attack
-			playerAttackSequenceNoCrits(player, enemy);
-			StoryTeller.nextLine(scanner);
-			// check if enemy is dead
-			if (enemy.getStrength() < 1) {
-				System.out.println("You Won!");
-				wonBattle = true;
-				break;
-			}
-			// enemy attacks
-			enemyAttackSequenceNoCrits(enemy, player);
-			StoryTeller.nextLine(scanner);
-			// check if enemy is dead
-			if (player.getStrength() < 1) {
-				System.out.println("You Lost!");
-				wonBattle = false;
-				break;
-			}
-			printPlayerAndOneEnemy(player, enemy);
-		}
-		return wonBattle;
-	}
-
-	private boolean attacksWithCritsOneEnemy(Player player, Enemy enemy) {
-		boolean wonBattle = false;
-		while (true) {
-			// you attack
-			playerAttackSequenceWithCrits(player, enemy);
-			StoryTeller.nextLine(scanner);
-			// check if enemy is dead
-			if (enemy.getStrength() < 1) {
-				System.out.println("You Won!");
-				wonBattle = true;
-				break;
-			}
-			// enemy attacks
-			enemyAttackSequenceWithCrits(enemy, player);
-			StoryTeller.nextLine(scanner);
-			// check if enemy is dead
-			if (player.getStrength() < 1) {
-				System.out.println("You Lost!");
-				wonBattle = false;
-				break;
-			}
-			printPlayerAndOneEnemy(player, enemy);
-		}
-		return wonBattle;
-	}
-
-	private boolean attacksWithNoCritsTwoEnemies(Player player, Enemy enemy, Enemy enemy2) {
+	private boolean battleTwoEnemies(Player player, Enemy enemy, Enemy enemy2, boolean withCrits) {
 		boolean wonBattle = false;
 		boolean firstEnemyDead = false;
 		while (true) {
-			playerAttackSequenceNoCrits(player, enemy);
+			// you attack depending on withCrits
+			if (withCrits) {
+				playerAttackSequenceWithCrits(player, enemy);
+			} else {
+				playerAttackSequenceNoCrits(player, enemy);
+			}
 			StoryTeller.nextLine(scanner);
 			// check if first enemy is dead
 			if (enemy.getStrength() < 1) {
@@ -286,8 +231,12 @@ public class Combat {
 				firstEnemyDead = true;
 				break;
 			}
-			// enemy attacks
-			enemyAttackSequenceNoCrits(enemy, player);
+			// enemy attacks depending on withCrits
+			if (withCrits) {
+				enemyAttackSequenceWithCrits(enemy, player);
+			} else {
+				enemyAttackSequenceNoCrits(enemy, player);
+			}
 			StoryTeller.nextLine(scanner);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
@@ -300,8 +249,12 @@ public class Combat {
 
 		if (firstEnemyDead) {
 			while (true) {
-				// you attack
-				playerAttackSequenceNoCrits(player, enemy2);
+				// you attack depending on withCrits
+				if (withCrits) {
+					playerAttackSequenceWithCrits(player, enemy2);
+				} else {
+					playerAttackSequenceNoCrits(player, enemy2);
+				}
 				StoryTeller.nextLine(scanner);
 				// check if second enemy is dead
 				if (enemy2.getStrength() < 1) {
@@ -309,8 +262,12 @@ public class Combat {
 					wonBattle = true;
 					break;
 				}
-				// enemy attacks
-				enemyAttackSequenceNoCrits(enemy2, player);
+				// enemy attacks depending on withCrits
+				if (withCrits) {
+					enemyAttackSequenceWithCrits(enemy2, player);
+				} else {
+					enemyAttackSequenceNoCrits(enemy2, player);
+				}
 				StoryTeller.nextLine(scanner);
 				// check if enemy is dead
 				if (player.getStrength() < 1) {
@@ -323,57 +280,12 @@ public class Combat {
 		}
 		return wonBattle;
 	}
-
-	private boolean attacksWithCritsTwoEnemies(Player player, Enemy enemy, Enemy enemy2) {
-		boolean wonBattle = false;
-		boolean firstEnemyDead = false;
-		while (true) {
-			playerAttackSequenceWithCrits(player, enemy);
-			StoryTeller.nextLine(scanner);
-			// check if first enemy is dead
-			if (enemy.getStrength() < 1) {
-				System.out.println("You Killed " + enemy.getName());
-				StoryTeller.nextLine(scanner);
-				firstEnemyDead = true;
-				break;
-			}
-			// enemy attacks
-			enemyAttackSequenceWithCrits(enemy, player);
-			StoryTeller.nextLine(scanner);
-			// check if enemy is dead
-			if (player.getStrength() < 1) {
-				System.out.println("You Lost!");
-				wonBattle = false;
-				break;
-			}
-			printPlayerAndTwoEnemies(player, enemy, enemy2);
-		}
-
-		if (firstEnemyDead) {
-			while (true) {
-				// you attack
-				playerAttackSequenceWithCrits(player, enemy2);
-				StoryTeller.nextLine(scanner);
-				// check if second enemy is dead
-				if (enemy2.getStrength() < 1) {
-					System.out.println("You Killed " + enemy2.getName() + " and Won!");
-					wonBattle = true;
-					break;
-				}
-				// enemy attacks
-				enemyAttackSequenceWithCrits(enemy2, player);
-				StoryTeller.nextLine(scanner);
-				// check if enemy is dead
-				if (player.getStrength() < 1) {
-					System.out.println("You Lost!");
-					wonBattle = false;
-					break;
-				}
-				printPlayerAndOneEnemy(player, enemy2);
-			}
-		}
-		return wonBattle;
-	}
+	
+//	private void attackSequenceNoCrits(Person attacker, Person defender) {
+//		int attackDamage = attacker.getAttackDamage();
+//		System.out.println(attacker.getname() + " attacks " + defender.getName() + " for " + attackDamage + " damage!");
+//		defender.setStrength(defender.getStrength - attackDamage);
+//	}
 
 	private void playerAttackSequenceNoCrits(Player player, Enemy enemy) {
 		// you attack
