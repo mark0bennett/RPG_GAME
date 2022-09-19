@@ -458,7 +458,7 @@ public class StoryTeller implements Story {
 		boolean weaponCanBeSold = false;
 		for (Weapon weaponInBackpack : player.getBackPack()) {
 			if ((weaponInBackpack.getAgilityRequired() <= player.getAgility()
-					|| weaponInBackpack.getIntelligenceRequired() <= player.getIntelligence())
+					&& weaponInBackpack.getIntelligenceRequired() <= player.getIntelligence())
 					&& !weaponInBackpack.equals(weapon)) {
 				weaponCanBeSold = true;
 			}
@@ -483,12 +483,7 @@ public class StoryTeller implements Story {
 				System.out.println("You Only Have One Weapon, You Can't Sell It, Stupid!");
 				break;
 			}
-			// check that its not your last equippable weapon to be sold
-			boolean weaponCanBeSold = youCanSellWeapon(player, player.getBackPack().get(choice - 1));
-			if (!weaponCanBeSold) {
-				System.out.println("You can't sell your last equippable weapon");
-				break;
-			}
+
 			// BACK TO VENDOR OPTION
 			if (choice == (player.getBackPack().size() + 1)) {
 				break;
@@ -497,11 +492,21 @@ public class StoryTeller implements Story {
 			if (choice > player.getBackPack().size() + 1 || choice < 0) {
 				System.out.println("Type a number that exists here");
 				continue;
-			} else if (choice >= 1 && choice <= player.getBackPack().size()) {
-				vendorList.add(player.getBackPack().get(choice - 1));
-				player.sellWeapon(choice - 1);
-				System.out.println("Weapon Sold");
-				break;
+			}
+
+			// if its a valid number in your backpack
+			if (choice >= 1 && choice <= player.getBackPack().size()) {
+				// check that its not your last equippable weapon to be sold
+				boolean weaponCanBeSold = youCanSellWeapon(player, player.getBackPack().get(choice - 1));
+				if (!weaponCanBeSold) {
+					System.out.println("You can't sell your last equippable weapon");
+					break;
+				} else {
+					vendorList.add(player.getBackPack().get(choice - 1));
+					player.sellWeapon(choice - 1);
+					System.out.println("Weapon Sold");
+					break;
+				}
 			}
 		}
 	}
