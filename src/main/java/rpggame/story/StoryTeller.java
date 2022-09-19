@@ -8,6 +8,7 @@ import rpggame.combat.Combat;
 import rpggame.person.enemy.Enemy;
 import rpggame.person.player.Player;
 import rpggame.utils.AsciiArtReader;
+import rpggame.utils.SoundPlayer;
 import rpggame.utils.WeaponsListCreator;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
@@ -38,7 +39,7 @@ public class StoryTeller implements Story {
 
 	public void intro() {
 		// TODO: play IntroMusic
-//		SoundPlayer.playSound("FuturamaStartTheme.wav");
+		SoundPlayer.playSound("FuturamaStartTheme.wav");
 		printLineBreak();
 		System.out.println("		-- WELCOME TO --");
 		printLineBreak();
@@ -293,6 +294,7 @@ public class StoryTeller implements Story {
 		System.out.println("Fry: 'My jeans aren't intelli?!'");
 		nextLine(scanner);
 		System.out.println("Fry: 'oooh maybe this will work'");
+		SoundPlayer.playSound("FryGivesYouInt.wav");
 		nextLine(scanner);
 		System.out.println("Fry: 'There we go - PLUS ONE TO YOUR INTELLIGENCE, I've got plenty to spare'");
 		nextLine(scanner);
