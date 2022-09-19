@@ -1,46 +1,23 @@
 package rpggame.person;
 
-public class Person {
+public interface Person {
 
-	private String name;
-	private int strength;
-	private int intelligence;
-	private int agility;
+	public int getStrength();
 
-	public int getStrength() {
-		return strength;
-	}
+	public void setStrength(int strength);
 
-	public void setStrength(int strength) {
-		this.strength = strength;
-	}
+	public int getIntelligence();
 
-	public int getIntelligence() {
-		return intelligence;
-	}
+	public void setIntelligence(int intelligence);
 
-	public void setIntelligence(int intelligence) {
-		this.intelligence = intelligence;
-	}
+	public int getAgility();
 
-	public int getAgility() {
-		return agility;
-	}
+	public void setAgility(int agility);
 
-	public void setAgility(int agility) {
-		this.agility = agility;
-	}
+	public String getName();
 
-	public String getName() {
-		return name;
-	}
+	public int getAttackDamage();
 
-	public int getAttackDamage() {
-		return 0;
-	}
-
-	public int[] getAttackCritDamage() {
-		return new int[] { 0, 0 };
-	}
+	public int[] getAttackCritDamage();
 
 }

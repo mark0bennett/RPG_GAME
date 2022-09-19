@@ -12,7 +12,7 @@ import rpggame.weapon.DamageComparator;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
 
-public class Player extends Person {
+public class Player implements Person {
 
 	private String name;
 	private int strength;
@@ -35,7 +35,6 @@ public class Player extends Person {
 		this.nixonBucks = 0;
 	}
 
-	@Override
 	public int getAttackDamage() {
 		int attackDamage = 0;
 		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
@@ -109,7 +108,6 @@ public class Player extends Person {
 		this.nixonBucks = nixonBucks;
 	}
 
-	@Override
 	public int getStrength() {
 		return this.strength;
 	}

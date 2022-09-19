@@ -9,6 +9,7 @@ import rpggame.player.Player;
 import rpggame.story.StoryTeller;
 import rpggame.utils.EnemyFactory;
 import rpggame.weapon.Weapon;
+import rpggame.weapon.WeaponType;
 
 public class Combat {
 
@@ -91,6 +92,9 @@ public class Combat {
 
 	private void pickWeapon(Player player) {
 		int choice = 0;
+		//before each battle set weapon to 'no weapon'
+		Weapon noWeapon = new Weapon("No Weapon Selected", 0, 0, 0, WeaponType.INTELLIGENCE, 0);
+		player.setWeapon(noWeapon);
 		while (true) {
 			System.out.println(player);
 			player.printBackpack();

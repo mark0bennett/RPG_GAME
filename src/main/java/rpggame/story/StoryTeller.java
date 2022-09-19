@@ -454,6 +454,8 @@ public class StoryTeller implements Story {
 		startProfessorVendor(player);
 	}
 
+	// TODO: before you sell an item must check that their is at least one other
+	// item you can equip!
 	private void sellItemsMenu(List<Weapon> vendorList, Player player) {
 		System.out.println("Pick an Item to Sell - Get NixonBucks equal to the damage of weapon");
 		player.printBackpack();

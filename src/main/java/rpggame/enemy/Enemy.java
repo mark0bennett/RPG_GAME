@@ -6,7 +6,7 @@ import rpggame.person.Person;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
 
-public class Enemy extends Person {
+public class Enemy implements Person {
 
 	private String name;
 	private int strength;
@@ -22,7 +22,6 @@ public class Enemy extends Person {
 		this.weapon = weapon;
 	}
 
-	@Override
 	public int getAttackDamage() {
 		int attackDamage = 0;
 		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {

@@ -22,6 +22,7 @@ public class RpgGameApp {
 		// TODO: COMBAT CLASS - MAKE IT BETTER - maybe Player and Enemy have to extend a
 		// Character Class so attacking can be done with one method
 		// and put in a boolean for crits or no crits
+		// TODO: cant sell items and have the last item be a weapon you cant equip
 
 		Story storyTeller = new StoryTeller();
 
