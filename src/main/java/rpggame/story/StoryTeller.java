@@ -454,8 +454,18 @@ public class StoryTeller implements Story {
 		startProfessorVendor(player);
 	}
 
-	// TODO: before you sell an item must check that their is at least one other
-	// item you can equip!
+	private boolean youCanSellWeapon(Player player, Weapon weapon) {
+		boolean weaponCanBeSold = false;
+		for (Weapon weaponInBackpack : player.getBackPack()) {
+			if ((weaponInBackpack.getAgilityRequired() <= player.getAgility()
+					|| weaponInBackpack.getIntelligenceRequired() <= player.getIntelligence())
+					&& !weaponInBackpack.equals(weapon)) {
+				weaponCanBeSold = true;
+			}
+		}
+		return weaponCanBeSold;
+	}
+
 	private void sellItemsMenu(List<Weapon> vendorList, Player player) {
 		System.out.println("Pick an Item to Sell - Get NixonBucks equal to the damage of weapon");
 		player.printBackpack();
@@ -471,6 +481,12 @@ public class StoryTeller implements Story {
 			// cant sell your last weapon
 			if (player.getBackPack().size() == 1) {
 				System.out.println("You Only Have One Weapon, You Can't Sell It, Stupid!");
+				break;
+			}
+			// check that its not your last equippable weapon to be sold
+			boolean weaponCanBeSold = youCanSellWeapon(player, player.getBackPack().get(choice - 1));
+			if (!weaponCanBeSold) {
+				System.out.println("You can't sell your last equippable weapon");
 				break;
 			}
 			// BACK TO VENDOR OPTION
