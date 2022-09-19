@@ -37,6 +37,8 @@ public class StoryTeller implements Story {
 	}
 
 	public void intro() {
+		// TODO: play IntroMusic
+//		SoundPlayer.playSound("FuturamaStartTheme.wav");
 		printLineBreak();
 		System.out.println("		-- WELCOME TO --");
 		printLineBreak();
