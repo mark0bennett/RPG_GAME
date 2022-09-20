@@ -39,22 +39,24 @@ public class StoryTeller implements Story {
 	}
 
 	public void intro() {
-		SoundPlayer.playSound("FuturamaStartTheme.wav");
-		printLineBreak();
-		System.out.println("		-- WELCOME TO --");
-		printLineBreak();
-		AsciiArtReader.readArt("Futurama.txt");
-		printLineBreak();
-		System.out.println("Press 'Enter' to contiue and skip lines of text");
-		printLineBreak();
-		nextLine(scanner);
-		StoryTextReader.read("introPt1.txt");
-		AsciiArtReader.readArt("Professor.txt");
-		printLineBreak();
-		nextLine(scanner);
-		StoryTextReader.read("introPt2.txt");
-		printLineBreak();
-		nextLine(scanner);
+		StoryTextReader.read("intro.txt");
+//		SoundPlayer.playSound("FuturamaStartTheme.wav");
+//		printLineBreak();
+//		System.out.println("		-- WELCOME TO --");
+//		printLineBreak();
+//		AsciiArtReader.readArt("Futurama.txt");
+//		printLineBreak();
+//		System.out.println("Press 'Enter' to contiue and skip lines of text");
+//		printLineBreak();
+//		nextLine(scanner);
+
+//		StoryTextReader.read("introPt1.txt");
+//		AsciiArtReader.readArt("Professor.txt");
+//		printLineBreak();
+//		nextLine(scanner);
+//		StoryTextReader.read("introPt2.txt");
+//		printLineBreak();
+//		nextLine(scanner);
 	}
 
 	public Player createPlayer() {
@@ -635,21 +637,7 @@ public class StoryTeller implements Story {
 	private boolean startSlurmFactory(Player player) {
 		if (!seenSlurmAlready) {
 			seenSlurmAlready = true;
-			System.out.println("YOU ENTER THE SLURM FACTORY");
-			nextLine(scanner);
-			System.out.println("You take a can of nice refreshing Slurm, aaah it's highly addictive");
-			nextLine(scanner);
-			System.out.println("Just as you are finishing off the can, a shadow is cast over you...");
-			nextLine(scanner);
-			System.out.println("The Slurm Queen has spotted you taking free Slurm");
-			System.out.println("She has slung a huge dollop of Super Slurm all over you!");
-			nextLine(scanner);
-			System.out.println("mmmm it tastes amazing, but now all you can think about is MORE SLURM");
-			nextLine(scanner);
-			System.out.println("So much so that you can't remember how to crit!");
-			nextLine(scanner);
-			System.out.println("and so the great Slurm Battle begins...");
-			nextLine(scanner);
+			StoryTextReader.read("slurm.txt");
 		} else {
 			System.out.println("YOU ENTER THE SLURM FACTORY...again");
 			nextLine(scanner);
@@ -669,15 +657,7 @@ public class StoryTeller implements Story {
 		boolean fishyJoesCompletedLocal = false;
 		if (!seenFishyAlready) {
 			seenFishyAlready = true;
-			System.out.println("YOU ENTER FISHY JOE'S");
-			nextLine(scanner);
-			System.out.println("Fishy Joe: 'Hey friend, have a Poppler'");
-			nextLine(scanner);
-			System.out.println("Dirty Hippy: 'Hey man eating animals is wrong'");
-			nextLine(scanner);
-			System.out.println("You spit out the Poppler");
-			System.out.println("Not for moral reasons, it just tastes old and mouldy!");
-			nextLine(scanner);
+			StoryTextReader.read("fishy.txt");
 		} else {
 			System.out.println("YOU ENTER FISHY JOE'S...again");
 			nextLine(scanner);
@@ -711,19 +691,7 @@ public class StoryTeller implements Story {
 		if (!doneHermesOnceAlready) {
 			doneHermesOnceAlready = true;
 			SoundPlayer.playSound("MyManwich.wav");
-			System.out.println("Hermes: 'My Manwich!'");
-			nextLine(scanner);
-			System.out.println("Hermes: 'Seeing that filthy crab back here, I've lost my appetite'");
-			nextLine(scanner);
-			System.out.println("Hermes: 'But not my appetite for Limbo!'");
-			nextLine(scanner);
-			System.out.println("Hermes: 'I'm going to set this Limbo at between 1 and 10 centimeters'");
-			nextLine(scanner);
-			System.out.println("Hermes: 'Guess how high I have set it and I'll give you that amount of NixonBucks'");
-			nextLine(scanner);
-			System.out.println(
-					"Hermes: 'But I'm no fool, 3 guesses and if you get it wrong I take half of that amount of your money!'");
-			nextLine(scanner);
+			StoryTextReader.read("hermes.txt");
 		} else {
 			System.out.println("Hermes: 'Come to play again aye'");
 		}
