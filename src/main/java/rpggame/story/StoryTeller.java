@@ -472,6 +472,8 @@ public class StoryTeller implements Story {
 		return weaponCanBeSold;
 	}
 
+	// TODO: if vendor is an int vendor and you sell and int weapon, get more else
+	// get less if you sell agi weapon
 	private void sellItemsMenu(List<Weapon> vendorList, Player player) {
 		System.out.println("Pick an Item to Sell - Get NixonBucks equal to the damage of weapon");
 		player.printBackpack();
@@ -508,7 +510,8 @@ public class StoryTeller implements Story {
 					System.out.println("You can't sell your last equippable weapon");
 					break;
 				} else {
-					vendorList.add(player.getBackPack().get(choice - 1));
+					// don't add the weapon to vendor list (messy and money exploit)
+//					vendorList.add(player.getBackPack().get(choice - 1));
 					player.sellWeapon(choice - 1);
 					System.out.println("Weapon Sold");
 					break;
@@ -833,6 +836,7 @@ public class StoryTeller implements Story {
 
 	private boolean doneHermesOnceAlready = false;
 
+	// TODO: give option to quit BEFORE you start playing?
 	private void startHermes(Player player) {
 		if (!doneHermesOnceAlready) {
 			doneHermesOnceAlready = true;
@@ -947,7 +951,7 @@ public class StoryTeller implements Story {
 			player.setAgility(player.getAgility() + 1);
 			StoryTeller.printPlayer(player);
 		} else {
-			System.out.println("Leela: 'I'll plus my boot up your ass if you think I'm that easy'");
+			System.out.println("Leela: 'I'll put my boot up your ass if you think I'm that easy'");
 			nextLine(scanner);
 		}
 	}
@@ -1018,6 +1022,7 @@ public class StoryTeller implements Story {
 		System.out.println("ALL GLORY TO THE HYPNOTOAD");
 		System.out.println("ALL GLORY TO THE HYPNOTOAD");
 		System.out.println("ALL GLORY TO THE HYPNOTOAD");
+		SoundPlayer.playSound("AngryMachine.wav");
 		// game ends
 	}
 
