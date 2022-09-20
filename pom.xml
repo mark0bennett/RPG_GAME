@@ -5,6 +5,7 @@
 	<groupId>com.alex220mark</groupId>
 	<artifactId>RPG_GAME</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>RPG_GAME</name>
 	<description>A Simple RPG Game</description>
 </project>
