@@ -836,8 +836,7 @@ public class StoryTeller implements Story {
 
 	private boolean doneHermesOnceAlready = false;
 
-	// TODO: give option to quit BEFORE you start playing?
-	private void startHermes(Player player) {
+	public void startHermes(Player player) {
 		if (!doneHermesOnceAlready) {
 			doneHermesOnceAlready = true;
 			SoundPlayer.playSound("MyManwich.wav");
@@ -857,7 +856,22 @@ public class StoryTeller implements Story {
 		} else {
 			System.out.println("Hermes: 'Come to play again aye'");
 		}
+		String playOrQuit = "";
+		while (!playOrQuit.equalsIgnoreCase("y") || !playOrQuit.equalsIgnoreCase("q")) {
+			System.out.println("Hermes: 'Play - press y'");
+			System.out.println("Hermes: 'Quit - press q'");
+			playOrQuit = scanner.nextLine();
+			if (playOrQuit.equalsIgnoreCase("q") || playOrQuit.equalsIgnoreCase("y")) {
+				break;
+			}
+		}
+		if (playOrQuit.equalsIgnoreCase("q")) {
+		} else if (playOrQuit.equalsIgnoreCase("y")) {
+			hermesGuessingGame(player);
+		}
+	}
 
+	private void hermesGuessingGame(Player player) {
 		while (true) {
 			System.out.println("Your NixonBucks: " + player.getNixonBucks());
 			int limboHeight = random.nextInt(10) + 1;
