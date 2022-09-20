@@ -87,7 +87,6 @@ public class StoryTeller implements Story {
 
 	public void startFirstFight(Player player) {
 		StoryTextReader.read("startFirstFight.txt");
-		SoundPlayer.playSound("ZappFlyWarFlag.wav");
 		combat.oneEnemy(player, "Zapp Brannigan", 0, false);
 	}
 

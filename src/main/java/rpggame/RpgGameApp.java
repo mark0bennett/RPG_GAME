@@ -16,6 +16,8 @@ public class RpgGameApp {
 		// TODO: attack 2 enemies, pick which enemy to attack
 		// TODO: change some of the big else if blocks to switch statements?
 		// TODO: continue making txt files for StoryTeller
+		// TODO: take vendor logic, canSellWeapon, HermesGame, out of StoryTeller and
+		// into StoryTellerService
 
 		Story storyTeller = new StoryTeller();
 
