@@ -87,10 +87,67 @@ public class Combat {
 		return wonBattle;
 	}
 
-	public void printCombatHasBegun() {
-		StoryTeller.printLineBreak();
-		System.out.println("COMBAT HAS BEGUN!!!");
-		StoryTeller.printLineBreak();
+	private boolean battleOneEnemy(Player player, Enemy enemy, boolean withCrits) {
+		boolean wonBattle = false;
+		while (true) {
+			// you attack depending on withCrits
+			// attacker is first variable passed in
+			if (withCrits) {
+				attackSequenceWithCrits(player, enemy);
+			} else {
+				attackSequenceNoCrits(player, enemy);
+			}
+			StoryTeller.nextLine(scanner);
+			// check if enemy is dead
+			if (enemy.getStrength() < 1) {
+				System.out.println("You Won!");
+				wonBattle = true;
+				break;
+			}
+			// enemy attacks depending on withCrits
+			// attacker is first variable passed in
+			if (withCrits) {
+				attackSequenceWithCrits(enemy, player);
+			} else {
+				attackSequenceNoCrits(enemy, player);
+			}
+			StoryTeller.nextLine(scanner);
+			// check if enemy is dead
+			if (player.getStrength() < 1) {
+				System.out.println("You Lost!");
+				wonBattle = false;
+				break;
+			}
+			printPlayerAndOneEnemy(player, enemy);
+		}
+		return wonBattle;
+	}
+
+	private boolean battleTwoEnemies(Player player, Enemy enemy, Enemy enemy2, boolean withCrits) {
+		boolean wonBattle = false;
+		boolean firstEnemyDead = false;
+		firstEnemyDead = battleOneEnemy(player, enemy, withCrits);
+		if (firstEnemyDead) {
+			wonBattle = battleOneEnemy(player, enemy2, withCrits);
+		}
+		return wonBattle;
+	}
+
+	private void attackSequenceNoCrits(Person attacker, Person defender) {
+		int attackDamage = attacker.getAttackDamage();
+		System.out.println(attacker.getName() + " attacks " + defender.getName() + " for " + attackDamage + " damage!");
+		defender.setStrength(defender.getStrength() - attackDamage);
+	}
+
+	private void attackSequenceWithCrits(Person attacker, Person defender) {
+		int[] attackNumbers = attacker.getAttackCritDamage();
+		int attackDamage = attackNumbers[0];
+		int critDamage = attackNumbers[1];
+		// you attack
+		System.out.println(attacker.getName() + " attacks " + defender.getName() + " for " + attackDamage
+				+ " damage plus " + critDamage + " Crit!");
+		// enemy strength changed from attack
+		defender.setStrength(defender.getStrength() - (attackDamage + critDamage));
 	}
 
 	private void pickWeapon(Player player) {
@@ -193,67 +250,10 @@ public class Combat {
 		}
 	}
 
-	private boolean battleOneEnemy(Player player, Enemy enemy, boolean withCrits) {
-		boolean wonBattle = false;
-		while (true) {
-			// you attack depending on withCrits
-			// attacker is first variable passed in
-			if (withCrits) {
-				attackSequenceWithCrits(player, enemy);
-			} else {
-				attackSequenceNoCrits(player, enemy);
-			}
-			StoryTeller.nextLine(scanner);
-			// check if enemy is dead
-			if (enemy.getStrength() < 1) {
-				System.out.println("You Won!");
-				wonBattle = true;
-				break;
-			}
-			// enemy attacks depending on withCrits
-			// attacker is first variable passed in
-			if (withCrits) {
-				attackSequenceWithCrits(enemy, player);
-			} else {
-				attackSequenceNoCrits(enemy, player);
-			}
-			StoryTeller.nextLine(scanner);
-			// check if enemy is dead
-			if (player.getStrength() < 1) {
-				System.out.println("You Lost!");
-				wonBattle = false;
-				break;
-			}
-			printPlayerAndOneEnemy(player, enemy);
-		}
-		return wonBattle;
-	}
-
-	private boolean battleTwoEnemies(Player player, Enemy enemy, Enemy enemy2, boolean withCrits) {
-		boolean wonBattle = false;
-		boolean firstEnemyDead = false;
-		firstEnemyDead = battleOneEnemy(player, enemy, withCrits);
-		if (firstEnemyDead) {
-			wonBattle = battleOneEnemy(player, enemy2, withCrits);
-		}
-		return wonBattle;
-	}
-
-	private void attackSequenceNoCrits(Person attacker, Person defender) {
-		int attackDamage = attacker.getAttackDamage();
-		System.out.println(attacker.getName() + " attacks " + defender.getName() + " for " + attackDamage + " damage!");
-		defender.setStrength(defender.getStrength() - attackDamage);
-	}
-
-	private void attackSequenceWithCrits(Person attacker, Person defender) {
-		int[] attackNumbers = attacker.getAttackCritDamage();
-		int attackDamage = attackNumbers[0];
-		int critDamage = attackNumbers[1];
-		// you attack
-		System.out.println(attacker.getName() + " attacks " + defender.getName() + " for " + attackDamage
-				+ " damage plus " + critDamage + " Crit!");
-		// enemy strength changed from attack
-		defender.setStrength(defender.getStrength() - (attackDamage + critDamage));
+	public void printCombatHasBegun() {
+		StoryTeller.printLineBreak();
+		System.out.println("COMBAT HAS BEGUN!!!");
+		StoryTeller.printLineBreak();
 	}
 
 	public void printVersusText(Player player, Enemy enemy) {

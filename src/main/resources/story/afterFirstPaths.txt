@@ -1,0 +1,11 @@
+You walk away victorious, and continue down a sodden old trail into the wild green yonder
+The old man in the glowing orb confronts you again
+Old Man: 'I have Good News for you'
+Old Man: 'Let me show you a trick'
+Old Man: 'You can Crit if you use your stats to the fullest'
+Old Man: 'If you have an Agility weapon equipped you can crit depending on how high your Intelligence is!'
+Old Man: 'If you have an Intelligence weapon equipped you can crit depending on how high your Agility is!'
+Old Man: 'Further down the road I have seen a very powerful enemy indeed'
+Old Man: 'This enemy will be 4 levels higher than you, so be careful!'
+*ZAP* - he's gone
+		

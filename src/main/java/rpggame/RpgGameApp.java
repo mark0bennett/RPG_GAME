@@ -13,8 +13,10 @@ public class RpgGameApp {
 		// TODO: Combat Interface and have CombatCrits and CombatNoCrits, have a
 		// CombatService for all the doubled methods?
 		// TODO: split up story teller into Act I Act II and Act III???
-		// TODO: can the story be read in from txt files using AsciiArtReader??
 		// TODO: attack 2 enemies, pick which enemy to attack
+		// TODO: StoryTextReader execute SoundPlayer AsciiArtReader and printBreakLine
+		// by checking substring.equals SoundPlayer etc and then passing the filename
+		// String using subString again
 
 		Story storyTeller = new StoryTeller();
 
