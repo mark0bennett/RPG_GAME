@@ -14,7 +14,7 @@ public class RpgGameApp {
 		// CombatService for all the doubled methods?
 		// TODO: split up story teller into Act I Act II and Act III???
 		// TODO: attack 2 enemies, pick which enemy to attack
-		// TODO: StoryTextReader hitting and Exception
+		// TODO: change some of the big else if blocks to switch statements?
 		// TODO: continue making txt files for StoryTeller
 
 		Story storyTeller = new StoryTeller();

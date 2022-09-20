@@ -1,0 +1,8 @@
+YOU ENTER THE LABORATORY - A big sign reads - 'PLANET EXPRESS'
+Old Man: 'Hello my dear friend, come in, come in'
+Old Man: 'I'm Professor Farnsworth and you've got to help me!'
+Professor: 'You see I messed up an experiment and everyone has gone mad'
+SoundPlayer.playSound("SoundsBoring.wav");
+Professor: 'Anyone who wasn't inside here of course'
+Professor: 'That's why I had to protect you with my hot glowing orb'
+Professor: ' Speaking of hot, I've got some items you might be interested in'

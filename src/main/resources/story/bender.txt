@@ -1,0 +1,7 @@
+Bender: 'Well hot diggity daffodil!'
+Bender: 'You look like a worthless Meat Bag..'
+Bender: 'You could do with a bit of Bender-ising baby'
+AsciiArtReader.readArt("Bender.txt");
+SoundPlayer.playSound("BenderImSoExcited.wav");
+Your Strength is increased by 1
+			

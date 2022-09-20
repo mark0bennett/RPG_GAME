@@ -1,0 +1,8 @@
+You walk down a pretty lane with flowers and grass
+and get the feeling that all this will be over soon
+The sound of what can only be descibed as an Angry Machine gets louder and louder
+SUDDENLY...
+SoundPlayer.playSound("AngryMachine.wav");
+AsciiArtReader.readArt("Hypnotoad.txt");
+printLineBreak();
+		

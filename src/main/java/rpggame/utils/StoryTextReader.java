@@ -17,17 +17,9 @@ public class StoryTextReader {
 					new FileReader(
 							"D:\\Java\\Spring Tools Suite\\Projects\\RPG_GAME\\src\\main\\resources\\story\\"
 									+ fileName));
-
-//			while (!(line = bufferedReader.readLine()).isBlank()) {
-//				System.out.println(line);
-//				StoryTeller.nextLine(scanner);
-//			}
 			// can now recognise calls to AsciiArtReader, SoundPlayer and printBreakLine();
-			while (true) {
-				line = bufferedReader.readLine();
-				if (line.isBlank()) {
-					break;
-				} else if (line.equals("printLineBreak();")) {
+			while ((line = bufferedReader.readLine()) != null) {
+				if (line.equals("printLineBreak();")) {
 					StoryTeller.printLineBreak();
 					StoryTeller.nextLine(scanner);
 				} else if (line.substring(0, 14).equals("AsciiArtReader")) {
@@ -46,7 +38,7 @@ public class StoryTextReader {
 		} catch (Exception e) {
 			// TODO: We are catching a NullPointerException here, so this is just cheating
 			// to comment it out
-//			System.out.println("\nError reading file...path not valid, or invalid format\n");
+			System.out.println("\nError reading file...path not valid, or invalid format\n");
 		}
 	}
 

@@ -1,0 +1,14 @@
+ALL GLORY TO THE HYPNOTOAD
+...
+ALL GLORY TO THE HYPNOTOAD
+SoundPlayer.playSound("AngryMachine.wav");
+AsciiArtReader.readArt("Hypnotoad.txt");
+ALL GLORY TO THE HYPNOTOAD
+ALL GLORY TO THE HYPNOTOAD
+ALL GLORY TO THE HYPNOTOAD
+ALL GLORY TO THE HYPNOTOAD
+ALL GLORY TO THE HYPNOTOAD
+ALL GLORY TO THE HYPNOTOAD
+SoundPlayer.playSound("AngryMachine.wav");
+AsciiArtReader.readArt("Hypnotoad.txt");
+printBreakLine();

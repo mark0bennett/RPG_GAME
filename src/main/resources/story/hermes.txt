@@ -1,3 +1,4 @@
+SoundPlayer.playSound("MyManwich.wav");
 Hermes: 'My Manwich!'
 Hermes: 'Seeing that filthy crab back here, I've lost my appetite'
 Hermes: 'But not my appetite for Limbo!'

@@ -1,0 +1,13 @@
+'Hey There!' - says a voice in the distance
+The voice approaches and it is a young gentleman with pointy Red Hair
+AsciiArtReader.readArt("Fry.txt");
+printLineBreak();
+Fry: 'I rode away on my Scooty Puff Jr. when I saw that thing you were fighting'
+Fry: 'Did you kill it???'
+Fry: 'Well in any case, the Professy told me to come here'
+Fry: 'He wants me to give you some of my intelli-jeans'
+Fry: 'My jeans aren't intelli?!'
+Fry: 'oooh maybe this will work'
+SoundPlayer.playSound("FryGivesYouInt.wav");
+Fry: 'There we go - PLUS ONE TO YOUR INTELLIGENCE, I've got plenty to spare'
+Fry: 'Goodbye friendly weirdo - I'm sure I'll see you again soon'
