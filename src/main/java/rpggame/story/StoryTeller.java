@@ -472,9 +472,7 @@ public class StoryTeller implements Story {
 		return weaponCanBeSold;
 	}
 
-	// TODO: if vendor is an int vendor and you sell and int weapon, get more else
-	// get less if you sell agi weapon
-	private void sellItemsMenu(List<Weapon> vendorList, Player player) {
+	private void sellItemsMenu(List<Weapon> vendorList, Player player, WeaponType vendorType) {
 		System.out.println("Pick an Item to Sell - Get NixonBucks equal to the damage of weapon");
 		player.printBackpack();
 		System.out.println((player.getBackPack().size() + 1) + ": BACK TO VENDOR");
@@ -512,7 +510,7 @@ public class StoryTeller implements Story {
 				} else {
 					// don't add the weapon to vendor list (messy and money exploit)
 //					vendorList.add(player.getBackPack().get(choice - 1));
-					player.sellWeapon(choice - 1);
+					player.sellWeapon(choice - 1, vendorType);
 					System.out.println("Weapon Sold");
 					break;
 				}
@@ -543,7 +541,7 @@ public class StoryTeller implements Story {
 				break;
 			}
 			if (choice == Integer.parseInt("2")) {
-				sellItemsMenu(farnsworthWeapons, player);
+				sellItemsMenu(farnsworthWeapons, player, WeaponType.INTELLIGENCE);
 			}
 			// if number doesnt exist in backpack, continue
 			else if (choice > farnsworthWeapons.size() + 2 || choice <= 0) {
@@ -621,7 +619,7 @@ public class StoryTeller implements Story {
 				break;
 			}
 			if (choice == Integer.parseInt("2")) {
-				sellItemsMenu(zoidbergWeapons, player);
+				sellItemsMenu(zoidbergWeapons, player, WeaponType.AGILITY);
 			}
 			// if number doesnt exist in backpack, continue
 			else if (choice > zoidbergWeapons.size() + 2 || choice <= 0) {
@@ -836,7 +834,7 @@ public class StoryTeller implements Story {
 
 	private boolean doneHermesOnceAlready = false;
 
-	public void startHermes(Player player) {
+	private void startHermes(Player player) {
 		if (!doneHermesOnceAlready) {
 			doneHermesOnceAlready = true;
 			SoundPlayer.playSound("MyManwich.wav");

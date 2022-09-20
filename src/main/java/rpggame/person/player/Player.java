@@ -59,9 +59,15 @@ public class Player implements Person {
 		return attackDamage;
 	}
 
-	public void sellWeapon(int index) {
-		// adds the damage of the weapon to NixonBucks when sold
-		this.nixonBucks = this.nixonBucks + this.backPack.get(index).getDamage();
+	public void sellWeapon(int index, WeaponType vendorType) {
+		// thirty percent of weapon damage
+		int thirtyPercent = (this.backPack.get(index).getDamage()) / 3;
+		// if vendor type is same as weapon type +30% to sell value, else -30%
+		if (this.backPack.get(index).getWeaponType() == vendorType) {
+			this.nixonBucks = this.nixonBucks + this.backPack.get(index).getDamage() + thirtyPercent;
+		} else {
+			this.nixonBucks = this.nixonBucks + this.backPack.get(index).getDamage() - thirtyPercent;
+		}
 		// then removes weapon from backpack
 		this.backPack.remove(index);
 	}
