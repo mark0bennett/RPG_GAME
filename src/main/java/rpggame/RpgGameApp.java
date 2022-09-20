@@ -15,6 +15,7 @@ public class RpgGameApp {
 		// TODO: split up story teller into Act I Act II and Act III???
 		// TODO: attack 2 enemies, pick which enemy to attack
 		// TODO: StoryTextReader hitting and Exception
+		// TODO: continue making txt files for StoryTeller
 
 		Story storyTeller = new StoryTeller();
 
