@@ -22,7 +22,6 @@ public class SoundPlayer {
 			e.printStackTrace();
 		}
 		clip.start();
-
 	}
 
 }

@@ -8,6 +8,7 @@ import rpggame.person.enemy.Enemy;
 import rpggame.person.player.Player;
 import rpggame.story.StoryTeller;
 import rpggame.utils.EnemyFactory;
+import rpggame.utils.SoundPlayer;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
 
@@ -47,6 +48,7 @@ public class Combat {
 			increaseStats(player);
 			printWinText(player);
 		} else {
+			SoundPlayer.playSound("LifeIsCruel.wav");
 			printLossText();
 		}
 		return wonBattle;
@@ -79,6 +81,7 @@ public class Combat {
 			increaseStats(player);
 			printWinText(player);
 		} else {
+			SoundPlayer.playSound("LifeIsCruel.wav");
 			printLossText();
 		}
 		return wonBattle;

@@ -38,7 +38,6 @@ public class StoryTeller implements Story {
 	}
 
 	public void intro() {
-		// TODO: play IntroMusic
 		SoundPlayer.playSound("FuturamaStartTheme.wav");
 		printLineBreak();
 		System.out.println("		-- WELCOME TO --");
@@ -48,6 +47,7 @@ public class StoryTeller implements Story {
 		System.out.println("Press 'Enter' to contiue and skip lines of text");
 		printLineBreak();
 		nextLine(scanner);
+
 		System.out.println("You are walking minding your own business, as you do, when...");
 		nextLine(scanner);
 		System.out.println("Something appears from the darkness!");
@@ -121,6 +121,7 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("Something quite strange is heading towards you....wearing a sleek yet intimidating outfit");
 		nextLine(scanner);
+		SoundPlayer.playSound("ZappFlyWarFlag.wav");
 		combat.oneEnemy(player, "Zapp Brannigan", 0, false);
 	}
 
@@ -445,6 +446,7 @@ public class StoryTeller implements Story {
 			System.out.println("Old Man: 'I'm Professor Farnsworth and you've got to help me!'");
 			nextLine(scanner);
 			System.out.println("Professor: 'You see I messed up an experiment and everyone has gone mad'");
+			SoundPlayer.playSound("SoundsBoring.wav");
 			nextLine(scanner);
 			System.out.println("Professor: 'Anyone who wasn't inside here of course'");
 			nextLine(scanner);
@@ -586,6 +588,7 @@ public class StoryTeller implements Story {
 			System.out.println("Zoidberg: 'Look at my items why not'");
 			nextLine(scanner);
 		}
+		SoundPlayer.playSound("ZoidbergUseful.wav");
 		startZoidbergVendor(player);
 	}
 
@@ -833,6 +836,7 @@ public class StoryTeller implements Story {
 	private void startHermes(Player player) {
 		if (!doneHermesOnceAlready) {
 			doneHermesOnceAlready = true;
+			SoundPlayer.playSound("MyManwich.wav");
 			System.out.println("Hermes: 'My Manwich!'");
 			nextLine(scanner);
 			System.out.println("Hermes: 'Seeing that filthy crab back here, I've lost my appetite'");
@@ -960,12 +964,14 @@ public class StoryTeller implements Story {
 			System.out.println("Bender: 'You could do with a bit of Bender-ising baby'");
 			nextLine(scanner);
 			AsciiArtReader.readArt("Bender.txt");
+			SoundPlayer.playSound("BenderImSoExcited.wav");
 			System.out.println("Your Strength is increased by 1");
 			nextLine(scanner);
 			player.setStrength(player.getStrength() + 1);
 			StoryTeller.printPlayer(player);
 		} else {
-			System.out.println("Bender: 'Bite my shiny metal ASS'");
+			SoundPlayer.playSound("BiteMyHugeAss.wav");
+			System.out.println("Bender: 'Bite my Colossal metal ASS'");
 			nextLine(scanner);
 		}
 	}
@@ -978,6 +984,7 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("SUDDENLY...");
 		nextLine(scanner);
+		SoundPlayer.playSound("AngryMachine.wav");
 		AsciiArtReader.readArt("Hypnotoad.txt");
 		printLineBreak();
 		nextLine(scanner);
@@ -992,6 +999,7 @@ public class StoryTeller implements Story {
 		nextLine(scanner);
 		System.out.println("ALL GLORY TO THE HYPNOTOAD");
 		nextLine(scanner);
+		SoundPlayer.playSound("AngryMachine.wav");
 		AsciiArtReader.readArt("Hypnotoad.txt");
 		nextLine(scanner);
 		System.out.println("ALL GLORY TO THE HYPNOTOAD");
