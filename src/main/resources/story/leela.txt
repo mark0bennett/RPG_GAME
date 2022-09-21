@@ -3,4 +3,3 @@ Leela: 'But I have got something for you'
 AsciiArtReader.readArt("Leela.txt");
 Leela: 'Heeeeee-YA'
 Your Agility is increased by 1
-			

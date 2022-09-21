@@ -22,11 +22,11 @@ public class StoryTextReader {
 				if (line.equals("StoryTellerService.printLineBreak();")) {
 					StoryTellerService.printLineBreak();
 					StoryTellerService.nextLine(scanner);
-				} else if (line.substring(0, 14).equals("AsciiArtReader")) {
+				} else if (line.length() > 24 && line.substring(0, 14).equals("AsciiArtReader")) {
 					String asciiFileName = line.substring(24, (line.length() - 3));
 					AsciiArtReader.readArt(asciiFileName);
 					StoryTellerService.nextLine(scanner);
-				} else if (line.substring(0, 11).equals("SoundPlayer")) {
+				} else if (line.length() > 24 && line.substring(0, 11).equals("SoundPlayer")) {
 					String soundFileName = line.substring(23, (line.length() - 3));
 					SoundPlayer.playSound(soundFileName);
 				} else {
@@ -35,10 +35,10 @@ public class StoryTextReader {
 				}
 			}
 			bufferedReader.close();
-		} catch (Exception e) {
-			// TODO: We are catching a NullPointerException here, so this is just cheating
-			// to comment it out
-			System.out.println("\nError reading file...path not valid, or invalid format\n");
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
 		}
 	}
 

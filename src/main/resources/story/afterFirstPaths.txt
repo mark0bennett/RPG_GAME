@@ -7,4 +7,4 @@ Old Man: 'If you have an Agility weapon equipped you can crit depending on how h
 Old Man: 'If you have an Intelligence weapon equipped you can crit depending on how high your Agility is!'
 Old Man: 'Further down the road I have seen a very powerful enemy indeed'
 Old Man: 'This enemy will be 4 levels higher than you, so be careful!'
-*ZAP* - he's gone	
+*ZAP* - he's gone

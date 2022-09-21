@@ -4,4 +4,3 @@ Bender: 'You could do with a bit of Bender-ising baby'
 AsciiArtReader.readArt("Bender.txt");
 SoundPlayer.playSound("BenderImSoExcited.wav");
 Your Strength is increased by 1
-			

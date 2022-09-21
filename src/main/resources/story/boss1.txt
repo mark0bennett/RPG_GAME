@@ -5,4 +5,3 @@ SUDDENLY...
 SoundPlayer.playSound("AngryMachine.wav");
 AsciiArtReader.readArt("Hypnotoad.txt");
 StoryTellerService.printLineBreak();
-		
