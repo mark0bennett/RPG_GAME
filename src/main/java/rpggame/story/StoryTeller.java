@@ -149,8 +149,8 @@ public class StoryTeller implements Story {
 			System.out.println("1: River");
 			System.out.println("2: Applied Chryogenics");
 			System.out.println("3: Robot Arms Apts.");
-			System.out.println("4: Laboratory (Vendor)");
-			System.out.println("5: Dumpster (Vendor)");
+			System.out.println("4: Laboratory (Intelligence Vendor)");
+			System.out.println("5: Dumpster (Agility Vendor)");
 			System.out.println("6: Continue the journey...");
 			choice = scanner.nextLine();
 			if (choice.isBlank()) {
@@ -268,11 +268,11 @@ public class StoryTeller implements Story {
 			System.out.println("1: MomCorp");
 			System.out.println("2: Slurm factory");
 			System.out.println("3: Fishy Joe's");
-			System.out.println("4: Professor (Vendor)");
-			System.out.println("5: Zoidberg (Vendor)");
-			System.out.println("6: Hermes (NixonBucks)");
-			System.out.println("7: Leela (Agility)");
-			System.out.println("8: Bender (Strenth)");
+			System.out.println("4: Professor (Intelligence Vendor)");
+			System.out.println("5: Zoidberg (Agility Vendor)");
+			System.out.println("6: Hermes (+/-NixonBucks)");
+			System.out.println("7: Leela (+Agility)");
+			System.out.println("8: Bender (+Strenth)");
 			System.out.println("9: Continue the journey...to the final Boss!");
 
 			choice = scanner.nextLine();

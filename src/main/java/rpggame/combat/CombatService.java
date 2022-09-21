@@ -33,22 +33,26 @@ public class CombatService {
 			} catch (Exception e) {
 				System.out.println("Type a number that exists in your backpack");
 				StoryTellerService.printLineBreak();
+				StoryTellerService.nextLine(scanner);
 				continue;
 			}
 			// if number doesnt exist in backpack, continue
 			if (choice > player.getBackPack().size() || choice <= 0) {
 				System.out.println("No weapon exists there");
 				StoryTellerService.printLineBreak();
+				StoryTellerService.nextLine(scanner);
 				continue;
 				// if your agility is too low, continue
 			} else if (player.getAgility() < player.getBackPack().get(choice - 1).getAgilityRequired()) {
 				System.out.println("Your Agility is too low for this weapon");
 				StoryTellerService.printLineBreak();
+				StoryTellerService.nextLine(scanner);
 				continue;
 				// if you intelligence is too low, continue
 			} else if (player.getIntelligence() < player.getBackPack().get(choice - 1).getIntelligenceRequired()) {
 				System.out.println("Your Intelligence is too low for this weapon");
 				StoryTellerService.printLineBreak();
+				StoryTellerService.nextLine(scanner);
 				continue;
 			} else {
 				// else equip weapon
@@ -56,6 +60,7 @@ public class CombatService {
 				StoryTellerService.printLineBreak();
 				System.out.println("Weapon Selected");
 				StoryTellerService.printLineBreak();
+				StoryTellerService.nextLine(scanner);
 				break;
 			}
 		}

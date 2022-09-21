@@ -98,6 +98,7 @@ public class Combat {
 			// check if enemy is dead
 			if (enemy.getStrength() < 1) {
 				System.out.println("You Won!");
+				StoryTellerService.nextLine(scanner);
 				wonBattle = true;
 				break;
 			}
@@ -112,6 +113,7 @@ public class Combat {
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
 				System.out.println("You Lost!");
+				StoryTellerService.nextLine(scanner);
 				wonBattle = false;
 				break;
 			}
