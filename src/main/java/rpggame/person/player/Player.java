@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import rpggame.person.Person;
-import rpggame.story.StoryTeller;
+import rpggame.story.StoryTellerService;
 import rpggame.utils.EnemyFactory;
 import rpggame.weapon.DamageComparator;
 import rpggame.weapon.Weapon;
@@ -89,12 +89,12 @@ public class Player implements Person {
 
 	public void printBackpack() {
 		// show weapons in backpack
-		StoryTeller.printLineBreak();
+		StoryTellerService.printLineBreak();
 		System.out.println("Backpack Contents");
 		for (int i = 0; i < this.backPack.size(); i++) {
 			System.out.println((i + 1) + ": " + this.backPack.get(i));
 		}
-		StoryTeller.printLineBreak();
+		StoryTellerService.printLineBreak();
 	}
 
 	public List<Weapon> getBackPack() {

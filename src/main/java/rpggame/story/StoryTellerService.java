@@ -1,6 +1,7 @@
 package rpggame.story;
 
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 import rpggame.person.player.Player;
@@ -223,6 +224,7 @@ public class StoryTellerService {
 	public void hermesGuessingGame(Player player) {
 		while (true) {
 			System.out.println("Your NixonBucks: " + player.getNixonBucks());
+			Random random = new Random();
 			int limboHeight = random.nextInt(10) + 1;
 			int guess = 0;
 			int counter = 0;

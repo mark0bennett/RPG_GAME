@@ -1,7 +1,5 @@
 package rpggame.story;
 
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 import rpggame.combat.Combat;
@@ -9,7 +7,6 @@ import rpggame.person.enemy.Enemy;
 import rpggame.person.player.Player;
 import rpggame.utils.SoundPlayer;
 import rpggame.utils.StoryTextReader;
-import rpggame.utils.WeaponsListCreator;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
 
@@ -40,7 +37,7 @@ public class StoryTeller implements Story {
 	public void intro() {
 		StoryTextReader.read("intro.txt");
 	}
-	
+
 	public Player createPlayer() {
 		return storyTellerService.createPlayer();
 	}
@@ -52,7 +49,7 @@ public class StoryTeller implements Story {
 
 	public void firstPathsSplit(Player player) {
 		System.out.println("You walk alone for many miles before seeing the path split into three...");
-		nextLine(scanner);
+		StoryTellerService.nextLine(scanner);
 		String choice = "";
 
 		while (true) {
@@ -71,19 +68,19 @@ public class StoryTeller implements Story {
 				churchCompleted = startChurch(player);
 			} else if (choice.equals("1") && churchCompleted) {
 				System.out.println("You've already cleared the Church");
-				printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 			} else if (choice.equals("2") && !graveyardCompleted) {
 				graveyardCompleted = startGraveyard(player);
 			} else if (choice.equals("2") && graveyardCompleted) {
 				System.out.println("You've already cleared the Graveyard");
-				printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 			} else if (choice.equals("3") && !forestCompleted) {
 				forestCompleted = startForest(player);
 			} else if (choice.equals("3") && forestCompleted) {
 				System.out.println("You've already cleared the Graveyard");
-				printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 			}
 		}
@@ -97,7 +94,7 @@ public class StoryTeller implements Story {
 			StoryTextReader.read("church.txt");
 		} else {
 			System.out.println("YOU ENTER THE CHURCH...again");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
 		boolean churchCompleted = combat.oneEnemy(player, "Preacherbot", 1, false);
 		return churchCompleted;
@@ -111,7 +108,7 @@ public class StoryTeller implements Story {
 			StoryTextReader.read("graveyard.txt");
 		} else {
 			System.out.println("YOU ENTER THE GRAVEYARD...again...");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
 		boolean graveyardCompleted = combat.oneEnemy(player, "Zombie Jesus", 2, false);
 		return graveyardCompleted;
@@ -125,7 +122,7 @@ public class StoryTeller implements Story {
 			StoryTextReader.read("forest.txt");
 		} else {
 			System.out.println("YOU ENTER THE FOREST...again...");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
 		boolean forestCompleted = combat.oneEnemy(player, "Ranger Park the Park Ranger", 2, false);
 		return forestCompleted;
@@ -139,12 +136,12 @@ public class StoryTeller implements Story {
 	public void meetFirstNPC(Player player) {
 		StoryTextReader.read("meetFry.txt");
 		player.setIntelligence(player.getIntelligence() + 1);
-		StoryTeller.printPlayer(player);
+		StoryTellerService.printPlayer(player);
 	}
 
 	public void mainPathsSplit(Player player) {
 		System.out.println("As you continue, the landscape opens up providing you with many different options...");
-		nextLine(scanner);
+		StoryTellerService.nextLine(scanner);
 		String choice = "";
 
 		while (true) {
@@ -162,19 +159,19 @@ public class StoryTeller implements Story {
 				riverCompleted = startRiver(player);
 			} else if (choice.equals("1") && riverCompleted) {
 				System.out.println("You've already cleared the River");
-				printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 			} else if (choice.equals("2") && !appliedChryogenicsCompleted) {
 				appliedChryogenicsCompleted = startAppliedChryogenics(player);
 			} else if (choice.equals("2") && appliedChryogenicsCompleted) {
 				System.out.println("You've already cleared Applied Chryogenics");
-				printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 			} else if (choice.equals("3") && !robotArmsCompleted) {
 				robotArmsCompleted = startRobotArms(player);
 			} else if (choice.equals("3") && robotArmsCompleted) {
 				System.out.println("You've already cleared Robot Arms Apartments");
-				printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 			} else if (choice.equals("4")) {
 				startLaboratory(player);
@@ -185,7 +182,7 @@ public class StoryTeller implements Story {
 				break;
 			} else {
 				System.out.println("You should probably check out these places, and clear them out!");
-				printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 			}
 		}
@@ -199,7 +196,7 @@ public class StoryTeller implements Story {
 			StoryTextReader.read("river.txt");
 		} else {
 			System.out.println("YOU ENTER THE RIVER...again");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
 		boolean riverCompleted = combat.twoEnemies(player, "Joan River's Head", 2, "Horrible Gelatinous Blob", 3, true);
 		return riverCompleted;
@@ -213,7 +210,7 @@ public class StoryTeller implements Story {
 			StoryTextReader.read("appliedChryo.txt");
 		} else {
 			System.out.println("YOU ENTER APPLIED CHRYOGENICS...again");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
 		boolean appliedChryogenicsCompleted = combat.twoEnemies(player, "Michelle", 2, "Ipji", 3, true);
 		return appliedChryogenicsCompleted;
@@ -227,7 +224,7 @@ public class StoryTeller implements Story {
 			StoryTextReader.read("robotArms.txt");
 		} else {
 			System.out.println("YOU ENTER ROBOT ARMS APARTMENTS...again");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
 		boolean robotArmsCompleted = combat.twoEnemies(player, "Robot Devil", 3, "Roberto", 3, true);
 		return robotArmsCompleted;
@@ -241,9 +238,9 @@ public class StoryTeller implements Story {
 			StoryTextReader.read("lab.txt");
 		} else {
 			System.out.println("Professor: 'Look at my items'");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
-		startProfessorVendor(player);
+		storyTellerService.startProfessorVendor(player);
 	}
 
 	private boolean doneDumpsterOnceAlready = false;
@@ -254,10 +251,10 @@ public class StoryTeller implements Story {
 			StoryTextReader.read("dumpster.txt");
 		} else {
 			System.out.println("Zoidberg: 'Look at my items why not'");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
 		SoundPlayer.playSound("ZoidbergUseful.wav");
-		startZoidbergVendor(player);
+		storyTellerService.startZoidbergVendor(player);
 	}
 
 	private void afterMainPaths() {
@@ -285,19 +282,19 @@ public class StoryTeller implements Story {
 				momCorpCompleted = startMomCorp(player);
 			} else if (choice.equals("1") && momCorpCompleted) {
 				System.out.println("You've already cleared MomCorp");
-				printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 			} else if (choice.equals("2") && !slurmFactoryCompleted) {
 				slurmFactoryCompleted = startSlurmFactory(player);
 			} else if (choice.equals("2") && slurmFactoryCompleted) {
 				System.out.println("You've already cleared the Slurm Factory");
-				printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 			} else if (choice.equals("3") && !fishyJoesCompleted) {
 				fishyJoesCompleted = startFishyJoes(player);
 			} else if (choice.equals("3") && fishyJoesCompleted) {
 				System.out.println("You've already cleared Fishy Joe's");
-				printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 			} else if (choice.equalsIgnoreCase("4")) {
 				startLaboratory(player);
@@ -319,7 +316,7 @@ public class StoryTeller implements Story {
 				break;
 			} else {
 				System.out.println("You should probably check out these places, and clear them out!");
-				printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 			}
 		}
@@ -334,20 +331,20 @@ public class StoryTeller implements Story {
 		if (!seenMomAlready) {
 			seenMomAlready = true;
 			System.out.println("YOU ENTER MOMCORP");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 			System.out.println("MOM: 'Igner, Larry, get this crap sack off my property!'");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		} else {
 			System.out.println("YOU ENTER MOMCORP...again");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 			System.out.println("Mom: 'Come back for more aye!'");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
 		firstFight = combat.twoEnemies(player, "Igner", 3, "Larry", 3, true);
 		System.out.println("MOM: 'Those two idiots couldn't beat you but I WILL!'");
-		nextLine(scanner);
+		StoryTellerService.nextLine(scanner);
 		System.out.println("MOM: 'Walt, get over here an show these other two how it's done!'");
-		nextLine(scanner);
+		StoryTellerService.nextLine(scanner);
 		secondFight = combat.twoEnemies(player, "Walt", 4, "Mom", 5, true);
 		if (firstFight && secondFight) {
 			momCorpCompleted = true;
@@ -363,11 +360,11 @@ public class StoryTeller implements Story {
 			StoryTextReader.read("slurm.txt");
 		} else {
 			System.out.println("YOU ENTER THE SLURM FACTORY...again");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 			System.out.println("Again - The Slurm Queen Covers you with Super Slurm");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 			System.out.println("You can't Crit!");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
 		boolean slurmFactoryCompleted = combat.twoEnemies(player, "Grunka Lunka", 5, "Slurm Queen", 6, false);
 		return slurmFactoryCompleted;
@@ -383,25 +380,25 @@ public class StoryTeller implements Story {
 			StoryTextReader.read("fishy.txt");
 		} else {
 			System.out.println("YOU ENTER FISHY JOE'S...again");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 			System.out.println("You pick a Poppler up off the ground and eat it...mmmmmm");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
 		// check that you can actually minus 2 from player strength
 		if (player.getStrength() >= 3) {
 			player.setStrength(initialPlayerStrength - 2);
 			System.out.println("Fishy Joe: 'Haha, that Poppler was SO old it'll take years off your life!'");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 			System.out.println("Your Strength is now TWO less");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 			System.out.println("Dirty Hippy: 'I don't eat animals, but I'm about to kill one now!'");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 			fishyJoesCompletedLocal = combat.twoEnemies(player, "Dirty Protesting Hippy", 5, "Fishy Joe", 5, true);
 		} else {
 			System.out.println("Fishy Joe: 'Haha, that Poppler was SO old it'll take years off your life!'");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 			System.out.println("Dirty Hippy: 'I don't eat animals, but I'm about to kill one now!'");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 			fishyJoesCompletedLocal = combat.twoEnemies(player, "Dirty Protesting Hippy", 5, "Fishy Joe", 5, true);
 		}
 		player.setStrength(initialPlayerStrength);
@@ -428,7 +425,7 @@ public class StoryTeller implements Story {
 		}
 		if (playOrQuit.equalsIgnoreCase("q")) {
 		} else if (playOrQuit.equalsIgnoreCase("y")) {
-			hermesGuessingGame(player);
+			storyTellerService.hermesGuessingGame(player);
 		}
 	}
 
@@ -439,10 +436,10 @@ public class StoryTeller implements Story {
 			alreadyDoneLeela = true;
 			StoryTextReader.read("leela.txt");
 			player.setAgility(player.getAgility() + 1);
-			StoryTeller.printPlayer(player);
+			StoryTellerService.printPlayer(player);
 		} else {
 			System.out.println("Leela: 'I'll put my boot up your ass if you think I'm that easy'");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
 	}
 
@@ -453,11 +450,11 @@ public class StoryTeller implements Story {
 			alreadyDoneBender = true;
 			StoryTextReader.read("bender.txt");
 			player.setStrength(player.getStrength() + 1);
-			StoryTeller.printPlayer(player);
+			StoryTellerService.printPlayer(player);
 		} else {
 			SoundPlayer.playSound("BiteMyHugeAss.wav");
 			System.out.println("Bender: 'Bite my Colossal metal ASS'");
-			nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
 	}
 
@@ -466,7 +463,7 @@ public class StoryTeller implements Story {
 		Weapon angryMachine = new Weapon("Mind Control", 9001, 9001, 9001, WeaponType.INTELLIGENCE, 9001);
 		Enemy hypnoToad = new Enemy("THE HYPNOTOAD", 9001, 9001, 9001, angryMachine);
 		combat.printCombatHasBegun();
-		nextLine(scanner);
+		StoryTellerService.nextLine(scanner);
 		combat.printVersusText(player, hypnoToad);
 		StoryTextReader.read("boss2.txt");
 		// game ends
