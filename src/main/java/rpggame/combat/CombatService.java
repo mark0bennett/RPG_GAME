@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import rpggame.person.enemy.Enemy;
 import rpggame.person.player.Player;
-import rpggame.story.StoryTeller;
+import rpggame.story.StoryTellerService;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
 
@@ -32,30 +32,30 @@ public class CombatService {
 				// throw exception if number not typed in
 			} catch (Exception e) {
 				System.out.println("Type a number that exists in your backpack");
-				StoryTeller.printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 			}
 			// if number doesnt exist in backpack, continue
 			if (choice > player.getBackPack().size() || choice <= 0) {
 				System.out.println("No weapon exists there");
-				StoryTeller.printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 				// if your agility is too low, continue
 			} else if (player.getAgility() < player.getBackPack().get(choice - 1).getAgilityRequired()) {
 				System.out.println("Your Agility is too low for this weapon");
-				StoryTeller.printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 				// if you intelligence is too low, continue
 			} else if (player.getIntelligence() < player.getBackPack().get(choice - 1).getIntelligenceRequired()) {
 				System.out.println("Your Intelligence is too low for this weapon");
-				StoryTeller.printLineBreak();
+				StoryTellerService.printLineBreak();
 				continue;
 			} else {
 				// else equip weapon
 				player.setWeapon(player.getBackPack().get(choice - 1));
-				StoryTeller.printLineBreak();
+				StoryTellerService.printLineBreak();
 				System.out.println("Weapon Selected");
-				StoryTeller.printLineBreak();
+				StoryTellerService.printLineBreak();
 				break;
 			}
 		}
@@ -63,7 +63,7 @@ public class CombatService {
 
 	public void showAndAddDroppedWeaponAndMoney(Player player, Enemy enemy, int enemyStrengthBeforeCombat) {
 		// enemy drops weapon and auto added to your backpack
-		StoryTeller.printLineBreak();
+		StoryTellerService.printLineBreak();
 		// enemy drops randomised money between 0 and strength
 		Random random = new Random();
 		int moneyDropped = random.nextInt(enemyStrengthBeforeCombat);
@@ -73,31 +73,31 @@ public class CombatService {
 		} else {
 			System.out.println(moneyDropped + " NixonBucks collected");
 		}
-		StoryTeller.nextLine(scanner);
+		StoryTellerService.nextLine(scanner);
 		System.out.println("-- " + enemy.getName() + " dropped their weapon --");
 		Weapon droppedWeapon = enemy.dropWeapon();
 		System.out.println(droppedWeapon.getName());
 		System.out.println("Agility Required: " + droppedWeapon.getAgilityRequired());
 		System.out.println("Intelligence Required: " + droppedWeapon.getIntelligenceRequired());
 		System.out.println("Weapon Type: " + droppedWeapon.getWeaponType());
-		StoryTeller.printLineBreak();
-		StoryTeller.nextLine(scanner);
+		StoryTellerService.printLineBreak();
+		StoryTellerService.nextLine(scanner);
 
 		boolean alreadyInBackpack = player.checkForWeaponInBackpack(droppedWeapon);
 		if (!alreadyInBackpack) {
 			player.addWeaponToBackpack(droppedWeapon);
 			System.out.println("Weapon added to backpack");
-			StoryTeller.nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		} else {
 			System.out.println("You already have this weapon");
-			StoryTeller.nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 		}
 	}
 
 	public void increaseStats(Player player) {
 		System.out.println("You can now increase one of your stats by 1");
 		while (true) {
-			StoryTeller.printPlayer(player);
+			StoryTellerService.printPlayer(player);
 			System.out.println("Type: 's' - to increase Strength");
 			System.out.println("Type: 'a' - to increase Aglity");
 			System.out.println("Type: 'i' - to increase Intelligence");
@@ -119,51 +119,51 @@ public class CombatService {
 	}
 
 	public void printCombatHasBegun() {
-		StoryTeller.printLineBreak();
+		StoryTellerService.printLineBreak();
 		System.out.println("COMBAT HAS BEGUN!!!");
-		StoryTeller.printLineBreak();
+		StoryTellerService.printLineBreak();
 	}
 
 	public void printVersusText(Player player, Enemy enemy) {
-		StoryTeller.printLineBreak();
+		StoryTellerService.printLineBreak();
 		System.out.println(player);
 		System.out.println("vs");
 		System.out.println(enemy);
-		StoryTeller.printLineBreak();
-		StoryTeller.nextLine(scanner);
+		StoryTellerService.printLineBreak();
+		StoryTellerService.nextLine(scanner);
 	}
 
 	public void printVersusTextTwoEnemies(Player player, Enemy enemy, Enemy enemy2) {
-		StoryTeller.printLineBreak();
+		StoryTellerService.printLineBreak();
 		System.out.println(player);
 		System.out.println("vs");
 		System.out.println(enemy);
 		System.out.println("and");
 		System.out.println(enemy2);
-		StoryTeller.printLineBreak();
-		StoryTeller.nextLine(scanner);
+		StoryTellerService.printLineBreak();
+		StoryTellerService.nextLine(scanner);
 	}
 
 	public void printPlayerAndOneEnemy(Player player, Enemy enemy) {
-		StoryTeller.printLineBreak();
+		StoryTellerService.printLineBreak();
 		System.out.println(player);
 		System.out.println(enemy);
-		StoryTeller.printLineBreak();
-		StoryTeller.nextLine(scanner);
+		StoryTellerService.printLineBreak();
+		StoryTellerService.nextLine(scanner);
 	}
 
 	public void printWinText(Player player) {
-		StoryTeller.printPlayer(player);
+		StoryTellerService.printPlayer(player);
 		System.out.println("...and you continue on your journey");
-		StoryTeller.printLineBreak();
-		StoryTeller.nextLine(scanner);
+		StoryTellerService.printLineBreak();
+		StoryTellerService.nextLine(scanner);
 	}
 
 	public void printLossText() {
-		StoryTeller.printLineBreak();
+		StoryTellerService.printLineBreak();
 		System.out.println("You learn from this loss and continue...");
-		StoryTeller.printLineBreak();
-		StoryTeller.nextLine(scanner);
+		StoryTellerService.printLineBreak();
+		StoryTellerService.nextLine(scanner);
 	}
 
 }

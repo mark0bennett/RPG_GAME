@@ -5,7 +5,7 @@ import java.util.Scanner;
 import rpggame.person.Person;
 import rpggame.person.enemy.Enemy;
 import rpggame.person.player.Player;
-import rpggame.story.StoryTeller;
+import rpggame.story.StoryTellerService;
 import rpggame.utils.EnemyFactory;
 import rpggame.utils.SoundPlayer;
 
@@ -94,7 +94,7 @@ public class Combat {
 			} else {
 				attackSequenceNoCrits(player, enemy);
 			}
-			StoryTeller.nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 			// check if enemy is dead
 			if (enemy.getStrength() < 1) {
 				System.out.println("You Won!");
@@ -108,7 +108,7 @@ public class Combat {
 			} else {
 				attackSequenceNoCrits(enemy, player);
 			}
-			StoryTeller.nextLine(scanner);
+			StoryTellerService.nextLine(scanner);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
 				System.out.println("You Lost!");
