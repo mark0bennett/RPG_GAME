@@ -2,13 +2,13 @@ Press 'Enter' to contiue and skip lines of text
 SoundPlayer.playSound("FuturamaStartTheme.wav");
 		-- WELCOME TO --
 AsciiArtReader.readArt("Futurama.txt");
-printLineBreak();
+StoryTellerService.printLineBreak();
 You are walking minding your own business, as you do, when...
 Something appears from the darkness!
 A strange ball of energy with what looks like an old man inside...
 AsciiArtReader.readArt("Professor.txt");
-printLineBreak();
+StoryTellerService.printLineBreak();
 He quickly explains that there is NO TIME to explain - he forces part of the strange energy at you
 ...and it engulfs your whole body
 Before the old man leaves, he has a few important questions...
-printLineBreak();
+StoryTellerService.printLineBreak();

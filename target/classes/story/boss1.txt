@@ -4,5 +4,5 @@ The sound of what can only be descibed as an Angry Machine gets louder and loude
 SUDDENLY...
 SoundPlayer.playSound("AngryMachine.wav");
 AsciiArtReader.readArt("Hypnotoad.txt");
-printLineBreak();
+StoryTellerService.printLineBreak();
 		
