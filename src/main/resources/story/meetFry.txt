@@ -1,7 +1,6 @@
 'Hey There!' - says a voice in the distance
 The voice approaches and it is a young gentleman with pointy Red Hair
 AsciiArtReader.readArt("Fry.txt");
-printLineBreak();
 Fry: 'I rode away on my Scooty Puff Jr. when I saw that thing you were fighting'
 Fry: 'Did you kill it???'
 Fry: 'Well in any case, the Professy told me to come here'

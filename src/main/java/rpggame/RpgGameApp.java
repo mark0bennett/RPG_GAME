@@ -11,8 +11,6 @@ public class RpgGameApp {
 		// tests
 		// package into a jar/exe file for execution on any computer
 		// TODO: attack 2 enemies, pick which enemy to attack
-		// TODO: change some of the big else if blocks to switch statements?
-		// TODO: continue making txt files for StoryTeller
 		// TODO: best way to pass scanner around? maybe look at random too?
 
 		Story storyTeller = new StoryTeller();

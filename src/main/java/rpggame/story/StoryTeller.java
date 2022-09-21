@@ -387,18 +387,10 @@ public class StoryTeller implements Story {
 		// check that you can actually minus 2 from player strength
 		if (player.getStrength() >= 3) {
 			player.setStrength(initialPlayerStrength - 2);
-			System.out.println("Fishy Joe: 'Haha, that Poppler was SO old it'll take years off your life!'");
-			StoryTellerService.nextLine(scanner);
-			System.out.println("Your Strength is now TWO less");
-			StoryTellerService.nextLine(scanner);
-			System.out.println("Dirty Hippy: 'I don't eat animals, but I'm about to kill one now!'");
-			StoryTellerService.nextLine(scanner);
+			StoryTextReader.read("fishyOpt1.txt");
 			fishyJoesCompletedLocal = combat.twoEnemies(player, "Dirty Protesting Hippy", 5, "Fishy Joe", 5, true);
 		} else {
-			System.out.println("Fishy Joe: 'Haha, that Poppler was SO old it'll take years off your life!'");
-			StoryTellerService.nextLine(scanner);
-			System.out.println("Dirty Hippy: 'I don't eat animals, but I'm about to kill one now!'");
-			StoryTellerService.nextLine(scanner);
+			StoryTextReader.read("fishyOpt2.txt");
 			fishyJoesCompletedLocal = combat.twoEnemies(player, "Dirty Protesting Hippy", 5, "Fishy Joe", 5, true);
 		}
 		player.setStrength(initialPlayerStrength);

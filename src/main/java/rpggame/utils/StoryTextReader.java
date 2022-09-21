@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
 
-import rpggame.story.StoryTeller;
 import rpggame.story.StoryTellerService;
 
 public class StoryTextReader {
@@ -20,7 +19,7 @@ public class StoryTextReader {
 									+ fileName));
 			// can now recognise calls to AsciiArtReader, SoundPlayer and printBreakLine();
 			while ((line = bufferedReader.readLine()) != null) {
-				if (line.equals("printLineBreak();")) {
+				if (line.equals("StoryTellerService.printLineBreak();")) {
 					StoryTellerService.printLineBreak();
 					StoryTellerService.nextLine(scanner);
 				} else if (line.substring(0, 14).equals("AsciiArtReader")) {
