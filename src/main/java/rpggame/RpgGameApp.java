@@ -12,6 +12,8 @@ public class RpgGameApp {
 		// package into a jar/exe file for execution on any computer
 		// TODO: attack 2 enemies, pick which enemy to attack
 		// TODO: best way to pass scanner around? maybe look at random too?
+		// TODO: think about DI, what if I change Combat/the way other classes are
+		// implemented?
 
 		Story storyTeller = new StoryTeller();
 

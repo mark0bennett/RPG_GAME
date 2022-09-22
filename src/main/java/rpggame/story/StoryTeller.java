@@ -57,7 +57,7 @@ public class StoryTeller implements Story {
 				afterFirstPathsSplit(player);
 				break;
 			}
-			System.out.println("Where do you wish to venture too?");
+			System.out.println("Where do you wish to venture to?");
 			System.out.println("1: Church");
 			System.out.println("2: Graveyard");
 			System.out.println("3: Forest");

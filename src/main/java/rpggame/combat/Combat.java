@@ -45,7 +45,6 @@ public class Combat {
 			combatService.increaseStats(player);
 			combatService.printWinText(player);
 		} else {
-			SoundPlayer.playSound("LifeIsCruel.wav");
 			combatService.printLossText();
 		}
 		return wonBattle;
@@ -78,7 +77,6 @@ public class Combat {
 			combatService.increaseStats(player);
 			combatService.printWinText(player);
 		} else {
-			SoundPlayer.playSound("LifeIsCruel.wav");
 			combatService.printLossText();
 		}
 		return wonBattle;
@@ -112,6 +110,7 @@ public class Combat {
 			StoryTellerService.nextLine(scanner);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
+				SoundPlayer.playSound("LifeIsCruel.wav");
 				System.out.println("You Lost!");
 				StoryTellerService.nextLine(scanner);
 				wonBattle = false;
