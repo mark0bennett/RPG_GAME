@@ -75,11 +75,9 @@ public class StoryTeller implements Story {
 		}
 	}
 
-	private boolean seenChurchAlready = false;
-
 	private boolean startChurch(Player player) {
-		if (!seenChurchAlready) {
-			seenChurchAlready = true;
+		if (!player.getProgress().isChurchVisitedOnceAlready()) {
+			player.getProgress().setChurchVisitedOnceAlready(true);
 			StoryTextReader.read("church.txt");
 		} else {
 			System.out.println("YOU ENTER THE CHURCH...again");
@@ -89,11 +87,9 @@ public class StoryTeller implements Story {
 		return churchCompleted;
 	}
 
-	private boolean seenGraveyardAlready = false;
-
 	private boolean startGraveyard(Player player) {
-		if (!seenGraveyardAlready) {
-			seenGraveyardAlready = true;
+		if (!player.getProgress().isGraveyardVisitedOnceAlready()) {
+			player.getProgress().setGraveyardVisitedOnceAlready(true);
 			StoryTextReader.read("graveyard.txt");
 		} else {
 			System.out.println("YOU ENTER THE GRAVEYARD...again...");
@@ -103,11 +99,9 @@ public class StoryTeller implements Story {
 		return graveyardCompleted;
 	}
 
-	private boolean seenForestAlready = false;
-
 	private boolean startForest(Player player) {
-		if (!seenForestAlready) {
-			seenForestAlready = true;
+		if (!player.getProgress().isForestVisitedOnceAlready()) {
+			player.getProgress().setForestVisitedOnceAlready(true);
 			StoryTextReader.read("forest.txt");
 		} else {
 			System.out.println("YOU ENTER THE FOREST...again...");
@@ -179,11 +173,9 @@ public class StoryTeller implements Story {
 		}
 	}
 
-	private boolean seenRiverAlready = false;
-
 	private boolean startRiver(Player player) {
-		if (!seenRiverAlready) {
-			seenRiverAlready = true;
+		if (!player.getProgress().isRiverVisitedOnceAlready()) {
+			player.getProgress().setRiverVisitedOnceAlready(true);
 			StoryTextReader.read("river.txt");
 		} else {
 			System.out.println("YOU ENTER THE RIVER...again");
@@ -193,11 +185,9 @@ public class StoryTeller implements Story {
 		return riverCompleted;
 	}
 
-	private boolean seenAppliedAready = false;
-
 	private boolean startAppliedChryogenics(Player player) {
-		if (!seenAppliedAready) {
-			seenAppliedAready = true;
+		if (!player.getProgress().isAppliedVisitedAready()) {
+			player.getProgress().setAppliedVisitedAready(true);
 			StoryTextReader.read("appliedChryo.txt");
 		} else {
 			System.out.println("YOU ENTER APPLIED CHRYOGENICS...again");
@@ -207,11 +197,9 @@ public class StoryTeller implements Story {
 		return appliedChryogenicsCompleted;
 	}
 
-	private boolean seenRobotArmsAlready = false;
-
 	private boolean startRobotArms(Player player) {
-		if (!seenRobotArmsAlready) {
-			seenRobotArmsAlready = true;
+		if (!player.getProgress().isRobotArmsVisitedOnceAlready()) {
+			player.getProgress().setRobotArmsVisitedOnceAlready(true);
 			StoryTextReader.read("robotArms.txt");
 		} else {
 			System.out.println("YOU ENTER ROBOT ARMS APARTMENTS...again");
@@ -221,11 +209,9 @@ public class StoryTeller implements Story {
 		return robotArmsCompleted;
 	}
 
-	private boolean doneLaboratoryOnceAlready = false;
-
 	private void startLaboratory(Player player) {
-		if (!doneLaboratoryOnceAlready) {
-			doneLaboratoryOnceAlready = true;
+		if (!player.getProgress().isLaboratoryVisitedOnceAlready()) {
+			player.getProgress().setLaboratoryVisitedOnceAlready(true);
 			StoryTextReader.read("lab.txt");
 		} else {
 			System.out.println("Professor: 'Look at my items'");
@@ -234,11 +220,9 @@ public class StoryTeller implements Story {
 		storyTellerService.startProfessorVendor(player);
 	}
 
-	private boolean doneDumpsterOnceAlready = false;
-
 	private void startDumpster(Player player) {
-		if (!doneDumpsterOnceAlready) {
-			doneDumpsterOnceAlready = true;
+		if (!player.getProgress().isDumpsterVisitedOnceAlready()) {
+			player.getProgress().setDumpsterVisitedOnceAlready(true);
 			StoryTextReader.read("dumpster.txt");
 		} else {
 			System.out.println("Zoidberg: 'Look at my items why not'");
@@ -313,14 +297,12 @@ public class StoryTeller implements Story {
 		}
 	}
 
-	private boolean seenMomAlready = false;
-
 	private boolean startMomCorp(Player player) {
 		boolean momCorpCompleted = false;
 		boolean firstFight = false;
 		boolean secondFight = false;
-		if (!seenMomAlready) {
-			seenMomAlready = true;
+		if (!player.getProgress().isMomVisitedOnceAlready()) {
+			player.getProgress().setMomVisitedOnceAlready(true);
 			System.out.println("YOU ENTER MOMCORP");
 			StoryTellerService.nextLine(scanner);
 			System.out.println("MOM: 'Igner, Larry, get this crap sack off my property!'");
@@ -343,11 +325,9 @@ public class StoryTeller implements Story {
 		return momCorpCompleted;
 	}
 
-	private boolean seenSlurmAlready = false;
-
 	private boolean startSlurmFactory(Player player) {
-		if (!seenSlurmAlready) {
-			seenSlurmAlready = true;
+		if (!player.getProgress().isSlurmVisitedOnceAlready()) {
+			player.getProgress().setSlurmVisitedOnceAlready(true);
 			StoryTextReader.read("slurm.txt");
 		} else {
 			System.out.println("YOU ENTER THE SLURM FACTORY...again");
@@ -361,13 +341,11 @@ public class StoryTeller implements Story {
 		return slurmFactoryCompleted;
 	}
 
-	private boolean seenFishyAlready = false;
-
 	private boolean startFishyJoes(Player player) {
 		int initialPlayerStrength = player.getStrength();
 		boolean fishyJoesCompletedLocal = false;
-		if (!seenFishyAlready) {
-			seenFishyAlready = true;
+		if (!player.getProgress().isFishyVisitedOnceAlready()) {
+			player.getProgress().setFishyVisitedOnceAlready(true);
 			StoryTextReader.read("fishy.txt");
 		} else {
 			System.out.println("YOU ENTER FISHY JOE'S...again");
@@ -388,11 +366,9 @@ public class StoryTeller implements Story {
 		return fishyJoesCompletedLocal;
 	}
 
-	private boolean doneHermesOnceAlready = false;
-
 	private void startHermes(Player player) {
-		if (!doneHermesOnceAlready) {
-			doneHermesOnceAlready = true;
+		if (!player.getProgress().isHermesVisitedOnceAlready()) {
+			player.getProgress().setHermesVisitedOnceAlready(true);
 			StoryTextReader.read("hermes.txt");
 		} else {
 			System.out.println("Hermes: 'Come to play again aye'");
@@ -412,11 +388,9 @@ public class StoryTeller implements Story {
 		}
 	}
 
-	private boolean alreadyDoneLeela = false;
-
 	private void startLeela(Player player) {
-		if (!alreadyDoneLeela) {
-			alreadyDoneLeela = true;
+		if (!player.getProgress().isLeelaVisitedOnceAlready()) {
+			player.getProgress().setLeelaVisitedOnceAlready(true);
 			StoryTextReader.read("leela.txt");
 			player.setAgility(player.getAgility() + 1);
 			StoryTellerService.printPlayer(player);
@@ -426,11 +400,9 @@ public class StoryTeller implements Story {
 		}
 	}
 
-	private boolean alreadyDoneBender = false;
-
 	private void startBender(Player player) {
-		if (!alreadyDoneBender) {
-			alreadyDoneBender = true;
+		if (!player.getProgress().isBenderVisitedOnceAlready()) {
+			player.getProgress().setBenderVisitedOnceAlready(true);
 			StoryTextReader.read("bender.txt");
 			player.setStrength(player.getStrength() + 1);
 			StoryTellerService.printPlayer(player);

@@ -25,7 +25,6 @@ public class RpgGameApp {
 		// TODO: use multiple try catch blocks instead of if else and show text only in
 		// StoryTeller or Combat, depending on exception thrown (no println in service
 		// classes)
-		// TODO: add 'seenPlacesAlready' into Progress Class
 
 		Story storyTeller = new StoryTeller();
 
