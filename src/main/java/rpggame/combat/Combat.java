@@ -134,19 +134,15 @@ public class Combat {
 
 	private void attackSequenceNoCrits(GameCharacter attacker, GameCharacter defender) {
 		AttackDamage attackDamage = attacker.attack();
-
 		System.out.println(attacker.getName() + " attacks " + defender.getName() + " for "
 				+ attackDamage.getBaseAttackDamage() + " damage!");
-
 		defender.setStrength(defender.getStrength() - attackDamage.getBaseAttackDamage());
 	}
 
 	private void attackSequenceWithCrits(GameCharacter attacker, GameCharacter defender) {
 		AttackDamage attackDamage = attacker.attack();
-
 		System.out.println(attacker.getName() + " attacks " + defender.getName() + " for "
 				+ attackDamage.getBaseAttackDamage() + " damage plus " + attackDamage.getCritAttackDamage() + " Crit!");
-
 		defender.setStrength(
 				defender.getStrength() - (attackDamage.getBaseAttackDamage() + attackDamage.getCritAttackDamage()));
 	}
