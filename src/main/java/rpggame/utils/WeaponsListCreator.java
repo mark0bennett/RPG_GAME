@@ -14,12 +14,11 @@ public class WeaponsListCreator {
 		String line = "";
 		String splitBy = ",";
 		List<Weapon> readWeaponsList = new ArrayList<>();
-		try {
-			// parsing a CSV file into BufferedReader class constructor
-			BufferedReader bufferedReader = new BufferedReader(
-					new FileReader(
-							"D:\\Java\\Spring Tools Suite\\Projects\\RPG_GAME\\src\\main\\resources\\weapon\\"
-									+ fileName));
+		try (BufferedReader bufferedReader = new BufferedReader(
+				new FileReader(
+						"D:\\Java\\Spring Tools Suite\\Projects\\RPG_GAME\\src\\main\\resources\\weapon\\"
+								+ fileName))) {
+
 			while ((line = bufferedReader.readLine()) != null)
 			// returns a Boolean value
 			{
@@ -40,8 +39,6 @@ public class WeaponsListCreator {
 
 				readWeaponsList.add(newWeapon);
 			}
-			bufferedReader.close();
-
 		} catch (Exception e) {
 			System.out.println("\nError reading file...path not valid, or invalid csv format\n");
 		}

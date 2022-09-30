@@ -13,7 +13,6 @@ public class RpgGameApp {
 		// TODO: best way to pass scanner around? maybe look at random too?
 		// TODO: think about DI, what if I change Combat/the way other classes are
 		// implemented?
-		// TODO: try with resources, for scanner/readers
 		// TODO: method and variable names, be verbose
 		// TODO: variables either global or right where you need them
 		// TODO: reading a file from a dir - application properties, dont hard code path
