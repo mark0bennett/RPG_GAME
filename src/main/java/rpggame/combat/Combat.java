@@ -2,6 +2,7 @@ package rpggame.combat;
 
 import java.util.Scanner;
 
+import rpggame.gamecharacter.AttackDamage;
 import rpggame.gamecharacter.GameCharacter;
 import rpggame.gamecharacter.enemy.Enemy;
 import rpggame.gamecharacter.player.Player;
@@ -132,20 +133,22 @@ public class Combat {
 	}
 
 	private void attackSequenceNoCrits(GameCharacter attacker, GameCharacter defender) {
-		int attackDamage = attacker.getAttackDamage();
-		System.out.println(attacker.getName() + " attacks " + defender.getName() + " for " + attackDamage + " damage!");
-		defender.setStrength(defender.getStrength() - attackDamage);
+		AttackDamage attackDamage = attacker.attack();
+
+		System.out.println(attacker.getName() + " attacks " + defender.getName() + " for "
+				+ attackDamage.getBaseAttackDamage() + " damage!");
+
+		defender.setStrength(defender.getStrength() - attackDamage.getBaseAttackDamage());
 	}
 
 	private void attackSequenceWithCrits(GameCharacter attacker, GameCharacter defender) {
-		int[] attackNumbers = attacker.getAttackCritDamage();
-		int attackDamage = attackNumbers[0];
-		int critDamage = attackNumbers[1];
-		// you attack
-		System.out.println(attacker.getName() + " attacks " + defender.getName() + " for " + attackDamage
-				+ " damage plus " + critDamage + " Crit!");
-		// enemy strength changed from attack
-		defender.setStrength(defender.getStrength() - (attackDamage + critDamage));
+		AttackDamage attackDamage = attacker.attack();
+
+		System.out.println(attacker.getName() + " attacks " + defender.getName() + " for "
+				+ attackDamage.getBaseAttackDamage() + " damage plus " + attackDamage.getCritAttackDamage() + " Crit!");
+
+		defender.setStrength(
+				defender.getStrength() - (attackDamage.getBaseAttackDamage() + attackDamage.getCritAttackDamage()));
 	}
 
 	public void printCombatHasBegun() {

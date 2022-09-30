@@ -64,7 +64,7 @@ public class Player extends GameCharacter {
 	}
 
 	public List<Weapon> getBackPack() {
-		return backPack;
+		return this.backPack;
 	}
 
 	public int getCurrentTotalStatPoints() {

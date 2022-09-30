@@ -21,29 +21,46 @@ public abstract class GameCharacter {
 		this.weapon = weapon;
 	}
 
-	public int getAttackDamage() {
-		int attackDamage = 0;
-		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
-			attackDamage = this.agility + this.weapon.getDamage();
-		} else if (this.weapon.getWeaponType() == WeaponType.INTELLIGENCE) {
-			attackDamage = this.intelligence + this.weapon.getDamage();
-		}
-		return attackDamage;
-	}
-
-	public int[] getAttackCritDamage() {
+	public AttackDamage attack() {
+		int baseAttackDamage = 0;
+		int critAttackDamage = 0;
 		Random random = new Random();
-		int[] attackDamage = new int[2];
 
 		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
-			attackDamage[0] = this.agility + this.weapon.getDamage();
-			attackDamage[1] = random.nextInt(this.intelligence);
+			baseAttackDamage = this.agility + this.weapon.getDamage();
+			critAttackDamage = random.nextInt(this.intelligence);
 		} else if (this.weapon.getWeaponType() == WeaponType.INTELLIGENCE) {
-			attackDamage[0] = this.intelligence + this.weapon.getDamage();
-			attackDamage[1] = random.nextInt(this.agility);
+			baseAttackDamage = this.intelligence + this.weapon.getDamage();
+			critAttackDamage = random.nextInt(this.agility);
 		}
-		return attackDamage;
+
+		return new AttackDamage(baseAttackDamage, critAttackDamage);
+
 	}
+
+//	public int getAttackDamage() {
+//		int attackDamage = 0;
+//		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
+//			attackDamage = this.agility + this.weapon.getDamage();
+//		} else if (this.weapon.getWeaponType() == WeaponType.INTELLIGENCE) {
+//			attackDamage = this.intelligence + this.weapon.getDamage();
+//		}
+//		return attackDamage;
+//	}
+//
+//	public int[] getAttackCritDamage() {
+//		Random random = new Random();
+//		int[] attackDamage = new int[2];
+//
+//		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
+//			attackDamage[0] = this.agility + this.weapon.getDamage();
+//			attackDamage[1] = random.nextInt(this.intelligence);
+//		} else if (this.weapon.getWeaponType() == WeaponType.INTELLIGENCE) {
+//			attackDamage[0] = this.intelligence + this.weapon.getDamage();
+//			attackDamage[1] = random.nextInt(this.agility);
+//		}
+//		return attackDamage;
+//	}
 
 	public String getName() {
 		return this.name;

@@ -20,8 +20,6 @@ public class CombatService {
 	public void pickWeapon(Player player) {
 		int choice = 0;
 		// before each battle set weapon to 'no weapon'
-		Weapon noWeapon = new Weapon("No Weapon Selected", 0, 0, 0, WeaponType.INTELLIGENCE, 0);
-		player.setWeapon(noWeapon);
 		while (true) {
 			System.out.println(player);
 			player.printBackpack();
