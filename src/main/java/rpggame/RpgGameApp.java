@@ -10,11 +10,10 @@ public class RpgGameApp {
 
 		// tests
 		// package into a jar/exe file for execution on any computer
-		// TODO: attack 2 enemies, pick which enemy to attack
 		// TODO: best way to pass scanner around? maybe look at random too?
 		// TODO: think about DI, what if I change Combat/the way other classes are
 		// implemented?
-		// TODO: try with resources, for scanner/reader
+		// TODO: try with resources, for scanner/readers
 		// TODO: method and variable names, be verbose
 		// TODO: variables either global or right where you need them
 		// TODO: reading a file from a dir - application properties, dont hard code path
@@ -24,7 +23,8 @@ public class RpgGameApp {
 		// TODO: clean up combat class
 		// TODO: use multiple try catch blocks instead of if else and show text only in
 		// StoryTeller or Combat, depending on exception thrown (no println in service
-		// classes)
+		// classes) and also readers throw exceptions, custom error messages back to
+		// StoryTeller
 
 		Story storyTeller = new StoryTeller();
 

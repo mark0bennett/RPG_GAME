@@ -5,19 +5,35 @@ import java.io.FileReader;
 
 public class AsciiArtReader {
 
+//	@Deprecated
+//	public static void readArtOld(String fileName) {
+//		String line = "";
+//		try {
+//			BufferedReader bufferedReader = new BufferedReader(
+//					new FileReader(
+//							"D:\\Java\\Spring Tools Suite\\Projects\\RPG_GAME\\src\\main\\resources\\asciiart\\"
+//									+ fileName));
+//			while ((line = bufferedReader.readLine()) != null) {
+//				System.out.println(line);
+//			}
+//			bufferedReader.close();
+//		} catch (Exception e) {
+//			System.out.println("\nError reading file...path not valid, or invalid ascii format\n");
+//		}
+//	}
+
 	public static void readArt(String fileName) {
 		String line = "";
-		try {
-			BufferedReader bufferedReader = new BufferedReader(
-					new FileReader(
-							"D:\\Java\\Spring Tools Suite\\Projects\\RPG_GAME\\src\\main\\resources\\asciiart\\"
-									+ fileName));
+		try (BufferedReader bufferedReader = new BufferedReader(
+				new FileReader(
+						"D:\\Java\\Spring Tools Suite\\Projects\\RPG_GAME\\src\\main\\resources\\asciiart\\"
+								+ fileName))) {
 			while ((line = bufferedReader.readLine()) != null) {
 				System.out.println(line);
 			}
-			bufferedReader.close();
 		} catch (Exception e) {
 			System.out.println("\nError reading file...path not valid, or invalid ascii format\n");
 		}
 	}
+
 }

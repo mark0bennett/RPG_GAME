@@ -7,7 +7,6 @@ import rpggame.gamecharacter.enemy.Enemy;
 import rpggame.gamecharacter.player.Player;
 import rpggame.story.StoryTellerService;
 import rpggame.weapon.Weapon;
-import rpggame.weapon.WeaponType;
 
 public class CombatService {
 
