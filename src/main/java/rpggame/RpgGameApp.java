@@ -14,6 +14,18 @@ public class RpgGameApp {
 		// TODO: best way to pass scanner around? maybe look at random too?
 		// TODO: think about DI, what if I change Combat/the way other classes are
 		// implemented?
+		// TODO: try with resources, for scanner/reader
+		// TODO: method and variable names, be verbose
+		// TODO: variables either global or right where you need them
+		// TODO: reading a file from a dir - application properties, dont hard code path
+		// TODO: should Player have seenChurchAlready? if more players enter each one
+		// will be different
+		// TODO: Store.java as a new class for vendors?
+		// TODO: decouple classes!
+		// TODO: var keyword
+		// TODO: clean up combat class
+		// TODO: use multiple try catch blocks instead of if else and show text only in
+		// StoryTeller depending on exception thrown
 
 		Story storyTeller = new StoryTeller();
 
