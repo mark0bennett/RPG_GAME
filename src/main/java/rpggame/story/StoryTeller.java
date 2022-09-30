@@ -16,18 +16,6 @@ public class StoryTeller implements Story {
 	private final Combat combat;
 	private final StoryTellerService storyTellerService;
 
-	private boolean churchCompleted;
-	private boolean graveyardCompleted;
-	private boolean forestCompleted;
-
-	private boolean riverCompleted;
-	private boolean appliedChryogenicsCompleted;
-	private boolean robotArmsCompleted;
-
-	private boolean momCorpCompleted;
-	private boolean slurmFactoryCompleted;
-	private boolean fishyJoesCompleted;
-
 	public StoryTeller() {
 		this.scanner = new Scanner(System.in);
 		this.combat = new Combat();
@@ -53,7 +41,7 @@ public class StoryTeller implements Story {
 		String choice = "";
 
 		while (true) {
-			if (churchCompleted && graveyardCompleted && forestCompleted) {
+			if (player.isChurchCompleted() && player.isGraveyardCompleted() && player.isForestCompleted()) {
 				afterFirstPathsSplit(player);
 				break;
 			}
@@ -64,21 +52,21 @@ public class StoryTeller implements Story {
 			choice = scanner.nextLine();
 			if (choice.isBlank()) {
 				continue;
-			} else if (choice.equals("1") && !churchCompleted) {
-				churchCompleted = startChurch(player);
-			} else if (choice.equals("1") && churchCompleted) {
+			} else if (choice.equals("1") && !player.isChurchCompleted()) {
+				player.setChurchCompleted(startChurch(player));
+			} else if (choice.equals("1") && player.isChurchCompleted()) {
 				System.out.println("You've already cleared the Church");
 				StoryTellerService.printLineBreak();
 				continue;
-			} else if (choice.equals("2") && !graveyardCompleted) {
-				graveyardCompleted = startGraveyard(player);
-			} else if (choice.equals("2") && graveyardCompleted) {
+			} else if (choice.equals("2") && !player.isGraveyardCompleted()) {
+				player.setGraveyardCompleted(startGraveyard(player));
+			} else if (choice.equals("2") && player.isGraveyardCompleted()) {
 				System.out.println("You've already cleared the Graveyard");
 				StoryTellerService.printLineBreak();
 				continue;
-			} else if (choice.equals("3") && !forestCompleted) {
-				forestCompleted = startForest(player);
-			} else if (choice.equals("3") && forestCompleted) {
+			} else if (choice.equals("3") && !player.isForestCompleted()) {
+				player.setForestCompleted(startForest(player));
+			} else if (choice.equals("3") && player.isForestCompleted()) {
 				System.out.println("You've already cleared the Graveyard");
 				StoryTellerService.printLineBreak();
 				continue;
@@ -155,21 +143,21 @@ public class StoryTeller implements Story {
 			choice = scanner.nextLine();
 			if (choice.isBlank()) {
 				continue;
-			} else if (choice.equals("1") && !riverCompleted) {
-				riverCompleted = startRiver(player);
-			} else if (choice.equals("1") && riverCompleted) {
+			} else if (choice.equals("1") && !player.isRiverCompleted()) {
+				player.setRiverCompleted(startRiver(player));
+			} else if (choice.equals("1") && player.isRiverCompleted()) {
 				System.out.println("You've already cleared the River");
 				StoryTellerService.printLineBreak();
 				continue;
-			} else if (choice.equals("2") && !appliedChryogenicsCompleted) {
-				appliedChryogenicsCompleted = startAppliedChryogenics(player);
-			} else if (choice.equals("2") && appliedChryogenicsCompleted) {
+			} else if (choice.equals("2") && !player.isAppliedChryogenicsCompleted()) {
+				player.setAppliedChryogenicsCompleted(startAppliedChryogenics(player));
+			} else if (choice.equals("2") && player.isAppliedChryogenicsCompleted()) {
 				System.out.println("You've already cleared Applied Chryogenics");
 				StoryTellerService.printLineBreak();
 				continue;
-			} else if (choice.equals("3") && !robotArmsCompleted) {
-				robotArmsCompleted = startRobotArms(player);
-			} else if (choice.equals("3") && robotArmsCompleted) {
+			} else if (choice.equals("3") && !player.isRobotArmsCompleted()) {
+				player.setRobotArmsCompleted(startRobotArms(player));
+			} else if (choice.equals("3") && player.isRobotArmsCompleted()) {
 				System.out.println("You've already cleared Robot Arms Apartments");
 				StoryTellerService.printLineBreak();
 				continue;
@@ -177,7 +165,8 @@ public class StoryTeller implements Story {
 				startLaboratory(player);
 			} else if (choice.equals("5")) {
 				startDumpster(player);
-			} else if (choice.equals("6") && riverCompleted && appliedChryogenicsCompleted && robotArmsCompleted) {
+			} else if (choice.equals("6") && player.isRiverCompleted() && player.isAppliedChryogenicsCompleted()
+					&& player.isRobotArmsCompleted()) {
 				afterMainPaths();
 				break;
 			} else {
@@ -278,21 +267,21 @@ public class StoryTeller implements Story {
 			choice = scanner.nextLine();
 			if (choice.isBlank()) {
 				continue;
-			} else if (choice.equals("1") && !momCorpCompleted) {
-				momCorpCompleted = startMomCorp(player);
-			} else if (choice.equals("1") && momCorpCompleted) {
+			} else if (choice.equals("1") && !player.isMomCorpCompleted()) {
+				player.setMomCorpCompleted(startMomCorp(player));
+			} else if (choice.equals("1") && player.isMomCorpCompleted()) {
 				System.out.println("You've already cleared MomCorp");
 				StoryTellerService.printLineBreak();
 				continue;
-			} else if (choice.equals("2") && !slurmFactoryCompleted) {
-				slurmFactoryCompleted = startSlurmFactory(player);
-			} else if (choice.equals("2") && slurmFactoryCompleted) {
+			} else if (choice.equals("2") && !player.isSlurmFactoryCompleted()) {
+				player.setSlurmFactoryCompleted(startSlurmFactory(player));
+			} else if (choice.equals("2") && player.isSlurmFactoryCompleted()) {
 				System.out.println("You've already cleared the Slurm Factory");
 				StoryTellerService.printLineBreak();
 				continue;
-			} else if (choice.equals("3") && !fishyJoesCompleted) {
-				fishyJoesCompleted = startFishyJoes(player);
-			} else if (choice.equals("3") && fishyJoesCompleted) {
+			} else if (choice.equals("3") && !player.isFishyJoesCompleted()) {
+				player.setFishyJoesCompleted(startFishyJoes(player));
+			} else if (choice.equals("3") && player.isFishyJoesCompleted()) {
 				System.out.println("You've already cleared Fishy Joe's");
 				StoryTellerService.printLineBreak();
 				continue;
@@ -311,8 +300,8 @@ public class StoryTeller implements Story {
 			} else if (choice.equalsIgnoreCase("8")) {
 				startBender(player);
 				continue;
-			} else if (choice.equals("9") && momCorpCompleted == true && slurmFactoryCompleted == true
-					&& fishyJoesCompleted == true) {
+			} else if (choice.equals("9") && player.isMomCorpCompleted() && player.isSlurmFactoryCompleted()
+					&& player.isFishyJoesCompleted()) {
 				break;
 			} else {
 				System.out.println("You should probably check out these places, and clear them out!");

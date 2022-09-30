@@ -25,7 +25,8 @@ public class RpgGameApp {
 		// TODO: var keyword
 		// TODO: clean up combat class
 		// TODO: use multiple try catch blocks instead of if else and show text only in
-		// StoryTeller depending on exception thrown
+		// StoryTeller or Combat, depending on exception thrown (no println in service
+		// classes)
 
 		Story storyTeller = new StoryTeller();
 
