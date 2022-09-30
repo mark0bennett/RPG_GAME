@@ -18,8 +18,6 @@ public class RpgGameApp {
 		// TODO: method and variable names, be verbose
 		// TODO: variables either global or right where you need them
 		// TODO: reading a file from a dir - application properties, dont hard code path
-		// TODO: should Player have seenChurchAlready? if more players enter each one
-		// will be different
 		// TODO: Store.java as a new class for vendors?
 		// TODO: decouple classes!
 		// TODO: var keyword
@@ -27,6 +25,7 @@ public class RpgGameApp {
 		// TODO: use multiple try catch blocks instead of if else and show text only in
 		// StoryTeller or Combat, depending on exception thrown (no println in service
 		// classes)
+		// TODO: add 'seenPlacesAlready' into Progress Class
 
 		Story storyTeller = new StoryTeller();
 
