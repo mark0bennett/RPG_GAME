@@ -3,8 +3,8 @@ package rpggame.combat;
 import java.util.Random;
 import java.util.Scanner;
 
-import rpggame.person.enemy.Enemy;
-import rpggame.person.player.Player;
+import rpggame.gamecharacter.enemy.Enemy;
+import rpggame.gamecharacter.player.Player;
 import rpggame.story.StoryTellerService;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
@@ -33,26 +33,22 @@ public class CombatService {
 			} catch (Exception e) {
 				System.out.println("Type a number that exists in your backpack");
 				StoryTellerService.printLineBreak();
-				StoryTellerService.nextLine(scanner);
 				continue;
 			}
 			// if number doesnt exist in backpack, continue
 			if (choice > player.getBackPack().size() || choice <= 0) {
 				System.out.println("No weapon exists there");
 				StoryTellerService.printLineBreak();
-				StoryTellerService.nextLine(scanner);
 				continue;
 				// if your agility is too low, continue
 			} else if (player.getAgility() < player.getBackPack().get(choice - 1).getAgilityRequired()) {
 				System.out.println("Your Agility is too low for this weapon");
 				StoryTellerService.printLineBreak();
-				StoryTellerService.nextLine(scanner);
 				continue;
 				// if you intelligence is too low, continue
 			} else if (player.getIntelligence() < player.getBackPack().get(choice - 1).getIntelligenceRequired()) {
 				System.out.println("Your Intelligence is too low for this weapon");
 				StoryTellerService.printLineBreak();
-				StoryTellerService.nextLine(scanner);
 				continue;
 			} else {
 				// else equip weapon
@@ -80,7 +76,7 @@ public class CombatService {
 		}
 		StoryTellerService.nextLine(scanner);
 		System.out.println("-- " + enemy.getName() + " dropped their weapon --");
-		Weapon droppedWeapon = enemy.dropWeapon();
+		Weapon droppedWeapon = enemy.getWeapon();
 		System.out.println(droppedWeapon.getName());
 		System.out.println("Agility Required: " + droppedWeapon.getAgilityRequired());
 		System.out.println("Intelligence Required: " + droppedWeapon.getIntelligenceRequired());

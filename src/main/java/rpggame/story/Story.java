@@ -1,6 +1,6 @@
 package rpggame.story;
 
-import rpggame.person.player.Player;
+import rpggame.gamecharacter.player.Player;
 
 public interface Story {
 

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import rpggame.person.player.Player;
+import rpggame.gamecharacter.player.Player;
 import rpggame.utils.WeaponsListCreator;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;

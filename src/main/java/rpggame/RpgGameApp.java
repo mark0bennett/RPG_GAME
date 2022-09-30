@@ -1,6 +1,6 @@
 package rpggame;
 
-import rpggame.person.player.Player;
+import rpggame.gamecharacter.player.Player;
 import rpggame.story.Story;
 import rpggame.story.StoryTeller;
 

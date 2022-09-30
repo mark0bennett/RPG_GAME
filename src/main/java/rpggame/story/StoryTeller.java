@@ -3,8 +3,8 @@ package rpggame.story;
 import java.util.Scanner;
 
 import rpggame.combat.Combat;
-import rpggame.person.enemy.Enemy;
-import rpggame.person.player.Player;
+import rpggame.gamecharacter.enemy.Enemy;
+import rpggame.gamecharacter.player.Player;
 import rpggame.utils.SoundPlayer;
 import rpggame.utils.StoryTextReader;
 import rpggame.weapon.Weapon;

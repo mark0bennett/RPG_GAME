@@ -2,9 +2,9 @@ package rpggame.combat;
 
 import java.util.Scanner;
 
-import rpggame.person.Person;
-import rpggame.person.enemy.Enemy;
-import rpggame.person.player.Player;
+import rpggame.gamecharacter.GameCharacter;
+import rpggame.gamecharacter.enemy.Enemy;
+import rpggame.gamecharacter.player.Player;
 import rpggame.story.StoryTellerService;
 import rpggame.utils.EnemyFactory;
 import rpggame.utils.SoundPlayer;
@@ -131,13 +131,13 @@ public class Combat {
 		return wonBattle;
 	}
 
-	private void attackSequenceNoCrits(Person attacker, Person defender) {
+	private void attackSequenceNoCrits(GameCharacter attacker, GameCharacter defender) {
 		int attackDamage = attacker.getAttackDamage();
 		System.out.println(attacker.getName() + " attacks " + defender.getName() + " for " + attackDamage + " damage!");
 		defender.setStrength(defender.getStrength() - attackDamage);
 	}
 
-	private void attackSequenceWithCrits(Person attacker, Person defender) {
+	private void attackSequenceWithCrits(GameCharacter attacker, GameCharacter defender) {
 		int[] attackNumbers = attacker.getAttackCritDamage();
 		int attackDamage = attackNumbers[0];
 		int critDamage = attackNumbers[1];

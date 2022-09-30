@@ -1,20 +1,19 @@
-package rpggame.person.enemy;
+package rpggame.gamecharacter;
 
 import java.util.Random;
 
-import rpggame.person.Person;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
 
-public class Enemy implements Person {
+public abstract class GameCharacter {
 
 	private String name;
 	private int strength;
-	private int intelligence;
 	private int agility;
+	private int intelligence;
 	private Weapon weapon;
 
-	public Enemy(String name, int strength, int agility, int intelligence, Weapon weapon) {
+	public GameCharacter(String name, int strength, int agility, int intelligence, Weapon weapon) {
 		this.name = name;
 		this.strength = strength;
 		this.agility = agility;
@@ -34,7 +33,7 @@ public class Enemy implements Person {
 
 	public int[] getAttackCritDamage() {
 		Random random = new Random();
-		int[] attackDamage = { 0, 0 };
+		int[] attackDamage = new int[2];
 
 		if (this.weapon.getWeaponType() == WeaponType.AGILITY) {
 			attackDamage[0] = this.agility + this.weapon.getDamage();
@@ -46,20 +45,24 @@ public class Enemy implements Person {
 		return attackDamage;
 	}
 
-	public Weapon dropWeapon() {
-		return this.weapon;
-	}
-
 	public String getName() {
 		return this.name;
 	}
 
 	public int getStrength() {
-		return strength;
+		return this.strength;
 	}
 
 	public void setStrength(int strength) {
 		this.strength = strength;
+	}
+
+	public int getAgility() {
+		return this.agility;
+	}
+
+	public void setAgility(int agility) {
+		this.agility = agility;
 	}
 
 	public int getIntelligence() {
@@ -70,18 +73,12 @@ public class Enemy implements Person {
 		this.intelligence = intelligence;
 	}
 
-	public int getAgility() {
-		return agility;
+	public Weapon getWeapon() {
+		return this.weapon;
 	}
 
-	public void setAgility(int agility) {
-		this.agility = agility;
-	}
-
-	@Override
-	public String toString() {
-		return this.name + " - " + "Strength: " + strength + " Agility: " + agility + " Intelligence: " + intelligence
-				+ ", Weapon: " + this.weapon.getName();
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
 	}
 
 }
