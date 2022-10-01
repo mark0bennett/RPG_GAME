@@ -15,10 +15,7 @@ public class WeaponsListCreator {
 		String splitBy = ",";
 		List<Weapon> readWeaponsList = new ArrayList<>();
 		try (BufferedReader bufferedReader = new BufferedReader(
-				new FileReader(
-						"D:\\Java\\Spring Tools Suite\\Projects\\RPG_GAME\\src\\main\\resources\\weapon\\"
-								+ fileName))) {
-
+				new FileReader("src/main/resources/weapon/" + fileName))) {
 			while ((line = bufferedReader.readLine()) != null)
 			// returns a Boolean value
 			{

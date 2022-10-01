@@ -38,6 +38,7 @@ public class StoryTellerService {
 				System.out.println("Intelligence (adds to damage and to equip intelligence weapons):");
 				intelligence = Integer.valueOf(scanner.nextLine());
 			} catch (Exception e) {
+				e.getMessage();
 				System.out.println("Input numbers only");
 				continue;
 			}

@@ -13,9 +13,7 @@ public class StoryTextReader {
 	public static void read(String fileName) {
 		String line = "";
 		try (BufferedReader bufferedReader = new BufferedReader(
-				new FileReader(
-						"D:\\Java\\Spring Tools Suite\\Projects\\RPG_GAME\\src\\main\\resources\\story\\"
-								+ fileName))) {
+				new FileReader("src/main/resources/story/" + fileName))) {
 			// can now recognise calls to AsciiArtReader, SoundPlayer and printBreakLine();
 			while ((line = bufferedReader.readLine()) != null) {
 				if (line.equals("StoryTellerService.printLineBreak();")) {

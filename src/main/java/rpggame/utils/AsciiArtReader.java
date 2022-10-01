@@ -7,10 +7,9 @@ public class AsciiArtReader {
 
 	public static void readArt(String fileName) {
 		String line = "";
+
 		try (BufferedReader bufferedReader = new BufferedReader(
-				new FileReader(
-						"D:\\Java\\Spring Tools Suite\\Projects\\RPG_GAME\\src\\main\\resources\\asciiart\\"
-								+ fileName))) {
+				new FileReader("src/main/resources/asciiart/" + fileName))) {
 			while ((line = bufferedReader.readLine()) != null) {
 				System.out.println(line);
 			}
