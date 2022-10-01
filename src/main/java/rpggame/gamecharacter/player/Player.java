@@ -15,7 +15,7 @@ public class Player extends GameCharacter {
 	private List<Weapon> backPack;
 	private int nixonBucks;
 	private Progress progress;
-
+	
 	public Player(String name, int strength, int agility, int intelligence) {
 		super(name, strength, agility, intelligence, EnemyFactory.weaponList.get(0));
 		// made the list public and static in EnemyFactory
