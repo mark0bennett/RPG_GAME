@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import rpggame.gamecharacter.player.Player;
+import rpggame.utils.Printer;
 
 public class StoryTellerService {
 
@@ -56,7 +57,7 @@ public class StoryTellerService {
 			}
 		}
 		Player player = new Player(name, strength, agility, intelligence);
-		printPlayer(player);
+		Printer.printPlayer(player);
 		return player;
 	}
 
@@ -136,22 +137,6 @@ public class StoryTellerService {
 				continue;
 			}
 		}
-	}
-
-	public static void nextLine(Scanner scanner) {
-		String input = scanner.nextLine();
-		input.strip();
-	}
-
-	public static void printPlayer(Player player) {
-		printLineBreak();
-		System.out.println(player);
-		printLineBreak();
-	}
-
-	public static void printLineBreak() {
-		System.out.println(
-				"----------------------------------------------------------------------------------------------------");
 	}
 
 }

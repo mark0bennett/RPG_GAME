@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import rpggame.gamecharacter.GameCharacter;
-import rpggame.story.StoryTellerService;
 import rpggame.utils.EnemyFactory;
 import rpggame.weapon.DamageComparator;
 import rpggame.weapon.Weapon;
@@ -53,16 +52,6 @@ public class Player extends GameCharacter {
 	public void addWeaponToBackpack(Weapon weapon) {
 		this.backPack.add(weapon);
 		Collections.sort(this.backPack, new DamageComparator());
-	}
-
-	public void printBackpack() {
-		// show weapons in backpack
-		StoryTellerService.printLineBreak();
-		System.out.println("Backpack Contents");
-		for (int i = 0; i < this.backPack.size(); i++) {
-			System.out.println((i + 1) + ": " + this.backPack.get(i));
-		}
-		StoryTellerService.printLineBreak();
 	}
 
 	public List<Weapon> getBackPack() {

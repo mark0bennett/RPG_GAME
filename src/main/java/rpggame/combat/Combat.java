@@ -6,8 +6,8 @@ import rpggame.gamecharacter.AttackDamage;
 import rpggame.gamecharacter.GameCharacter;
 import rpggame.gamecharacter.enemy.Enemy;
 import rpggame.gamecharacter.player.Player;
-import rpggame.story.StoryTellerService;
 import rpggame.utils.EnemyFactory;
+import rpggame.utils.Printer;
 import rpggame.utils.SoundPlayer;
 
 public class Combat {
@@ -25,10 +25,10 @@ public class Combat {
 	public boolean createOneEnemy(Player player, String name, int level, boolean withCrits) {
 		boolean wonBattle = false;
 		// print combat text and create enemy
-		combatService.printCombatHasBegun();
+		Printer.printCombatHasBegun();
 		combatService.pickWeapon(player);
 		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, name, level);
-		combatService.printVersusText(player, enemy);
+		Printer.printVersusTextOneEnemy(player, enemy);
 		// for restoring health after battle
 		int playerStrengthBeforeCombat = player.getStrength();
 		// for dropping money based on enemy strength
@@ -44,21 +44,22 @@ public class Combat {
 		if (wonBattle) {
 			combatService.showAndAddDroppedWeaponAndMoney(player, enemy, enemyStrengthBeforeCombat);
 			combatService.increaseStats(player);
-			combatService.printWinText(player);
+			Printer.printWinText(player);
 		} else {
-			combatService.printLossText();
+			Printer.printLossText();
 		}
 		return wonBattle;
 	}
 
-	public boolean createTwoEnemies(Player player, String name1, int level, String name2, int level2, boolean withCrits) {
+	public boolean createTwoEnemies(Player player, String name1, int level, String name2, int level2,
+			boolean withCrits) {
 		boolean wonBattle = false;
 		// print combat text and create enemy
-		combatService.printCombatHasBegun();
+		Printer.printCombatHasBegun();
 		combatService.pickWeapon(player);
 		Enemy enemy = enemyFactory.createEnemyCustomLevel(player, name1, level);
 		Enemy enemy2 = enemyFactory.createEnemyCustomLevel(player, name2, level2);
-		combatService.printVersusTextTwoEnemies(player, enemy, enemy2);
+		Printer.printVersusTextTwoEnemies(player, enemy, enemy2);
 
 		// for restoring health after battle
 		int playerStrengthBeforeCombat = player.getStrength();
@@ -76,9 +77,9 @@ public class Combat {
 			combatService.showAndAddDroppedWeaponAndMoney(player, enemy, enemyStrengthBeforeCombat);
 			combatService.showAndAddDroppedWeaponAndMoney(player, enemy2, enemyStrengthBeforeCombat);
 			combatService.increaseStats(player);
-			combatService.printWinText(player);
+			Printer.printWinText(player);
 		} else {
-			combatService.printLossText();
+			Printer.printLossText();
 		}
 		return wonBattle;
 	}
@@ -93,11 +94,11 @@ public class Combat {
 			} else {
 				attackSequenceNoCrits(player, enemy);
 			}
-			StoryTellerService.nextLine(scanner);
+			Printer.nextLine(scanner);
 			// check if enemy is dead
 			if (enemy.getStrength() < 1) {
 				System.out.println("You Won!");
-				StoryTellerService.nextLine(scanner);
+				Printer.nextLine(scanner);
 				wonBattle = true;
 				break;
 			}
@@ -108,16 +109,16 @@ public class Combat {
 			} else {
 				attackSequenceNoCrits(enemy, player);
 			}
-			StoryTellerService.nextLine(scanner);
+			Printer.nextLine(scanner);
 			// check if enemy is dead
 			if (player.getStrength() < 1) {
 				SoundPlayer.playSound("LifeIsCruel.wav");
 				System.out.println("You Lost!");
-				StoryTellerService.nextLine(scanner);
+				Printer.nextLine(scanner);
 				wonBattle = false;
 				break;
 			}
-			combatService.printPlayerAndOneEnemy(player, enemy);
+			Printer.printPlayerAndOneEnemy(player, enemy);
 		}
 		return wonBattle;
 	}
@@ -145,14 +146,6 @@ public class Combat {
 				+ attackDamage.getBaseAttackDamage() + " damage plus " + attackDamage.getCritAttackDamage() + " Crit!");
 		defender.setStrength(
 				defender.getStrength() - (attackDamage.getBaseAttackDamage() + attackDamage.getCritAttackDamage()));
-	}
-
-	public void printCombatHasBegun() {
-		combatService.printCombatHasBegun();
-	}
-
-	public void printVersusText(Player player, Enemy enemy) {
-		combatService.printVersusText(player, enemy);
 	}
 
 }

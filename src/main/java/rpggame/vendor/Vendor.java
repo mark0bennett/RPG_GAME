@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import rpggame.gamecharacter.player.Player;
-import rpggame.story.StoryTellerService;
+import rpggame.utils.Printer;
 import rpggame.utils.WeaponsListCreator;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
@@ -33,7 +33,7 @@ public class Vendor {
 
 	private void sellItemsMenu(List<Weapon> vendorList, Player player, WeaponType vendorType) {
 		System.out.println("Pick an Item to Sell - Get NixonBucks equal to the damage of weapon");
-		player.printBackpack();
+		Printer.printBackpack(player);
 		System.out.println((player.getBackPack().size() + 1) + ": BACK TO VENDOR");
 		int choice = 0;
 		while (true) {
@@ -75,7 +75,7 @@ public class Vendor {
 	public void startProfessorVendor(Player player) {
 		int choice = 0;
 		while (true) {
-			StoryTellerService.printPlayer(player);
+			Printer.printPlayer(player);
 			System.out.println("1: EXIT");
 			System.out.println("2: SELL ONE OF YOUR ITEMS");
 			for (int i = 0; i < farnsworthWeapons.size(); i++) {
@@ -123,7 +123,7 @@ public class Vendor {
 	public void startZoidbergVendor(Player player) {
 		int choice = 0;
 		while (true) {
-			StoryTellerService.printPlayer(player);
+			Printer.printPlayer(player);
 			System.out.println("1: EXIT");
 			System.out.println("2: SELL ONE OF YOUR ITEMS");
 			for (int i = 0; i < zoidbergWeapons.size(); i++) {
