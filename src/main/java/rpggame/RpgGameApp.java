@@ -13,7 +13,6 @@ public class RpgGameApp {
 		// TODO: think about DI, what if I change Combat/the way other classes are
 		// implemented?
 		// TODO: reading a file from a dir - application properties, dont hard code path
-		// TODO: Store.java as a new class for vendors?
 		// TODO: decouple classes!
 		// TODO: clean up combat class
 		// TODO: use multiple try catch blocks instead of if else and show text only in

@@ -35,7 +35,7 @@ public class StoryTeller implements Story {
 
 	public void startFirstFight(Player player) {
 		StoryTextReader.read("startFirstFight.txt");
-		combat.oneEnemy(player, "Zapp Brannigan", 0, false);
+		combat.createOneEnemy(player, "Zapp Brannigan", 0, false);
 	}
 
 	public void firstPathsSplit(Player player) {
@@ -86,7 +86,7 @@ public class StoryTeller implements Story {
 			System.out.println("YOU ENTER THE CHURCH...again");
 			StoryTellerService.nextLine(scanner);
 		}
-		boolean churchCompleted = combat.oneEnemy(player, "Preacherbot", 1, false);
+		boolean churchCompleted = combat.createOneEnemy(player, "Preacherbot", 1, false);
 		return churchCompleted;
 	}
 
@@ -98,7 +98,7 @@ public class StoryTeller implements Story {
 			System.out.println("YOU ENTER THE GRAVEYARD...again...");
 			StoryTellerService.nextLine(scanner);
 		}
-		boolean graveyardCompleted = combat.oneEnemy(player, "Zombie Jesus", 2, false);
+		boolean graveyardCompleted = combat.createOneEnemy(player, "Zombie Jesus", 2, false);
 		return graveyardCompleted;
 	}
 
@@ -110,13 +110,13 @@ public class StoryTeller implements Story {
 			System.out.println("YOU ENTER THE FOREST...again...");
 			StoryTellerService.nextLine(scanner);
 		}
-		boolean forestCompleted = combat.oneEnemy(player, "Ranger Park the Park Ranger", 2, false);
+		boolean forestCompleted = combat.createOneEnemy(player, "Ranger Park the Park Ranger", 2, false);
 		return forestCompleted;
 	}
 
 	private void afterFirstPathsSplit(Player player) {
 		StoryTextReader.read("afterFirstPaths.txt");
-		combat.oneEnemy(player, "LRRR Ruler of the Planet Omicron Persei 8", 4, true);
+		combat.createOneEnemy(player, "LRRR Ruler of the Planet Omicron Persei 8", 4, true);
 	}
 
 	public void meetFirstNPC(Player player) {
@@ -184,7 +184,8 @@ public class StoryTeller implements Story {
 			System.out.println("YOU ENTER THE RIVER...again");
 			StoryTellerService.nextLine(scanner);
 		}
-		boolean riverCompleted = combat.twoEnemies(player, "Joan River's Head", 2, "Horrible Gelatinous Blob", 3, true);
+		boolean riverCompleted = combat
+				.createTwoEnemies(player, "Joan River's Head", 2, "Horrible Gelatinous Blob", 3, true);
 		return riverCompleted;
 	}
 
@@ -196,7 +197,7 @@ public class StoryTeller implements Story {
 			System.out.println("YOU ENTER APPLIED CHRYOGENICS...again");
 			StoryTellerService.nextLine(scanner);
 		}
-		boolean appliedChryogenicsCompleted = combat.twoEnemies(player, "Michelle", 2, "Ipji", 3, true);
+		boolean appliedChryogenicsCompleted = combat.createTwoEnemies(player, "Michelle", 2, "Ipji", 3, true);
 		return appliedChryogenicsCompleted;
 	}
 
@@ -208,7 +209,7 @@ public class StoryTeller implements Story {
 			System.out.println("YOU ENTER ROBOT ARMS APARTMENTS...again");
 			StoryTellerService.nextLine(scanner);
 		}
-		boolean robotArmsCompleted = combat.twoEnemies(player, "Robot Devil", 3, "Roberto", 3, true);
+		boolean robotArmsCompleted = combat.createTwoEnemies(player, "Robot Devil", 3, "Roberto", 3, true);
 		return robotArmsCompleted;
 	}
 
@@ -316,12 +317,12 @@ public class StoryTeller implements Story {
 			System.out.println("Mom: 'Come back for more aye!'");
 			StoryTellerService.nextLine(scanner);
 		}
-		firstFight = combat.twoEnemies(player, "Igner", 3, "Larry", 3, true);
+		firstFight = combat.createTwoEnemies(player, "Igner", 3, "Larry", 3, true);
 		System.out.println("MOM: 'Those two idiots couldn't beat you but I WILL!'");
 		StoryTellerService.nextLine(scanner);
 		System.out.println("MOM: 'Walt, get over here an show these other two how it's done!'");
 		StoryTellerService.nextLine(scanner);
-		secondFight = combat.twoEnemies(player, "Walt", 4, "Mom", 5, true);
+		secondFight = combat.createTwoEnemies(player, "Walt", 4, "Mom", 5, true);
 		if (firstFight && secondFight) {
 			momCorpCompleted = true;
 		}
@@ -340,7 +341,7 @@ public class StoryTeller implements Story {
 			System.out.println("You can't Crit!");
 			StoryTellerService.nextLine(scanner);
 		}
-		boolean slurmFactoryCompleted = combat.twoEnemies(player, "Grunka Lunka", 5, "Slurm Queen", 6, false);
+		boolean slurmFactoryCompleted = combat.createTwoEnemies(player, "Grunka Lunka", 5, "Slurm Queen", 6, false);
 		return slurmFactoryCompleted;
 	}
 
@@ -360,10 +361,12 @@ public class StoryTeller implements Story {
 		if (player.getStrength() >= 3) {
 			player.setStrength(initialPlayerStrength - 2);
 			StoryTextReader.read("fishyOpt1.txt");
-			fishyJoesCompletedLocal = combat.twoEnemies(player, "Dirty Protesting Hippy", 5, "Fishy Joe", 5, true);
+			fishyJoesCompletedLocal = combat
+					.createTwoEnemies(player, "Dirty Protesting Hippy", 5, "Fishy Joe", 5, true);
 		} else {
 			StoryTextReader.read("fishyOpt2.txt");
-			fishyJoesCompletedLocal = combat.twoEnemies(player, "Dirty Protesting Hippy", 5, "Fishy Joe", 5, true);
+			fishyJoesCompletedLocal = combat
+					.createTwoEnemies(player, "Dirty Protesting Hippy", 5, "Fishy Joe", 5, true);
 		}
 		player.setStrength(initialPlayerStrength);
 		return fishyJoesCompletedLocal;

@@ -22,7 +22,7 @@ public class Combat {
 		this.combatService = new CombatService(this.scanner);
 	}
 
-	public boolean oneEnemy(Player player, String name, int level, boolean withCrits) {
+	public boolean createOneEnemy(Player player, String name, int level, boolean withCrits) {
 		boolean wonBattle = false;
 		// print combat text and create enemy
 		combatService.printCombatHasBegun();
@@ -51,7 +51,7 @@ public class Combat {
 		return wonBattle;
 	}
 
-	public boolean twoEnemies(Player player, String name1, int level, String name2, int level2, boolean withCrits) {
+	public boolean createTwoEnemies(Player player, String name1, int level, String name2, int level2, boolean withCrits) {
 		boolean wonBattle = false;
 		// print combat text and create enemy
 		combatService.printCombatHasBegun();
