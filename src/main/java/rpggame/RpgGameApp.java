@@ -10,15 +10,11 @@ public class RpgGameApp {
 
 		// tests
 		// package into a jar/exe file for execution on any computer
-		// TODO: best way to pass scanner around? maybe look at random too?
 		// TODO: think about DI, what if I change Combat/the way other classes are
 		// implemented?
-		// TODO: method and variable names, be verbose
-		// TODO: variables either global or right where you need them
 		// TODO: reading a file from a dir - application properties, dont hard code path
 		// TODO: Store.java as a new class for vendors?
 		// TODO: decouple classes!
-		// TODO: var keyword
 		// TODO: clean up combat class
 		// TODO: use multiple try catch blocks instead of if else and show text only in
 		// StoryTeller or Combat, depending on exception thrown (no println in service

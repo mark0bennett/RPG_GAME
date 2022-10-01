@@ -7,6 +7,7 @@ import rpggame.gamecharacter.enemy.Enemy;
 import rpggame.gamecharacter.player.Player;
 import rpggame.utils.SoundPlayer;
 import rpggame.utils.StoryTextReader;
+import rpggame.vendor.Vendor;
 import rpggame.weapon.Weapon;
 import rpggame.weapon.WeaponType;
 
@@ -15,11 +16,13 @@ public class StoryTeller implements Story {
 	private final Scanner scanner;
 	private final Combat combat;
 	private final StoryTellerService storyTellerService;
+	private final Vendor vendor;
 
 	public StoryTeller() {
 		this.scanner = new Scanner(System.in);
 		this.combat = new Combat();
 		this.storyTellerService = new StoryTellerService(this.scanner);
+		this.vendor = new Vendor(this.scanner);
 	}
 
 	public void intro() {
@@ -217,7 +220,7 @@ public class StoryTeller implements Story {
 			System.out.println("Professor: 'Look at my items'");
 			StoryTellerService.nextLine(scanner);
 		}
-		storyTellerService.startProfessorVendor(player);
+		vendor.startProfessorVendor(player);
 	}
 
 	private void startDumpster(Player player) {
@@ -229,7 +232,7 @@ public class StoryTeller implements Story {
 			StoryTellerService.nextLine(scanner);
 		}
 		SoundPlayer.playSound("ZoidbergUseful.wav");
-		storyTellerService.startZoidbergVendor(player);
+		vendor.startZoidbergVendor(player);
 	}
 
 	private void afterMainPaths() {
