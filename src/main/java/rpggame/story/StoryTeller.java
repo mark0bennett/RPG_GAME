@@ -21,7 +21,7 @@ public class StoryTeller implements Story {
 
 	public StoryTeller() {
 		this.scanner = new Scanner(System.in);
-		this.combat = new Combat();
+		this.combat = new Combat(this.scanner);
 		this.storyTellerService = new StoryTellerService(this.scanner);
 		this.vendor = new Vendor(this.scanner);
 	}

@@ -19,6 +19,8 @@ public class RpgGameApp {
 		// StoryTeller or Combat, depending on exception thrown (no println in service
 		// classes) and also readers throw exceptions, custom error messages back to
 		// StoryTeller - pickWeapon()
+		// TODO: Combat Class, createOneEnemy and createTwoEnemies are almost exactly
+		// the same - refactor
 
 		Story storyTeller = new StoryTeller();
 

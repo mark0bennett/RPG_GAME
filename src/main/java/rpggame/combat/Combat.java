@@ -16,8 +16,8 @@ public class Combat {
 	private final EnemyFactory enemyFactory;
 	private final CombatService combatService;
 
-	public Combat() {
-		this.scanner = new Scanner(System.in);
+	public Combat(Scanner scanner) {
+		this.scanner = scanner;
 		this.enemyFactory = new EnemyFactory();
 		this.combatService = new CombatService(this.scanner);
 	}
